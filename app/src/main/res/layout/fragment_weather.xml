@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.fragment_Weather">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
+        android:layout_width="346dp"
+        android:layout_height="322dp"
+        android:background="@drawable/cornerstroke"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@+id/guideline3"
+        app:layout_constraintVertical_bias="0.325">
+
+        <ImageView
+            android:id="@+id/img_icon"
+            android:layout_width="68dp"
+            android:layout_height="67dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.056"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.064"
+            tools:src="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/tv_d_location"
+            android:layout_width="228dp"
+            android:layout_height="17dp"
+            android:layout_marginStart="24dp"
+            android:gravity="center"
+            android:text="location"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/img_icon"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.052" />
+
+        <TextView
+            android:id="@+id/tv_d_uvindex"
+            android:layout_width="300dp"
+            android:layout_height="19dp"
+            android:layout_marginStart="24dp"
+            android:gravity="center"
+            android:text="uvindex"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.121"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_icon"
+            app:layout_constraintVertical_bias="0.036" />
+
+        <TextView
+            android:id="@+id/tv_d_feelslike"
+            android:layout_width="300dp"
+            android:layout_height="19dp"
+            android:layout_marginStart="24dp"
+            android:gravity="center"
+            android:text="feelslike"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.121"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_d_uvindex"
+            app:layout_constraintVertical_bias="0.051" />
+
+        <TextView
+            android:id="@+id/tv_d_wind"
+            android:layout_width="300dp"
+            android:layout_height="19dp"
+            android:layout_marginStart="24dp"
+            android:gravity="center"
+            android:text="windspeed"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.121"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_d_feelslike"
+            app:layout_constraintVertical_bias="0.079" />
+
+        <TextView
+            android:id="@+id/tv_d_cloud"
+            android:layout_width="300dp"
+            android:layout_height="19dp"
+            android:layout_marginStart="24dp"
+            android:gravity="center"
+            android:text="cloudcover"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.121"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_d_wind"
+            app:layout_constraintVertical_bias="0.083" />
+
+        <TextView
+            android:id="@+id/tv_d_visiblity"
+            android:layout_width="300dp"
+            android:layout_height="19dp"
+            android:layout_marginStart="24dp"
+            android:gravity="center"
+            android:text="visibilty"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.121"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_d_cloud"
+            app:layout_constraintVertical_bias="0.097" />
+
+        <TextView
+            android:id="@+id/tv_d_presure"
+            android:layout_width="300dp"
+            android:layout_height="19dp"
+            android:layout_marginStart="24dp"
+            android:gravity="center"
+            android:text="presure"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.121"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_d_visiblity"
+            app:layout_constraintVertical_bias="0.162" />
+
+        <TextView
+            android:id="@+id/tv_d_humid"
+            android:layout_width="300dp"
+            android:layout_height="19dp"
+            android:layout_marginStart="24dp"
+            android:gravity="center"
+            android:text="humidty"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.121"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_d_presure"
+            app:layout_constraintVertical_bias="0.325" />
+
+        <TextView
+            android:id="@+id/tv_d_temp"
+            android:layout_width="66dp"
+            android:layout_height="41dp"
+            android:layout_marginStart="24dp"
+            android:gravity="center"
+            android:text="00"
+            android:textSize="34sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/img_icon"
+            app:layout_constraintTop_toBottomOf="@+id/tv_d_location"
+            app:layout_constraintVertical_bias="0.024" />
+
+        <TextView
+            android:id="@+id/tv_d_desc"
+            android:layout_width="119dp"
+            android:layout_height="18dp"
+            android:layout_marginStart="32dp"
+            android:gravity="center"
+            android:text="desc"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.343"
+            app:layout_constraintStart_toEndOf="@+id/tv_d_temp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.128" />
+
+        <TextView
+            android:id="@+id/tv_d_time"
+            android:layout_width="119dp"
+            android:layout_height="18dp"
+            android:layout_marginStart="32dp"
+            android:gravity="center"
+            android:text="time"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.343"
+            app:layout_constraintStart_toEndOf="@+id/tv_d_temp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_d_desc"
+            app:layout_constraintVertical_bias="0.032" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="14dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <EditText
+        android:id="@+id/textView10"
+        android:layout_width="257dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:background="@color/white"
+        android:backgroundTint="#E3E3E3"
+        android:hint="Find city"
+        android:textSize="8sp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@+id/guideline3"
+        app:layout_constraintVertical_bias="0.336" />
+
+    <ImageView
+        android:id="@+id/btn_find"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/ic_baseline_search_24"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.282"
+        app:layout_constraintStart_toEndOf="@+id/textView10"
+        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="380dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
