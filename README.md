@@ -3,25 +3,23 @@
 I made planning app with weather information,So in this mixed todolist and weather app. WetterDo is stands for Wetter a german word for weather and do from last word to-do 
 
 # :pencil2: Features
+1. Weather view
 
+   give u about weather information now
+   
+2. planning view
 
+   Below weatherview there is some list about today activity
+   
+3. planning detail
+   
+   give u detail about your planning and also u can add more activity or maybe update
+   
+4. weather detail
+
+   provide u more detail about the weather
 # :wrench: Implementation
 1. Kotlin
-2. MVVM
+2. Api
+   Web service provider by https://weatherstack.com/ it's free but only for basic
 
-   Recomended architecture from GOOGLE
-   Give data shared to other fragment
-   
-3. Android Fragment
-
-4. Retrofit
-
-   Provide type-safe REST client for Android and Java which aims to make it easier to consume RESTful web services
-   
-5. Spinner
-
-   Give more option for choosing courier
-    
-6. Room
-
-    It's basically SQL but a lite version for android so it can keep data in local storage
