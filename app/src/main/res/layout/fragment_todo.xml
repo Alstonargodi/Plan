@@ -7,7 +7,7 @@
     tools:context=".fragment.fragment_todo">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/rechome"
         android:layout_width="347dp"
         android:layout_height="586dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -23,11 +23,11 @@
         android:layout_height="48dp"
         android:backgroundTint="#00BCD4"
         android:clickable="true"
-        app:layout_constraintBottom_toBottomOf="@+id/recyclerView"
-        app:layout_constraintEnd_toEndOf="@+id/recyclerView"
+        app:layout_constraintBottom_toBottomOf="@+id/rechome"
+        app:layout_constraintEnd_toEndOf="@+id/rechome"
         app:layout_constraintHorizontal_bias="0.974"
-        app:layout_constraintStart_toStartOf="@+id/recyclerView"
-        app:layout_constraintTop_toTopOf="@+id/recyclerView"
+        app:layout_constraintStart_toStartOf="@+id/rechome"
+        app:layout_constraintTop_toTopOf="@+id/rechome"
         app:layout_constraintVertical_bias="0.969"
         tools:ignore="SpeakableTextPresentCheck" />
 

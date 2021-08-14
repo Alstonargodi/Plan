@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 
 class todoviewmodel(application: Application): AndroidViewModel(application) {
     private val repo : todoRepo
-    val readdata : LiveData<todo>
+    val readdata : LiveData<List<todo>>
 
     init {
         val mdao = todoDatabase.setdatabase(application).todoDao()

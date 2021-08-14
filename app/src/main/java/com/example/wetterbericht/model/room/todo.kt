@@ -8,6 +8,7 @@ import java.util.*
 data class todo(
     @PrimaryKey(autoGenerate = true)
     val id : Int,
+    val title : String,
     val desc : String,
     val deadline: String,
     val status : String,

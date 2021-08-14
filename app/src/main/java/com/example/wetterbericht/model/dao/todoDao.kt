@@ -11,7 +11,7 @@ abstract class todoDao {
     abstract fun adddata(todo: todo)
 
     @Query("select*from tabeltodo order by id")
-    abstract fun readdata() : LiveData<todo>
+    abstract fun readdata() : LiveData<List<todo>>
 
     @Delete
     abstract fun deletedata(todo: todo)
