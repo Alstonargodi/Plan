@@ -1,0 +1,25 @@
+# Wetterdo
+
+I made planning app with weather information,So in this mixed todolist and weather app. WetterDo is stands for Wetter a german word for weather and do from last word to-do 
+
+# :pencil2: Features
+1. Weather view
+
+   give u about weather information now
+   
+2. planning view
+
+   Below weatherview there is some list about today activity
+   
+3. planning detail
+   
+   give u detail about your planning and also u can add more activity or maybe update
+   
+4. weather detail
+
+   provide u more detail about the weather
+# :wrench: Implementation
+1. Kotlin
+2. Api
+   Web service provider by https://weatherstack.com/ it's free but only for basic
+
