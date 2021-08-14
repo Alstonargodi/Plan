@@ -8,15 +8,15 @@
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="122dp"
-        android:layout_height="26dp"
+        android:layout_width="126dp"
+        android:layout_height="19dp"
         android:text="Delete todo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.059"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.035" />
+        app:layout_constraintVertical_bias="0.031" />
 
     <TextView
         android:id="@+id/textView5"
@@ -32,27 +32,27 @@
 
     <Button
         android:id="@+id/btn_deletetodo"
-        android:layout_width="34dp"
-        android:layout_height="29dp"
+        android:layout_width="28dp"
+        android:layout_height="23dp"
         android:background="@drawable/ic_baseline_restore_from_trash_24"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="#F44336"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.668"
+        app:layout_constraintHorizontal_bias="0.672"
         app:layout_constraintStart_toEndOf="@+id/textView3"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.032" />
+        app:layout_constraintVertical_bias="0.03" />
 
     <Button
         android:id="@+id/btn_deletecuaca"
-        android:layout_width="34dp"
-        android:layout_height="29dp"
+        android:layout_width="30dp"
+        android:layout_height="25dp"
         android:background="@drawable/ic_baseline_restore_from_trash_24"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="#F44336"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.616"
+        app:layout_constraintHorizontal_bias="0.644"
         app:layout_constraintStart_toEndOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/btn_deletetodo"
-        app:layout_constraintVertical_bias="0.07" />
+        app:layout_constraintVertical_bias="0.072" />
 </androidx.constraintlayout.widget.ConstraintLayout>
