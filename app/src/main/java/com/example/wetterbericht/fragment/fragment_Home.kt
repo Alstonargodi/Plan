@@ -5,8 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wetterbericht.R
+import com.example.wetterbericht.fragment.adapter.todohomeadapter
+import com.example.wetterbericht.viewmodel.room.todoviewmodel
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_home.view.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -19,12 +25,22 @@ import kotlinx.android.synthetic.main.fragment_home.*
  * create an instance of this fragment.
  */
 class fragment_Home : Fragment() {
+    lateinit var mroomodel : todoviewmodel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
+
+        val madapter = todohomeadapter()
+        val recyclerhome = view.recviewhome
+        recyclerhome.adapter = madapter
+        recyclerhome.layoutManager = LinearLayoutManager(requireContext())
+
+        mroomodel = ViewModelProvider(this).get(todoviewmodel::class.java)
+        mroomodel.readdata.observe(viewLifecycleOwner, Observer { data ->
+            madapter.setdata(data)
+        })
 
         return view
     }
