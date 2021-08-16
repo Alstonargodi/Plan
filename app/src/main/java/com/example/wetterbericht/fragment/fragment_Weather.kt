@@ -1,5 +1,6 @@
 package com.example.wetterbericht.fragment
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -45,6 +46,8 @@ class fragment_Weather : Fragment() {
         return view
     }
 
+
+    @SuppressLint("SetTextI18n")
     private fun findweather(){
         val cari = et_carikan.text.toString()
         mapiviewmodel.getdata(cari)
@@ -54,8 +57,12 @@ class fragment_Weather : Fragment() {
             tv_d_desc.setText(response.body()?.current?.weatherDescriptions.toString())
             tv_d_time.setText(response.body()?.location?.localtime.toString())
             tv_d_uvindex.setText("UV index :" + response.body()?.current?.uvIndex.toString())
-            tv_d_feelslike.setText(response.body()?.current?.feelslike.toString())
-            tv_d_wind.setText(response.body()?.current?.windSpeed.toString())
+            tv_d_feelslike.setText("Feels like :"+ response.body()?.current?.feelslike.toString())
+            tv_d_wind.setText("Wind speed :"+response.body()?.current?.windSpeed.toString())
+            tv_d_cloud.setText("Cloud Cover :" + response.body()?.current?.cloudcover.toString())
+            tv_d_visiblity.setText("Visibility :" + response.body()?.current?.visibility.toString())
+            tv_d_presure.setText("Presure :" + response.body()?.current?.pressure.toString())
+            tv_d_humid.setText("Humidity :" + response.body()?.current?.humidity.toString())
         })
     }
 
