@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.wetterbericht.R
+import com.example.wetterbericht.model.room.cuaca
 import com.example.wetterbericht.repo.api.mainrepo
 import com.example.wetterbericht.viewmodel.api.Mainviewmodel
 import com.example.wetterbericht.viewmodel.api.Vmfactory
@@ -39,6 +40,7 @@ class fragment_Weather : Fragment() {
         //set room
         mroomviewmodel = ViewModelProvider(this).get(Cuacaviewmodel::class.java)
 
+        //todo api to room
         val view =  inflater.inflate(R.layout.fragment_weather, container, false)
         view.btn_find.setOnClickListener {
             findweather()
@@ -63,7 +65,17 @@ class fragment_Weather : Fragment() {
             tv_d_visiblity.setText("Visibility :" + response.body()?.current?.visibility.toString())
             tv_d_presure.setText("Presure :" + response.body()?.current?.pressure.toString())
             tv_d_humid.setText("Humidity :" + response.body()?.current?.humidity.toString())
+            tv_url.setText(response.body()?.current?.weatherIcons.toString())
+
+            val input = cuaca(0,
+                response.body()?.location?.name.toString(),
+                response.body()?.current?.weatherDescriptions.toString(),
+                Integer.parseInt(response.body()?.current?.temperature.toString()),
+                Integer.parseInt(response.body()?.current?.uvIndex.toString()),
+                Integer.parseInt(response.body()?.current?.humidity.toString()),
+                response.body()?.current?.weatherIcons.toString()
+            )
+            mroomviewmodel.add(input)
         })
     }
-
 }
