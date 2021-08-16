@@ -14,7 +14,7 @@ import retrofit2.http.Query
 interface Getapi {
 
     @GET("current")
-    fun getdata(
+    suspend fun getdata(
         @Query("query") location: Any,
         @Query("access_key") api_key : String = apikey
     ): Response<Weather>

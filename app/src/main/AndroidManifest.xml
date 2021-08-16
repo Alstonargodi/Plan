@@ -6,15 +6,12 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/wdologo"
         android:label="@string/app_name"
         android:networkSecurityConfig="@xml/security"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/wdologo"
         android:supportsRtl="true"
         android:theme="@style/Theme.Wetterbericht" >
-        <activity
-            android:name=".Activity_add"
-            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

@@ -10,4 +10,12 @@ class todoRepo(val dao: todoDao) {
     fun adddata(todo :todo){
         dao.adddata(todo)
     }
+
+    fun updatedata(todo: todo){
+        dao.updatedata(todo)
+    }
+
+    fun deletedata(todo: todo){
+        dao.deletedata(todo)
+    }
 }

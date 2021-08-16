@@ -15,4 +15,8 @@ abstract class todoDao {
 
     @Delete
     abstract fun deletedata(todo: todo)
+
+    @Update
+    abstract fun updatedata(todo: todo)
+
 }

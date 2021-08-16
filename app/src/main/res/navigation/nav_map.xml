@@ -55,5 +55,12 @@
         android:id="@+id/updatefragment"
         android:name="com.example.wetterbericht.fragment.util.updatefragment"
         android:label="fragment_update"
-        tools:layout="@layout/fragment_update" />
+        tools:layout="@layout/fragment_update" >
+        <argument
+            android:name="data"
+            app:argType="com.example.wetterbericht.model.room.todo" />
+        <action
+            android:id="@+id/action_updatefragment_to_fragment_todo"
+            app:destination="@id/fragment_todo" />
+    </fragment>
 </navigation>

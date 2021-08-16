@@ -149,13 +149,13 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recviewhome"
-        android:layout_width="389dp"
-        android:layout_height="591dp"
+        android:layout_width="399dp"
+        android:layout_height="517dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.355"
+        app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.099" />
+        app:layout_constraintVertical_bias="0.198" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
