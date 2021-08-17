@@ -20,10 +20,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout2"
-            android:layout_width="335dp"
-            android:layout_height="67dp"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recviewweather"
+            android:layout_width="334dp"
+            android:layout_height="65dp"
             android:background="@drawable/corner10"
             android:backgroundTint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -31,106 +31,17 @@
             app:layout_constraintHorizontal_bias="0.491"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.741">
-
-            <TextView
-                android:id="@+id/tv_location"
-                android:layout_width="165dp"
-                android:layout_height="18dp"
-                android:gravity="center"
-                android:text="lcoation"
-                android:fontFamily="@font/robotoregular"
-                android:textColor="#1C1919"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <TextView
-                android:id="@+id/tv_forecast"
-                android:layout_width="171dp"
-                android:layout_height="18dp"
-                android:gravity="center"
-                android:text="Forecast"
-                android:fontFamily="@font/robotoregular"
-                android:textColor="#000000"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.7"
-                app:layout_constraintStart_toEndOf="@+id/tv_location"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="56dp"
-                android:layout_height="43dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_location"
-                app:layout_constraintVertical_bias="0.0"
-                tools:src="@drawable/ic_baseline_wb_sunny_24" />
-
-            <TextView
-                android:id="@+id/tv_temp"
-                android:layout_width="108dp"
-                android:layout_height="43dp"
-                android:gravity="center"
-                android:text="0 C"
-                android:textColor="#000000"
-                android:textSize="34sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageView3"
-                app:layout_constraintTop_toBottomOf="@+id/tv_location"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <TextView
-                android:id="@+id/tv_uv"
-                android:layout_width="172dp"
-                android:layout_height="20dp"
-                android:gravity="center"
-                android:text="UV"
-                android:fontFamily="@font/robotoregular"
-                android:textColor="#2E2B2B"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.962"
-                app:layout_constraintStart_toEndOf="@+id/tv_temp"
-                app:layout_constraintTop_toBottomOf="@+id/tv_forecast"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <TextView
-                android:id="@+id/tv_humid"
-                android:layout_width="173dp"
-                android:layout_height="23dp"
-                android:gravity="center"
-                android:text="Humid"
-                android:fontFamily="@font/robotoregular"
-                android:textColor="#2E2B2B"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/tv_temp"
-                app:layout_constraintTop_toBottomOf="@+id/tv_uv"
-                app:layout_constraintVertical_bias="0.0" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintVertical_bias="0.741" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="130dp"
             android:layout_height="14dp"
+            android:fontFamily="@font/righteous"
             android:text="Looks at this before"
             android:textColor="#FBFBFB"
             android:textSize="10sp"
-            android:fontFamily="@font/righteous"
-            app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+            app:layout_constraintBottom_toTopOf="@+id/recviewweather"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.11"
             app:layout_constraintStart_toStartOf="parent"
@@ -144,7 +55,8 @@
         android:layout_width="54dp"
         android:layout_height="18dp"
         android:text="Todo"
-        android:textColor="#111212"
+        android:fontFamily="@font/righteous"
+        android:textColor="#03A9F4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.047"
