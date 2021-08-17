@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 class Cuacaviewmodel(application: Application): AndroidViewModel(application) {
         private val repo : CuacaRepo
         //read
-        val readdata : LiveData<cuaca>
+        val readdata : LiveData<List<cuaca>>
 
         init {
             val mdao = cuacaDatabase.setdatabase(application).cuacaDao()

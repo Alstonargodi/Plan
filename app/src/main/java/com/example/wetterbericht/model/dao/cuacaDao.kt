@@ -12,7 +12,7 @@ abstract class cuacaDao {
 
     //read
     @Query("select*from tabelcuaca order by id")
-    abstract fun readdata() : LiveData<cuaca>
+    abstract fun readdata() : LiveData<List<cuaca>>
 
     @Delete
     abstract fun deletedata(data: cuaca)

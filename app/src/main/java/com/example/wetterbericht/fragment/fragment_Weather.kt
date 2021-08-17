@@ -8,7 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wetterbericht.R
+import com.example.wetterbericht.fragment.adapter.weatheradapter
 import com.example.wetterbericht.model.room.cuaca
 import com.example.wetterbericht.repo.api.mainrepo
 import com.example.wetterbericht.viewmodel.api.Mainviewmodel
@@ -31,17 +33,22 @@ class fragment_Weather : Fragment() {
     //todo add weather hisorty
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-
+        val view =  inflater.inflate(R.layout.fragment_weather, container, false)
         //get from api
         val repo = mainrepo()
         val vmfactory = Vmfactory(repo)
         mapiviewmodel = ViewModelProvider(this,vmfactory).get(Mainviewmodel::class.java) //set
 
         //set room
+        val adapter = weatheradapter()
+        val recyclerv = view.reclist
+        recyclerv.adapter = adapter
+        recyclerv.layoutManager = LinearLayoutManager(requireContext())
         mroomviewmodel = ViewModelProvider(this).get(Cuacaviewmodel::class.java)
+        mroomviewmodel.readdata.observe(viewLifecycleOwner, Observer { response ->
+            adapter.setdata(response)
+        })
 
-        //todo api to room
-        val view =  inflater.inflate(R.layout.fragment_weather, container, false)
         view.btn_find.setOnClickListener {
             findweather()
         }
@@ -65,7 +72,6 @@ class fragment_Weather : Fragment() {
             tv_d_visiblity.setText("Visibility :" + response.body()?.current?.visibility.toString())
             tv_d_presure.setText("Presure :" + response.body()?.current?.pressure.toString())
             tv_d_humid.setText("Humidity :" + response.body()?.current?.humidity.toString())
-            tv_url.setText(response.body()?.current?.weatherIcons.toString())
 
             val input = cuaca(0,
                 response.body()?.location?.name.toString(),
