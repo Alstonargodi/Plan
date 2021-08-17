@@ -1,6 +1,7 @@
 package com.example.wetterbericht.fragment
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.example.wetterbericht.R
 import com.example.wetterbericht.fragment.adapter.weatheradapter
 import com.example.wetterbericht.model.room.cuaca
@@ -61,9 +63,17 @@ class fragment_Weather : Fragment() {
         val cari = et_carikan.text.toString()
         mapiviewmodel.getdata(cari)
         mapiviewmodel.datarespon.observe(viewLifecycleOwner, Observer { response ->
+            val desc = response.body()?.current?.weatherDescriptions.toString()
+                ?.replace("[","")
+                ?.replace("]","")
+
+            val url = response.body()?.current?.weatherIcons.toString()
+                        ?.replace("[","")
+                        ?.replace("]","")
+
             tv_d_location.setText(response.body()?.location?.name.toString())
             tv_d_temp.setText(response.body()?.current?.temperature.toString())
-            tv_d_desc.setText(response.body()?.current?.weatherDescriptions.toString())
+            tv_d_desc.setText(desc)
             tv_d_time.setText(response.body()?.location?.localtime.toString())
             tv_d_uvindex.setText("UV index :" + response.body()?.current?.uvIndex.toString())
             tv_d_feelslike.setText("Feels like :"+ response.body()?.current?.feelslike.toString())
@@ -73,13 +83,18 @@ class fragment_Weather : Fragment() {
             tv_d_presure.setText("Presure :" + response.body()?.current?.pressure.toString())
             tv_d_humid.setText("Humidity :" + response.body()?.current?.humidity.toString())
 
+            Glide.with(this)
+                .asBitmap()
+                .load(url)
+                .into(img_icon)
+
             val input = cuaca(0,
                 response.body()?.location?.name.toString(),
-                response.body()?.current?.weatherDescriptions.toString(),
+                desc,
                 Integer.parseInt(response.body()?.current?.temperature.toString()),
                 Integer.parseInt(response.body()?.current?.uvIndex.toString()),
                 Integer.parseInt(response.body()?.current?.humidity.toString()),
-                response.body()?.current?.weatherIcons.toString()
+                url
             )
             mroomviewmodel.add(input)
         })
