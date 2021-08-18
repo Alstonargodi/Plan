@@ -6,72 +6,82 @@
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="394dp"
+        android:layout_width="393dp"
         android:layout_height="93dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
 
-        <TextView
-            android:id="@+id/tv_home_id"
-            android:layout_width="2dp"
-            android:layout_height="70dp"
-            android:background="#F44336"
-            android:gravity="center"
-            android:text="12"
-            android:textColor="#F44336"
-            android:textSize="48sp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="376dp"
+            android:layout_height="72dp"
+            android:background="@drawable/shadow"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.022"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.0">
 
-        <TextView
-            android:id="@+id/tv_home_status"
-            android:layout_width="177dp"
-            android:layout_height="23dp"
-            android:gravity="center"
-            android:text="Status"
-            android:textColor="#FF5722"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.024"
-            app:layout_constraintStart_toEndOf="@+id/tv_home_id"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            <TextView
+                android:id="@+id/tv_home_id"
+                android:layout_width="1dp"
+                android:layout_height="45dp"
+                android:background="#F44336"
+                android:gravity="center"
+                android:text="12"
+                android:textColor="#FF5722"
+                android:textSize="48sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.005"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tv_home_date"
-            android:layout_width="199dp"
-            android:layout_height="23dp"
-            android:gravity="center"
-            android:text="00/00/0000"
-            android:textColor="#1E1E1E"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.964"
-            app:layout_constraintStart_toEndOf="@+id/tv_home_status"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            <TextView
+                android:id="@+id/tv_home_status"
+                android:layout_width="177dp"
+                android:layout_height="23dp"
+                android:gravity="center"
+                android:text="Status"
+                android:textColor="#FF5722"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/tv_home_id"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
-        <TextView
-            android:id="@+id/tv_home_title"
-            android:layout_width="371dp"
-            android:layout_height="46dp"
-            android:gravity="left"
-            android:text="adsadadadadadadadadadadadadad"
-            android:textColor="#1E1D1C"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.4"
-            app:layout_constraintStart_toEndOf="@+id/tv_home_id"
-            app:layout_constraintTop_toBottomOf="@+id/tv_home_status"
-            app:layout_constraintVertical_bias="0.0" />
+            <TextView
+                android:id="@+id/tv_home_date"
+                android:layout_width="181dp"
+                android:layout_height="23dp"
+                android:gravity="center"
+                android:text="00/00/0000"
+                android:textColor="#1E1E1E"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/tv_home_status"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
+            <TextView
+                android:id="@+id/tv_home_title"
+                android:layout_width="371dp"
+                android:layout_height="46dp"
+                android:gravity="center"
+                android:text="adsadadadadadadadadadadadadad"
+                android:textColor="#1E1D1C"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.238"
+                app:layout_constraintStart_toEndOf="@+id/tv_home_id"
+                app:layout_constraintTop_toBottomOf="@+id/tv_home_status"
+                app:layout_constraintVertical_bias="0.0" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,7 +11,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wetterbericht.R
 import com.example.wetterbericht.fragment.adapter.todoadapter
+import com.example.wetterbericht.fragment.adapter.weatheradapter
 import com.example.wetterbericht.fragment.util.addfragment
+import com.example.wetterbericht.model.room.todo
 import com.example.wetterbericht.viewmodel.room.todoviewmodel
 import kotlinx.android.synthetic.main.fragment_todo.*
 import kotlinx.android.synthetic.main.fragment_todo.view.*
@@ -28,6 +30,8 @@ import kotlinx.android.synthetic.main.fragment_todo.view.*
  */
 class fragment_todo : Fragment() {
     lateinit var mtodoviewmodel : todoviewmodel
+    lateinit var cuacaadapter : weatheradapter
+    private var todolist = emptyList<todo>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -37,11 +41,13 @@ class fragment_todo : Fragment() {
         val recyclerViewhome = view.rechome
         recyclerViewhome.adapter = adapter
         recyclerViewhome.layoutManager = LinearLayoutManager(requireContext())
-
         mtodoviewmodel = ViewModelProvider(this).get(todoviewmodel::class.java)
         mtodoviewmodel.readdata.observe(viewLifecycleOwner, Observer { data->
             adapter.setdata(data)
         })
+
+        //todo count
+        view.tv_activity.setText(adapter.itemCount.toString())
 
         view.btn_add.setOnClickListener {
             //custom dialog add fragment
@@ -54,5 +60,4 @@ class fragment_todo : Fragment() {
 
         return view
     }
-
 }
