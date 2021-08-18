@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -57,46 +58,50 @@ class fragment_Weather : Fragment() {
         return view
     }
 
-
     @SuppressLint("SetTextI18n")
     private fun findweather(){
         val cari = et_carikan.text.toString()
         mapiviewmodel.getdata(cari)
         mapiviewmodel.datarespon.observe(viewLifecycleOwner, Observer { response ->
-            val desc = response.body()?.current?.weatherDescriptions.toString()
-                ?.replace("[","")
-                ?.replace("]","")
+            if(response != null){
+                val desc = response.body()?.current?.weatherDescriptions.toString()
+                    ?.replace("[","")
+                    ?.replace("]","")
 
-            val url = response.body()?.current?.weatherIcons.toString()
-                        ?.replace("[","")
-                        ?.replace("]","")
+                val url = response.body()?.current?.weatherIcons.toString()
+                    ?.replace("[","")
+                    ?.replace("]","")
 
-            tv_d_location.setText(response.body()?.location?.name.toString())
-            tv_d_temp.setText(response.body()?.current?.temperature.toString())
-            tv_d_desc.setText(desc)
-            tv_d_time.setText(response.body()?.location?.localtime.toString())
-            tv_d_uvindex.setText("UV index :" + response.body()?.current?.uvIndex.toString())
-            tv_d_feelslike.setText("Feels like :"+ response.body()?.current?.feelslike.toString())
-            tv_d_wind.setText("Wind speed :"+response.body()?.current?.windSpeed.toString())
-            tv_d_cloud.setText("Cloud Cover :" + response.body()?.current?.cloudcover.toString())
-            tv_d_visiblity.setText("Visibility :" + response.body()?.current?.visibility.toString())
-            tv_d_presure.setText("Presure :" + response.body()?.current?.pressure.toString())
-            tv_d_humid.setText("Humidity :" + response.body()?.current?.humidity.toString())
+                tv_d_location.setText(response.body()?.location?.name.toString())
+                tv_d_temp.setText(response.body()?.current?.temperature.toString())
+                tv_d_desc.setText(desc)
+                tv_d_time.setText(response.body()?.location?.localtime.toString())
+                tv_d_uvindex.setText("UV index      :" + response.body()?.current?.uvIndex.toString())
+                tv_d_feelslike.setText("Feels like  :"+ response.body()?.current?.feelslike.toString())
+                tv_d_wind.setText("Wind speed       :"+response.body()?.current?.windSpeed.toString())
+                tv_d_cloud.setText("Cloud Cover     :" + response.body()?.current?.cloudcover.toString())
+                tv_d_visiblity.setText("Visibility  :" + response.body()?.current?.visibility.toString())
+                tv_d_presure.setText("Presure       :" + response.body()?.current?.pressure.toString())
+                tv_d_humid.setText("Humidity        :" + response.body()?.current?.humidity.toString())
 
-            Glide.with(this)
-                .asBitmap()
-                .load(url)
-                .into(img_icon)
+                Glide.with(this)
+                    .asBitmap()
+                    .load(url)
+                    .into(img_icon)
 
-            val input = cuaca(0,
-                response.body()?.location?.name.toString(),
-                desc,
-                Integer.parseInt(response.body()?.current?.temperature.toString()),
-                Integer.parseInt(response.body()?.current?.uvIndex.toString()),
-                Integer.parseInt(response.body()?.current?.humidity.toString()),
-                url
-            )
-            mroomviewmodel.add(input)
+                // todo refresh with new data
+                val input = cuaca(0,
+                    response.body()?.location?.name.toString(),
+                    desc,
+                    Integer.parseInt(response.body()?.current?.temperature.toString()),
+                    Integer.parseInt(response.body()?.current?.uvIndex.toString()),
+                    Integer.parseInt(response.body()?.current?.humidity.toString()),
+                    url
+                )
+                mroomviewmodel.add(input)
+            }else{
+                Toast.makeText(context,"Cannot find $cari",Toast.LENGTH_SHORT).show()
+            }
         })
     }
 }

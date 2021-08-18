@@ -19,28 +19,29 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_add"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
         android:backgroundTint="#00BCD4"
         android:clickable="true"
+        android:src="@drawable/ic_baseline_add_24"
         app:layout_constraintBottom_toBottomOf="@+id/rechome"
         app:layout_constraintEnd_toEndOf="@+id/rechome"
-        app:layout_constraintHorizontal_bias="0.974"
+        app:layout_constraintHorizontal_bias="0.989"
         app:layout_constraintStart_toStartOf="@+id/rechome"
         app:layout_constraintTop_toTopOf="@+id/rechome"
-        app:layout_constraintVertical_bias="0.969"
+        app:layout_constraintVertical_bias="0.983"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/tv"
-        android:layout_width="390dp"
-        android:layout_height="51dp"
+        android:layout_width="147dp"
+        android:layout_height="48dp"
         android:background="@drawable/cornerstroke"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023">
+        app:layout_constraintVertical_bias="0.0">
 
         <TextView
             android:id="@+id/textView2"
@@ -48,10 +49,11 @@
             android:layout_height="19dp"
             android:gravity="center"
             android:text="Activites"
+            android:fontFamily="@font/righteous"
             android:textColor="#151313"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.055"
+            app:layout_constraintHorizontal_bias="0.501"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_activity"
             app:layout_constraintVertical_bias="0.0" />
@@ -65,10 +67,10 @@
             android:textColor="#151313"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.117"
+            app:layout_constraintHorizontal_bias="0.504"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.111" />
+            app:layout_constraintVertical_bias="0.08" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

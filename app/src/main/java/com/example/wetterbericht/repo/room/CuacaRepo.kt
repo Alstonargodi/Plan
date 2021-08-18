@@ -11,4 +11,8 @@ class CuacaRepo(val dao: cuacaDao) {
         dao.adddata(cur)
     }
 
+    fun updatedata(cur : cuaca){
+        dao.update(cur)
+    }
+
 }

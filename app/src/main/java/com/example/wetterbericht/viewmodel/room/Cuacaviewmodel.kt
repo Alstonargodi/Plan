@@ -26,4 +26,10 @@ class Cuacaviewmodel(application: Application): AndroidViewModel(application) {
                 repo.addata(data)
             }
         }
+
+        fun update(data: cuaca){
+            viewModelScope.launch(Dispatchers.IO) {
+                repo.updatedata(data)
+            }
+        }
 }

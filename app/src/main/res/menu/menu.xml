@@ -8,21 +8,25 @@
         android:title="Home"
         android:id="@+id/fragment_home"
         android:icon="@drawable/ic_baseline_home_work_24"
+        android:fontFamily="@font/righteous"
         />
     <item
         android:title="Todo"
         android:id="@+id/fragment_todo"
         android:icon="@drawable/ic_baseline_calendar_today_24"
+        android:fontFamily="@font/righteous"
         />
     <item
         android:title="Weather"
         android:id="@+id/fragment_weather"
         android:icon="@drawable/ic_baseline_cloud_24"
+        android:fontFamily="@font/righteous"
         />
     <item
         android:title="Setting"
         android:id="@+id/fragment_setting"
         android:icon="@drawable/ic_baseline_settings_24"
+        android:fontFamily="@font/righteous"
         />
 
 </menu>

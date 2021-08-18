@@ -17,4 +17,7 @@ abstract class cuacaDao {
     @Delete
     abstract fun deletedata(data: cuaca)
 
+    @Update
+    abstract fun update(data: cuaca)
+
 }
