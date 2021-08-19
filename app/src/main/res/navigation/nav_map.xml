@@ -40,7 +40,11 @@
         android:id="@+id/fragment_weather"
         android:name="com.example.wetterbericht.fragment.fragment_Weather"
         android:label="fragment_weather"
-        tools:layout="@layout/fragment_weather" />
+        tools:layout="@layout/fragment_weather" >
+        <argument
+            android:name="Finddata"
+            app:argType="com.example.wetterbericht.model.room.cuaca" />
+    </fragment>
     <fragment
         android:id="@+id/fragment_setting"
         android:name="com.example.wetterbericht.fragment.fragment_Setting"

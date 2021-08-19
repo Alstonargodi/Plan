@@ -1,8 +1,11 @@
 package com.example.wetterbericht.model.room
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 @Entity(tableName = "tabelcuaca")
 data class cuaca(
     @PrimaryKey(autoGenerate = true)
@@ -13,4 +16,4 @@ data class cuaca(
     val uv : Int,
     val humid : Int,
     val image : String
-)
+) : Parcelable

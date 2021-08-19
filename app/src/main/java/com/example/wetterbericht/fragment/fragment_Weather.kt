@@ -2,14 +2,20 @@ package com.example.wetterbericht.fragment
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.DatePicker
+import android.widget.TimePicker
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavArgs
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.wetterbericht.R
@@ -29,9 +35,12 @@ import kotlinx.android.synthetic.main.fragment_weather.view.*
  * Use the [fragment_Weather.newInstance] factory method to
  * create an instance of this fragment.
  */
-class fragment_Weather : Fragment() {
+class fragment_Weather : Fragment(){
+    private val navargs by navArgs<fragment_WeatherArgs>()
     lateinit var mapiviewmodel : Mainviewmodel
     lateinit var mroomviewmodel : Cuacaviewmodel
+
+    private var datalist = emptyList<cuaca>()
 
     //todo add weather hisorty
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -55,6 +64,10 @@ class fragment_Weather : Fragment() {
         view.btn_find.setOnClickListener {
             findweather()
         }
+
+        view.btn_refresh.setOnClickListener {
+
+        }
         return view
     }
 
@@ -63,7 +76,7 @@ class fragment_Weather : Fragment() {
         val cari = et_carikan.text.toString()
         mapiviewmodel.getdata(cari)
         mapiviewmodel.datarespon.observe(viewLifecycleOwner, Observer { response ->
-            if(response != null){
+            if(response.isSuccessful){
                 val desc = response.body()?.current?.weatherDescriptions.toString()
                     ?.replace("[","")
                     ?.replace("]","")
@@ -103,5 +116,20 @@ class fragment_Weather : Fragment() {
                 Toast.makeText(context,"Cannot find $cari",Toast.LENGTH_SHORT).show()
             }
         })
+    }
+
+
+    //todo args
+    private fun updateweather(){
+        /*
+        var position : Int
+        val currentLoc = navargs.finddata.loc
+
+        // mencari lokasi data berdasarkan curent loc dari room
+        mapiviewmodel.getdata(currentLoc) //data yang akan diupdate
+        mapiviewmodel.datarespon.observe(viewLifecycleOwner, Observer { newdata ->
+
+        })
+        */
     }
 }
