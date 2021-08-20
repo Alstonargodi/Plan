@@ -51,7 +51,7 @@ class fragment_Weather : Fragment(){
         val vmfactory = Vmfactory(repo)
         mapiviewmodel = ViewModelProvider(this,vmfactory).get(Mainviewmodel::class.java) //set
 
-        //set room
+        //set history pencarian
         val adapter = weatheradapter()
         val recyclerv = view.reclist
         recyclerv.adapter = adapter
@@ -64,10 +64,6 @@ class fragment_Weather : Fragment(){
         view.btn_find.setOnClickListener {
             findweather()
         }
-
-        view.btn_refresh.setOnClickListener {
-
-        }
         return view
     }
 
@@ -77,59 +73,39 @@ class fragment_Weather : Fragment(){
         mapiviewmodel.getdata(cari)
         mapiviewmodel.datarespon.observe(viewLifecycleOwner, Observer { response ->
             if(response.isSuccessful){
-                val desc = response.body()?.current?.weatherDescriptions.toString()
-                    ?.replace("[","")
-                    ?.replace("]","")
 
-                val url = response.body()?.current?.weatherIcons.toString()
-                    ?.replace("[","")
-                    ?.replace("]","")
+                val desc = response.body()?.weather?.get(0)?.description.toString()
+                val url = response.body()?.weather?.get(0)?.icon
+                val urlimage = "http://openweathermap.org/img/w/${url}.png"
 
-                tv_d_location.setText(response.body()?.location?.name.toString())
-                tv_d_temp.setText(response.body()?.current?.temperature.toString())
+                tv_d_location.setText(response.body()?.name.toString())
+                tv_d_temp.setText(response.body()?.main?.temp.toString())
                 tv_d_desc.setText(desc)
-                tv_d_time.setText(response.body()?.location?.localtime.toString())
-                tv_d_uvindex.setText("UV index      :" + response.body()?.current?.uvIndex.toString())
-                tv_d_feelslike.setText("Feels like  :"+ response.body()?.current?.feelslike.toString())
-                tv_d_wind.setText("Wind speed       :"+response.body()?.current?.windSpeed.toString())
-                tv_d_cloud.setText("Cloud Cover     :" + response.body()?.current?.cloudcover.toString())
-                tv_d_visiblity.setText("Visibility  :" + response.body()?.current?.visibility.toString())
-                tv_d_presure.setText("Presure       :" + response.body()?.current?.pressure.toString())
-                tv_d_humid.setText("Humidity        :" + response.body()?.current?.humidity.toString())
+                tv_d_time.setText(response.body()?.timezone.toString())
+                tv_d_feelslike.setText("Feels like  :"+ response.body()?.main?.feelsLike.toString())
+                tv_d_wind.setText("Wind speed       :"+response.body()?.wind?.speed)
+                tv_d_cloud.setText("Cloud Cover     :" + response.body()?.clouds?.all.toString())
+                tv_d_visiblity.setText("Visibility  :" + response.body()?.visibility)
+                tv_d_presure.setText("Presure       :" + response.body()?.main?.pressure.toString())
+                tv_d_humid.setText("Humidity        :" + response.body()?.main?.humidity.toString())
 
                 Glide.with(this)
                     .asBitmap()
-                    .load(url)
+                    .load(urlimage)
                     .into(img_icon)
 
-                // todo refresh with new data
                 val input = cuaca(0,
-                    response.body()?.location?.name.toString(),
+                    response.body()?.name.toString(),
                     desc,
-                    Integer.parseInt(response.body()?.current?.temperature.toString()),
-                    Integer.parseInt(response.body()?.current?.uvIndex.toString()),
-                    Integer.parseInt(response.body()?.current?.humidity.toString()),
-                    url
+                    response.body()?.main?.temp.toString(),
+                    response.body()?.main?.feelsLike.toString(),
+                    Integer.parseInt(response.body()?.main?.humidity.toString()),
+                    urlimage
                 )
                 mroomviewmodel.add(input)
             }else{
                 Toast.makeText(context,"Cannot find $cari",Toast.LENGTH_SHORT).show()
             }
         })
-    }
-
-
-    //todo args
-    private fun updateweather(){
-        /*
-        var position : Int
-        val currentLoc = navargs.finddata.loc
-
-        // mencari lokasi data berdasarkan curent loc dari room
-        mapiviewmodel.getdata(currentLoc) //data yang akan diupdate
-        mapiviewmodel.datarespon.observe(viewLifecycleOwner, Observer { newdata ->
-
-        })
-        */
     }
 }

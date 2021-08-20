@@ -28,7 +28,8 @@ class todoadapter : RecyclerView.Adapter<todoadapter.viewholder>() {
         holder.itemView.tv_todo_id.text = curitem.id.toString()
         holder.itemView.tv_todo_title.text = curitem.title
         holder.itemView.tv_todo_status.text = curitem.status
-        holder.itemView.tv_todo_date.text = curitem.deadline
+        holder.itemView.tv_todo_date.text = curitem.deadlinedate.toString()
+        holder.itemView.tv_todo_time.text = curitem.deadlinetime.toString()
         holder.itemView.tv_todo_desc.text = curitem.desc
 
         holder.itemView.cv_todo.setOnClickListener {

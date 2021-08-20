@@ -1,7 +1,7 @@
 package com.example.wetterbericht.model.builder
 
-import com.example.wetterbericht.model.api.Getapi
 import com.example.wetterbericht.model.builder.constant.base_url
+import com.example.wetterbericht.model.APIweather.getapi
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -12,8 +12,8 @@ object retrofitbuild {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
-    val api : Getapi by lazy {
-        retrofit.create(Getapi::class.java)
+    val api : getapi by lazy {
+        retrofit.create(getapi::class.java)
     }
 
 }

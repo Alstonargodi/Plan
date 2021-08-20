@@ -10,6 +10,7 @@
         android:id="@+id/et_up_status"
         android:layout_width="355dp"
         android:layout_height="52dp"
+        android:gravity="center"
         android:hint="Status"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,6 +22,7 @@
         android:id="@+id/et_up_title"
         android:layout_width="355dp"
         android:layout_height="52dp"
+        android:gravity="center"
         android:hint="Judul"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,13 +34,25 @@
         android:id="@+id/et_up_deadline"
         android:layout_width="355dp"
         android:layout_height="52dp"
-        android:hint="deadline"
+        android:gravity="center"
+        android:hint="date"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_up_status"
         app:layout_constraintVertical_bias="0.066" />
+
+    <EditText
+        android:id="@+id/et_up_time"
+        android:layout_width="355dp"
+        android:layout_height="52dp"
+        android:gravity="center"
+        android:hint="Time"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_up_deadline"
+        app:layout_constraintVertical_bias="0.079" />
 
     <EditText
         android:id="@+id/et_up_desc"
@@ -47,24 +61,9 @@
         android:hint="desc"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_up_deadline"
-        app:layout_constraintVertical_bias="0.065" />
-
-    <Button
-        android:id="@+id/btn_update"
-        android:layout_width="349dp"
-        android:layout_height="43dp"
-        android:backgroundTint="#FF9800"
-        android:text="Update"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.451"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_up_desc"
-        app:layout_constraintVertical_bias="0.114" />
+        app:layout_constraintTop_toBottomOf="@+id/et_up_time"
+        app:layout_constraintVertical_bias="0.102" />
 
     <Button
         android:id="@+id/btn_up_delete"
@@ -78,5 +77,20 @@
         app:layout_constraintHorizontal_bias="0.451"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_update"
-        app:layout_constraintVertical_bias="0.107" />
+        app:layout_constraintVertical_bias="0.147" />
+
+    <Button
+        android:id="@+id/btn_update"
+        android:layout_width="349dp"
+        android:layout_height="43dp"
+        android:backgroundTint="#FF9800"
+        android:text="Update"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.451"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_up_desc"
+        app:layout_constraintVertical_bias="0.145" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,8 +12,8 @@ data class cuaca(
     val id : Int,
     val loc : String,
     val desc : String,
-    val temp : Int,
-    val uv : Int,
+    val temp : String,
+    val uv : String,
     val humid : Int,
     val image : String
 ) : Parcelable

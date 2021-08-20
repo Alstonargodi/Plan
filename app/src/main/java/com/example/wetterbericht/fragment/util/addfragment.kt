@@ -7,18 +7,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.DatePicker
-import android.widget.TimePicker
 import androidx.fragment.app.DialogFragment
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import com.example.wetterbericht.R
 import com.example.wetterbericht.model.room.todo
 import com.example.wetterbericht.viewmodel.room.todoviewmodel
 import kotlinx.android.synthetic.main.fragment_addfragment.*
 import kotlinx.android.synthetic.main.fragment_addfragment.view.*
+import java.sql.Date
 import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 
@@ -56,7 +55,7 @@ class addfragment : DialogFragment(){
             kalender.set(Calendar.MONTH,month)
             kalender.set(Calendar.YEAR,year)
             val setdate = formatdate.format(kalender.time)
-            et_deadline.setText(setdate)
+            et_deadline.setText(setdate.toString())
         }, instCal.get(Calendar.YEAR),instCal.get(Calendar.MONTH),instCal.get(Calendar.DAY_OF_MONTH))
         datepicker.show()
 
@@ -66,19 +65,23 @@ class addfragment : DialogFragment(){
             time.set(Calendar.HOUR_OF_DAY,hourOfDay)
             time.set(Calendar.MINUTE,minute)
             val setitme = formattime.format(time.time)
-            tv_time.setText(setitme)
+            tv_time.setText(setitme.toString())
         }, instCal.get(Calendar.HOUR_OF_DAY), instCal.get(Calendar.MINUTE),false)
         timepicker.show()
     }
 
     //fun input data
     private fun insertdata(){
+
         val title = et_title.text.toString()
         val status = et_status.text.toString()
-        val deadline = et_deadline.text.toString()
+        val deadlinedate = et_deadline.text.toString()
+        val deadlinetime = tv_time.text.toString()
         val desc = et_desc.text.toString()
 
-        val todo = todo(0,title, desc, deadline, status)
+
+        val todo = todo(0,title, desc, deadlinedate,deadlinetime,status)
+
         mtodoviewmodel.add(todo)
     }
 }

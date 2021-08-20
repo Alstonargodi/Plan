@@ -30,10 +30,13 @@ class updatefragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_update, container, false)
 
+
+        //todo update
         mroomviewmodel = ViewModelProvider(this).get(todoviewmodel::class.java)
         view.et_up_title.setText(args.data.title) //getdata dari room
         view.et_up_status.setText(args.data.status)
-        view.et_up_deadline.setText(args.data.deadline)
+        view.et_up_deadline.setText(args.data.deadlinedate)
+        view.et_up_time.setText(args.data.deadlinetime)
         view.et_up_desc.setText(args.data.desc)
 
         view.btn_up_delete.setOnClickListener {
@@ -64,10 +67,11 @@ class updatefragment : Fragment() {
     private fun updatedata(){
         val judul = et_up_title.text.toString()
         val status = et_up_status.text.toString()
-        val deadline = et_up_deadline.toString()
+        val deadlinedate = et_up_deadline.toString()
+        val deadlinetime =et_up_time.toString()
         val desc = et_up_desc.text.toString()
 
-        val update = todo(args.data.id,judul,status,deadline,desc)
+        val update = todo(args.data.id,judul,status,deadlinedate, deadlinetime,desc)
         mroomviewmodel.update(update)
 
     }

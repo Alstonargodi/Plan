@@ -44,7 +44,6 @@ class fragment_Home : Fragment() {
             cadapter.setdata(cuaca)
         })
 
-
         //to do list
         val madapter = todohomeadapter()
         val recyclerhome = view.recviewhome

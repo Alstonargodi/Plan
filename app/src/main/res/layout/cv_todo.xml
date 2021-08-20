@@ -42,8 +42,8 @@
 
             <TextView
                 android:id="@+id/tv_todo_status"
-                android:layout_width="182dp"
-                android:layout_height="25dp"
+                android:layout_width="122dp"
+                android:layout_height="24dp"
                 android:gravity="center"
                 android:text="Status"
                 android:textColor="#FF5722"
@@ -56,17 +56,17 @@
 
             <TextView
                 android:id="@+id/tv_todo_date"
-                android:layout_width="139dp"
-                android:layout_height="24dp"
+                android:layout_width="97dp"
+                android:layout_height="23dp"
                 android:gravity="center"
                 android:text="00/00/0000"
                 android:textColor="#1E1E1E"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.407"
+                app:layout_constraintHorizontal_bias="0.11"
                 app:layout_constraintStart_toEndOf="@+id/tv_todo_status"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.007" />
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/tv_todo_title"
@@ -94,6 +94,20 @@
                 app:layout_constraintHorizontal_bias="0.333"
                 app:layout_constraintStart_toEndOf="@+id/tv_todo_id"
                 app:layout_constraintTop_toBottomOf="@+id/tv_todo_title"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/tv_todo_time"
+                android:layout_width="93dp"
+                android:layout_height="23dp"
+                android:gravity="center"
+                android:text="00 : 00"
+                android:textColor="#1E1E1E"
+                app:layout_constraintBottom_toTopOf="@+id/tv_todo_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/tv_todo_date"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

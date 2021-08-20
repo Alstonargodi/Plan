@@ -1,12 +1,12 @@
 package com.example.wetterbericht.model.room
 
 import android.content.Context
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
+import androidx.room.*
 import com.example.wetterbericht.model.dao.todoDao
+import com.example.wetterbericht.model.util.converters
 
 @Database(entities = [todo::class],version = 1,exportSchema = false)
+@TypeConverters(converters::class)
 abstract class todoDatabase: RoomDatabase() {
     abstract fun todoDao() : todoDao
 
@@ -21,7 +21,7 @@ abstract class todoDatabase: RoomDatabase() {
             }else{
                 synchronized(this){
                     val instance = Room.databaseBuilder(context.applicationContext,
-                        todoDatabase::class.java,"tododatabase").build()
+                        todoDatabase::class.java,"todat").build()
                     minstance = instance
                     return instance
                 }
