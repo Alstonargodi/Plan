@@ -5,7 +5,7 @@ I made planning app with weather information,So in this mixed todolist and weath
 # :pencil2: Features
 1. Weather view
 
-   give u about weather information now
+   give about current weather information 
    
 2. planning view
 
@@ -18,6 +18,11 @@ I made planning app with weather information,So in this mixed todolist and weath
 4. weather detail
 
    provide u more detail about the weather
+   
+5. 5 days Forecast
+   
+   Provide information about forecast to next 5 days
+   
 # :wrench: Implementation
 1. Kotlin
 2. Api
