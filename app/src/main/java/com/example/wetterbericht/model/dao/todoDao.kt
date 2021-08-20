@@ -19,4 +19,7 @@ abstract class todoDao {
     @Update
     abstract fun updatedata(todo: todo)
 
+    @Query("delete from tabeltodo")
+    abstract fun destroytodo()
+
 }

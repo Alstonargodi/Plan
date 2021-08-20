@@ -18,4 +18,8 @@ class todoRepo(val dao: todoDao) {
     fun deletedata(todo: todo){
         dao.deletedata(todo)
     }
+
+    fun deleteall(){
+        dao.destroytodo()
+    }
 }
