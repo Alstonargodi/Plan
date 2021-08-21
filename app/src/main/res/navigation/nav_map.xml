@@ -44,6 +44,9 @@
         <argument
             android:name="Finddata"
             app:argType="com.example.wetterbericht.model.room.cuaca" />
+        <action
+            android:id="@+id/action_fragment_weather_to_addweather"
+            app:destination="@id/addweather" />
     </fragment>
     <fragment
         android:id="@+id/fragment_setting"
@@ -67,4 +70,9 @@
             android:id="@+id/action_updatefragment_to_fragment_todo"
             app:destination="@id/fragment_todo" />
     </fragment>
+    <fragment
+        android:id="@+id/addweather"
+        android:name="com.example.wetterbericht.fragment.util.addweather"
+        android:label="fragment_addweather"
+        tools:layout="@layout/fragment_addweather" />
 </navigation>

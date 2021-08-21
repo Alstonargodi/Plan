@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,14 +13,17 @@ import android.view.ViewGroup
 import android.widget.DatePicker
 import android.widget.TimePicker
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavArgs
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.wetterbericht.R
 import com.example.wetterbericht.fragment.adapter.weatheradapter
+import com.example.wetterbericht.fragment.util.addweather
 import com.example.wetterbericht.model.room.cuaca
 import com.example.wetterbericht.repo.api.mainrepo
 import com.example.wetterbericht.viewmodel.api.Mainviewmodel
@@ -60,52 +64,12 @@ class fragment_Weather : Fragment(){
         mroomviewmodel.readdata.observe(viewLifecycleOwner, Observer { response ->
             adapter.setdata(response)
         })
-
-        view.btn_find.setOnClickListener {
-            findweather()
+        view.btn_go.setOnClickListener {
+            val datacari = et_seacrh.text.toString()
+            val bunder = bundleOf("datacari" to datacari)
+            findNavController().navigate(R.id.action_fragment_weather_to_addweather,bunder)
         }
+
         return view
-    }
-
-    @SuppressLint("SetTextI18n")
-    private fun findweather(){
-        val cari = et_carikan.text.toString()
-        mapiviewmodel.getdata(cari)
-        mapiviewmodel.datarespon.observe(viewLifecycleOwner, Observer { response ->
-            if(response.isSuccessful){
-
-                val desc = response.body()?.weather?.get(0)?.description.toString()
-                val url = response.body()?.weather?.get(0)?.icon
-                val urlimage = "http://openweathermap.org/img/w/${url}.png"
-
-                tv_d_location.setText(response.body()?.name.toString())
-                tv_d_temp.setText(response.body()?.main?.temp.toString())
-                tv_d_desc.setText(desc)
-                tv_d_time.setText(response.body()?.timezone.toString())
-                tv_d_feelslike.setText("Feels like  :"+ response.body()?.main?.feelsLike.toString())
-                tv_d_wind.setText("Wind speed       :"+response.body()?.wind?.speed)
-                tv_d_cloud.setText("Cloud Cover     :" + response.body()?.clouds?.all.toString())
-                tv_d_visiblity.setText("Visibility  :" + response.body()?.visibility)
-                tv_d_presure.setText("Presure       :" + response.body()?.main?.pressure.toString())
-                tv_d_humid.setText("Humidity        :" + response.body()?.main?.humidity.toString())
-
-                Glide.with(this)
-                    .asBitmap()
-                    .load(urlimage)
-                    .into(img_icon)
-
-                val input = cuaca(0,
-                    response.body()?.name.toString(),
-                    desc,
-                    response.body()?.main?.temp.toString(),
-                    response.body()?.main?.feelsLike.toString(),
-                    Integer.parseInt(response.body()?.main?.humidity.toString()),
-                    urlimage
-                )
-                mroomviewmodel.add(input)
-            }else{
-                Toast.makeText(context,"Cannot find $cari",Toast.LENGTH_SHORT).show()
-            }
-        })
     }
 }
