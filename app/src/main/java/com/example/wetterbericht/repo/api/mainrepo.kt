@@ -10,6 +10,10 @@ class mainrepo(){
             return retrofitbuild.api.getdata(loc)
         }
 
+        suspend fun getdatalocation(lat : Double,lon : Double): Response<Current>{
+            return retrofitbuild.api.getdatalocation(lat,lon)
+        }
+
         suspend fun getforecast(loc: Any): Response<mainfore>{
          return retrofitbuild.api.getforecast(loc)
         }

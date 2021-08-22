@@ -64,6 +64,7 @@ class fragment_Weather : Fragment(){
         mroomviewmodel.readdata.observe(viewLifecycleOwner, Observer { response ->
             adapter.setdata(response)
         })
+
         view.btn_go.setOnClickListener {
             val datacari = et_seacrh.text.toString()
             val bunder = bundleOf("datacari" to datacari)

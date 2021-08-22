@@ -16,9 +16,18 @@ interface getapi {
         @Query("appid") api_key : String = Apikey_
     ): Response<Current>
 
+    @GET("weather")
+    suspend fun getdatalocation(
+        @Query("lat") Lot : Double,
+        @Query("lon") lon : Double,
+        @Query("appid") Apikey : String = Apikey_
+    ): Response<Current>
+
     @GET("forecast")
     suspend fun getforecast(
         @Query("q") Location: Any,
         @Query("appid") apikey : String = Apikey_
     ): Response <mainfore>
+
+
 }

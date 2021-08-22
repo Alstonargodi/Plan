@@ -11,12 +11,21 @@ import retrofit2.Response
 
 class Mainviewmodel(val repo : mainrepo): ViewModel() {
     val datarespon : MutableLiveData<Response<Current>> = MutableLiveData()
+    val datalocationrespon : MutableLiveData<Response<Current>> = MutableLiveData()
+
     val forecastrespon : MutableLiveData<Response<mainfore>> = MutableLiveData()
 
     fun getdata(loc : Any){
         viewModelScope.launch {
             val respon = repo.getdata(loc)
             datarespon.value = respon
+        }
+    }
+
+    fun getdatalocation(lat : Double,lon : Double){
+        viewModelScope.launch {
+            val locrespon = repo.getdatalocation(lat, lon)
+            datalocationrespon.value = locrespon
         }
     }
 
