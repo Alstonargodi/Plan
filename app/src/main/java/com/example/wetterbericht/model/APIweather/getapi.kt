@@ -2,6 +2,7 @@ package com.example.wetterbericht.model.APIweather
 
 import com.example.wetterbericht.model.APIforecast.mainfore
 import com.example.wetterbericht.model.builder.constant.Apikey_
+import com.example.wetterbericht.model.builder.constant.satuan
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -13,6 +14,7 @@ interface getapi {
     @GET("weather")
     suspend fun getdata(
         @Query("q") Location : Any,
+        @Query("units") units : String = satuan,
         @Query("appid") api_key : String = Apikey_
     ): Response<Current>
 
@@ -20,12 +22,14 @@ interface getapi {
     suspend fun getdatalocation(
         @Query("lat") Lot : Double,
         @Query("lon") lon : Double,
+        @Query("units") units : String = satuan,
         @Query("appid") Apikey : String = Apikey_
     ): Response<Current>
 
     @GET("forecast")
     suspend fun getforecast(
         @Query("q") Location: Any,
+        @Query("units") units : String = satuan,
         @Query("appid") apikey : String = Apikey_
     ): Response <mainfore>
 

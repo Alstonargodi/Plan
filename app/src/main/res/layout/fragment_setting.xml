@@ -74,28 +74,15 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_deletetodo"
         app:layout_constraintVertical_bias="0.068" />
 
-    <Button
-        android:id="@+id/sw1"
+    <Switch
+        android:id="@+id/onoff"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.68"
+        app:layout_constraintHorizontal_bias="0.638"
         app:layout_constraintStart_toEndOf="@+id/textView8"
         app:layout_constraintTop_toBottomOf="@+id/btn_deletecuaca"
-        app:layout_constraintVertical_bias="0.047" />
-
-    <TextView
-        android:id="@+id/tv_coor"
-        android:layout_width="273dp"
-        android:layout_height="102dp"
-        android:gravity="center"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8"
-        app:layout_constraintVertical_bias="0.498" />
+        app:layout_constraintVertical_bias="0.064" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

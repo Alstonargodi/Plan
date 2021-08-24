@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.wetterbericht.R
@@ -39,6 +40,7 @@ class addfragment : DialogFragment(){
         mtodoviewmodel = ViewModelProvider(this).get(todoviewmodel::class.java)
 
         view.btn_save.setOnClickListener {
+            Toast.makeText(context,"add new todo",Toast.LENGTH_SHORT).show()
             insertdata()
         }
         view.btn_settime.setOnClickListener {
@@ -72,7 +74,6 @@ class addfragment : DialogFragment(){
 
     //fun input data
     private fun insertdata(){
-
         val title = et_title.text.toString()
         val status = et_status.text.toString()
         val deadlinedate = et_deadline.text.toString()

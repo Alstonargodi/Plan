@@ -11,7 +11,9 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
+import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
@@ -58,13 +60,12 @@ class fragment_Setting : Fragment() {
         //Weather based on gps
         localclient = LocationServices.getFusedLocationProviderClient(requireContext())
         weathearlocation()
-        view.sw1.setOnClickListener {
-            if(ActivityCompat.checkSelfPermission(requireActivity(),android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-                ActivityCompat.checkSelfPermission(requireActivity(),android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
-                ActivityCompat.requestPermissions(requireActivity(), arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), reqcode)
+        view.onoff.setOnCheckedChangeListener { _, isChecked ->
+            if(isChecked){
+                gpsgranted()
+            }else{
+                Toast.makeText(context,"GPS off",Toast.LENGTH_SHORT).show()
             }
-            localclient.requestLocationUpdates(locationRequest,locationCallback, Looper.myLooper())
-
         }
 
         //delete todo data
@@ -80,6 +81,15 @@ class fragment_Setting : Fragment() {
             alert.create().show()
         }
         return view
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
+    private fun gpsgranted(){
+        if(ActivityCompat.checkSelfPermission(requireActivity(),android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+            ActivityCompat.checkSelfPermission(requireActivity(),android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(requireActivity(), arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), reqcode)
+        }
+        localclient.requestLocationUpdates(locationRequest,locationCallback, Looper.myLooper())
     }
 
     private fun weathearlocation(){
@@ -102,8 +112,6 @@ class fragment_Setting : Fragment() {
                 val url = response.body()?.weather?.get(0)?.icon
                 val urlimage = "http://openweathermap.org/img/w/${url}.png"
 
-                tv_coor.setText(desc)
-
                 val inputdua = cuaca(0,
                     response.body()?.name.toString(),
                     desc,
@@ -115,11 +123,5 @@ class fragment_Setting : Fragment() {
                 mroomviewmodel.add(inputdua)
         })
     }
-
-
-
-
-
-
 
 }
