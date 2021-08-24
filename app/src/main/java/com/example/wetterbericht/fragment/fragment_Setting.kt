@@ -80,6 +80,19 @@ class fragment_Setting : Fragment() {
             alert.setMessage("choose")
             alert.create().show()
         }
+
+
+        view.btn_deletecuaca.setOnClickListener {
+            val alert = AlertDialog.Builder(requireContext())
+            alert.setPositiveButton("yes"){_,_ ->
+                mroomviewmodel.delete()
+                Toast.makeText(requireContext(),"delete complete",Toast.LENGTH_SHORT).show()
+            }
+            alert.setNegativeButton("no"){_,_ ->}
+            alert.setTitle("Are u sure want to delete all?")
+            alert.setMessage("choose")
+            alert.create().show()
+        }
         return view
     }
 
@@ -118,7 +131,13 @@ class fragment_Setting : Fragment() {
                     response.body()?.main?.temp.toString(),
                     response.body()?.main?.feelsLike.toString(),
                     Integer.parseInt(response.body()?.main?.humidity.toString()),
-                    urlimage
+                    urlimage,
+
+                    response.body()?.main?.feelsLike.toString(),
+                    response.body()?.wind?.speed.toString(),
+                    response.body()?.clouds?.all.toString(),
+                    response.body()?.visibility.toString(),
+                    response.body()?.main?.pressure.toString()
                 )
                 mroomviewmodel.add(inputdua)
         })

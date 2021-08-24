@@ -14,8 +14,8 @@ abstract class cuacaDao {
     @Query("select*from tabelcuaca order by id")
     abstract fun readdata() : LiveData<List<cuaca>>
 
-    @Delete
-    abstract fun deletedata(data: cuaca)
+    @Query("delete from tabelcuaca")
+    abstract fun deletedata()
 
     @Update
     abstract fun update(data: cuaca)

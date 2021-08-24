@@ -27,6 +27,12 @@ class Cuacaviewmodel(application: Application): AndroidViewModel(application) {
             }
         }
 
+        fun delete(){
+            viewModelScope.launch(Dispatchers.IO) {
+                repo.deleteallcuaca()
+            }
+        }
+
         fun update(data: cuaca){
             viewModelScope.launch(Dispatchers.IO) {
                 repo.updatedata(data)

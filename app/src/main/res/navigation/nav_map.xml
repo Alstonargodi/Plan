@@ -47,6 +47,9 @@
         <action
             android:id="@+id/action_fragment_weather_to_addweather"
             app:destination="@id/addweather" />
+        <action
+            android:id="@+id/action_fragment_weather_to_currWeather"
+            app:destination="@id/currWeather" />
     </fragment>
     <fragment
         android:id="@+id/fragment_setting"
@@ -75,4 +78,13 @@
         android:name="com.example.wetterbericht.fragment.util.addweather"
         android:label="fragment_addweather"
         tools:layout="@layout/fragment_addweather" />
+    <fragment
+        android:id="@+id/currWeather"
+        android:name="com.example.wetterbericht.fragment.util.currweather"
+        android:label="fragment_curr_weather"
+        tools:layout="@layout/fragment_curr_weather" >
+        <argument
+            android:name="currData"
+            app:argType="com.example.wetterbericht.model.room.cuaca" />
+    </fragment>
 </navigation>

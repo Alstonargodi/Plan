@@ -15,4 +15,8 @@ class CuacaRepo(val dao: cuacaDao) {
         dao.update(cur)
     }
 
+    fun deleteallcuaca(){
+        dao.deletedata()
+    }
+
 }
