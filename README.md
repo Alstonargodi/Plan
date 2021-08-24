@@ -37,3 +37,4 @@ I made planning app with weather information,So in this mixed todolist and weath
 4. MVVM
 5. Argument
 6. Room
+7. Bottom Navigation
