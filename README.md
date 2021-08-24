@@ -28,3 +28,12 @@ I made planning app with weather information,So in this mixed todolist and weath
 2. Api
    Web service provider by https://weatherstack.com/ it's free but only for basic
 
+
+# :book: what I've been learning through this project
+
+1. Location with gps
+2. dialog fragment
+3. Retrofit
+4. MVVM
+5. Argument
+6. Room
