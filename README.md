@@ -34,10 +34,11 @@ I made planning app with weather information,So in this mixed todolist and weath
 
 # :book: what I've been learning through this project
 
-1. Location with gps
+1. current location by gps
 2. dialog fragment
 3. Retrofit
 4. MVVM
 5. Argument
 6. Room
-7. Bottom Navigation
+7. bottom navigation
+8. nested json
