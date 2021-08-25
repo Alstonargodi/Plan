@@ -42,3 +42,9 @@ I made planning app with weather information,So in this mixed todolist and weath
 6. Room
 7. bottom navigation
 8. nested json
+
+# Documentation
+
+apps diagram : [wetterdo](https://github.com/Alstonargodi/Wetterdo/blob/master/diagram%20weeterdo.png)
+
+
