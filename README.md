@@ -19,14 +19,15 @@ I made planning app with weather information,So in this mixed todolist and weath
 
    provide u more detail about the weather
    
-5. 5 days Forecast
+5. Location
    
-   Provide information about forecast to next 5 days
+   provide the latest weather based on your location position
    
 # :wrench: Implementation
 1. Kotlin
-2. Api
-   Web service provider by [Openweatherapi](https://weatherstack.com/) it's free but only for basic
+2. Weather api provide by [Openweatherapi](https://weatherstack.com/) it's free but only for basic
+3. Retrof
+
 
 
 # :book: what I've been learning through this project
