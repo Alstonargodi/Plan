@@ -24,11 +24,13 @@ I made planning app with weather information,So in this mixed todolist and weath
    provide the latest weather based on your location position
    
 # :wrench: Implementation
-1. Kotlin
-2. Weather api provide by [Openweatherapi](https://weatherstack.com/) it's free but only for basic
-3. Retrof
-
-
+1. Kotlin, main programming language for build this project
+2. Weather api provide by [Openweatherapi](https://weatherstack.com/) it's free 
+3. Retrofit, to handle call and consume REST api webservice
+4. Glide, Retrive image from url
+5. GMS location service, provide information about location throughh gps
+6. MVVM, an architecture in android separating view/fragment, business logic ,and model
+7. Room, Keeping data after retrieving from retrofit or adding data in local storage
 
 # :book: what I've been learning through this project
 
