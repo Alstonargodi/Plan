@@ -47,8 +47,15 @@ I made planning app with weather information,So in this mixed todolist and weath
 
 apps diagram : [wetterdo](https://github.com/Alstonargodi/Wetterdo/blob/master/diagram%20weeterdo.png)
 
+| splashscreen  | Home Fragment | 
+| ------------- | ------------- |
+|               |               |
+
 | splashscreen  | Home Fragment |
 | ------------- | ------------- |
-|               |             |
-|               |  |
+|               |               |
+
+| splashscreen  | Home Fragment |
+| ------------- | ------------- |
+|               |               |
 
