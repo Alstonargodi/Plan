@@ -26,7 +26,7 @@ I made planning app with weather information,So in this mixed todolist and weath
 # :wrench: Implementation
 1. Kotlin
 2. Api
-   Web service provider by https://weatherstack.com/ it's free but only for basic
+   Web service provider by ![Openweatherapi](https://weatherstack.com/) it's free but only for basic
 
 
 # :book: what I've been learning through this project
