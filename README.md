@@ -47,16 +47,5 @@ Planning app with weather information,So in this mixed beween todolist and weath
 
 apps diagram : [wetterdo](https://github.com/Alstonargodi/Wetterdo/blob/master/diagram%20weeterdo.png)
 
-| splashscreen  | Home Fragment | 
-| ------------- | ------------- |
-|               |               |
+<img src="https://github.com/Alstonargodi/Wetterdo/blob/master/BANNER.png" width="60%">
 
-| splashscreen  | Home Fragment |
-| ------------- | ------------- |
-|               |               |
-
-| splashscreen  | Home Fragment |
-| ------------- | ------------- |
-|               |               |
-
-![https://github.com/Alstonargodi/Wetterdo/blob/master/BANNER.png]
