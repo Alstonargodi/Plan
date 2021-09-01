@@ -5,7 +5,7 @@ Planning app with weather information,So in this mixed beween todolist and weath
 # :pencil2: Features
 1. Weather view
 
-   >give about current weather information 
+   >Give about current weather information 
    
 2. planning view
 
@@ -13,15 +13,15 @@ Planning app with weather information,So in this mixed beween todolist and weath
    
 3. planning detail
    
-   >give detail about your planning and also u can add more activity or maybe update
+   >Give detail about your planning and also u can add more activity or maybe update
    
 4. weather detail
 
-   >provide more detail about the weather
+   >Provide more detail about the weather
    
 5. Location
    
-   >provide the latest weather based on your location position
+   >Provide the latest weather based on your location position
    
 # :wrench: Implementation
 1. Kotlin, main programming language for build this project
