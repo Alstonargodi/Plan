@@ -1,6 +1,6 @@
 # Wetterdo
 
-Planning app with weather information,So in this mixed beween todolist and weather app. WetterDo is stands for Wetter a german word for weather and do from last word to-do 
+when I'm going to plan something sometimes I have to look at the weather outside and then open the weather app, then I have an idea why not combine the two?. so I made this project,this app mixed beween todolist and weather app.
 
 # :pencil2: Features
 1. Weather view
