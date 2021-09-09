@@ -3,6 +3,7 @@ package com.example.wetterbericht.viewmodel.api
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.wetterbericht.model.APIforecast.Forecast
 import com.example.wetterbericht.model.APIforecast.mainfore
 import com.example.wetterbericht.model.APIweather.Current
 import com.example.wetterbericht.repo.api.mainrepo
@@ -12,8 +13,7 @@ import retrofit2.Response
 class Mainviewmodel(val repo : mainrepo): ViewModel() {
     val datarespon : MutableLiveData<Response<Current>> = MutableLiveData()
     val datalocationrespon : MutableLiveData<Response<Current>> = MutableLiveData()
-
-    val forecastrespon : MutableLiveData<Response<mainfore>> = MutableLiveData()
+    val forecastrespon : MutableLiveData<Response<Forecast>> = MutableLiveData()
 
     fun getdata(loc : Any){
         viewModelScope.launch {

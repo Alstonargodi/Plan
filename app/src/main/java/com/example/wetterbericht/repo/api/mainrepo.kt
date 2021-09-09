@@ -1,5 +1,6 @@
 package com.example.wetterbericht.repo.api
 
+import com.example.wetterbericht.model.APIforecast.Forecast
 import com.example.wetterbericht.model.APIforecast.mainfore
 import com.example.wetterbericht.model.builder.retrofitbuild
 import com.example.wetterbericht.model.APIweather.Current
@@ -14,7 +15,7 @@ class mainrepo(){
             return retrofitbuild.api.getdatalocation(lat,lon)
         }
 
-        suspend fun getforecast(loc: Any): Response<mainfore>{
+        suspend fun getforecast(loc: Any): Response<Forecast>{
          return retrofitbuild.api.getforecast(loc)
         }
 }

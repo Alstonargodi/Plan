@@ -2,6 +2,7 @@ package com.example.wetterbericht.fragment.util
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -18,8 +19,6 @@ import com.example.wetterbericht.viewmodel.api.Vmfactory
 import com.example.wetterbericht.viewmodel.room.Cuacaviewmodel
 import kotlinx.android.synthetic.main.fragment_addweather.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
 class addweather : Fragment() {
 
@@ -48,6 +47,7 @@ class addweather : Fragment() {
         mapiviewmodel.datarespon.observe(viewLifecycleOwner, Observer { response ->
             if(response.isSuccessful){
 
+                //todo inputbox design
                 val desc = response.body()?.weather?.get(0)?.description.toString()
                 val url = response.body()?.weather?.get(0)?.icon
                 val urlimage = "http://openweathermap.org/img/w/${url}.png"
@@ -88,6 +88,20 @@ class addweather : Fragment() {
                 }
             }else{
                 Toast.makeText(context,"Cannot find $cari", Toast.LENGTH_SHORT).show()
+            }
+        })
+
+        mapiviewmodel.getforecast(cari)
+        mapiviewmodel.forecastrespon.observe(viewLifecycleOwner, Observer { fore->
+            val data = fore.body()?.list
+            if (data != null) {
+                for (i in 1 until data.count()){
+                    val dat = data[i].main
+                    Log.d("FORECAST",dat.toString())
+                    tv_test_fore.setText(dat.toString())
+
+
+                }
             }
         })
     }

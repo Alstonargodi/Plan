@@ -4,7 +4,6 @@ plugins {
     id 'kotlin-android-extensions'
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs.kotlin'
-
 }
 
 android {
@@ -105,4 +104,5 @@ dependencies {
 
     //star favorite button
     implementation 'com.github.ivbaranov:materialfavoritebutton:0.1.5'
+
 }

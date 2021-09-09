@@ -87,4 +87,9 @@
             android:name="currData"
             app:argType="com.example.wetterbericht.model.room.cuaca" />
     </fragment>
+    <activity
+        android:id="@+id/splashscreen"
+        android:name="com.example.wetterbericht.splashscreen"
+        android:label="activity_splashscreen"
+        tools:layout="@layout/activity_splashscreen" />
 </navigation>

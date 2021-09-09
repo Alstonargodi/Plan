@@ -32,13 +32,6 @@ import com.example.wetterbericht.viewmodel.room.Cuacaviewmodel
 import kotlinx.android.synthetic.main.fragment_weather.*
 import kotlinx.android.synthetic.main.fragment_weather.view.*
 
-// TODO: Rename parameter arguments, choose names that match
-
-/**
- * A simple [Fragment] subclass.
- * Use the [fragment_Weather.newInstance] factory method to
- * create an instance of this fragment.
- */
 class fragment_Weather : Fragment(){
     private val navargs by navArgs<fragment_WeatherArgs>()
     lateinit var mapiviewmodel : Mainviewmodel

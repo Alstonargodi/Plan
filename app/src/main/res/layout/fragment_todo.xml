@@ -8,8 +8,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rechome"
-        android:layout_width="355dp"
-        android:layout_height="626dp"
+        android:layout_width="383dp"
+        android:layout_height="595dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.64"

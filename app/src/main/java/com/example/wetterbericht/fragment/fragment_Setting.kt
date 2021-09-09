@@ -117,6 +117,7 @@ class fragment_Setting : Fragment() {
                 val location = p0.locations.get(p0.locations.size-1)
                 val lat = location.latitude
                 val lon = location.longitude
+                tv_loc.setText(lat.toString())
                 mapiviewmodel.getdatalocation(lat,lon)
             }
         }

@@ -11,7 +11,7 @@ class Forecast(
     @SerializedName("cod")
     var cod: String,
     @SerializedName("list")
-    var list: List<String>,
+    var list: List<util>,
     @SerializedName("message")
     var message: Int
 )

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.wetterbericht" >
+    package="com.example.wetterbericht">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -14,11 +14,15 @@
         android:networkSecurityConfig="@xml/security"
         android:roundIcon="@drawable/wdologo"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Wetterbericht" >
+        android:theme="@style/Theme.Wetterbericht">
         <activity
             android:name=".MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:exported="true" />
+        <activity
+            android:name=".splashscreen"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

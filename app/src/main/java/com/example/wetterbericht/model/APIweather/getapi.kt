@@ -1,5 +1,6 @@
 package com.example.wetterbericht.model.APIweather
 
+import com.example.wetterbericht.model.APIforecast.Forecast
 import com.example.wetterbericht.model.APIforecast.mainfore
 import com.example.wetterbericht.model.builder.constant.Apikey_
 import com.example.wetterbericht.model.builder.constant.satuan
@@ -31,7 +32,7 @@ interface getapi {
         @Query("q") Location: Any,
         @Query("units") units : String = satuan,
         @Query("appid") apikey : String = Apikey_
-    ): Response <mainfore>
+    ): Response <Forecast>
 
 
 }
