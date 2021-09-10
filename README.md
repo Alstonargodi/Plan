@@ -49,3 +49,10 @@ apps diagram : [wetterdo](https://github.com/Alstonargodi/Wetterdo/blob/master/d
 
 <img src="https://github.com/Alstonargodi/Wetterdo/blob/master/BANNER.png" width="100%">
 
+
+
+# todo
+
+I'm trying add 3 hours forecast but i'm still stuck how to retriving with recyler view, so i'm doing another way kinda stupid but yeah u can see what it will be
+
+<img src="https://github.com/Alstonargodi/Wetterdo/blob/master/Screenshot_1631258271.png" width="25%">
