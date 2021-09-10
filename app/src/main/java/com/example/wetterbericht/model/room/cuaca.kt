@@ -16,7 +16,6 @@ data class cuaca(
     val uv : String,
     val humid : Int,
     val image : String,
-
     val feelslike : String,
     val windspeed : String,
     val cloud : String,

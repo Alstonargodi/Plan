@@ -7,7 +7,7 @@ import com.example.wetterbericht.model.room.cuaca
 @Dao
 abstract class cuacaDao {
     //add
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract fun adddata(data : cuaca)
 
     //read

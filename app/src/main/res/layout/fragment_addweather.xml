@@ -278,13 +278,50 @@
 
     <TextView
         android:id="@+id/tv_test_fore"
-        android:layout_width="314dp"
-        android:layout_height="175dp"
+        android:layout_width="339dp"
+        android:layout_height="42dp"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"
+        app:layout_constraintVertical_bias="0.061" />
+
+    <TextView
+        android:id="@+id/tv_test_fore2"
+        android:layout_width="339dp"
+        android:layout_height="42dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_test_fore"
+        app:layout_constraintVertical_bias="0.085" />
+
+    <TextView
+        android:id="@+id/tv_test_fore3"
+        android:layout_width="339dp"
+        android:layout_height="42dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.537"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_test_fore2"
+        app:layout_constraintVertical_bias="0.103" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/forerecyclerview"
+        android:layout_width="336dp"
+        android:layout_height="115dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_test_fore3"
+        app:layout_constraintVertical_bias="0.262"
+        tools:itemCount="3"
+        tools:listitem="@layout/recycler_view_item" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

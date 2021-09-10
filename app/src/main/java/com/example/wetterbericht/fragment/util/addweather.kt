@@ -2,7 +2,6 @@ package com.example.wetterbericht.fragment.util
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,14 +9,18 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.wetterbericht.R
+import com.example.wetterbericht.fragment.adapter.forecastadapter
+import com.example.wetterbericht.model.APIforecast.Foredata
 import com.example.wetterbericht.model.room.cuaca
 import com.example.wetterbericht.repo.api.mainrepo
 import com.example.wetterbericht.viewmodel.api.Mainviewmodel
 import com.example.wetterbericht.viewmodel.api.Vmfactory
 import com.example.wetterbericht.viewmodel.room.Cuacaviewmodel
 import kotlinx.android.synthetic.main.fragment_addweather.*
+import kotlinx.android.synthetic.main.fragment_addweather.view.*
 
 
 class addweather : Fragment() {
@@ -29,13 +32,14 @@ class addweather : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_addweather, container, false)
 
-
         //based on search
         val repo = mainrepo()
         val vmfactory = Vmfactory(repo)
         mapiviewmodel = ViewModelProvider(this,vmfactory).get(Mainviewmodel::class.java) //set
         mroomviewmodel = ViewModelProvider(this).get(Cuacaviewmodel::class.java)
         findweather()
+
+
 
         return view
     }
@@ -67,7 +71,6 @@ class addweather : Fragment() {
                     .asBitmap()
                     .load(urlimage)
                     .into(img_icon)
-
               btn_fav.setOnClickListener {
                     Toast.makeText(context,"add to favorites",Toast.LENGTH_SHORT).show()
 
@@ -91,16 +94,38 @@ class addweather : Fragment() {
             }
         })
 
+        //forecast
+        //forerecyclerview
+        val foreadapter = forecastadapter()
+        val forerecview = view?.forerecyclerview
+        if (forerecview != null) {
+            forerecview.adapter = foreadapter
+        }
+        if (forerecview != null) {
+            forerecview.layoutManager = LinearLayoutManager(requireContext())
+        }
         mapiviewmodel.getforecast(cari)
         mapiviewmodel.forecastrespon.observe(viewLifecycleOwner, Observer { fore->
             val data = fore.body()?.list
             if (data != null) {
-                for (i in 1 until data.count()){
-                    val dat = data[i].main
-                    Log.d("FORECAST",dat.toString())
-                    tv_test_fore.setText(dat.toString())
+                for (i in 0 until data.count()){
 
+                    val date = data[i].dtTxt
+                    val desc = data[i].weather.get(0).description
+                    val temp = data[i].main.temp.toString()
 
+                    tv_test_fore.setText(data[0].dtTxt)
+                    tv_test_fore2.setText(data[1].dtTxt)
+                    tv_test_fore3.setText(data[2].dtTxt)
+                    var datalist : ArrayList<Foredata> = ArrayList()
+
+                    val forcast = Foredata(
+                        date,
+                        desc,
+                        temp
+                    )
+                    datalist.add(forcast)
+                    foreadapter.setdata(datalist)
                 }
             }
         })

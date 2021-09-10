@@ -1,9 +1,15 @@
 package com.example.wetterbericht.model.room
 
+import android.content.ContentValues
 import android.content.Context
+import android.database.sqlite.SQLiteException
+import android.util.Log
 import androidx.room.*
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 import androidx.sqlite.db.SupportSQLiteOpenHelper
 import com.example.wetterbericht.model.dao.cuacaDao
+import java.lang.Exception
 
 @Database(entities = [cuaca::class], version = 1,exportSchema = false)
 abstract class cuacaDatabase: RoomDatabase() {
@@ -27,5 +33,4 @@ abstract class cuacaDatabase: RoomDatabase() {
            }
        }
    }
-
 }
