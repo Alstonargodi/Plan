@@ -22,6 +22,14 @@ when I'm going to plan something sometimes I have to look at the weather outside
 5. Location
    
    >Provide the latest weather based on your location position
+
+6. 3-hours Forecast
+   
+   >provide information about the weather forecast for the next 3 hours
+
+7. Temp graph
+
+   >provide temperature from 3 hours forecast with graph
    
 # :wrench: Implementation
 1. Kotlin, main programming language for build this project
@@ -31,6 +39,7 @@ when I'm going to plan something sometimes I have to look at the weather outside
 5. GMS location service, provide information about location throughh gps
 6. MVVM, an architecture in android separating view/fragment, business logic ,and model
 7. Room, Keeping data after retrieving from retrofit or adding data in local storage
+8. Graph, using library from [philjay](https://github.com/PhilJay/MPAndroidChart)
 
 # :book: what I've been learning through this project
 
@@ -42,6 +51,7 @@ when I'm going to plan something sometimes I have to look at the weather outside
 6. Room
 7. bottom navigation
 8. nested json
+9. Graph
 
 # Documentation
 
@@ -49,3 +59,9 @@ apps diagram : [wetterdo](https://github.com/Alstonargodi/Wetterdo/blob/master/d
 
 <img src="https://github.com/Alstonargodi/Wetterdo/blob/master/BANNER.png" width="100%">
 
+
+# todo
+
+I'm trying add 3 hours forecast but i'm still stuck how to retriving with recyler view, so i'm doing another way kinda stupid but yeah u can see what it will be
+
+<img src="https://github.com/Alstonargodi/Wetterdo/blob/master/Screenshot_1631263688.png" width="25%">
