@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,14 +9,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
         android:layout_width="357dp"
-        android:layout_height="390dp"
+        android:layout_height="350dp"
         android:background="@drawable/shadowblue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintHorizontal_bias="0.589"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_fav"
-        app:layout_constraintVertical_bias="0.061">
+        app:layout_constraintVertical_bias="0.022">
 
         <TextView
             android:id="@+id/textView16"
@@ -84,7 +83,7 @@
             android:layout_width="149dp"
             android:layout_height="21dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:fontFamily="@font/righteous"
             android:text="Humidty"
             android:textColor="#373B3C"
@@ -210,8 +209,8 @@
             android:id="@+id/tv_d_pressure"
             android:layout_width="139dp"
             android:layout_height="23dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="12dp"
             android:fontFamily="@font/robotoregular"
             android:gravity="center"
             android:text="presure"
@@ -222,9 +221,9 @@
 
         <TextView
             android:id="@+id/tv_d_humid"
-            android:layout_width="148dp"
-            android:layout_height="20dp"
-            android:layout_marginTop="16dp"
+            android:layout_width="145dp"
+            android:layout_height="22dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:fontFamily="@font/robotoregular"
             android:gravity="center"
@@ -276,52 +275,196 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.02" />
 
-    <TextView
-        android:id="@+id/tv_test_fore"
-        android:layout_width="339dp"
-        android:layout_height="42dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"
-        app:layout_constraintVertical_bias="0.061" />
-
-    <TextView
-        android:id="@+id/tv_test_fore2"
-        android:layout_width="339dp"
-        android:layout_height="42dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_test_fore"
-        app:layout_constraintVertical_bias="0.085" />
-
-    <TextView
-        android:id="@+id/tv_test_fore3"
-        android:layout_width="339dp"
-        android:layout_height="42dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.537"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_test_fore2"
-        app:layout_constraintVertical_bias="0.103" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/forerecyclerview"
-        android:layout_width="336dp"
-        android:layout_height="115dp"
+        android:layout_width="334dp"
+        android:layout_height="54dp"
+        android:visibility="gone"
+        tools:itemCount="3"
+        tools:layout_editor_absoluteX="28dp"
+        tools:listitem="@layout/recycler_view_item">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="353dp"
+        android:layout_height="89dp"
+        android:layout_marginTop="24dp"
+        android:fillViewport="true"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/jam2"
+                android:layout_width="347dp"
+                android:layout_height="73dp"
+                android:layout_marginTop="12dp">
+
+                <TextView
+                    android:id="@+id/tv_test_fore2"
+                    android:layout_width="155dp"
+                    android:layout_height="26dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="4dp"
+                    android:text="TextView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_test_fore_desc2"
+                    android:layout_width="149dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="12dp"
+                    android:text="TextView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_test_fore2" />
+
+                <TextView
+                    android:id="@+id/tv_test_fore_temp2"
+                    android:layout_width="58dp"
+                    android:layout_height="51dp"
+                    android:layout_marginTop="8dp"
+                    android:text="00"
+                    android:textSize="48sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.791"
+                    app:layout_constraintStart_toEndOf="@+id/img_v_test"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/img_v_test"
+                    android:layout_width="58dp"
+                    android:layout_height="52dp"
+                    android:layout_marginStart="72dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toEndOf="@+id/tv_test_fore_desc2"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@tools:sample/avatars" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/jam3"
+                android:layout_width="346dp"
+                android:layout_height="66dp"
+                android:layout_marginTop="12dp">
+
+                <TextView
+                    android:id="@+id/tv_test_fore3"
+                    android:layout_width="150dp"
+                    android:layout_height="29dp"
+                    android:text="TextView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_test_fore_desc3"
+                    android:layout_width="149dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="8dp"
+                    android:text="TextView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_test_fore3" />
+
+                <TextView
+                    android:id="@+id/tv_test_fore_temp3"
+                    android:layout_width="58dp"
+                    android:layout_height="51dp"
+                    android:layout_marginTop="8dp"
+                    android:text="00"
+                    android:textSize="48sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.72"
+                    app:layout_constraintStart_toEndOf="@+id/img_v_test2"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/img_v_test3"
+                    android:layout_width="58dp"
+                    android:layout_height="52dp"
+                    android:layout_marginStart="80dp"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintStart_toEndOf="@+id/tv_test_fore_desc3"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@tools:sample/avatars" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/jam1"
+                android:layout_width="346dp"
+                android:layout_height="69dp"
+                android:layout_marginTop="12dp">
+
+                <TextView
+                    android:id="@+id/tv_test_fore"
+                    android:layout_width="147dp"
+                    android:layout_height="22dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="4dp"
+                    android:text="TextView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_test_fore_temp"
+                    android:layout_width="58dp"
+                    android:layout_height="51dp"
+                    android:layout_marginTop="12dp"
+                    android:text="00"
+                    android:textSize="48sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.692"
+                    app:layout_constraintStart_toEndOf="@+id/img_v_test2"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_test_fore_desc"
+                    android:layout_width="149dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="4dp"
+                    android:text="TextView"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_test_fore"
+                    app:layout_constraintVertical_bias="0.631" />
+
+                <ImageView
+                    android:id="@+id/img_v_test2"
+                    android:layout_width="58dp"
+                    android:layout_height="52dp"
+                    android:layout_marginStart="80dp"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintStart_toEndOf="@+id/tv_test_fore_desc"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@tools:sample/avatars" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/linechart"
+        android:layout_width="362dp"
+        android:layout_height="102dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintHorizontal_bias="0.56"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_test_fore3"
-        app:layout_constraintVertical_bias="0.262"
-        tools:itemCount="3"
-        tools:listitem="@layout/recycler_view_item" />
+        app:layout_constraintTop_toBottomOf="@+id/nestedScrollView"
+        app:layout_constraintVertical_bias="0.137">
+
+
+    </com.github.mikephil.charting.charts.LineChart>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
