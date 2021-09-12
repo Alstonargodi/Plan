@@ -1,9 +1,8 @@
-package com.example.wetterbericht.fragment.util
+package com.example.wetterbericht.view.util
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,10 +14,7 @@ import com.example.wetterbericht.model.room.todo
 import com.example.wetterbericht.viewmodel.room.todoviewmodel
 import kotlinx.android.synthetic.main.fragment_addfragment.*
 import kotlinx.android.synthetic.main.fragment_addfragment.view.*
-import java.sql.Date
 import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 

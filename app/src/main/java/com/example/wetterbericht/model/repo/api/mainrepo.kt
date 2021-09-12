@@ -1,7 +1,6 @@
-package com.example.wetterbericht.repo.api
+package com.example.wetterbericht.model.repo.api
 
 import com.example.wetterbericht.model.APIforecast.Forecast
-import com.example.wetterbericht.model.APIforecast.mainfore
 import com.example.wetterbericht.model.builder.retrofitbuild
 import com.example.wetterbericht.model.APIweather.Current
 import retrofit2.Response

@@ -1,4 +1,4 @@
-package com.example.wetterbericht.fragment.util
+package com.example.wetterbericht.view.util
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,9 +8,6 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.wetterbericht.R
-import kotlinx.android.synthetic.main.cv_weather_home.view.*
-import kotlinx.android.synthetic.main.fragment_addweather.view.*
-import kotlinx.android.synthetic.main.fragment_curr_weather.*
 import kotlinx.android.synthetic.main.fragment_curr_weather.view.*
 import kotlinx.android.synthetic.main.fragment_curr_weather.view.tv_c_desc
 import kotlinx.android.synthetic.main.fragment_curr_weather.view.tv_c_feelslike

@@ -1,4 +1,4 @@
-package com.example.wetterbericht.fragment.adapter
+package com.example.wetterbericht.view.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.wetterbericht.R
 import com.example.wetterbericht.model.room.cuaca
-import kotlinx.android.synthetic.main.cv_weather.view.*
 import kotlinx.android.synthetic.main.cv_weather_home.view.*
 
 class weatherhomeadapter: RecyclerView.Adapter<weatherhomeadapter.viewmodel>() {

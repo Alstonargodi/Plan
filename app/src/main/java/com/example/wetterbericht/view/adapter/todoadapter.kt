@@ -1,15 +1,12 @@
-package com.example.wetterbericht.fragment.adapter
+package com.example.wetterbericht.view.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.ListFragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wetterbericht.R
-import com.example.wetterbericht.fragment.fragment_todoDirections
-import com.example.wetterbericht.fragment.util.updatefragment
+import com.example.wetterbericht.view.fragment_todoDirections
 import com.example.wetterbericht.model.room.todo
 import kotlinx.android.synthetic.main.cv_todo.view.*
 

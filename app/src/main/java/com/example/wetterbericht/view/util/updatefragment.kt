@@ -1,4 +1,4 @@
-package com.example.wetterbericht.fragment.util
+package com.example.wetterbericht.view.util
 
 import android.app.AlertDialog
 import android.os.Bundle

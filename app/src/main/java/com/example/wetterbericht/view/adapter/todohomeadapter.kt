@@ -1,4 +1,4 @@
-package com.example.wetterbericht.fragment.adapter
+package com.example.wetterbericht.view.adapter
 
 import android.view.LayoutInflater
 import android.view.View

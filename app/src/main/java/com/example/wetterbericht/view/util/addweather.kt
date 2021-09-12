@@ -1,4 +1,4 @@
-package com.example.wetterbericht.fragment.util
+package com.example.wetterbericht.view.util
 
 import android.annotation.SuppressLint
 import android.graphics.Color
@@ -13,10 +13,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.wetterbericht.R
-import com.example.wetterbericht.fragment.adapter.forecastadapter
+import com.example.wetterbericht.view.adapter.forecastadapter
 import com.example.wetterbericht.model.APIforecast.Foredata
 import com.example.wetterbericht.model.room.cuaca
-import com.example.wetterbericht.repo.api.mainrepo
+import com.example.wetterbericht.model.repo.api.mainrepo
 import com.example.wetterbericht.viewmodel.api.Mainviewmodel
 import com.example.wetterbericht.viewmodel.api.Vmfactory
 import com.example.wetterbericht.viewmodel.room.Cuacaviewmodel
@@ -25,8 +25,6 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import kotlinx.android.synthetic.main.fragment_addweather.*
 import kotlinx.android.synthetic.main.fragment_addweather.view.*
-import org.json.JSONArray
-import org.json.JSONTokener
 
 
 class addweather : Fragment() {

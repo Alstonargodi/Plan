@@ -6,7 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.wetterbericht.model.room.cuaca
 import com.example.wetterbericht.model.room.cuacaDatabase
-import com.example.wetterbericht.repo.room.CuacaRepo
+import com.example.wetterbericht.model.repo.room.CuacaRepo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

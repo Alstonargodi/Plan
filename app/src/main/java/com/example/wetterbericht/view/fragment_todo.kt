@@ -1,4 +1,4 @@
-package com.example.wetterbericht.fragment
+package com.example.wetterbericht.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,9 +10,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wetterbericht.R
-import com.example.wetterbericht.fragment.adapter.todoadapter
-import com.example.wetterbericht.fragment.adapter.weatheradapter
-import com.example.wetterbericht.fragment.util.addfragment
+import com.example.wetterbericht.view.adapter.todoadapter
+import com.example.wetterbericht.view.adapter.weatheradapter
+import com.example.wetterbericht.view.util.addfragment
 import com.example.wetterbericht.model.room.todo
 import com.example.wetterbericht.viewmodel.room.todoviewmodel
 import kotlinx.android.synthetic.main.fragment_todo.*

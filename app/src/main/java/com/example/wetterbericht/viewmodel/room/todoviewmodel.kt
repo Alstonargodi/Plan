@@ -6,7 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.wetterbericht.model.room.todo
 import com.example.wetterbericht.model.room.todoDatabase
-import com.example.wetterbericht.repo.room.todoRepo
+import com.example.wetterbericht.model.repo.room.todoRepo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

@@ -1,4 +1,4 @@
-package com.example.wetterbericht.fragment
+package com.example.wetterbericht.view
 
 import android.app.AlertDialog
 import android.content.pm.PackageManager
@@ -8,18 +8,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
-import com.bumptech.glide.Glide
 import com.example.wetterbericht.R
 import com.example.wetterbericht.model.room.cuaca
-import com.example.wetterbericht.repo.api.mainrepo
+import com.example.wetterbericht.model.repo.api.mainrepo
 import com.example.wetterbericht.viewmodel.api.Mainviewmodel
 import com.example.wetterbericht.viewmodel.api.Vmfactory
 import com.example.wetterbericht.viewmodel.room.Cuacaviewmodel

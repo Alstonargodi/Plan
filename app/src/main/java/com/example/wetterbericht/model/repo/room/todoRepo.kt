@@ -1,4 +1,4 @@
-package com.example.wetterbericht.repo.room
+package com.example.wetterbericht.model.repo.room
 
 import androidx.lifecycle.LiveData
 import com.example.wetterbericht.model.dao.todoDao

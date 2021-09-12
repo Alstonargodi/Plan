@@ -4,9 +4,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.wetterbericht.model.APIforecast.Forecast
-import com.example.wetterbericht.model.APIforecast.mainfore
 import com.example.wetterbericht.model.APIweather.Current
-import com.example.wetterbericht.repo.api.mainrepo
+import com.example.wetterbericht.model.repo.api.mainrepo
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
