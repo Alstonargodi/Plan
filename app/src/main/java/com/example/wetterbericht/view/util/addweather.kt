@@ -78,8 +78,9 @@ class addweather : Fragment() {
               btn_fav.setOnClickListener {
                     Toast.makeText(context,"add to favorites",Toast.LENGTH_SHORT).show()
 
-                    val input = cuaca(0,
+                    val input = cuaca(
                         response.body()?.name.toString(),
+                        0,
                         desc,
                         response.body()?.main?.temp.toString(),
                         response.body()?.main?.feelsLike.toString(),

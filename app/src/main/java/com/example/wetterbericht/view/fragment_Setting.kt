@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Looper
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -54,18 +55,7 @@ class fragment_Setting : Fragment() {
         mapiviewmodel = ViewModelProvider(this,vmfactory).get(Mainviewmodel::class.java) //set
         mroomviewmodel = ViewModelProvider(this).get(Cuacaviewmodel::class.java)
 
-        //Weather based on gps
-        localclient = LocationServices.getFusedLocationProviderClient(requireContext())
-        weathearlocation()
-        view.onoff.setOnCheckedChangeListener { _, isChecked ->
-            if(isChecked){
-                gpsgranted()
-            }else{
-                Toast.makeText(context,"GPS off",Toast.LENGTH_SHORT).show()
-            }
-        }
 
-        //delete todo data
         view.btn_deletetodo.setOnClickListener {
             val alert = AlertDialog.Builder(requireContext())
             alert.setPositiveButton("yes"){_,_ ->
@@ -91,54 +81,6 @@ class fragment_Setting : Fragment() {
             alert.create().show()
         }
         return view
-    }
-
-    @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
-    private fun gpsgranted(){
-        if(ActivityCompat.checkSelfPermission(requireActivity(),android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-            ActivityCompat.checkSelfPermission(requireActivity(),android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(requireActivity(), arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), reqcode)
-        }
-        localclient.requestLocationUpdates(locationRequest,locationCallback, Looper.myLooper())
-    }
-
-    private fun weathearlocation(){
-        locationRequest = LocationRequest.create().apply {
-            interval = 1000
-            fastestInterval = 2000
-            priority = LocationRequest.PRIORITY_HIGH_ACCURACY
-            maxWaitTime = 200
-        }
-        locationCallback = object : LocationCallback(){
-            override fun onLocationResult(p0: LocationResult) {
-                val location = p0.locations.get(p0.locations.size-1)
-                val lat = location.latitude
-                val lon = location.longitude
-                tv_loc.setText(lat.toString())
-                mapiviewmodel.getdatalocation(lat,lon)
-            }
-        }
-        mapiviewmodel.datalocationrespon.observe(viewLifecycleOwner, Observer { response ->
-                val desc = response.body()?.weather?.get(0)?.description.toString()
-                val url = response.body()?.weather?.get(0)?.icon
-                val urlimage = "http://openweathermap.org/img/w/${url}.png"
-
-                val inputdua = cuaca(0,
-                    response.body()?.name.toString(),
-                    desc,
-                    response.body()?.main?.temp.toString(),
-                    response.body()?.main?.feelsLike.toString(),
-                    Integer.parseInt(response.body()?.main?.humidity.toString()),
-                    urlimage,
-
-                    response.body()?.main?.feelsLike.toString(),
-                    response.body()?.wind?.speed.toString(),
-                    response.body()?.clouds?.all.toString(),
-                    response.body()?.visibility.toString(),
-                    response.body()?.main?.pressure.toString()
-                )
-                mroomviewmodel.add(inputdua)
-        })
     }
 
 }

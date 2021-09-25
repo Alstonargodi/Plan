@@ -8,9 +8,9 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 @Entity(tableName = "tabelcuaca")
 data class cuaca(
-    @PrimaryKey(autoGenerate = true)
-    val id : Int,
+    @PrimaryKey(autoGenerate = false)
     val loc : String,
+    val id : Int,
     val desc : String,
     val temp : String,
     val uv : String,

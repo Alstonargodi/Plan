@@ -75,7 +75,6 @@ class addfragment : DialogFragment(){
         val deadlinetime = tv_time.text.toString()
         val desc = et_desc.text.toString()
 
-
         val todo = todo(0,title, desc, deadlinedate,deadlinetime,status)
 
         mtodoviewmodel.add(todo)

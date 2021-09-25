@@ -26,7 +26,7 @@ abstract class cuacaDatabase: RoomDatabase() {
            }else{
                synchronized(this){
                 val instance = Room.databaseBuilder(context.applicationContext,
-                        cuacaDatabase::class.java,"weatherdata").build()
+                        cuacaDatabase::class.java,"dbcuac").build()
                    minstance = instance
                    return instance
                }
