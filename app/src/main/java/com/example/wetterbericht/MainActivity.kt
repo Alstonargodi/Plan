@@ -26,6 +26,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlin.math.log
 
 class MainActivity : AppCompatActivity() {
     private lateinit var mbinding : ActivityMainBinding
@@ -59,10 +60,16 @@ class MainActivity : AppCompatActivity() {
 
         //coroutine location
         locationclien = LocationServices.getFusedLocationProviderClient(this)
+
         provideloc()
         lifecycleScope.launch {
             withContext(Dispatchers.Main){
                 gpsguaranted()
+            }
+        }
+        lifecycleScope.launch {
+            withContext(Dispatchers.Main){
+                updateweather()
             }
         }
     }
@@ -113,9 +120,38 @@ class MainActivity : AppCompatActivity() {
             )
              cviewmodel.add(datac)
         })
+    }
 
-        mcviewmodel.datarespon.observe(this, Observer { respons->
+    //update data
+    suspend fun updateweather(){
+        delay(900000L)
+        cviewmodel.readdata.observe(this, Observer { responsa->
+            for(i in 0 until responsa.size){
+                val nama = responsa[i].loc
+                Log.d("test",nama)
+                mcviewmodel.getdata(nama)
+            }
+            mcviewmodel.datarespon.observe(this, Observer {
+                val desc = it.body()?.weather?.get(0)?.description.toString()
+                val url = it.body()?.weather?.get(0)?.icon
+                val urimage = "http://openweathermap.org/img/w/${url}.png"
 
+                val dataup = cuaca(
+                    it.body()?.name.toString(),
+                    0,
+                    desc,
+                    it.body()?.main?.temp.toString(),
+                    it.body()?.main?.feelsLike.toString(),
+                    Integer.parseInt(it.body()?.main?.humidity.toString()),
+                    urimage,
+                    it.body()?.main?.feelsLike.toString(),
+                    it.body()?.wind?.speed.toString(),
+                    it.body()?.clouds?.all.toString(),
+                    it.body()?.visibility.toString(),
+                    it.body()?.main?.pressure.toString()
+                )
+                cviewmodel.add(dataup)
+            })
         })
     }
 }
