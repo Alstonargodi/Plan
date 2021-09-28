@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     suspend fun gpsguaranted(){
-        delay(2000L)
+        delay(900000L) //update setiap 25 menit
         if(ActivityCompat.checkSelfPermission(this,android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
            ActivityCompat.checkSelfPermission(this,android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
            ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),code)
@@ -89,6 +89,7 @@ class MainActivity : AppCompatActivity() {
                 val lat = location.latitude
                 val lon = location.longitude
                 Log.d("loc","location now"+lat + lon)
+                mcviewmodel.getdatalocation(lat,lon)
             }
         }
         mcviewmodel.datalocationrespon.observe(this, Observer { respons->
@@ -111,6 +112,10 @@ class MainActivity : AppCompatActivity() {
                 respons.body()?.main?.pressure.toString()
             )
              cviewmodel.add(datac)
+        })
+
+        mcviewmodel.datarespon.observe(this, Observer { respons->
+
         })
     }
 }

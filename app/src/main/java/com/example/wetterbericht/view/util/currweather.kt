@@ -23,7 +23,6 @@ class currweather : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_curr_weather, container, false)
 
-        //todo add desc
         view.tv_c_location.setText(args.currData.loc)
         view.tv_c_desc.setText(args.currData.desc)
 

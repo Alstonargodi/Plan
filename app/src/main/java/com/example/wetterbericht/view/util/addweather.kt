@@ -54,8 +54,6 @@ class addweather : Fragment() {
         mapiviewmodel.getdata(cari)
         mapiviewmodel.datarespon.observe(viewLifecycleOwner, Observer { response ->
             if(response.isSuccessful){
-
-                //todo inputbox design
                 val desc = response.body()?.weather?.get(0)?.description.toString()
                 val url = response.body()?.weather?.get(0)?.icon
                 val urlimage = "http://openweathermap.org/img/w/${url}.png"
