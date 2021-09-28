@@ -62,6 +62,6 @@ apps diagram : [wetterdo](https://github.com/Alstonargodi/Wetterdo/blob/master/d
 
 # new
 
-I'm trying add 3 hours forecast but i'm still stuck how to retriving with recyler view, so i'm doing another way kinda stupid but yeah u can see what it will be
+3 hours forecast
 
 <img src="https://github.com/Alstonargodi/Wetterdo/blob/master/Screenshot_1631423734.png" width="25%">
