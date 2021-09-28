@@ -92,4 +92,9 @@
         android:name="com.example.wetterbericht.splashscreen"
         android:label="activity_splashscreen"
         tools:layout="@layout/activity_splashscreen" />
+    <activity
+        android:id="@+id/loginactivity"
+        android:name="com.example.wetterbericht.view.Loginactivity"
+        android:label="activity_loginactivity"
+        tools:layout="@layout/activity_loginactivity" />
 </navigation>
