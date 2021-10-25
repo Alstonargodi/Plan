@@ -46,7 +46,8 @@ class addfragment : DialogFragment(){
     private fun settime(){
         //set date
         val instCal = Calendar.getInstance()
-        val datepicker = DatePickerDialog(requireContext(), DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+        val datepicker = DatePickerDialog(requireContext(),
+            DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
             val kalender = Calendar.getInstance()
             kalender.set(Calendar.DAY_OF_MONTH,dayOfMonth)
             kalender.set(Calendar.MONTH,month)

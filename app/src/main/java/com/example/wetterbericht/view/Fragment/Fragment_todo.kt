@@ -1,34 +1,28 @@
-package com.example.wetterbericht.view
+package com.example.wetterbericht.view.Fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wetterbericht.R
+import com.example.wetterbericht.model.room.todo
 import com.example.wetterbericht.view.adapter.todoadapter
 import com.example.wetterbericht.view.adapter.weatheradapter
 import com.example.wetterbericht.view.util.addfragment
-import com.example.wetterbericht.model.room.todo
 import com.example.wetterbericht.viewmodel.room.todoviewmodel
-import kotlinx.android.synthetic.main.fragment_todo.*
 import kotlinx.android.synthetic.main.fragment_todo.view.*
-
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-
 
 /**
  * A simple [Fragment] subclass.
  * Use the [homeweather.newInstance] factory method to
  * create an instance of this fragment.
  */
-class fragment_todo : Fragment() {
+class Fragment_todo : Fragment() {
     lateinit var mtodoviewmodel : todoviewmodel
     lateinit var cuacaadapter : weatheradapter
     private var todolist = emptyList<todo>()

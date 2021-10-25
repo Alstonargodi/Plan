@@ -73,7 +73,8 @@ class addweather : Fragment() {
                     .asBitmap()
                     .load(urlimage)
                     .into(img_icon)
-              btn_fav.setOnClickListener {
+
+               btn_fav.setOnClickListener {
                     Toast.makeText(context,"add to favorites",Toast.LENGTH_SHORT).show()
 
                     val input = cuaca(

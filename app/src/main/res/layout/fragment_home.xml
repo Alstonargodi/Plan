@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.fragment_Home">
+    tools:context=".view.Fragment.Fragment_Home">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -12,7 +12,7 @@
         android:layout_width="393dp"
         android:layout_height="97dp"
         android:background="@drawable/cornerheader"
-        android:backgroundTint="#1D8FE1"
+        android:backgroundTint="#117ECC"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

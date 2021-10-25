@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
 
 
         //setup bottomnavmenu
-        val navview : BottomNavigationView = mbinding.navmenu
+        val navview : BottomNavigationView = navmenu
         val navController = findNavController(R.id.hostfragment)
         navview.setupWithNavController(navController)
 

@@ -1,38 +1,30 @@
-package com.example.wetterbericht.view
+package com.example.wetterbericht.view.Fragment
 
 import android.app.AlertDialog
-import android.content.pm.PackageManager
 import android.os.Bundle
-import android.os.Looper
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.app.ActivityCompat
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.Observer
-import androidx.lifecycle.OnLifecycleEvent
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.wetterbericht.R
-import com.example.wetterbericht.model.room.cuaca
 import com.example.wetterbericht.model.repo.api.mainrepo
 import com.example.wetterbericht.viewmodel.api.Mainviewmodel
 import com.example.wetterbericht.viewmodel.api.Vmfactory
 import com.example.wetterbericht.viewmodel.room.Cuacaviewmodel
 import com.example.wetterbericht.viewmodel.room.todoviewmodel
-import com.google.android.gms.location.*
-import kotlinx.android.synthetic.main.fragment_addweather.*
-import kotlinx.android.synthetic.main.fragment_setting.*
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationCallback
+import com.google.android.gms.location.LocationRequest
 import kotlinx.android.synthetic.main.fragment_setting.view.*
 
 /**
  * A simple [Fragment] subclass.
- * Use the [fragment_Setting.newInstance] factory method to
+ * Use the [Fragment_Setting.newInstance] factory method to
  * create an instance of this fragment.
  */
-class fragment_Setting : Fragment() {
+class Fragment_Setting : Fragment() {
     lateinit var mviewmodel : todoviewmodel
     lateinit var mapiviewmodel : Mainviewmodel
     lateinit var mroomviewmodel : Cuacaviewmodel
@@ -52,7 +44,7 @@ class fragment_Setting : Fragment() {
         //weather
         val repo = mainrepo()
         val vmfactory = Vmfactory(repo)
-        mapiviewmodel = ViewModelProvider(this,vmfactory).get(Mainviewmodel::class.java) //set
+        mapiviewmodel = ViewModelProvider(this, vmfactory).get(Mainviewmodel::class.java) //set
         mroomviewmodel = ViewModelProvider(this).get(Cuacaviewmodel::class.java)
 
 
@@ -60,7 +52,7 @@ class fragment_Setting : Fragment() {
             val alert = AlertDialog.Builder(requireContext())
             alert.setPositiveButton("yes"){_,_ ->
                 mviewmodel.deleteall()
-                Toast.makeText(requireContext(),"delete complete",Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "delete complete", Toast.LENGTH_SHORT).show()
             }
             alert.setNegativeButton("no"){_,_ ->}
             alert.setTitle("Are u sure want to delete all?")
@@ -73,7 +65,7 @@ class fragment_Setting : Fragment() {
             val alert = AlertDialog.Builder(requireContext())
             alert.setPositiveButton("yes"){_,_ ->
                 mroomviewmodel.delete()
-                Toast.makeText(requireContext(),"delete complete",Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "delete complete", Toast.LENGTH_SHORT).show()
             }
             alert.setNegativeButton("no"){_,_ ->}
             alert.setTitle("Are u sure want to delete all?")

@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wetterbericht.R
-import com.example.wetterbericht.view.fragment_todoDirections
+
 import com.example.wetterbericht.model.room.todo
 import kotlinx.android.synthetic.main.cv_todo.view.*
 
@@ -30,8 +30,7 @@ class todoadapter : RecyclerView.Adapter<todoadapter.viewholder>() {
         holder.itemView.tv_todo_desc.text = curitem.desc
 
         holder.itemView.cv_todo.setOnClickListener {
-            val intent = fragment_todoDirections.actionFragmentTodoToUpdate(curitem)
-            holder.itemView.findNavController().navigate(intent)
+
         }
     }
 

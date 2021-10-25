@@ -7,6 +7,7 @@
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cv_weather_layout"
         android:layout_width="330dp"
         android:layout_height="105dp"
         app:layout_constraintBottom_toBottomOf="parent"

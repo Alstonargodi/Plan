@@ -1,10 +1,11 @@
-package com.example.wetterbericht.view
+package com.example.wetterbericht.view.Fragment
 
+import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,8 +16,7 @@ import com.example.wetterbericht.viewmodel.room.Cuacaviewmodel
 import com.example.wetterbericht.viewmodel.room.todoviewmodel
 import kotlinx.android.synthetic.main.fragment_home.view.*
 
-
-class fragment_Home : Fragment() {
+class Fragment_Home : Fragment() {
     lateinit var mroomodel : todoviewmodel
     lateinit var mcuacamodel : Cuacaviewmodel
 
@@ -32,6 +32,17 @@ class fragment_Home : Fragment() {
         mcuacamodel = ViewModelProvider(this).get(Cuacaviewmodel::class.java)
         mcuacamodel.readdata.observe(viewLifecycleOwner, Observer { cuaca ->
             cadapter.setdata(cuaca)
+
+            for(i in 0 until cuaca.size){
+                val desc = cuaca[i].desc
+                if(desc == "few clouds"){
+                    view.bg_home_weather.setBackgroundColor(Color.GRAY)
+                }else if ( desc == "overcast clouds"){
+                    view.bg_home_weather.setBackgroundColor(Color.GRAY)
+                }else{
+                    view.bg_home_weather.setBackgroundColor(Color.WHITE)
+                }
+            }
         })
 
         //to do list

@@ -6,8 +6,10 @@
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="397dp"
-        android:layout_height="95dp"
+        android:id="@+id/lay_bg_weather_home"
+        android:layout_width="392dp"
+        android:layout_height="175dp"
+        android:background="@drawable/pantai"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,10 +20,9 @@
             android:layout_height="66dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.491"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.035">
+            app:layout_constraintVertical_bias="0.164">
 
             <TextView
                 android:id="@+id/tv_homew_loca"
@@ -49,10 +50,10 @@
                 android:textSize="34sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.607"
                 app:layout_constraintStart_toEndOf="@+id/img_home_icon"
                 app:layout_constraintTop_toBottomOf="@+id/tv_homew_loca"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintVertical_bias="0.2" />
 
             <TextView
                 android:id="@+id/tv_home_temp2"
@@ -66,7 +67,7 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/tv_homew_temp"
                 app:layout_constraintTop_toBottomOf="@+id/tv_homew_loca"
-                app:layout_constraintVertical_bias="0.541" />
+                app:layout_constraintVertical_bias="0.608" />
 
             <TextView
                 android:id="@+id/tv_homew_desc"
@@ -83,45 +84,15 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0" />
 
-            <TextView
-                android:id="@+id/tv_homew_uv"
-                android:layout_width="173dp"
-                android:layout_height="18dp"
-                android:fontFamily="@font/robotoregular"
-                android:gravity="center"
-                android:text="uv index"
-                android:textColor="#1C1C1C"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/tv_home_temp2"
-                app:layout_constraintTop_toBottomOf="@+id/tv_homew_desc"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <TextView
-                android:id="@+id/tv_homew_humid"
-                android:layout_width="173dp"
-                android:layout_height="16dp"
-                android:fontFamily="@font/robotoregular"
-                android:gravity="center"
-                android:text="Humid"
-                android:textColor="#1C1C1C"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/tv_home_temp2"
-                app:layout_constraintTop_toBottomOf="@+id/tv_homew_uv"
-                app:layout_constraintVertical_bias="0.266" />
-
             <ImageView
                 android:id="@+id/img_home_icon"
                 android:layout_width="42dp"
                 android:layout_height="39dp"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="72dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_homew_loca"
-                app:layout_constraintVertical_bias="0.1"
+                app:layout_constraintVertical_bias="0.2"
                 tools:srcCompat="@tools:sample/avatars" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

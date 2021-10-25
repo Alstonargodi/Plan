@@ -1,28 +1,29 @@
-package com.example.wetterbericht.view
+package com.example.wetterbericht.view.Fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wetterbericht.R
-import com.example.wetterbericht.view.adapter.weatheradapter
-import com.example.wetterbericht.model.room.cuaca
 import com.example.wetterbericht.model.repo.api.mainrepo
+import com.example.wetterbericht.model.room.cuaca
+import com.example.wetterbericht.view.adapter.weatheradapter
+import com.example.wetterbericht.view.util.updatefragmentArgs
 import com.example.wetterbericht.viewmodel.api.Mainviewmodel
 import com.example.wetterbericht.viewmodel.api.Vmfactory
 import com.example.wetterbericht.viewmodel.room.Cuacaviewmodel
 import kotlinx.android.synthetic.main.fragment_weather.*
 import kotlinx.android.synthetic.main.fragment_weather.view.*
 
-class fragment_Weather : Fragment(){
-    private val navargs by navArgs<fragment_WeatherArgs>()
+class Fragment_Weather : Fragment(){
+    private val navargs by navArgs<updatefragmentArgs>()
     lateinit var mapiviewmodel : Mainviewmodel
     lateinit var mroomviewmodel : Cuacaviewmodel
 
@@ -35,7 +36,7 @@ class fragment_Weather : Fragment(){
         //get from api
         val repo = mainrepo()
         val vmfactory = Vmfactory(repo)
-        mapiviewmodel = ViewModelProvider(this,vmfactory).get(Mainviewmodel::class.java) //set
+        mapiviewmodel = ViewModelProvider(this, vmfactory).get(Mainviewmodel::class.java) //set
 
         //set history pencarian
         val adapter = weatheradapter()

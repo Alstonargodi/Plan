@@ -11,7 +11,7 @@
         android:label="MainActivity" />
     <fragment
         android:id="@+id/fragment_home"
-        android:name="com.example.wetterbericht.view.fragment_Home"
+        android:name="com.example.wetterbericht.view.Fragment.Fragment_Home"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -26,7 +26,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_todo"
-        android:name="com.example.wetterbericht.view.fragment_todo"
+        android:name="com.example.wetterbericht.view.Fragment.Fragment_todo"
         android:label="fragment_todo"
         tools:layout="@layout/fragment_todo">
         <action
@@ -38,7 +38,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_weather"
-        android:name="com.example.wetterbericht.view.fragment_Weather"
+        android:name="com.example.wetterbericht.view.Fragment.Fragment_Weather"
         android:label="fragment_weather"
         tools:layout="@layout/fragment_weather" >
         <argument
@@ -53,7 +53,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_setting"
-        android:name="com.example.wetterbericht.view.fragment_Setting"
+        android:name="com.example.wetterbericht.view.Fragment.Fragment_Setting"
         android:label="fragment_setting"
         tools:layout="@layout/fragment_setting" />
     <fragment
@@ -94,7 +94,7 @@
         tools:layout="@layout/activity_splashscreen" />
     <activity
         android:id="@+id/loginactivity"
-        android:name="com.example.wetterbericht.view.Loginactivity"
+        android:name="com.example.wetterbericht.view.Login.Loginactivity"
         android:label="activity_loginactivity"
         tools:layout="@layout/activity_loginactivity" />
 </navigation>

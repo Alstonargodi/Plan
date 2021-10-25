@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "523350471014",
+    "project_id": "wetterbericht-3f094",
+    "storage_bucket": "wetterbericht-3f094.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:523350471014:android:3f196695860edc307ad8a7",
+        "android_client_info": {
+          "package_name": "com.example.wetterbericht"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "523350471014-rd37gdnbthg6eu30i1u9ni4skb0r539t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDirq-R9OPH3_Y2-5hY2MMjBlnlbYyRiWU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "523350471014-rd37gdnbthg6eu30i1u9ni4skb0r539t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

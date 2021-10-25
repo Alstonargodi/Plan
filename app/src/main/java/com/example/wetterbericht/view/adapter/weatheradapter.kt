@@ -7,8 +7,9 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.wetterbericht.R
-import com.example.wetterbericht.view.fragment_WeatherDirections
+
 import com.example.wetterbericht.model.room.cuaca
+import com.example.wetterbericht.view.Fragment.Fragment_WeatherDirections
 import kotlinx.android.synthetic.main.cv_weather.view.*
 
 class weatheradapter: RecyclerView.Adapter<weatheradapter.viewholder>() {
@@ -33,7 +34,7 @@ class weatheradapter: RecyclerView.Adapter<weatheradapter.viewholder>() {
             .into(holder.itemView.img_weather_icon)
 
         holder.itemView.cv_weather.setOnClickListener {
-            val intent = fragment_WeatherDirections.actionFragmentWeatherToCurrWeather(curitem)
+            val intent = Fragment_WeatherDirections.actionFragmentWeatherToCurrWeather(curitem)
             holder.itemView.findNavController().navigate(intent)
         }
     }
