@@ -7,8 +7,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/lay_bg_weather_home"
-        android:layout_width="392dp"
-        android:layout_height="175dp"
+        android:layout_width="393dp"
+        android:layout_height="169dp"
         android:background="@drawable/pantai"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

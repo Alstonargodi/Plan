@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,9 +8,37 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bg_home_weather"
+        android:layout_width="match_parent"
+        android:layout_height="214dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recviewweather"
+            android:layout_width="390dp"
+            android:layout_height="218dp"
+            android:background="@drawable/corner10"
+            android:backgroundTint="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.333"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="390dp"
-        android:layout_height="505dp"
+        android:layout_width="match_parent"
+        android:layout_height="538dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="144dp"
+        android:layout_marginEnd="0dp"
         android:background="@drawable/cornerheader"
         android:backgroundTint="#E5E5E5"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -21,46 +49,56 @@
 
         <TextView
             android:id="@+id/textView4"
-            android:layout_width="54dp"
-            android:layout_height="18dp"
+            android:layout_width="66dp"
+            android:layout_height="23dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="16dp"
             android:fontFamily="@font/righteous"
-            android:text="Todo"
+            android:text="Outside"
             android:textColor="#03A9F4"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/textView28"
+            android:layout_width="66dp"
+            android:layout_height="23dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/righteous"
+            android:text="Inside"
+            android:textColor="#03A9F4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recviewhome" />
+
+        <TextView
+            android:id="@+id/textView29"
+            android:layout_width="66dp"
+            android:layout_height="23dp"
+            android:fontFamily="@font/righteous"
+            android:text="Outside"
+            android:textColor="#03A9F4"
+            tools:layout_editor_absoluteX="298dp"
+            tools:layout_editor_absoluteY="21dp" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recviewhome"
-            android:layout_width="400dp"
-            android:layout_height="284dp"
-            android:layout_marginTop="12dp"
+            android:layout_width="376dp"
+            android:layout_height="161dp"
+            android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.542"
+            app:layout_constraintHorizontal_bias="0.515"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/bg_home_weather"
-        android:layout_width="411dp"
-        android:layout_height="174dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recviewweather"
-            android:layout_width="411dp"
-            android:layout_height="173dp"
-            android:background="@drawable/corner10"
-            android:backgroundTint="@color/white"
+            android:layout_width="383dp"
+            android:layout_height="217dp"
+            android:layout_marginTop="12dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.509"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/textView28" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

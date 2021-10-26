@@ -1,5 +1,6 @@
 package com.example.wetterbericht.view.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,11 +21,13 @@ class todohomeadapter: RecyclerView.Adapter<todohomeadapter.viewholder>() {
         var curitem = datalist[position]
         holder.itemView.tv_home_id.text = curitem.id.toString()
         holder.itemView.tv_home_date.text = curitem.deadlinedate.toString()
-        holder.itemView.tv_home_title.text = curitem.title
+        holder.itemView.tv_home_time.text = curitem.deadlinetime
         holder.itemView.tv_home_status.text = curitem.status
     }
 
     override fun getItemCount(): Int {
+        val jumlah = datalist.size
+        Log.d("jumlah",jumlah.toString())
         return datalist.size
     }
 
