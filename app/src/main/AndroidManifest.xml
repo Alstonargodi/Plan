@@ -3,12 +3,61 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.wetterbericht">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+    <supports-screens
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
+
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+
+    <compatible-screens>
+
+        <!-- all small size screens -->
+        <screen
+            android:screenDensity="ldpi"
+            android:screenSize="small" />
+        <screen
+            android:screenDensity="mdpi"
+            android:screenSize="small" />
+        <screen
+            android:screenDensity="hdpi"
+            android:screenSize="small" />
+        <screen
+            android:screenDensity="xhdpi"
+            android:screenSize="small" />
+        <screen
+            android:screenDensity="xxhdpi"
+            android:screenSize="small" />
+        <screen
+            android:screenDensity="xxxhdpi"
+            android:screenSize="small" />
+        <!-- all normal size screens -->
+        <screen
+            android:screenDensity="ldpi"
+            android:screenSize="normal" />
+        <screen
+            android:screenDensity="mdpi"
+            android:screenSize="normal" />
+        <screen
+            android:screenDensity="hdpi"
+            android:screenSize="normal" />
+        <screen
+            android:screenDensity="xhdpi"
+            android:screenSize="normal" />
+        <screen
+            android:screenDensity="xxhdpi"
+            android:screenSize="normal" />
+        <screen
+            android:screenDensity="xxxhdpi"
+            android:screenSize="normal" />
+    </compatible-screens>
 
     <application
         android:allowBackup="true"
@@ -19,7 +68,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Wetterbericht">
         <activity
+            android:name=".Todo_add"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:exported="false" />
+        <activity
             android:name=".Signup"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="true" />
         <activity
             android:name=".view.Login.Signupactivity"

@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.wetterbericht.R
+import com.example.wetterbericht.model.room.subtask
 import com.example.wetterbericht.model.room.todo
 import com.example.wetterbericht.viewmodel.room.todoviewmodel
 import kotlinx.android.synthetic.main.fragment_addfragment.*
@@ -76,8 +77,6 @@ class addfragment : DialogFragment(){
         val deadlinetime = tv_time.text.toString()
         val desc = et_desc.text.toString()
 
-        val todo = todo(0,title, desc, deadlinedate,deadlinetime,status)
 
-        mtodoviewmodel.add(todo)
     }
 }

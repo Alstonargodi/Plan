@@ -71,8 +71,8 @@ class updatefragment : Fragment() {
         val deadlinetime =et_up_time.toString()
         val desc = et_up_desc.text.toString()
 
-        val update = todo(args.data.id,judul,status,deadlinedate, deadlinetime,desc)
-        mroomviewmodel.update(update)
+
+//        mroomviewmodel.update(update)
 
     }
 

@@ -35,6 +35,12 @@
         <action
             android:id="@+id/action_fragment_todo_to_update"
             app:destination="@id/updatefragment" />
+        <action
+            android:id="@+id/action_fragment_todo_to_fragment_activity_inside"
+            app:destination="@id/fragment_activity_inside" />
+        <action
+            android:id="@+id/action_fragment_todo_to_fragment_activity_outside"
+            app:destination="@id/fragment_activity_outside" />
     </fragment>
     <fragment
         android:id="@+id/fragment_weather"
@@ -97,4 +103,14 @@
         android:name="com.example.wetterbericht.view.Login.Loginactivity"
         android:label="activity_loginactivity"
         tools:layout="@layout/activity_loginactivity" />
+    <fragment
+        android:id="@+id/fragment_activity_inside"
+        android:name="com.example.wetterbericht.Fragment_activity_inside"
+        android:label="fragment_activity_inside"
+        tools:layout="@layout/fragment_activity_inside" />
+    <fragment
+        android:id="@+id/fragment_activity_outside"
+        android:name="com.example.wetterbericht.Fragment_activity_outside"
+        android:label="fragment_activity_outside"
+        tools:layout="@layout/fragment_activity_outside" />
 </navigation>

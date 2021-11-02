@@ -7,12 +7,14 @@ import androidx.lifecycle.viewModelScope
 import com.example.wetterbericht.model.room.todo
 import com.example.wetterbericht.model.room.todoDatabase
 import com.example.wetterbericht.model.repo.room.todoRepo
+import com.example.wetterbericht.model.room.subtask
+import com.example.wetterbericht.model.room.todoandsubtask
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class todoviewmodel(application: Application): AndroidViewModel(application) {
     private val repo : todoRepo
-    val readdata : LiveData<List<todo>>
+    val readdata : LiveData<List<todoandsubtask>>
 
     init {
         val mdao = todoDatabase.setdatabase(application).todoDao()
@@ -25,6 +27,13 @@ class todoviewmodel(application: Application): AndroidViewModel(application) {
             repo.adddata(todo)
         }
     }
+
+    fun addsub(subtask: ArrayList<subtask>){
+        viewModelScope.launch(Dispatchers.IO) {
+            repo.addsub(subtask)
+        }
+    }
+
 
     fun update(todo: todo){
         viewModelScope.launch(Dispatchers.IO) {

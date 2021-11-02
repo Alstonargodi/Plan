@@ -36,16 +36,16 @@ class Fragment_Home : Fragment() {
             for(i in 0 until cuaca.size){
                 val desc = cuaca[i].desc
                 if(desc == "few clouds"){
-                    view.bg_home_weather.setBackgroundColor(Color.GRAY)
+
                 }else if ( desc == "overcast clouds"){
-                    view.bg_home_weather.setBackgroundColor(Color.GRAY)
+
                 }else{
-                    view.bg_home_weather.setBackgroundColor(Color.WHITE)
+
                 }
             }
         })
 
-        //to do list
+        //todolist
         val madapter = todohomeadapter()
         val recyclerhome = view.recviewhome
         recyclerhome.adapter = madapter

@@ -23,11 +23,15 @@ class weatheradapter: RecyclerView.Adapter<weatheradapter.viewholder>() {
 
     override fun onBindViewHolder(holder: viewholder, position: Int) {
         var curitem = weatherlist[position]
+        val feels = "Feels like ${curitem.feelslike} c"
+        val humid = "Humidty ${curitem.humid} %"
         holder.itemView.tv_weather_desc.text = curitem.desc
         holder.itemView.tv_weather_loc.text = curitem.loc
         holder.itemView.tv_weather_temp.text = curitem.temp.toString()
+        holder.itemView.tv_weather_feels.text = feels
+        holder.itemView.tv_weather_humid.text = humid
 
-        //todo glide
+
         Glide.with(holder.itemView.context)
             .asBitmap()
             .load(curitem.image)

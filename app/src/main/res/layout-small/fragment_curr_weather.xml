@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.util.currweather">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
+        android:layout_width="360dp"
+        android:layout_height="359dp"
+        android:background="@drawable/shadowblue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.035">
+
+        <ImageView
+            android:id="@+id/img_c_icon"
+            android:layout_width="68dp"
+            android:layout_height="67dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.404"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_c_location"
+            app:layout_constraintVertical_bias="0.013"
+            tools:src="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/tv_c_location"
+            android:layout_width="350dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/abezeeregular"
+            android:gravity="center"
+            android:text="location"
+            android:textColor="#2E2B2B"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.366"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_c_feelslike"
+            android:layout_width="148dp"
+            android:layout_height="22dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="4dp"
+            android:gravity="center"
+            android:text="feelslike"
+            android:fontFamily="@font/robotoregular"
+            android:textColor="#2E2B2B"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.98"
+            app:layout_constraintStart_toEndOf="@+id/textView9"
+            app:layout_constraintTop_toBottomOf="@+id/tv_c_desc" />
+
+        <TextView
+            android:id="@+id/tv_c_wind"
+            android:layout_width="148dp"
+            android:layout_height="22dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            android:gravity="center"
+            android:text="windspeed"
+            android:fontFamily="@font/robotoregular"
+            android:textColor="#2E2B2B"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/textView10"
+            app:layout_constraintTop_toBottomOf="@+id/tv_c_feelslike" />
+
+        <TextView
+            android:id="@+id/tv_c_cloud"
+            android:layout_width="147dp"
+            android:layout_height="21dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="4dp"
+            android:fontFamily="@font/robotoregular"
+            android:gravity="center"
+            android:text="cloudcover"
+            android:textColor="#2E2B2B"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/textView13"
+            app:layout_constraintTop_toBottomOf="@+id/tv_c_pressure" />
+
+        <TextView
+            android:id="@+id/tv_c_visiblity"
+            android:layout_width="149dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:gravity="center"
+            android:text="visibilty"
+            android:fontFamily="@font/robotoregular"
+            android:textColor="#2E2B2B"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/textView11"
+            app:layout_constraintTop_toBottomOf="@+id/tv_c_wind" />
+
+        <TextView
+            android:id="@+id/tv_c_pressure"
+            android:layout_width="149dp"
+            android:layout_height="23dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            android:fontFamily="@font/robotoregular"
+            android:gravity="center"
+            android:text="presure"
+            android:textColor="#2E2B2B"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/textView12"
+            app:layout_constraintTop_toBottomOf="@+id/tv_c_visiblity" />
+
+        <TextView
+            android:id="@+id/tv_c_humid"
+            android:layout_width="148dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            android:fontFamily="@font/robotoregular"
+            android:gravity="center"
+            android:text="humidty"
+            android:textColor="#2E2B2B"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/textView14"
+            app:layout_constraintTop_toBottomOf="@+id/tv_c_cloud" />
+
+        <TextView
+            android:id="@+id/tv_c_temp"
+            android:layout_width="44dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/robotoregular"
+            android:gravity="center"
+            android:text="00"
+            android:textColor="#2E2B2B"
+            android:textSize="34sp"
+            app:layout_constraintStart_toEndOf="@+id/img_c_icon"
+            app:layout_constraintTop_toBottomOf="@+id/tv_c_location" />
+
+        <TextView
+            android:id="@+id/tv_c_desc"
+            android:layout_width="199dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="desc"
+            android:fontFamily="@font/robotoregular"
+            android:textColor="#2E2B2B"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_c_icon" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="17dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="48dp"
+            android:gravity="center|top"
+            android:text="C"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/tv_c_temp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_c_location" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="149dp"
+            android:layout_height="21dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:text="Feelslike"
+            android:fontFamily="@font/righteous"
+            android:textColor="#373B3C"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_c_desc" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="149dp"
+            android:layout_height="21dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/righteous"
+            android:text="Wind speed"
+            android:textColor="#373B3C"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="149dp"
+            android:layout_height="21dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/righteous"
+            android:text="Visiblity"
+            android:textColor="#373B3C"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="149dp"
+            android:layout_height="21dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/righteous"
+            android:text="Pressure"
+            android:textColor="#373B3C"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="149dp"
+            android:layout_height="21dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/righteous"
+            android:text="Cloud cover"
+            android:textColor="#373B3C"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="149dp"
+            android:layout_height="21dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/righteous"
+            android:text="Humidty"
+            android:textColor="#373B3C"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

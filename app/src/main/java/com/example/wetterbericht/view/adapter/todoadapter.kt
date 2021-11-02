@@ -22,7 +22,6 @@ class todoadapter : RecyclerView.Adapter<todoadapter.viewholder>() {
 
     override fun onBindViewHolder(holder: viewholder, position: Int) {
         var curitem = datalist[position]
-        holder.itemView.tv_todo_id.text = curitem.id.toString()
         holder.itemView.tv_todo_title.text = curitem.title
         holder.itemView.tv_todo_status.text = curitem.status
         holder.itemView.tv_todo_date.text = curitem.deadlinedate.toString()
