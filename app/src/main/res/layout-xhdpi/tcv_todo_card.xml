@@ -63,10 +63,11 @@
                 tools:text="@tools:sample/date/hhmm" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.core.widget.NestedScrollView
+        <ScrollView
             android:id="@+id/scrollcard_todo"
-            android:layout_width="350dp"
-            android:layout_height="247dp"
+            android:layout_width="347dp"
+            android:layout_height="265dp"
+            android:background="#E5E5E5"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -88,24 +89,28 @@
                     android:id="@+id/tvtoxo_card_desc"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:padding="2dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:padding="4dp"
                     android:text="TextView" />
 
                 <TextView
                     android:id="@+id/textView36"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="2dp"
+                    android:padding="4dp"
                     android:text="Subtask" />
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recview_todo_inside"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:padding="4dp">
 
                 </androidx.recyclerview.widget.RecyclerView>
 
             </LinearLayout>
-        </androidx.core.widget.NestedScrollView>
+        </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

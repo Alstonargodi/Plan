@@ -5,41 +5,56 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#03A9F4"
-    tools:context=".view.Login.Loginactivity">
+    tools:context=".view.Login.Loginactivity"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="46dp">
 
-    <TextView
-        android:id="@+id/textView23"
-        android:layout_width="385dp"
-        android:layout_height="36dp"
-        android:fontFamily="@font/righteous"
-        android:gravity="center"
-        android:text="Wetterdo"
-        android:textColor="#F4F4F4"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout9"
+        android:layout_width="392dp"
+        android:layout_height="139dp"
+        android:background="@drawable/bg_corner_white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.143" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView23"
+            android:layout_width="385dp"
+            android:layout_height="36dp"
+            android:fontFamily="@font/righteous"
+            android:gravity="center"
+            android:letterSpacing="0.1"
+            android:text="Wetterdo"
+            android:textColor="#2196F3"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.555"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.496" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/textView22"
         android:layout_width="247dp"
         android:layout_height="23dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="28dp"
         android:fontFamily="@font/righteous"
-        android:text="username"
+        android:letterSpacing="0.1"
+        android:text="email"
         android:textColor="#F4F4F4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.315"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView23" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout9" />
 
     <TextView
         android:id="@+id/textView25"
         android:layout_width="248dp"
         android:layout_height="19dp"
+        android:letterSpacing="0.1"
         android:layout_marginTop="24dp"
         android:fontFamily="@font/righteous"
         android:text="password"
@@ -67,9 +82,10 @@
         android:id="@+id/et_password"
         android:layout_width="299dp"
         android:layout_height="30dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/borderwhite"
-        android:padding="5px"
         android:inputType="textPassword"
+        android:padding="5px"
         android:textAlignment="center"
         android:textColor="#F4F4F4"
         app:layout_constraintEnd_toEndOf="parent"
@@ -81,11 +97,12 @@
         android:id="@+id/btn_enter"
         android:layout_width="107dp"
         android:layout_height="36dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="28dp"
         android:backgroundTint="@color/white"
         android:fontFamily="@font/righteous"
         android:text="Enter"
-        android:textColor="@color/black"
+        android:textColor="#292828"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_password" />
@@ -94,10 +111,11 @@
         android:id="@+id/tv_singup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="52dp"
         android:fontFamily="@font/righteous"
         android:text="Dont have any account ? Get in"
         android:textColor="@color/white"
+        android:letterSpacing="0.1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_enter" />
@@ -106,24 +124,27 @@
         android:id="@+id/textView27"
         android:layout_width="20dp"
         android:layout_height="24dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="92dp"
         android:fontFamily="@font/righteous"
         android:text="Or"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_enter" />
 
     <TextView
         android:id="@+id/btn_visit"
-        android:layout_width="73dp"
-        android:layout_height="17dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="113dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/righteous"
+        android:gravity="center"
+        android:letterSpacing="0.1"
         android:text="Visit mode"
         android:textColor="#222121"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView27" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

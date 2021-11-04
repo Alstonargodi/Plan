@@ -3,310 +3,340 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:background="#E4E4E4"
+    android:background="#E1E1E1"
     android:orientation="vertical"
     android:layout_height="wrap_content"
     tools:context=".Todo_add">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout7"
-        android:layout_width="match_parent"
-        android:layout_height="39dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/bg_headercorner"
-        tools:layout_editor_absoluteX="-1dp">
-
-        <TextView
-            android:id="@+id/textView28"
-            android:layout_width="157dp"
-            android:layout_height="23dp"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/righteous"
-            android:gravity="center"
-            android:text="add Activites"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.401"
-            app:layout_constraintStart_toEndOf="@+id/btnbackhome"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/btnbackhome"
-            android:layout_width="27dp"
-            android:layout_height="23dp"
-            android:layout_marginStart="16dp"
-            android:background="@drawable/home"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
     <ScrollView
-        android:layout_width="392dp"
-        android:layout_height="768dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="144dp">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="500dp"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout7"
+                android:layout_width="400dp"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/bg_headercorner"
+                tools:layout_editor_absoluteX="-1dp">
+
+                <TextView
+                    android:id="@+id/textView28"
+                    android:layout_width="157dp"
+                    android:layout_height="23dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/righteous"
+                    android:gravity="center"
+                    android:letterSpacing="0.1"
+                    android:text="add Activites"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.401"
+                    app:layout_constraintStart_toEndOf="@+id/btnbackhome"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
-                    android:id="@+id/btn_actpick_out"
-                    android:layout_width="9dp"
-                    android:layout_height="22dp"
-                    android:layout_margin="9dp"
-                    android:layout_weight="1"
-                    android:background="@color/white"
-                    android:fontFamily="@font/secularone"
-                    android:text="outside" />
+                    android:id="@+id/btnbackhome"
+                    android:layout_width="27dp"
+                    android:layout_height="23dp"
+                    android:layout_marginStart="16dp"
+                    android:background="@drawable/home"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                <Button
-                    android:id="@+id/btn_actpick_in"
-                    android:layout_width="19dp"
-                    android:layout_height="22dp"
-                    android:layout_margin="9dp"
-                    android:layout_weight="1"
-                    android:background="@color/white"
-                    android:fontFamily="@font/secularone"
-                    android:text="inside" />
-            </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <TextView
-                android:id="@+id/textView31"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/secularone"
-                android:gravity="center"
-                android:paddingLeft="8dp"
-                android:paddingBottom="8dp"
-                android:text="activity name"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
+                android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/et_todoadd_nama"
-                android:layout_width="352dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="9dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="9dp"
-                android:background="@drawable/bg_editext_satu"
-                android:padding="4dp"
-                android:textAlignment="center"
-                tools:text="@tools:sample/cities" />
-
-            <TextView
-                android:id="@+id/textView35"
-                android:layout_width="388dp"
-                android:layout_height="28dp"
-                android:fontFamily="@font/secularone"
-                android:gravity="center"
-                android:paddingLeft="8dp"
-                android:paddingBottom="8dp"
-                android:text="set time"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btn_act_tanggal"
-                    android:layout_width="37dp"
-                    android:layout_height="36dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="4dp"
-                    android:background="@drawable/ic_baseline_calendar_today_24"
-                    android:padding="10dp"
-                    android:paddingLeft="0dp" />
-
-                <EditText
-                    android:id="@+id/et_todoadd_tanggal"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@drawable/bg_editext_dua"
-                    android:padding="4dp"
-                    android:textAlignment="center"
-                    tools:text="@tools:sample/date/ddmmyy" />
-            </LinearLayout>
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                    <Button
+                        android:id="@+id/btn_actpick_out"
+                        android:layout_width="9dp"
+                        android:layout_height="22dp"
+                        android:layout_margin="9dp"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:fontFamily="@font/secularone"
+                        android:letterSpacing="0.1"
+                        android:text="outside" />
 
-                <Button
-                    android:id="@+id/btn_act_waktu"
-                    android:layout_width="38dp"
-                    android:layout_height="36dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="4dp"
-                    android:background="@drawable/bell" />
-
-                <EditText
-                    android:id="@+id/et_todoadd_waktu"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@drawable/bg_editext_dua"
-                    android:padding="4dp"
-                    android:textAlignment="center"
-                    tools:text="@tools:sample/date/hhmm" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:orientation="horizontal">
+                    <Button
+                        android:id="@+id/btn_actpick_in"
+                        android:layout_width="19dp"
+                        android:layout_height="22dp"
+                        android:layout_margin="9dp"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:fontFamily="@font/secularone"
+                        android:letterSpacing="0.1"
+                        android:text="inside" />
+                </LinearLayout>
 
                 <Spinner
                     android:id="@+id/spinner_act"
-                    android:layout_width="356dp"
+                    android:layout_width="361dp"
                     android:layout_height="32dp"
+
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="4dp"
+                    android:layout_marginBottom="10dp"
                     android:entries="@array/status"
                     android:paddingLeft="60dp"
                     android:spinnerMode="dialog"
                     android:textAlignment="center" />
 
-                <EditText
-                    android:id="@+id/et_todoadd_status"
+                <TextView
+                    android:id="@+id/textView31"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/righteous"
+                    android:gravity="center"
+                    android:letterSpacing="0.1"
+                    android:paddingLeft="8dp"
+                    android:paddingBottom="8dp"
+                    android:text="activity name"
+                    android:textColor="#1E1E1E"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/et_todoadd_nama"
+                    android:layout_width="342dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
+                    android:layout_marginTop="9dp"
                     android:layout_marginRight="20dp"
+                    android:layout_marginBottom="9dp"
                     android:background="@drawable/bg_editext_dua"
                     android:padding="4dp"
                     android:textAlignment="center"
+                    android:textSize="16sp"
                     tools:text="@tools:sample/cities" />
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/textView48"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/secularone"
-                android:gravity="center"
-                android:paddingLeft="8dp"
-                android:paddingBottom="8dp"
-                android:text="Desc"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-            <EditText
-                android:id="@+id/et_todoadd_desc"
-                android:layout_width="346dp"
-                android:layout_height="99dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/bg_editext_satu"
-                android:padding="4dp"
-                android:textAlignment="center" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/imgv_todoadd"
-                    android:layout_width="189dp"
-                    android:layout_height="93dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:padding="5dp"
-                    tools:srcCompat="@tools:sample/avatars" />
 
                 <TextView
-                    android:id="@+id/textView34"
-                    android:layout_width="172dp"
-                    android:layout_height="51dp"
-                    android:layout_weight="1"
+                    android:id="@+id/textView35"
+                    android:layout_width="388dp"
+                    android:layout_height="28dp"
+                    android:fontFamily="@font/righteous"
+                    android:gravity="center"
+                    android:letterSpacing="0.1"
+                    android:paddingLeft="8dp"
+                    android:paddingBottom="8dp"
+                    android:text="set time"
+                    android:textColor="#1E1E1E"
+
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="41dp"
+                    android:layout_margin="2dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btn_act_tanggal"
+                        android:layout_width="27dp"
+                        android:layout_height="25dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/ic_baseline_calendar_today_24"
+                        android:padding="10dp"
+                        android:paddingLeft="0dp" />
+
+                    <EditText
+                        android:id="@+id/et_todoadd_tanggal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@drawable/bg_editext_dua"
+                        android:padding="4dp"
+                        android:textAlignment="center"
+                        android:textSize="16sp"
+                        tools:text="@tools:sample/date/ddmmyy" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="2dp"
+                    android:layout_marginBottom="8dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btn_act_waktu"
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:layout_marginStart="16dp"
+                        android:background="@drawable/bell" />
+
+                    <EditText
+                        android:id="@+id/et_todoadd_waktu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@drawable/bg_editext_dua"
+                        android:padding="4dp"
+                        android:textAlignment="center"
+                        android:textSize="16sp"
+                        tools:text="@tools:sample/date/hhmm" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textView48"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/secularone"
                     android:gravity="center"
+                    android:letterSpacing="0.1"
                     android:paddingLeft="8dp"
-                    android:layout_marginTop="20dp"
                     android:paddingBottom="8dp"
-                    android:text="add a image if u needed"
-                    android:textColor="@color/black"
+                    android:text="Desc"
+                    android:textColor="#1E1E1E"
                     android:textSize="16sp" />
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/textView37"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/secularone"
-                android:gravity="center"
-                android:paddingLeft="8dp"
-                android:paddingBottom="8dp"
-                android:text="Subtask"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_begin="20dp" />
-
-            <Button
-                android:id="@+id/btn_addtodo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="25dp"
-                android:text="Button" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/et_todoadd_subtask"
-                    android:layout_width="132dp"
-                    android:layout_height="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_editext_dua"
-                    android:padding="4dp"
+                    android:id="@+id/et_todoadd_desc"
+                    android:layout_width="346dp"
+                    android:layout_height="99dp"
                     android:layout_marginLeft="20dp"
-                    android:text="subtask"
-                    android:textAlignment="center" />
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="20dp"
 
-                <Button
-                    android:id="@+id/btn_addsubtask"
-                    android:layout_width="wrap_content"
+                    android:background="@drawable/bg_editext_satu"
+                    android:padding="6dp"
+                    android:textAlignment="center"
+                    android:textSize="14sp"
+                    tools:text="@tools:sample/lorem/random" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imgv_todoadd"
+                        android:layout_width="189dp"
+                        android:layout_height="93dp"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:padding="5dp"
+                        tools:srcCompat="@tools:sample/avatars" />
+
+                    <TextView
+                        android:id="@+id/textView34"
+                        android:layout_width="182dp"
+                        android:layout_height="51dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/righteous"
+                        android:gravity="center"
+                        android:letterSpacing="0.1"
+                        android:paddingLeft="8dp"
+                        android:paddingBottom="8dp"
+                        android:text="add a image if u needed"
+                        android:textColor="#1E1E1E"
+
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textView37"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="plus" />
+                    android:fontFamily="@font/righteous"
+                    android:gravity="center"
+                    android:letterSpacing="0.1"
+                    android:paddingLeft="8dp"
+                    android:paddingBottom="8dp"
+                    android:text="Subtask"
+                    android:textColor="#1E1E1E"
+                    android:textSize="16sp" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="20dp" />
+
+                <LinearLayout
+                    android:layout_width="382dp"
+                    android:layout_height="45dp"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/et_todoadd_subtask"
+                        android:layout_width="284dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_editext_dua"
+                        android:padding="4dp"
+                        android:textAlignment="center" />
+
+                    <Button
+                        android:id="@+id/btn_addsubtask"
+                        android:layout_width="2dp"
+                        android:layout_height="31dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_weight="1"
+                        android:width="200px"
+                        android:background="@drawable/plusbg"
+                        android:padding="5dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="257dp"
+                    android:orientation="vertical">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rec_todoadd_sub"
+                        android:layout_width="347dp"
+                        android:layout_height="160dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:padding="4dp"
+                        tools:listitem="@layout/recycler_view_item_4">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
+                    <Button
+                        android:id="@+id/btn_addtodo"
+                        android:layout_width="255dp"
+                        android:layout_height="26dp"
+                        android:layout_marginLeft="65dp"
+                        android:layout_marginRight="45dp"
+                        android:background="@drawable/btn_bg"
+                        android:letterSpacing="0.1"
+                        android:padding="4dp"
+                        android:text="add"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
+
             </LinearLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rec_todoadd_sub"
-                android:layout_width="match_parent"
-                android:layout_height="155dp">
-
-            </androidx.recyclerview.widget.RecyclerView>
 
         </LinearLayout>
     </ScrollView>

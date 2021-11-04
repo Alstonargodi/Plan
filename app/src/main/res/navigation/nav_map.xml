@@ -113,4 +113,31 @@
         android:name="com.example.wetterbericht.Fragment_activity_outside"
         android:label="fragment_activity_outside"
         tools:layout="@layout/fragment_activity_outside" />
+    <fragment
+        android:id="@+id/onboard"
+        android:name="com.example.wetterbericht.onboard"
+        android:label="fragment_onboard"
+        tools:layout="@layout/fragment_onboard" >
+        <action
+            android:id="@+id/action_onboard_to_introsatu"
+            app:destination="@id/introsatu" />
+        <action
+            android:id="@+id/action_onboard_to_introdua"
+            app:destination="@id/introdua" />
+    </fragment>
+    <fragment
+        android:id="@+id/introsatu"
+        android:name="com.example.wetterbericht.view.Login.Onboard.introsatu"
+        android:label="fragment_introsatu"
+        tools:layout="@layout/fragment_introsatu" />
+    <fragment
+        android:id="@+id/introdua"
+        android:name="com.example.wetterbericht.view.Login.Onboard.introdua"
+        android:label="fragment_introdua"
+        tools:layout="@layout/fragment_introdua" />
+    <activity
+        android:id="@+id/onboardmain"
+        android:name="com.example.wetterbericht.view.Login.Onboard.Onboardmain"
+        android:label="activity_onboardmain"
+        tools:layout="@layout/activity_onboardmain" />
 </navigation>

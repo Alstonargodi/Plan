@@ -6,6 +6,8 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.AdapterView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wetterbericht.model.room.subtask
@@ -26,6 +28,7 @@ class Todo_add : AppCompatActivity() {
 
 
     private var kategori : String = ""
+    private var warna : Any = ""
 
     private var adapter = Addtodosubadapter()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,16 +59,16 @@ class Todo_add : AppCompatActivity() {
             timepick()
         }
 
-//        spinner_act.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-//            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-//                TODO("Not yet implemented")
-//            }
-//
-//            override fun onNothingSelected(parent: AdapterView<*>?) {
-//                TODO("Not yet implemented")
-//            }
-//
-//        }
+        spinner_act.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                var warna = parent?.getItemAtPosition(position)
+                if (warna!= null){
+                    colorpick(warna)
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
 
 
         btn_addsubtask.setOnClickListener {
@@ -78,6 +81,28 @@ class Todo_add : AppCompatActivity() {
         }
 
     }
+
+    private fun colorpick(item : Any){
+        if (item == "plain"){
+            val color = Color.parseColor("#E4E4E4")
+            spinner_act.setBackgroundColor(color)
+            warna = color
+        }else if(item == "low"){
+            val color = Color.parseColor("#4DBC08")
+            spinner_act.setBackgroundColor(color)
+            warna = color
+            Log.d("warna dipilih",warna.toString())
+        }else if(item == "medium"){
+            val color = Color.parseColor("#FF810D")
+            spinner_act.setBackgroundColor(color)
+            warna = color
+        }else if (item == "high"){
+            val color = Color.parseColor("#FF1B0D")
+            spinner_act.setBackgroundColor(color)
+            warna = color
+        }
+    }
+
     private fun datepick(){
         val kal = Calendar.getInstance()
         val datepick = DatePickerDialog(this,DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
@@ -116,32 +141,33 @@ class Todo_add : AppCompatActivity() {
         timepick.show()
     }
 
-    //todo nested room for subtask
-    private fun setsub(){
 
+    private fun setsub(){
         val task = et_todoadd_subtask.text.toString()
         val data = subtask(0,task)
         subtaslist.add(data)
         Log.d("test sub", subtaslist.toString())
         adapter.setdata(subtaslist)
+
     }
 
     private fun settodo(){
 
         for (i in 0 until subtaslist.size){
             val data = subtaslist.get(i).task.toString()
+
             val todo = todo(
-                0,
-                "test",
-                "tes",
-                "tes",
-                "tes",
-                "tes",
-                "tes"
+                et_todoadd_nama.text.toString(),
+                et_todoadd_desc.text.toString(),
+                kategori,
+                et_todoadd_tanggal.text.toString(),
+                et_todoadd_waktu.text.toString(),
+                warna.toString()
             )
 
             todovmodel.add(todo)
             todovmodel.addsub(subtaslist)
+
             Log.d("data", data.toString())
         }
 

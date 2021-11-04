@@ -13,7 +13,6 @@ import java.sql.Date
 @Entity(tableName = "tabeltodo")
 data class todo(
     @PrimaryKey(autoGenerate = false)
-    val idtodo : Int,
     val title: String,
     val desc: String,
     val kat : String,
@@ -24,7 +23,7 @@ data class todo(
 
 @Entity
 data class subtask(
-    @PrimaryKey(autoGenerate = false)
+    @PrimaryKey(autoGenerate = true)
     val idsub : Int,
     val task : String
 )
@@ -34,7 +33,7 @@ data class todoandsubtask(
     @Embedded
     val todo : todo,
     @Relation(
-        parentColumn = "idtodo",
+        parentColumn = "title",
         entityColumn = "idsub"
     )
     val subtask : List<subtask>

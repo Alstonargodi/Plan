@@ -68,13 +68,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Wetterbericht">
         <activity
-            android:name=".Todo_add"
+            android:name=".view.Login.Onboard.Onboardmain"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="false" />
         <activity
+            android:name=".Todo_add"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
             android:name=".Signup"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".view.Login.Signupactivity"
             android:exported="true"

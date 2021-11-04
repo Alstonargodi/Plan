@@ -5,7 +5,7 @@ import androidx.room.*
 import com.example.wetterbericht.model.dao.todoDao
 import com.example.wetterbericht.model.util.converters
 
-@Database(entities = [todo::class,subtask::class],version = 8,exportSchema = false)
+@Database(entities = [todo::class,subtask::class],version = 10,exportSchema = false)
 @TypeConverters(converters::class)
 abstract class todoDatabase: RoomDatabase() {
     abstract fun todoDao() : todoDao

@@ -13,11 +13,17 @@ import android.annotation.SuppressLint
 import android.view.View.OnTouchListener
 
 import android.widget.ScrollView
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wetterbericht.model.room.todoandsubtask
+import com.example.wetterbericht.viewmodel.room.todoviewmodel
 
 
 class Todoinsideadapter: RecyclerView.Adapter<Todoinsideadapter.viewholder>() {
     var data = emptyList<todoandsubtask>()
+    val adapter = Addtodosubadapter()
 
     class viewholder(view : View): RecyclerView.ViewHolder(view) {}
 
@@ -33,12 +39,10 @@ class Todoinsideadapter: RecyclerView.Adapter<Todoinsideadapter.viewholder>() {
         holder.itemView.tvtoxo_card_waktu.text = item.todo.deadlinetime
         holder.itemView.tvtoxo_card_desc.text = item.todo.desc
 
-        holder.itemView.scrollcard_todo.setOnTouchListener { v, event ->
-            holder.itemView.parent.requestDisallowInterceptTouchEvent(true)
-            holder.itemView.onTouchEvent(event)
+        holder.itemView.recview_todo_inside.adapter = adapter
+        holder.itemView.recview_todo_inside.layoutManager = LinearLayoutManager(holder.itemView.context)
 
-            true
-        }
+
     }
 
     override fun getItemCount(): Int {
