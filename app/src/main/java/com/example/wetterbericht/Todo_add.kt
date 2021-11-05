@@ -10,9 +10,12 @@ import android.view.View
 import android.widget.AdapterView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.wetterbericht.model.room.subtask
-import com.example.wetterbericht.model.room.todo
-import com.example.wetterbericht.view.adapter.Recyclerview.Addtodosubadapter
+import com.example.wetterbericht.model.room.Do.Outside
+import com.example.wetterbericht.model.room.Do.subtaskoutside
+import com.example.wetterbericht.model.room.Inside
+import com.example.wetterbericht.model.room.subtaskinside
+import com.example.wetterbericht.view.adapter.Recyclerview.Subtask.Addsubinsideadapter
+import com.example.wetterbericht.view.adapter.Recyclerview.Subtask.Addsuboutsideadapter
 import com.example.wetterbericht.viewmodel.room.todoviewmodel
 import kotlinx.android.synthetic.main.activity_todo_add.*
 import java.text.SimpleDateFormat
@@ -21,16 +24,18 @@ import kotlin.collections.ArrayList
 
 class Todo_add : AppCompatActivity() {
     lateinit var todovmodel: todoviewmodel
-    lateinit var subtaslist : ArrayList<subtask>
+    lateinit var subtaslist : ArrayList<subtaskinside>
+    lateinit var subtaskout : ArrayList<subtaskoutside>
 
     private var dateformat = SimpleDateFormat("dd-MMM-YYY", Locale.ENGLISH)
     private var timeformat = SimpleDateFormat("hh : mm a", Locale.ENGLISH)
-
+    private var adapter = Addsubinsideadapter()
+    private var adapterout = Addsuboutsideadapter()
 
     private var kategori : String = ""
     private var warna : Any = ""
 
-    private var adapter = Addtodosubadapter()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_todo_add)
@@ -38,10 +43,13 @@ class Todo_add : AppCompatActivity() {
         todovmodel = ViewModelProvider(this).get(todoviewmodel::class.java)
         val statusitem = resources.getStringArray(R.array.status)
 
-        subtaslist = arrayListOf<subtask>()
+        subtaslist = arrayListOf<subtaskinside>()
+        subtaskout = arrayListOf<subtaskoutside>()
 
         val recview = rec_todoadd_sub
         recview.adapter = adapter
+        recview.layoutManager = LinearLayoutManager(this)
+        recview.adapter = adapterout
         recview.layoutManager = LinearLayoutManager(this)
 
         btn_actpick_out.setOnClickListener {
@@ -141,38 +149,52 @@ class Todo_add : AppCompatActivity() {
         timepick.show()
     }
 
+    //todo id subtask
 
     private fun setsub(){
         val task = et_todoadd_subtask.text.toString()
-        val data = subtask(0,task)
-        subtaslist.add(data)
+        if (kategori == "inside"){
+            val data = subtaskinside(0,task)
+            subtaslist.add(data)
+        }else if (kategori == "outside"){
+            val out = subtaskoutside(0,task)
+            subtaskout.add(out)
+        }
         Log.d("test sub", subtaslist.toString())
         adapter.setdata(subtaslist)
+        adapterout.setout(subtaskout)
 
     }
 
     private fun settodo(){
 
-        for (i in 0 until subtaslist.size){
-            val data = subtaslist.get(i).task.toString()
+            if(kategori == "inside"){
+                val inside = Inside(
+                    et_todoadd_nama.text.toString(),
+                    et_todoadd_desc.text.toString(),
+                    kategori,
+                    et_todoadd_tanggal.text.toString(),
+                    et_todoadd_waktu.text.toString(),
+                    warna.toString()
+                )
+                Log.d("input",kategori)
+                todovmodel.addinside(inside)
+                todovmodel.addsubinside(subtaslist)
 
-            val todo = todo(
-                et_todoadd_nama.text.toString(),
-                et_todoadd_desc.text.toString(),
-                kategori,
-                et_todoadd_tanggal.text.toString(),
-                et_todoadd_waktu.text.toString(),
-                warna.toString()
-            )
+            }else if(kategori == "outside"){
+                val outside = Outside(
+                    et_todoadd_nama.text.toString(),
+                    et_todoadd_desc.text.toString(),
+                    kategori,
+                    et_todoadd_tanggal.text.toString(),
+                    et_todoadd_waktu.text.toString(),
+                    warna.toString()
+                )
 
-            todovmodel.add(todo)
-            todovmodel.addsub(subtaslist)
-
-            Log.d("data", data.toString())
-        }
-
-
-
+                Log.d("input",kategori)
+                todovmodel.addoutside(outside)
+                todovmodel.addsuboutside(subtaskout)
+            }
 
 
     }

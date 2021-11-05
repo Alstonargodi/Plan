@@ -15,31 +15,16 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_fragment_home_to_fragment_todo"
-            app:destination="@id/fragment_todo" />
-        <action
             android:id="@+id/action_fragment_home_to_fragment_weather"
             app:destination="@id/fragment_weather" />
         <action
             android:id="@+id/action_fragment_home_to_fragment_setting"
             app:destination="@id/fragment_setting" />
-    </fragment>
-    <fragment
-        android:id="@+id/fragment_todo"
-        android:name="com.example.wetterbericht.view.Fragment.Fragment_todo"
-        android:label="fragment_todo"
-        tools:layout="@layout/fragment_todo">
         <action
-            android:id="@+id/action_fragment_todo_to_addfragment"
-            app:destination="@id/addfragment" />
-        <action
-            android:id="@+id/action_fragment_todo_to_update"
-            app:destination="@id/updatefragment" />
-        <action
-            android:id="@+id/action_fragment_todo_to_fragment_activity_inside"
+            android:id="@+id/action_fragment_home_to_fragment_activity_inside"
             app:destination="@id/fragment_activity_inside" />
         <action
-            android:id="@+id/action_fragment_todo_to_fragment_activity_outside"
+            android:id="@+id/action_fragment_home_to_fragment_activity_outside"
             app:destination="@id/fragment_activity_outside" />
     </fragment>
     <fragment
@@ -63,21 +48,13 @@
         android:label="fragment_setting"
         tools:layout="@layout/fragment_setting" />
     <fragment
-        android:id="@+id/addfragment"
-        android:name="com.example.wetterbericht.view.util.addfragment"
-        android:label="fragment_addfragment"
-        tools:layout="@layout/fragment_addfragment" />
-    <fragment
         android:id="@+id/updatefragment"
         android:name="com.example.wetterbericht.view.util.updatefragment"
         android:label="fragment_update"
         tools:layout="@layout/fragment_update" >
         <argument
             android:name="data"
-            app:argType="com.example.wetterbericht.model.room.todo" />
-        <action
-            android:id="@+id/action_updatefragment_to_fragment_todo"
-            app:destination="@id/fragment_todo" />
+            app:argType="com.example.wetterbericht.model.room.Inside" />
     </fragment>
     <fragment
         android:id="@+id/addweather"
@@ -107,37 +84,57 @@
         android:id="@+id/fragment_activity_inside"
         android:name="com.example.wetterbericht.Fragment_activity_inside"
         android:label="fragment_activity_inside"
-        tools:layout="@layout/fragment_activity_inside" />
+        tools:layout="@layout/fragment_activity_inside" >
+        <action
+            android:id="@+id/action_fragment_activity_inside_to_todo_add"
+            app:destination="@id/todo_add" />
+        <action
+            android:id="@+id/action_fragment_activity_inside_to_detail_activity"
+            app:destination="@id/detail_activity" />
+    </fragment>
     <fragment
         android:id="@+id/fragment_activity_outside"
         android:name="com.example.wetterbericht.Fragment_activity_outside"
         android:label="fragment_activity_outside"
-        tools:layout="@layout/fragment_activity_outside" />
-    <fragment
-        android:id="@+id/onboard"
-        android:name="com.example.wetterbericht.onboard"
-        android:label="fragment_onboard"
-        tools:layout="@layout/fragment_onboard" >
+        tools:layout="@layout/fragment_activity_outside" >
         <action
-            android:id="@+id/action_onboard_to_introsatu"
-            app:destination="@id/introsatu" />
+            android:id="@+id/action_fragment_activity_outside_to_todo_add"
+            app:destination="@id/todo_add" />
         <action
-            android:id="@+id/action_onboard_to_introdua"
-            app:destination="@id/introdua" />
+            android:id="@+id/action_fragment_activity_outside_to_detail_activity2"
+            app:destination="@id/detail_activity" />
     </fragment>
     <fragment
         android:id="@+id/introsatu"
         android:name="com.example.wetterbericht.view.Login.Onboard.introsatu"
         android:label="fragment_introsatu"
-        tools:layout="@layout/fragment_introsatu" />
+        tools:layout="@layout/fragment_introsatu" >
+        <action
+            android:id="@+id/action_introsatu_to_onboardmain"
+            app:destination="@id/onboardmain" />
+    </fragment>
     <fragment
         android:id="@+id/introdua"
         android:name="com.example.wetterbericht.view.Login.Onboard.introdua"
         android:label="fragment_introdua"
-        tools:layout="@layout/fragment_introdua" />
+        tools:layout="@layout/fragment_introdua" >
+        <action
+            android:id="@+id/action_introdua_to_onboardmain"
+            app:destination="@id/onboardmain" />
+    </fragment>
     <activity
         android:id="@+id/onboardmain"
         android:name="com.example.wetterbericht.view.Login.Onboard.Onboardmain"
         android:label="activity_onboardmain"
         tools:layout="@layout/activity_onboardmain" />
+    <activity
+        android:id="@+id/detail_activity"
+        android:name="com.example.wetterbericht.Detail_activity"
+        android:label="activity_detail"
+        tools:layout="@layout/activity_detail" />
+    <activity
+        android:id="@+id/todo_add"
+        android:name="com.example.wetterbericht.Todo_add"
+        android:label="activity_todo_add"
+        tools:layout="@layout/activity_todo_add" />
 </navigation>

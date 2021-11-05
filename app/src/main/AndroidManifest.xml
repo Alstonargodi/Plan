@@ -68,9 +68,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Wetterbericht">
         <activity
-            android:name=".view.Login.Onboard.Onboardmain"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:name=".Detail_activity"
             android:exported="false" />
+        <activity
+            android:name=".view.Login.Onboard.Onboardmain"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".Todo_add"
             android:exported="false"

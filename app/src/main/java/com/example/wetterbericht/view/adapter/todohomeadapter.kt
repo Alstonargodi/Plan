@@ -6,12 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wetterbericht.R
-import com.example.wetterbericht.model.room.todo
-import com.example.wetterbericht.model.room.todoandsubtask
+import com.example.wetterbericht.model.room.Inside
 import kotlinx.android.synthetic.main.cv_todo_home.view.*
 
 class todohomeadapter: RecyclerView.Adapter<todohomeadapter.viewholder>() {
-    private var datalist = emptyList<todoandsubtask>()
+    private var datalist = emptyList<Inside>()
     class viewholder(itemview : View): RecyclerView.ViewHolder(itemview) {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewholder {
@@ -20,9 +19,9 @@ class todohomeadapter: RecyclerView.Adapter<todohomeadapter.viewholder>() {
 
     override fun onBindViewHolder(holder: viewholder, position: Int) {
         var curitem = datalist[position]
-        holder.itemView.tv_home_date.text = curitem.todo.deadlinedate.toString()
-        holder.itemView.tv_home_time.text = curitem.todo.deadlinetime.toString()
-        holder.itemView.tv_home_status.text = curitem.todo.status.toString()
+        holder.itemView.tv_home_date.text = curitem.deadlinedate.toString()
+        holder.itemView.tv_home_time.text = curitem.deadlinetime.toString()
+        holder.itemView.tv_home_status.text = curitem.status.toString()
     }
 
     override fun getItemCount(): Int {
@@ -31,7 +30,7 @@ class todohomeadapter: RecyclerView.Adapter<todohomeadapter.viewholder>() {
         return datalist.size
     }
 
-    fun setdata(data : List<todoandsubtask>){
+    fun setdata(data : List<Inside>){
         datalist = data
         notifyDataSetChanged()
     }

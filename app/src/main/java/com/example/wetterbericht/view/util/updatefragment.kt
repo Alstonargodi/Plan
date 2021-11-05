@@ -11,9 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.wetterbericht.R
-import com.example.wetterbericht.model.room.todo
 import com.example.wetterbericht.viewmodel.room.todoviewmodel
-import kotlinx.android.synthetic.main.fragment_addfragment.view.*
 import kotlinx.android.synthetic.main.fragment_update.*
 import kotlinx.android.synthetic.main.fragment_update.view.*
 
@@ -56,7 +54,7 @@ class updatefragment : Fragment() {
         alert.setPositiveButton("yes"){_,_ ->
             mroomviewmodel.delete(args.data)
             Toast.makeText(requireContext(),"delete complete",Toast.LENGTH_SHORT).show()
-            findNavController().navigate(R.id.action_updatefragment_to_fragment_todo)
+
         }
         alert.setNegativeButton("no"){_,_ ->}
         alert.setTitle("are u want delete this ?")

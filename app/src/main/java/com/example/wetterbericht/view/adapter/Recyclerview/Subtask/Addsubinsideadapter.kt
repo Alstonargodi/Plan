@@ -1,16 +1,17 @@
-package com.example.wetterbericht.view.adapter.Recyclerview
+package com.example.wetterbericht.view.adapter.Recyclerview.Subtask
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wetterbericht.R
-import com.example.wetterbericht.model.room.subtask
-import com.example.wetterbericht.model.room.todo
+import com.example.wetterbericht.model.room.Do.subtaskoutside
+import com.example.wetterbericht.model.room.subtaskinside
 import kotlinx.android.synthetic.main.cv_subtask_actadd.view.*
 
-class Addtodosubadapter: RecyclerView.Adapter<Addtodosubadapter.viewholder>() {
-    var tododata = emptyList<subtask>()
+class Addsubinsideadapter: RecyclerView.Adapter<Addsubinsideadapter.viewholder>() {
+    var subin = emptyList<subtaskinside>()
+    var subput = emptyList<subtaskoutside>()
 
     class viewholder(view: View): RecyclerView.ViewHolder(view) {}
 
@@ -19,16 +20,23 @@ class Addtodosubadapter: RecyclerView.Adapter<Addtodosubadapter.viewholder>() {
     }
 
     override fun onBindViewHolder(holder: viewholder, position: Int) {
-        val item = tododata[position]
+        val item = subin[position]
+        val itemo = subput[position]
+
         holder.itemView.tvcb_subtask.text = item.task
     }
 
     override fun getItemCount(): Int {
-        return tododata.size
+        return subin.size
     }
 
-    fun setdata(data : List<subtask>){
-        tododata = data
+    fun setdata(data : List<subtaskinside>){
+        subin = data
+        notifyDataSetChanged()
+    }
+
+    fun setout(data: List<subtaskoutside>){
+        subput = data
         notifyDataSetChanged()
     }
 }

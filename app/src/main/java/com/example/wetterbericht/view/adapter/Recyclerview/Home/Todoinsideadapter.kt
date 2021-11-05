@@ -1,29 +1,21 @@
-package com.example.wetterbericht.view.adapter.Recyclerview
+package com.example.wetterbericht.view.adapter.Recyclerview.Home
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wetterbericht.R
-import com.example.wetterbericht.model.room.todo
 import kotlinx.android.synthetic.main.tcv_todo_card.view.*
-import android.view.MotionEvent
 
 import android.annotation.SuppressLint
-import android.view.View.OnTouchListener
+import android.content.Intent
 
-import android.widget.ScrollView
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.wetterbericht.model.room.todoandsubtask
-import com.example.wetterbericht.viewmodel.room.todoviewmodel
+import com.example.wetterbericht.Detail_activity
+import com.example.wetterbericht.model.room.insidendsubtask
 
 
 class Todoinsideadapter: RecyclerView.Adapter<Todoinsideadapter.viewholder>() {
-    var data = emptyList<todoandsubtask>()
-    val adapter = Addtodosubadapter()
+    var data = emptyList<insidendsubtask>()
 
     class viewholder(view : View): RecyclerView.ViewHolder(view) {}
 
@@ -37,19 +29,18 @@ class Todoinsideadapter: RecyclerView.Adapter<Todoinsideadapter.viewholder>() {
         holder.itemView.tvtoxo_card_name.text = item.todo.title
         holder.itemView.tvtoxo_card_tanggal.text = item.todo.deadlinedate
         holder.itemView.tvtoxo_card_waktu.text = item.todo.deadlinetime
-        holder.itemView.tvtoxo_card_desc.text = item.todo.desc
 
-        holder.itemView.recview_todo_inside.adapter = adapter
-        holder.itemView.recview_todo_inside.layoutManager = LinearLayoutManager(holder.itemView.context)
-
-
+        holder.itemView.lay_todo.setOnClickListener {
+            val intent = Intent(holder.itemView.context,Detail_activity::class.java)
+            holder.itemView.context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {
         return data.size
     }
 
-    fun setdata(list: List<todoandsubtask>){
+    fun setdata(list: List<insidendsubtask>){
         data = list
         notifyDataSetChanged()
     }

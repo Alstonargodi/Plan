@@ -10,8 +10,8 @@ import kotlinx.android.parcel.RawValue
 import java.sql.Date
 
 @Parcelize
-@Entity(tableName = "tabeltodo")
-data class todo(
+@Entity(tableName = "tabelinside")
+data class Inside(
     @PrimaryKey(autoGenerate = false)
     val title: String,
     val desc: String,
@@ -22,19 +22,19 @@ data class todo(
 ):Parcelable
 
 @Entity
-data class subtask(
+data class subtaskinside(
     @PrimaryKey(autoGenerate = true)
     val idsub : Int,
     val task : String
 )
 
 //relationship
-data class todoandsubtask(
+data class insidendsubtask(
     @Embedded
-    val todo : todo,
+    val todo : Inside,
     @Relation(
         parentColumn = "title",
         entityColumn = "idsub"
     )
-    val subtask : List<subtask>
+    val subtask : List<subtaskinside>
 )

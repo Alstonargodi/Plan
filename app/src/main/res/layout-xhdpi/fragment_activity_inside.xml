@@ -6,17 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".view.Fragment.Fragment_todo">
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rectodo_inside"
-        android:layout_width="376dp"
-        android:layout_height="510dp"
+        android:layout_width="357dp"
+        android:layout_height="644dp"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_add"
-        app:layout_constraintVertical_bias="1.0" />
-
+        app:layout_constraintVertical_bias="0.309" />
 
     <Button
         android:id="@+id/btn_add"
@@ -37,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="133dp" />
+        app:layout_constraintGuide_begin="7dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

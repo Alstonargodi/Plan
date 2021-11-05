@@ -4,44 +4,59 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.example.wetterbericht.model.room.todo
-import com.example.wetterbericht.model.room.todoDatabase
+import com.example.wetterbericht.model.room.Do.todoDatabase
 import com.example.wetterbericht.model.repo.room.todoRepo
-import com.example.wetterbericht.model.room.subtask
-import com.example.wetterbericht.model.room.todoandsubtask
+import com.example.wetterbericht.model.room.*
+import com.example.wetterbericht.model.room.Do.Outside
+import com.example.wetterbericht.model.room.Do.outsideandsubtask
+import com.example.wetterbericht.model.room.Do.subtaskoutside
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class todoviewmodel(application: Application): AndroidViewModel(application) {
     private val repo : todoRepo
-    val readdata : LiveData<List<todoandsubtask>>
+    val readinside : LiveData<List<insidendsubtask>>
+    val readoutside : LiveData<List<outsideandsubtask>>
 
     init {
         val mdao = todoDatabase.setdatabase(application).todoDao()
         repo = todoRepo(mdao)
-        readdata = repo.readdata
+        readinside = repo.readinside
+        readoutside = repo.readoutside
+
     }
 
-    fun add(todo: todo){
+    //main
+    fun addinside(todo: Inside){
         viewModelScope.launch(Dispatchers.IO) {
-            repo.adddata(todo)
+            repo.addinside(todo)
+        }
+    }
+    fun addoutside(outside: Outside){
+        viewModelScope.launch(Dispatchers.IO) {
+            repo.addoutside(outside)
         }
     }
 
-    fun addsub(subtask: ArrayList<subtask>){
+    //subtask
+    fun addsubinside(subtask: ArrayList<subtaskinside>){
         viewModelScope.launch(Dispatchers.IO) {
-            repo.addsub(subtask)
+            repo.addsubinside(subtask)
+        }
+    }
+    fun addsuboutside(subtaskoutside: ArrayList<subtaskoutside>){
+        viewModelScope.launch(Dispatchers.IO) {
+            repo.addsuboutside(subtaskoutside)
         }
     }
 
-
-    fun update(todo: todo){
+    fun update(todo: Inside){
         viewModelScope.launch(Dispatchers.IO) {
             repo.updatedata(todo)
         }
     }
 
-    fun delete(todo: todo){
+    fun delete(todo: Inside){
         viewModelScope.launch(Dispatchers.IO) {
             repo.deletedata(todo)
         }

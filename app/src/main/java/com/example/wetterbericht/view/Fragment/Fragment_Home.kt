@@ -1,25 +1,27 @@
 package com.example.wetterbericht.view.Fragment
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wetterbericht.R
-import com.example.wetterbericht.view.adapter.todohomeadapter
+import com.example.wetterbericht.view.adapter.Tab.Tabtodoadapter
 import com.example.wetterbericht.view.adapter.weatherhomeadapter
 import com.example.wetterbericht.viewmodel.room.Cuacaviewmodel
 import com.example.wetterbericht.viewmodel.room.todoviewmodel
+import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_home.view.*
 
 class Fragment_Home : Fragment() {
     lateinit var mroomodel : todoviewmodel
     lateinit var mcuacamodel : Cuacaviewmodel
 
+    lateinit var tabadapter : Tabtodoadapter
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_home, container, false)
@@ -45,15 +47,32 @@ class Fragment_Home : Fragment() {
             }
         })
 
+        val fragment = (activity as FragmentActivity).supportFragmentManager
+        val viewpager = view.viewp_act_home
+        val tablay = view.tabp_todo_home
+        tabadapter = Tabtodoadapter(fragment,lifecycle)
+        viewpager.adapter = tabadapter
+
+        TabLayoutMediator(tablay,viewpager){tab,position ->
+            when(position){
+                0 ->{
+                    tab.text = "outside"
+                }
+                1 ->{
+                    tab.text = "inside"
+                }
+            }
+        }.attach()
+
         //todolist
-        val madapter = todohomeadapter()
-        val recyclerhome = view.recviewhome
-        recyclerhome.adapter = madapter
-        recyclerhome.layoutManager = LinearLayoutManager(requireContext())
-        mroomodel = ViewModelProvider(this).get(todoviewmodel::class.java)
-        mroomodel.readdata.observe(viewLifecycleOwner, Observer { data ->
-            madapter.setdata(data)
-        })
+//        val madapter = todohomeadapter()
+//        val recyclerhome = view.recviewhome
+//        recyclerhome.adapter = madapter
+//        recyclerhome.layoutManager = LinearLayoutManager(requireContext())
+//        mroomodel = ViewModelProvider(this).get(todoviewmodel::class.java)
+//        mroomodel.readdata.observe(viewLifecycleOwner, Observer { data ->
+//            madapter.setdata(data)
+//        })
 
         return view
     }

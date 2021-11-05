@@ -6,13 +6,14 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wetterbericht.R
+import com.example.wetterbericht.model.room.Inside
+import com.example.wetterbericht.model.room.insidendsubtask
 
-import com.example.wetterbericht.model.room.todo
 import kotlinx.android.synthetic.main.cv_todo.view.*
 
 class todoadapter : RecyclerView.Adapter<todoadapter.viewholder>() {
 
-    private var datalist = emptyList<todo>()
+    private var datalist = emptyList<Inside>()
 
     class viewholder(itemview : View): RecyclerView.ViewHolder(itemview) {}
 
@@ -28,16 +29,13 @@ class todoadapter : RecyclerView.Adapter<todoadapter.viewholder>() {
         holder.itemView.tv_todo_time.text = curitem.deadlinetime.toString()
         holder.itemView.tv_todo_desc.text = curitem.desc
 
-        holder.itemView.cv_todo.setOnClickListener {
-
-        }
     }
 
     override fun getItemCount(): Int {
         return datalist.size
     }
 
-    fun setdata(data : List<todo>){
+    fun setdata(data : List<Inside>){
         datalist = data
         notifyDataSetChanged()
     }

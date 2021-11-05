@@ -1,11 +1,19 @@
-package com.example.wetterbericht.model.room
+package com.example.wetterbericht.model.room.Do
 
 import android.content.Context
 import androidx.room.*
 import com.example.wetterbericht.model.dao.todoDao
+import com.example.wetterbericht.model.room.Inside
+import com.example.wetterbericht.model.room.subtaskinside
 import com.example.wetterbericht.model.util.converters
 
-@Database(entities = [todo::class,subtask::class],version = 10,exportSchema = false)
+@Database(entities = [
+    Inside::class,
+    Outside::class,
+    subtaskoutside::class,
+    subtaskinside::class],
+    version = 11,
+    exportSchema = false)
 @TypeConverters(converters::class)
 abstract class todoDatabase: RoomDatabase() {
     abstract fun todoDao() : todoDao
@@ -14,7 +22,7 @@ abstract class todoDatabase: RoomDatabase() {
         @Volatile
         private var minstance : todoDatabase? = null
 
-        fun setdatabase(context: Context): todoDatabase{
+        fun setdatabase(context: Context): todoDatabase {
             val tempinstace = minstance
             if(tempinstace != null){
                 return tempinstace

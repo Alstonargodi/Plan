@@ -2,30 +2,43 @@ package com.example.wetterbericht.model.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.example.wetterbericht.model.room.subtask
-import com.example.wetterbericht.model.room.todo
-import com.example.wetterbericht.model.room.todoandsubtask
+import com.example.wetterbericht.model.room.*
+import com.example.wetterbericht.model.room.Do.Outside
+import com.example.wetterbericht.model.room.Do.outsideandsubtask
+import com.example.wetterbericht.model.room.Do.subtaskoutside
 
 @Dao
 abstract class todoDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun adddata(todo: todo)
+    abstract fun adddatainside(todo: Inside)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun addsub(subtask: ArrayList<subtask>)
+    abstract fun addoutside(outside : Outside)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    abstract fun addsubinside(subtask: ArrayList<subtaskinside>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    abstract fun addsuboutside(subtask: ArrayList<subtaskoutside>)
+
 
     @Transaction
-    @Query("select*from tabeltodo")
-    abstract fun readdata() : LiveData<List<todoandsubtask>>
+    @Query("select*from tabelinside")
+    abstract fun readinside() : LiveData<List<insidendsubtask>>
+
+    @Transaction
+    @Query("select*from tabeloutside")
+    abstract fun readoutside() : LiveData<List<outsideandsubtask>>
+
 
     @Delete
-    abstract fun deletedata(todo: todo)
+    abstract fun deletedata(todo: Inside)
 
     @Update
-    abstract fun updatedata(todo: todo)
+    abstract fun updatedata(todo: Inside)
 
-    @Query("delete from tabeltodo")
+    @Query("delete from tabelInside")
     abstract fun destroytodo()
 
 }
