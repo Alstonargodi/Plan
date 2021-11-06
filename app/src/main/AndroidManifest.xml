@@ -69,6 +69,7 @@
         android:theme="@style/Theme.Wetterbericht">
         <activity
             android:name=".Detail_activity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="false" />
         <activity
             android:name=".view.Login.Onboard.Onboardmain"

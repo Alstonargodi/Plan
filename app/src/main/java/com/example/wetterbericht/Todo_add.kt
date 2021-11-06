@@ -34,6 +34,7 @@ class Todo_add : AppCompatActivity() {
 
     private var kategori : String = ""
     private var warna : Any = ""
+    private var count : Int = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,17 +50,19 @@ class Todo_add : AppCompatActivity() {
         val recview = rec_todoadd_sub
         recview.adapter = adapter
         recview.layoutManager = LinearLayoutManager(this)
-        recview.adapter = adapterout
-        recview.layoutManager = LinearLayoutManager(this)
+
+
 
         btn_actpick_out.setOnClickListener {
             btn_actpick_out.setBackgroundColor(Color.GRAY)
             kategori = "outside"
         }
+
         btn_actpick_in.setOnClickListener {
             btn_actpick_in.setBackgroundColor(Color.GRAY)
             kategori = "inside"
         }
+
         btn_act_tanggal.setOnClickListener {
             datepick()
         }
@@ -81,6 +84,7 @@ class Todo_add : AppCompatActivity() {
 
         btn_addsubtask.setOnClickListener {
             setsub()
+            count++
         }
 
 
@@ -150,19 +154,26 @@ class Todo_add : AppCompatActivity() {
     }
 
     //todo id subtask
-
     private fun setsub(){
+        val nama = et_todoadd_nama.text.toString()
         val task = et_todoadd_subtask.text.toString()
+
+
+
         if (kategori == "inside"){
-            val data = subtaskinside(0,task)
+            val subid = nama + count
+            val data = subtaskinside(subid,task)
+            Log.d("data", data.toString())
+
             subtaslist.add(data)
+            adapter.setdata(subtaslist)
+
         }else if (kategori == "outside"){
             val out = subtaskoutside(0,task)
             subtaskout.add(out)
+            adapterout.setout(subtaskout)
         }
         Log.d("test sub", subtaslist.toString())
-        adapter.setdata(subtaslist)
-        adapterout.setout(subtaskout)
 
     }
 

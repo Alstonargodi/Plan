@@ -12,7 +12,7 @@ import com.example.wetterbericht.model.util.converters
     Outside::class,
     subtaskoutside::class,
     subtaskinside::class],
-    version = 11,
+    version = 12,
     exportSchema = false)
 @TypeConverters(converters::class)
 abstract class todoDatabase: RoomDatabase() {
