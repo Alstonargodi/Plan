@@ -43,8 +43,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mbinding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(mbinding.root)
+        setContentView(R.layout.activity_main)
 
 
         //setup bottomnavmenu

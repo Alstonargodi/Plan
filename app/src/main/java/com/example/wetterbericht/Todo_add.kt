@@ -33,9 +33,10 @@ class Todo_add : AppCompatActivity() {
     private var adapterout = Addsuboutsideadapter()
 
     private var kategori : String = ""
+    private var status : String = ""
+
     private var warna : Any = ""
     private var count : Int = 0
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,15 +53,35 @@ class Todo_add : AppCompatActivity() {
         recview.layoutManager = LinearLayoutManager(this)
 
 
-
         btn_actpick_out.setOnClickListener {
-            btn_actpick_out.setBackgroundColor(Color.GRAY)
+            btn_actpick_out.setBackgroundResource(R.drawable.bgchoice_outside)
+            btn_actpick_in.setBackgroundResource(R.drawable.bg_stroke_choice)
             kategori = "outside"
         }
 
         btn_actpick_in.setOnClickListener {
-            btn_actpick_in.setBackgroundColor(Color.GRAY)
+            btn_actpick_in.setBackgroundResource(R.drawable.bgchoice_inside)
+            btn_actpick_out.setBackgroundResource(R.drawable.bg_stroke_choice)
             kategori = "inside"
+        }
+
+        btn_statpick_low.setOnClickListener {
+            btn_statpick_low.setBackgroundResource(R.drawable.bgchoice_stat_low)
+            btn_statpick_med.setBackgroundResource(R.drawable.bg_stroke_choice)
+            btn_statpick_high.setBackgroundResource(R.drawable.bg_stroke_choice)
+            status = "low"
+        }
+        btn_statpick_med.setOnClickListener {
+            btn_statpick_med.setBackgroundResource(R.drawable.bgchoice_stat_med)
+            btn_statpick_low.setBackgroundResource(R.drawable.bg_stroke_choice)
+            btn_statpick_high.setBackgroundResource(R.drawable.bg_stroke_choice)
+            status = "medium"
+        }
+        btn_statpick_high.setOnClickListener {
+            btn_statpick_high.setBackgroundResource(R.drawable.bgchoice_stat_high)
+            btn_statpick_med.setBackgroundResource(R.drawable.bg_stroke_choice)
+            btn_statpick_low.setBackgroundResource(R.drawable.bg_stroke_choice)
+            status = "high"
         }
 
         btn_act_tanggal.setOnClickListener {
@@ -68,17 +89,6 @@ class Todo_add : AppCompatActivity() {
         }
         btn_act_waktu.setOnClickListener {
             timepick()
-        }
-
-        spinner_act.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                var warna = parent?.getItemAtPosition(position)
-                if (warna!= null){
-                    colorpick(warna)
-                }
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
 
 
@@ -94,23 +104,19 @@ class Todo_add : AppCompatActivity() {
 
     }
 
-    private fun colorpick(item : Any){
-        if (item == "plain"){
+    private fun colorpick(){
+        if (status == ""){
             val color = Color.parseColor("#E4E4E4")
-            spinner_act.setBackgroundColor(color)
             warna = color
-        }else if(item == "low"){
+        }else if(status == "low"){
             val color = Color.parseColor("#4DBC08")
-            spinner_act.setBackgroundColor(color)
             warna = color
             Log.d("warna dipilih",warna.toString())
-        }else if(item == "medium"){
+        }else if(status == "medium"){
             val color = Color.parseColor("#FF810D")
-            spinner_act.setBackgroundColor(color)
             warna = color
-        }else if (item == "high"){
+        }else if (status == "high"){
             val color = Color.parseColor("#FF1B0D")
-            spinner_act.setBackgroundColor(color)
             warna = color
         }
     }
@@ -157,8 +163,6 @@ class Todo_add : AppCompatActivity() {
     private fun setsub(){
         val nama = et_todoadd_nama.text.toString()
         val task = et_todoadd_subtask.text.toString()
-
-
 
         if (kategori == "inside"){
             val subid = nama + count

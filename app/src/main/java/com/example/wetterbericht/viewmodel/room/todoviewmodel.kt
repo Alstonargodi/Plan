@@ -17,12 +17,15 @@ class todoviewmodel(application: Application): AndroidViewModel(application) {
     private val repo : todoRepo
     val readinside : LiveData<List<insidendsubtask>>
     val readoutside : LiveData<List<outsideandsubtask>>
+    val readsubtaskin : LiveData<List<subtaskinside>>
 
     init {
         val mdao = todoDatabase.setdatabase(application).todoDao()
+
         repo = todoRepo(mdao)
         readinside = repo.readinside
         readoutside = repo.readoutside
+        readsubtaskin = repo.readsubtask
 
     }
 
@@ -47,6 +50,12 @@ class todoviewmodel(application: Application): AndroidViewModel(application) {
     fun addsuboutside(subtaskoutside: ArrayList<subtaskoutside>){
         viewModelScope.launch(Dispatchers.IO) {
             repo.addsuboutside(subtaskoutside)
+        }
+    }
+
+    fun selectsub(name : String){
+        viewModelScope.launch(Dispatchers.IO) {
+            repo.selectsub(name)
         }
     }
 

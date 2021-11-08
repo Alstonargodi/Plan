@@ -8,6 +8,7 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/lay_curr_weather"
         android:layout_width="422dp"
         android:layout_height="734dp"
         android:background="@drawable/wclear"

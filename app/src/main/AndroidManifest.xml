@@ -59,6 +59,10 @@
             android:screenSize="normal" />
     </compatible-screens>
 
+
+
+
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/wdologo"
@@ -67,6 +71,16 @@
         android:roundIcon="@drawable/wdologo"
         android:supportsRtl="true"
         android:theme="@style/Theme.Wetterbericht">
+        <receiver
+            android:name=".view.util.todo.Alarmreceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
         <activity
             android:name=".Detail_activity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"

@@ -13,6 +13,8 @@ import android.os.Bundle
 
 import com.example.wetterbericht.Detail_activity
 import com.example.wetterbericht.model.room.insidendsubtask
+import com.example.wetterbericht.view.receiver.alarmreceiver
+import com.example.wetterbericht.view.util.todo.Alarmreceiver
 
 
 class Todoinsideadapter: RecyclerView.Adapter<Todoinsideadapter.viewholder>() {
@@ -36,6 +38,7 @@ class Todoinsideadapter: RecyclerView.Adapter<Todoinsideadapter.viewholder>() {
             val intent = Intent(holder.itemView.context,Detail_activity::class.java)
             intent.putExtra("namaact",item.todo.title)
             intent.putExtra("desc",item.todo.desc)
+
 
 
             holder.itemView.context.startActivity(intent)

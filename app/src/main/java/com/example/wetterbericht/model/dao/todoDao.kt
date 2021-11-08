@@ -31,6 +31,9 @@ abstract class todoDao {
     @Query("select*from tabeloutside")
     abstract fun readoutside() : LiveData<List<outsideandsubtask>>
 
+    @Transaction
+    @Query("select*from subtaskinside where idsub like :name")
+    abstract fun selectsubtask(name : String): LiveData<List<subtaskinside>>
 
     @Delete
     abstract fun deletedata(todo: Inside)

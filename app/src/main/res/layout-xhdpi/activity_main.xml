@@ -19,9 +19,11 @@
         android:layout_height="wrap_content"
 
         android:background="@drawable/bg_bottomneu"
+        android:visibility="visible"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/menu">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
+
 
 </LinearLayout>

@@ -8,8 +8,10 @@ import com.example.wetterbericht.model.room.Do.outsideandsubtask
 import com.example.wetterbericht.model.room.Do.subtaskoutside
 
 class todoRepo(val dao: todoDao) {
+    val name : String = ""
     val readinside : LiveData<List<insidendsubtask>> = dao.readinside()
     val readoutside : LiveData<List<outsideandsubtask>> = dao.readoutside()
+    val readsubtask : LiveData<List<subtaskinside>> = dao.selectsubtask("tugas0")
 
     fun addinside(todo :Inside){
         dao.adddatainside(todo)
@@ -25,6 +27,10 @@ class todoRepo(val dao: todoDao) {
 
     fun addsuboutside(subtask: ArrayList<subtaskoutside>){
         dao.addsuboutside(subtask)
+    }
+
+    fun selectsub(name : String){
+        dao.selectsubtask(name)
     }
 
     fun updatedata(todo: Inside){
