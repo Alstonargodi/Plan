@@ -10,6 +10,9 @@ import android.view.View
 import android.widget.AdapterView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.wetterbericht.model.Firebase.Input
+import com.example.wetterbericht.model.Firebase.Insidedo
+import com.example.wetterbericht.model.Firebase.Subtaskdo
 import com.example.wetterbericht.model.room.Do.Outside
 import com.example.wetterbericht.model.room.Do.subtaskoutside
 import com.example.wetterbericht.model.room.Inside
@@ -182,7 +185,6 @@ class Todo_add : AppCompatActivity() {
     }
 
     private fun settodo(){
-
             if(kategori == "inside"){
                 val inside = Inside(
                     et_todoadd_nama.text.toString(),
@@ -193,8 +195,22 @@ class Todo_add : AppCompatActivity() {
                     warna.toString()
                 )
                 Log.d("input",kategori)
-                todovmodel.addinside(inside)
-                todovmodel.addsubinside(subtaslist)
+
+                val insidefb = Insidedo(
+                    et_todoadd_nama.text.toString(),
+                    et_todoadd_desc.text.toString(),
+                    kategori,
+                    et_todoadd_tanggal.text.toString(),
+                    et_todoadd_waktu.text.toString(),
+                    warna.toString()
+                )
+
+
+                Input().inputinside(insidefb,subtaslist)
+
+
+//                todovmodel.addinside(inside)
+//                todovmodel.addsubinside(subtaslist)
 
             }else if(kategori == "outside"){
                 val outside = Outside(

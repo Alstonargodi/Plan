@@ -1,12 +1,21 @@
 package com.example.wetterbericht
 
 import android.app.Activity
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Looper
 import android.util.Log
 import androidx.core.app.ActivityCompat
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -16,6 +25,8 @@ import com.example.wetterbericht.databinding.ActivityMainBinding
 import com.example.wetterbericht.model.APIweather.Main
 import com.example.wetterbericht.model.repo.api.mainrepo
 import com.example.wetterbericht.model.room.cuaca
+import com.example.wetterbericht.view.receiver.alarmreceiver
+import com.example.wetterbericht.view.util.todo.Alarmreceiver
 import com.example.wetterbericht.viewmodel.api.Mainviewmodel
 import com.example.wetterbericht.viewmodel.api.Vmfactory
 import com.example.wetterbericht.viewmodel.room.Cuacaviewmodel
@@ -26,6 +37,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import okhttp3.internal.notify
 import kotlin.math.log
 
 class MainActivity : AppCompatActivity() {
@@ -41,9 +53,18 @@ class MainActivity : AppCompatActivity() {
     lateinit var locationcallback : LocationCallback
     private var code = 100
 
+    //notif
+    val name = "todo alarm"
+    val desc = "test"
+    val idnotif = "alarmid"
+    val notifid = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        fab_add.setOnClickListener {
+            startActivity(Intent(this,Todo_add::class.java))
+        }
 
 
         //setup bottomnavmenu
@@ -71,6 +92,10 @@ class MainActivity : AppCompatActivity() {
                 updateweather()
             }
         }
+
+        //notif
+        val context = this
+        Alarmreceiver()
     }
 
     suspend fun gpsguaranted(){
@@ -152,5 +177,32 @@ class MainActivity : AppCompatActivity() {
                 cviewmodel.add(dataup)
             })
         })
+    }
+
+    fun createnotif() {
+        //notif channel
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            Log.d("alarm", "alarm")
+            val notification = NotificationCompat.Builder(this,idnotif)
+                .setContentTitle("test notif")
+                .setContentText("notifikasi")
+                .setSmallIcon(R.drawable.ic_star_black_24dp)
+                .setPriority(NotificationCompat.PRIORITY_LOW)
+                .build()
+            val notificationmanager = NotificationManagerCompat.from(this)
+
+            notificationmanager.notify(notifid,notification)
+
+            val important = NotificationManager.IMPORTANCE_HIGH
+
+            val channel = NotificationChannel(idnotif, name, important).apply {
+                lightColor = Color.GREEN
+                enableLights(true)
+            }
+            channel.description = desc
+
+           val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            manager.createNotificationChannel(channel)
+        }
     }
 }
