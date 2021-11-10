@@ -24,13 +24,15 @@ abstract class todoDao {
 
 
     @Transaction
-    @Query("select*from tabelinside")
+    @Query("select*from tabelinside ORDER BY deadlinedate")
     abstract fun readinside() : LiveData<List<insidendsubtask>>
 
     @Transaction
-    @Query("select*from tabeloutside")
+    @Query("select*from tabeloutside ORDER BY deadlinedate")
     abstract fun readoutside() : LiveData<List<outsideandsubtask>>
 
+
+    //select subtask by id
     @Transaction
     @Query("select*from subtaskinside where idsub like :name")
     abstract fun selectsubtask(name : String): LiveData<List<subtaskinside>>

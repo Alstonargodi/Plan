@@ -36,7 +36,6 @@ class Todo_add : AppCompatActivity() {
     private var adapterout = Addsuboutsideadapter()
 
     private var kategori : String = ""
-    private var status : String = ""
 
     private var warna : Any = ""
     private var count : Int = 0
@@ -72,19 +71,19 @@ class Todo_add : AppCompatActivity() {
             btn_statpick_low.setBackgroundResource(R.drawable.bgchoice_stat_low)
             btn_statpick_med.setBackgroundResource(R.drawable.bg_stroke_choice)
             btn_statpick_high.setBackgroundResource(R.drawable.bg_stroke_choice)
-            status = "low"
+            colorpick("low")
         }
         btn_statpick_med.setOnClickListener {
             btn_statpick_med.setBackgroundResource(R.drawable.bgchoice_stat_med)
             btn_statpick_low.setBackgroundResource(R.drawable.bg_stroke_choice)
             btn_statpick_high.setBackgroundResource(R.drawable.bg_stroke_choice)
-            status = "medium"
+            colorpick("medium")
         }
         btn_statpick_high.setOnClickListener {
             btn_statpick_high.setBackgroundResource(R.drawable.bgchoice_stat_high)
             btn_statpick_med.setBackgroundResource(R.drawable.bg_stroke_choice)
             btn_statpick_low.setBackgroundResource(R.drawable.bg_stroke_choice)
-            status = "high"
+            colorpick("high")
         }
 
         btn_act_tanggal.setOnClickListener {
@@ -107,7 +106,7 @@ class Todo_add : AppCompatActivity() {
 
     }
 
-    private fun colorpick(){
+    private fun colorpick(status : String){
         if (status == ""){
             val color = Color.parseColor("#E4E4E4")
             warna = color
@@ -162,7 +161,7 @@ class Todo_add : AppCompatActivity() {
         timepick.show()
     }
 
-    //todo id subtask
+
     private fun setsub(){
         val nama = et_todoadd_nama.text.toString()
         val task = et_todoadd_subtask.text.toString()
@@ -194,20 +193,9 @@ class Todo_add : AppCompatActivity() {
                     et_todoadd_waktu.text.toString(),
                     warna.toString()
                 )
-                Log.d("input",kategori)
+                Log.d("input",warna.toString())
 
-                val insidefb = Insidedo(
-                    et_todoadd_nama.text.toString(),
-                    et_todoadd_desc.text.toString(),
-                    kategori,
-                    et_todoadd_tanggal.text.toString(),
-                    et_todoadd_waktu.text.toString(),
-                    warna.toString()
-                )
-
-
-                Input().inputinside(insidefb,subtaslist)
-
+                Input().inputinside(inside,subtaslist)
 
 //                todovmodel.addinside(inside)
 //                todovmodel.addsubinside(subtaslist)

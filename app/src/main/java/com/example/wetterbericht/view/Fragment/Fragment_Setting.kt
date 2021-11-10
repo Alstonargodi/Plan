@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.wetterbericht.R
+import com.example.wetterbericht.model.Firebase.Input
 import com.example.wetterbericht.model.repo.api.mainrepo
 import com.example.wetterbericht.viewmodel.api.Mainviewmodel
 import com.example.wetterbericht.viewmodel.api.Vmfactory
@@ -19,11 +20,7 @@ import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
 import kotlinx.android.synthetic.main.fragment_setting.view.*
 
-/**
- * A simple [Fragment] subclass.
- * Use the [Fragment_Setting.newInstance] factory method to
- * create an instance of this fragment.
- */
+
 class Fragment_Setting : Fragment() {
     lateinit var mviewmodel : todoviewmodel
     lateinit var mapiviewmodel : Mainviewmodel
@@ -72,6 +69,13 @@ class Fragment_Setting : Fragment() {
             alert.setMessage("choose")
             alert.create().show()
         }
+
+
+        view.btn_retriv.setOnClickListener {
+            Input().retrivedataall()
+        }
+
+
         return view
     }
 
