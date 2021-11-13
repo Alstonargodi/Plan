@@ -63,6 +63,8 @@ class Input {
 
                         val judul = data.title.toString()
                         //sub
+
+                        //todo alarm manager notif
                         databaseReference.child(userid).child("inside").child(judul).child("subtask").child(judul).addValueEventListener(object : ValueEventListener{
                             override fun onDataChange(snapshot: DataSnapshot) {
                                 if (snapshot.exists()){

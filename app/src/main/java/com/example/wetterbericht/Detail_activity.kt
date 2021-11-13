@@ -33,6 +33,9 @@ class Detail_activity : AppCompatActivity() {
         recview.adapter = adapter
         recview.layoutManager = LinearLayoutManager(this)
 
+
+        //todo subtask
+
         tdoviewmodel.selectsub("tugas0")
         tdoviewmodel.readsubtaskin.observe(this, Observer { respon ->
             adapter.setdata(respon)

@@ -11,6 +11,7 @@ import com.example.wetterbericht.R
 import com.example.wetterbericht.model.room.cuaca
 import kotlinx.android.synthetic.main.cv_weather.view.*
 import kotlinx.android.synthetic.main.cv_weather_home.view.*
+import kotlin.math.round
 
 class weatherhomeadapter: RecyclerView.Adapter<weatherhomeadapter.viewmodel>() {
     private var datalist = emptyList<cuaca>()
@@ -24,9 +25,13 @@ class weatherhomeadapter: RecyclerView.Adapter<weatherhomeadapter.viewmodel>() {
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: weatherhomeadapter.viewmodel, position: Int) {
         var curitem = datalist[position]
+
+        val temp = curitem.temp.toDouble()
+        val ftemp = round(temp).toString()
+
         holder.itemView.tv_homew_loca.text = curitem.loc
         holder.itemView.tv_homew_desc.text = curitem.desc
-        holder.itemView.tv_homew_temp.text = curitem.temp.toString()
+        holder.itemView.tv_homew_temp.text = ftemp
 
 
         Glide.with(holder.itemView.context)

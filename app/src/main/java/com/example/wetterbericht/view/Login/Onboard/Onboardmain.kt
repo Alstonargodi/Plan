@@ -3,6 +3,7 @@ package com.example.wetterbericht.view.Login.Onboard
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.wetterbericht.MainActivity
 import com.example.wetterbericht.R
 import com.example.wetterbericht.view.Login.Loginactivity
 import com.example.wetterbericht.view.adapter.Tab.Tabonboardadapter
@@ -36,7 +37,7 @@ class Onboardmain : AppCompatActivity() {
 
 
         btn_onboard_next.setOnClickListener {
-            startActivity(Intent(this,Loginactivity::class.java))
+            startActivity(Intent(this,MainActivity::class.java))
         }
     }
 

@@ -2,6 +2,7 @@ package com.example.wetterbericht
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,7 +10,9 @@ import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.wetterbericht.model.APIweather.Main
 import com.example.wetterbericht.model.Firebase.Input
 import com.example.wetterbericht.model.Firebase.Insidedo
 import com.example.wetterbericht.model.Firebase.Subtaskdo
@@ -93,15 +96,17 @@ class Todo_add : AppCompatActivity() {
             timepick()
         }
 
-
         btn_addsubtask.setOnClickListener {
             setsub()
             count++
         }
 
-
         btn_addtodo.setOnClickListener {
             settodo()
+        }
+
+        btnbackhome.setOnClickListener {
+            startActivity(Intent(this,MainActivity::class.java))
         }
 
     }

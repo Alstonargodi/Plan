@@ -43,10 +43,6 @@ class Fragment_activity_inside : Fragment() {
 
         })
 
-
-        view.btn_add.setOnClickListener {
-            startActivity(Intent(context,Todo_add::class.java))
-        }
         return view
     }
 

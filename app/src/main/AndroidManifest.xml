@@ -59,7 +59,6 @@
             android:screenSize="normal" />
     </compatible-screens>
 
-
     <application
         android:allowBackup="true"
         android:icon="@drawable/wdologo"
@@ -68,6 +67,7 @@
         android:roundIcon="@drawable/wdologo"
         android:supportsRtl="true"
         android:theme="@style/Theme.Wetterbericht">
+
         <receiver
             android:name=".view.util.todo.Alarmreceiver"
             android:enabled="true"
@@ -79,9 +79,14 @@
         </receiver>
 
         <activity
-            android:name=".Detail_activity"
+            android:name=".Detail_weather"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="false" />
+
+        <activity
+            android:name=".Detail_activity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".view.Login.Onboard.Onboardmain"
             android:exported="false"

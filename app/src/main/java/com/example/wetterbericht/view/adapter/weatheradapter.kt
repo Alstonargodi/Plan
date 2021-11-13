@@ -1,11 +1,13 @@
 package com.example.wetterbericht.view.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.wetterbericht.Detail_weather
 import com.example.wetterbericht.R
 
 import com.example.wetterbericht.model.room.cuaca
@@ -37,9 +39,25 @@ class weatheradapter: RecyclerView.Adapter<weatheradapter.viewholder>() {
             .load(curitem.image)
             .into(holder.itemView.img_weather_icon)
 
+//        holder.itemView.cv_weather.setOnClickListener {
+//            val intent = Fragment_WeatherDirections.actionFragmentWeatherToCurrWeather(curitem)
+//            holder.itemView.findNavController().navigate(intent)
+//        }
+
         holder.itemView.cv_weather.setOnClickListener {
-            val intent = Fragment_WeatherDirections.actionFragmentWeatherToCurrWeather(curitem)
-            holder.itemView.findNavController().navigate(intent)
+            val intent = Intent(holder.itemView.context,Detail_weather::class.java)
+            intent.putExtra("loc",curitem.loc)
+            intent.putExtra("desc",curitem.desc)
+            intent.putExtra("temp",curitem.temp)
+            intent.putExtra("feels",curitem.temp)
+            intent.putExtra("wind",curitem.windspeed)
+            intent.putExtra("visib",curitem.visibility)
+            intent.putExtra("pres",curitem.presure)
+            intent.putExtra("cloud",curitem.cloud)
+
+
+            holder.itemView.context.startActivity(intent)
+
         }
     }
 

@@ -41,12 +41,22 @@
         <action
             android:id="@+id/action_fragment_weather_to_currWeather"
             app:destination="@id/currWeather" />
+        <action
+            android:id="@+id/action_fragment_weather_to_detail_weather"
+            app:destination="@id/detail_weather" />
     </fragment>
     <fragment
         android:id="@+id/fragment_setting"
         android:name="com.example.wetterbericht.view.Fragment.Fragment_Setting"
         android:label="fragment_setting"
-        tools:layout="@layout/fragment_setting" />
+        tools:layout="@layout/fragment_setting" >
+        <action
+            android:id="@+id/action_fragment_setting_to_loginactivity"
+            app:destination="@id/loginactivity" />
+        <action
+            android:id="@+id/action_fragment_setting_to_signupactivity"
+            app:destination="@id/signupactivity" />
+    </fragment>
     <fragment
         android:id="@+id/updatefragment"
         android:name="com.example.wetterbericht.view.util.updatefragment"
@@ -137,4 +147,14 @@
         android:name="com.example.wetterbericht.Todo_add"
         android:label="activity_todo_add"
         tools:layout="@layout/activity_todo_add" />
+    <activity
+        android:id="@+id/signupactivity"
+        android:name="com.example.wetterbericht.view.Login.Signupactivity"
+        android:label="activity_signupactivity"
+        tools:layout="@layout/activity_signupactivity" />
+    <activity
+        android:id="@+id/detail_weather"
+        android:name="com.example.wetterbericht.Detail_weather"
+        android:label="activity_detail_weather"
+        tools:layout="@layout/activity_detail_weather" />
 </navigation>
