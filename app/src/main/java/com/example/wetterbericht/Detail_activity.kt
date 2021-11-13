@@ -35,7 +35,6 @@ class Detail_activity : AppCompatActivity() {
 
 
         //todo subtask
-
         tdoviewmodel.selectsub("tugas0")
         tdoviewmodel.readsubtaskin.observe(this, Observer { respon ->
             adapter.setdata(respon)

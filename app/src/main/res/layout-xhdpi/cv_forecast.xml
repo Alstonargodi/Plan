@@ -6,8 +6,8 @@
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="361dp"
-        android:layout_height="76dp"
+        android:layout_width="370dp"
+        android:layout_height="77dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -16,8 +16,8 @@
         app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="348dp"
-            android:layout_height="67dp"
+            android:layout_width="362dp"
+            android:layout_height="66dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.461"
@@ -27,7 +27,7 @@
 
             <TextView
                 android:id="@+id/tv_f_date"
-                android:layout_width="102dp"
+                android:layout_width="195dp"
                 android:layout_height="19dp"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="4dp"

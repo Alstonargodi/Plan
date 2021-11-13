@@ -54,6 +54,7 @@ class weatheradapter: RecyclerView.Adapter<weatheradapter.viewholder>() {
             intent.putExtra("visib",curitem.visibility)
             intent.putExtra("pres",curitem.presure)
             intent.putExtra("cloud",curitem.cloud)
+            intent.putExtra("link",curitem.image)
 
 
             holder.itemView.context.startActivity(intent)
