@@ -11,16 +11,17 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout9"
-        android:layout_width="392dp"
-        android:layout_height="139dp"
+        android:layout_width="397dp"
+        android:layout_height="53dp"
         android:background="@drawable/bg_corner_white"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/textView23"
-            android:layout_width="385dp"
-            android:layout_height="36dp"
+            android:layout_width="355dp"
+            android:layout_height="33dp"
             android:fontFamily="@font/righteous"
             android:gravity="center"
             android:letterSpacing="0.1"
@@ -29,122 +30,124 @@
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.555"
+            app:layout_constraintHorizontal_bias="0.51"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.496" />
+            app:layout_constraintVertical_bias="0.384" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/textView22"
-        android:layout_width="247dp"
-        android:layout_height="23dp"
-        android:layout_marginTop="28dp"
-        android:fontFamily="@font/righteous"
-        android:letterSpacing="0.1"
-        android:text="email"
-        android:textColor="#F4F4F4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.315"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout9" />
-
-    <TextView
-        android:id="@+id/textView25"
-        android:layout_width="248dp"
-        android:layout_height="19dp"
-        android:letterSpacing="0.1"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/righteous"
-        android:text="password"
-        android:textColor="#F4F4F4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.317"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_username" />
 
     <EditText
         android:id="@+id/et_username"
         android:layout_width="299dp"
         android:layout_height="30dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:background="@drawable/borderwhite"
         android:padding="5px"
         android:textAlignment="center"
         android:textColor="#F4F4F4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView22" />
+
+    <TextView
+        android:id="@+id/tv_singup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:fontFamily="@font/righteous"
+        android:letterSpacing="0.1"
+        android:text="Dont have any account ? Get in"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_enter" />
 
     <EditText
         android:id="@+id/et_password"
         android:layout_width="299dp"
         android:layout_height="30dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:background="@drawable/borderwhite"
         android:inputType="textPassword"
         android:padding="5px"
         android:textAlignment="center"
         android:textColor="#F4F4F4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView25" />
 
-    <Button
-        android:id="@+id/btn_enter"
-        android:layout_width="107dp"
-        android:layout_height="36dp"
+    <TextView
+        android:id="@+id/textView25"
+        android:layout_width="248dp"
+        android:layout_height="19dp"
         android:layout_marginTop="28dp"
-        android:backgroundTint="@color/white"
         android:fontFamily="@font/righteous"
-        android:text="Enter"
-        android:textColor="#292828"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_password" />
-
-    <TextView
-        android:id="@+id/tv_singup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:fontFamily="@font/righteous"
-        android:text="Dont have any account ? Get in"
-        android:textColor="@color/white"
         android:letterSpacing="0.1"
+        android:text="password"
+        android:textColor="#F4F4F4"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.331"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_enter" />
+        app:layout_constraintTop_toBottomOf="@+id/et_username" />
 
     <TextView
-        android:id="@+id/textView27"
-        android:layout_width="20dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="92dp"
+        android:id="@+id/textView22"
+        android:layout_width="247dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="116dp"
         android:fontFamily="@font/righteous"
-        android:text="Or"
-        android:textColor="@color/white"
+        android:letterSpacing="0.1"
+        android:text="email"
+        android:textColor="#F4F4F4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.328"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_enter" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout9" />
 
     <TextView
         android:id="@+id/btn_visit"
         android:layout_width="113dp"
         android:layout_height="19dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="12dp"
         android:fontFamily="@font/righteous"
         android:gravity="center"
         android:letterSpacing="0.1"
         android:text="Visit mode"
         android:textColor="#222121"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView27" />
+
+    <TextView
+        android:id="@+id/textView27"
+        android:layout_width="20dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="100dp"
+        android:fontFamily="@font/righteous"
+        android:text="Or"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_enter" />
+
+    <Button
+        android:id="@+id/btn_enter"
+        android:layout_width="107dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/righteous"
+        android:text="Enter"
+        android:textColor="#292828"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_password" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

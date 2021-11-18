@@ -3,8 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/drawable/bg_border_abu.xml" value="0.38125" />
+        <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/drawable/bg_border_danger.xml" value="0.38125" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/drawable/bg_bottomneu.xml" value="0.38125" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/drawable/bg_btntambah.xml" value="0.38125" />
+        <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/drawable/bg_corner_abu.xml" value="0.38125" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/drawable/bg_corner_white.xml" value="0.38125" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/drawable/bg_cornerwhite_atas.xml" value="0.38125" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/drawable/bg_editext_dua.xml" value="0.38125" />
@@ -84,7 +87,7 @@
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout-xhdpi/fragment_activity_inside.xml" value="0.3494791666666667" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout-xhdpi/fragment_activity_outside.xml" value="0.25" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout-xhdpi/fragment_addfragment.xml" value="0.33152173913043476" />
-        <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout-xhdpi/fragment_addweather.xml" value="0.3651041666666667" />
+        <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout-xhdpi/fragment_addweather.xml" value="0.33" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout-xhdpi/fragment_curr_weather.xml" value="0.33" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout-xhdpi/fragment_home.xml" value="0.262350936967632" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout-xhdpi/fragment_setting.xml" value="0.33" />
@@ -93,7 +96,7 @@
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout-xhdpi/tcv_todo_card.xml" value="0.5" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout-xxxhdpi/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout/Activity_main.xml" value="0.55" />
-        <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout/activity_detail.xml" value="0.33" />
+        <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout/activity_detail.xml" value="0.30994152046783624" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout/activity_detail_weather.xml" value="0.33" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout/activity_loginactivity.xml" value="0.25" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout/activity_main.xml" value="0.25" />
@@ -103,12 +106,12 @@
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout/activity_splashscreen.xml" value="0.25" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout/activity_todo_add.xml" value="1.0" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout/cv_forecast.xml" value="0.7342192691029901" />
-        <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout/cv_subtask_actadd.xml" value="0.33" />
+        <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout/cv_subtask_actadd.xml" value="0.67" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout/cv_todo.xml" value="0.33" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout/cv_todo_home.xml" value="0.5" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout/cv_weather.xml" value="0.5" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout/cv_weather_home.xml" value="1.5" />
-        <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout/cvsub_detailin.xml" value="0.6298552932216298" />
+        <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout/cvsub_detailin.xml" value="0.23386765310316482" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout/emptyview.xml" value="0.3138586956521739" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout/fragment_activity_inside.xml" value="0.9" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout/fragment_addfragment.xml" value="0.2" />
@@ -127,6 +130,7 @@
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout/recycler_view_item_1.xml" value="0.36277173913043476" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout/recycler_view_item_2.xml" value="0.36277173913043476" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout/tcv_todo_card.xml" value="0.33" />
+        <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout/vplay_forecast.xml" value="0.5" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/menu/menu.xml" value="0.5" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/xml/security.xml" value="0.36666666666666664" />
       </map>

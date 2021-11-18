@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -202,8 +203,10 @@ class Todo_add : AppCompatActivity() {
 
                 Input().inputinside(inside,subtaslist)
 
-//                todovmodel.addinside(inside)
-//                todovmodel.addsubinside(subtaslist)
+                todovmodel.addinside(inside)
+                todovmodel.addsubinside(subtaslist)
+
+                Toast.makeText(this,"Sucess add inside activity",Toast.LENGTH_SHORT).show()
 
             }else if(kategori == "outside"){
                 val outside = Outside(
@@ -218,6 +221,8 @@ class Todo_add : AppCompatActivity() {
                 Log.d("input",kategori)
                 todovmodel.addoutside(outside)
                 todovmodel.addsuboutside(subtaskout)
+
+                Toast.makeText(this,"New outside activity being add",Toast.LENGTH_SHORT).show()
             }
 
 

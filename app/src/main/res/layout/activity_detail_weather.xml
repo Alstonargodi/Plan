@@ -5,7 +5,7 @@
     android:id="@+id/layout_detail_weather"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/wclear"
+    android:background="@drawable/bgconclear"
     android:orientation="vertical"
     tools:context=".Detail_weather">
 
@@ -33,7 +33,7 @@
 
                 <TextView
                     android:id="@+id/tvdetail_weather_loc"
-                    android:layout_width="337dp"
+                    android:layout_width="301dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
 
@@ -43,6 +43,14 @@
                     android:text="location"
                     android:textColor="#FFFFFF"
                     android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/btn_favorit"
+                    android:layout_width="23dp"
+                    android:layout_height="23dp"
+                    android:layout_margin="9dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/tambah" />
 
             </LinearLayout>
 
@@ -151,8 +159,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="50dp"
                         android:gravity="center"
-                        android:textColor="@color/white"
-                        android:text="TextView" />
+                        android:text="TextView"
+                        android:textColor="@color/white" />
 
                     <TextView
                         android:id="@+id/tvdetail_weather_wind"
@@ -160,8 +168,8 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
                         android:gravity="center"
-                        android:textColor="@color/white"
-                        android:text="TextView" />
+                        android:text="TextView"
+                        android:textColor="@color/white" />
 
                     <TextView
                         android:id="@+id/tvdetail_weather_visib"
@@ -169,8 +177,8 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
                         android:gravity="center"
-                        android:textColor="@color/white"
-                        android:text="TextView" />
+                        android:text="TextView"
+                        android:textColor="@color/white" />
 
                     <TextView
                         android:id="@+id/tvdetail_weather_presuare"
@@ -178,8 +186,8 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
                         android:gravity="center"
-                        android:textColor="@color/white"
-                        android:text="TextView" />
+                        android:text="TextView"
+                        android:textColor="@color/white" />
 
                     <TextView
                         android:id="@+id/tvdetail_weather_cloud"
@@ -187,10 +195,17 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
                         android:gravity="center"
-                        android:textColor="@color/white"
-                        android:text="TextView" />
+                        android:text="TextView"
+                        android:textColor="@color/white" />
                 </LinearLayout>
             </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recview_forecast"
+                android:layout_width="match_parent"
+                android:layout_height="305dp"
+                android:layout_margin="9dp"
+                android:padding="3dp" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

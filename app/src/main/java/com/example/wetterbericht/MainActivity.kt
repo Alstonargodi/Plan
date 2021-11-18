@@ -1,8 +1,6 @@
 package com.example.wetterbericht
 
-import android.app.Activity
-import android.app.NotificationChannel
-import android.app.NotificationManager
+import android.app.*
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -12,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Looper
 import android.util.Log
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -96,6 +95,9 @@ class MainActivity : AppCompatActivity() {
         //notif
         val context = this
         Alarmreceiver()
+
+        //alarm
+        setalarm()
     }
 
     suspend fun gpsguaranted(){
@@ -179,30 +181,21 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    fun createnotif() {
-        //notif channel
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-            Log.d("alarm", "alarm")
-            val notification = NotificationCompat.Builder(this,idnotif)
-                .setContentTitle("test notif")
-                .setContentText("notifikasi")
-                .setSmallIcon(R.drawable.ic_star_black_24dp)
-                .setPriority(NotificationCompat.PRIORITY_LOW)
-                .build()
-            val notificationmanager = NotificationManagerCompat.from(this)
+    fun setalarm(){
+        val alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
 
-            notificationmanager.notify(notifid,notification)
+        val intent = Intent(this,Alarmreceiver::class.java)
+        val pendingintent = PendingIntent.getBroadcast(this,0,intent,0)
+        alarmManager.setRepeating(
+            AlarmManager.RTC_WAKEUP,
+            200,                             //triger tanggaldata
+            AlarmManager.INTERVAL_DAY,pendingintent
+            //interval
+        )
 
-            val important = NotificationManager.IMPORTANCE_HIGH
-
-            val channel = NotificationChannel(idnotif, name, important).apply {
-                lightColor = Color.GREEN
-                enableLights(true)
-            }
-            channel.description = desc
-
-           val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-            manager.createNotificationChannel(channel)
-        }
+        Toast.makeText(this,"test",Toast.LENGTH_SHORT).show()
     }
+
+
+
 }

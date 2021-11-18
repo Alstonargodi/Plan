@@ -36,12 +36,6 @@
             android:name="Finddata"
             app:argType="com.example.wetterbericht.model.room.cuaca" />
         <action
-            android:id="@+id/action_fragment_weather_to_addweather"
-            app:destination="@id/addweather" />
-        <action
-            android:id="@+id/action_fragment_weather_to_currWeather"
-            app:destination="@id/currWeather" />
-        <action
             android:id="@+id/action_fragment_weather_to_detail_weather"
             app:destination="@id/detail_weather" />
     </fragment>
@@ -65,20 +59,6 @@
         <argument
             android:name="data"
             app:argType="com.example.wetterbericht.model.room.Inside" />
-    </fragment>
-    <fragment
-        android:id="@+id/addweather"
-        android:name="com.example.wetterbericht.view.util.addweather"
-        android:label="fragment_addweather"
-        tools:layout="@layout/fragment_addweather" />
-    <fragment
-        android:id="@+id/currWeather"
-        android:name="com.example.wetterbericht.view.util.currweather"
-        android:label="fragment_curr_weather"
-        tools:layout="@layout/fragment_curr_weather" >
-        <argument
-            android:name="currData"
-            app:argType="com.example.wetterbericht.model.room.cuaca" />
     </fragment>
     <activity
         android:id="@+id/splashscreen"
