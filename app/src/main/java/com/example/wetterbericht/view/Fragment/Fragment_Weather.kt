@@ -1,5 +1,6 @@
 package com.example.wetterbericht.view.Fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.wetterbericht.Detail_weather
 import com.example.wetterbericht.R
 import com.example.wetterbericht.model.repo.api.mainrepo
 import com.example.wetterbericht.model.room.cuaca
@@ -50,8 +52,10 @@ class Fragment_Weather : Fragment(){
 
         view.btn_go.setOnClickListener {
             val datacari = et_seacrh.text.toString()
-            val bunder = bundleOf("datacari" to datacari)
-            findNavController().navigate(R.id.action_fragment_weather_to_addweather,bunder)
+            val intent = Intent(context,Detail_weather::class.java)
+
+            intent.putExtra("lokasi",datacari)
+            startActivity(intent)
         }
 
         return view

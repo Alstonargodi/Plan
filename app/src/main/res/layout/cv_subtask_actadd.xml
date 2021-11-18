@@ -6,47 +6,40 @@
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="371dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="4dp"
+        android:layout_width="263dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="336dp"
-            android:layout_height="34dp"
-            android:background="#606060"
+            android:layout_width="256dp"
+            android:layout_height="28dp"
+            android:background="@drawable/bg_border_abu"
+            android:padding="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:id="@+id/textView39"
-                android:layout_width="83dp"
-                android:layout_height="22dp"
-                android:text="TextView"
-                android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.833"
-                app:layout_constraintStart_toEndOf="@+id/tvcb_subtask"
-                app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.466">
 
             <CheckBox
                 android:id="@+id/tvcb_subtask"
-                android:layout_width="185dp"
-                android:layout_height="25dp"
-                android:layout_marginStart="16dp"
-                android:backgroundTint="@color/white"
-                android:buttonTint="@color/white"
+                android:layout_width="207dp"
+                android:layout_height="17dp"
+                android:buttonTint="#555555"
                 android:text="TextView"
-                android:textColor="@color/white"
+                android:textColor="#434343"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.326"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.555" />
+                app:layout_constraintVertical_bias="0.545" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,8 +1,6 @@
 package com.example.wetterbericht
 
-import android.app.Activity
-import android.app.NotificationChannel
-import android.app.NotificationManager
+import android.app.*
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -12,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Looper
 import android.util.Log
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -96,6 +95,7 @@ class MainActivity : AppCompatActivity() {
         //notif
         val context = this
         Alarmreceiver()
+        setalarm()
     }
 
     suspend fun gpsguaranted(){
@@ -179,6 +179,22 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
+    fun setalarm(){
+        val alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
+
+        val intent = Intent(this,Alarmreceiver::class.java)
+        val pendingintent = PendingIntent.getBroadcast(this,0,intent,0)
+        alarmManager.setRepeating(
+            AlarmManager.RTC_WAKEUP,
+            200,                             //triger data
+            AlarmManager.INTERVAL_DAY,pendingintent
+            //interval
+        )
+
+//        Toast.makeText(this,"test",Toast.LENGTH_SHORT).show()
+
+    }
+
     fun createnotif() {
         //notif channel
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
@@ -205,4 +221,6 @@ class MainActivity : AppCompatActivity() {
             manager.createNotificationChannel(channel)
         }
     }
+
+
 }

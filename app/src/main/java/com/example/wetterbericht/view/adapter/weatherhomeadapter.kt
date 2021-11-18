@@ -51,6 +51,7 @@ class weatherhomeadapter: RecyclerView.Adapter<weatherhomeadapter.viewmodel>() {
             holder.itemView.lay_bg_weather_home.setBackgroundResource(R.drawable.wrain)
         }
 
+
     }
 
     override fun getItemCount(): Int {

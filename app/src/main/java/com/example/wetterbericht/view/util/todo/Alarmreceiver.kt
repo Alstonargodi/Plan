@@ -24,21 +24,20 @@ class Alarmreceiver: BroadcastReceiver() {
     val idnotif = "alarmid"
     val notifid = 0
     override fun onReceive(context: Context?, intent: Intent?) {
-        if (context != null) {
-            notif(context)
-        }
+        val i = Intent(context,MainActivity::class.java)
+        intent?.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        val pendingintet = PendingIntent.getActivity(context,0,i,0)
 
-    }
-
-    fun notif(context: Context){
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             Log.d("alarm", "alarm")
 
-            val notification = NotificationCompat.Builder(context)
+            val notification = NotificationCompat.Builder(context!!,"alarmid")
                 .setContentTitle("test notif")
                 .setContentText("notifikasi")
                 .setSmallIcon(R.drawable.ic_star_black_24dp)
                 .setPriority(NotificationCompat.PRIORITY_LOW)
+                .setContentIntent(pendingintet)
+                .setAutoCancel(true)
                 .build()
             val notificationmanager = NotificationManagerCompat.from(context)
 
@@ -55,5 +54,9 @@ class Alarmreceiver: BroadcastReceiver() {
             val manager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             manager.createNotificationChannel(channel)
         }
+    }
+
+    fun notif(context: Context,pintent: PendingIntent){
+
     }
 }
