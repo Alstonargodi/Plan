@@ -23,6 +23,7 @@ class Alarmreceiver: BroadcastReceiver() {
     val desc = "test"
     val idnotif = "alarmid"
     val notifid = 0
+
     override fun onReceive(context: Context?, intent: Intent?) {
         val i = Intent(context,MainActivity::class.java)
         intent?.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -32,7 +33,7 @@ class Alarmreceiver: BroadcastReceiver() {
             Log.d("alarm", "alarm")
 
             val notification = NotificationCompat.Builder(context!!,"alarmid")
-                .setContentTitle("test notif")
+                .setContentTitle("Reminder task")
                 .setContentText("notifikasi")
                 .setSmallIcon(R.drawable.ic_star_black_24dp)
                 .setPriority(NotificationCompat.PRIORITY_LOW)

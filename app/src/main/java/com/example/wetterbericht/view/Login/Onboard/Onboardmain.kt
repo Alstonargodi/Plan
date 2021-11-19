@@ -1,5 +1,7 @@
 package com.example.wetterbericht.view.Login.Onboard
 
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -17,6 +19,12 @@ class Onboardmain : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_onboardmain)
 
+
+        intro()
+
+    }
+
+    private fun intro(){
         val fragmentmanager = supportFragmentManager
         val viewpager = vp_onboard
         val indpager = tab_onboard
@@ -32,6 +40,9 @@ class Onboardmain : AppCompatActivity() {
                 1->{
                     tab.text = " "
                 }
+                2->{
+                    tab.text = " "
+                }
             }
         }.attach()
 
@@ -39,6 +50,11 @@ class Onboardmain : AppCompatActivity() {
         btn_onboard_next.setOnClickListener {
             startActivity(Intent(this,MainActivity::class.java))
         }
+    }
+
+    private fun Onboardmainfinish(): Boolean{
+        val sharedpref = Activity().getSharedPreferences("onboard",Context.MODE_PRIVATE)
+        return sharedpref.getBoolean("finish",false)
     }
 
 

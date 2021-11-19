@@ -137,4 +137,13 @@
         android:name="com.example.wetterbericht.Detail_weather"
         android:label="activity_detail_weather"
         tools:layout="@layout/activity_detail_weather" />
+    <fragment
+        android:id="@+id/introtiga"
+        android:name="com.example.wetterbericht.view.Login.Onboard.Introtiga"
+        android:label="fragment_introtiga"
+        tools:layout="@layout/fragment_introtiga" >
+        <action
+            android:id="@+id/action_introtiga_to_onboardmain"
+            app:destination="@id/onboardmain" />
+    </fragment>
 </navigation>

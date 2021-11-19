@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
+import android.icu.util.LocaleData
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -29,6 +30,7 @@ import com.example.wetterbericht.view.util.todo.Alarmreceiver
 import com.example.wetterbericht.viewmodel.api.Mainviewmodel
 import com.example.wetterbericht.viewmodel.api.Vmfactory
 import com.example.wetterbericht.viewmodel.room.Cuacaviewmodel
+import com.example.wetterbericht.viewmodel.room.todoviewmodel
 import com.google.android.gms.location.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
@@ -37,10 +39,17 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import okhttp3.internal.notify
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.*
 import kotlin.math.log
+import kotlin.time.minutes
 
 class MainActivity : AppCompatActivity() {
     private lateinit var mbinding : ActivityMainBinding
+
+    //activity
+    lateinit var tdoviewmodel: todoviewmodel
 
     //cuaca
     lateinit var cviewmodel : Cuacaviewmodel
@@ -57,6 +66,9 @@ class MainActivity : AppCompatActivity() {
     val desc = "test"
     val idnotif = "alarmid"
     val notifid = 0
+
+    private var waktu : Long = 0
+    private var type : String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -92,12 +104,12 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        //notif
-        val context = this
-        Alarmreceiver()
+        lifecycleScope.launch {
+            withContext(Dispatchers.Main){
+                checkactivity()
+            }
+        }
 
-        //alarm
-        setalarm()
     }
 
     suspend fun gpsguaranted(){
@@ -178,6 +190,33 @@ class MainActivity : AppCompatActivity() {
                 )
                 cviewmodel.add(dataup)
             })
+        })
+    }
+
+    suspend fun checkactivity(){
+        delay(9000L)
+        //activity
+        tdoviewmodel = ViewModelProvider(this).get(todoviewmodel::class.java)
+        tdoviewmodel.readinside.observe(this, Observer { inside ->
+            if (inside.isNotEmpty()){
+                for (i in 0 until inside.size){
+                    val waktu = inside[i].todo.deadlinetime
+
+                    val time = Calendar.getInstance().time
+                    if ( time.hours < 12){
+                        type = "AM"
+                    }else if(time.hours > 12){
+                        type = "PM"
+                    }
+                    val jam = "${time.hours} : ${time.minutes} $type"
+
+                    if (waktu == jam){
+                        val context = this
+                        Alarmreceiver()
+                        setalarm()
+                    }
+                }
+            }
         })
     }
 
