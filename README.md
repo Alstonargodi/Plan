@@ -23,13 +23,9 @@ when I'm going to plan something sometimes I have to look at the weather outside
    
    >Provide the latest weather based on your location position
 
-6. 3-hours Forecast
+6. forecast weather
    
-   >provide information about the weather forecast for the next 3 hours
-
-7. Temp graph
-
-   >provide temperature from 3 hours forecast with graph
+   >provide information about the weather forecast
    
 # :wrench: Implementation
 1. Kotlin, main programming language for build this project
