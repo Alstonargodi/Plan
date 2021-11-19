@@ -13,6 +13,7 @@ import com.example.wetterbericht.R
 import com.example.wetterbericht.model.room.cuaca
 import com.example.wetterbericht.view.Fragment.Fragment_WeatherDirections
 import kotlinx.android.synthetic.main.cv_weather.view.*
+import kotlin.math.round
 
 class weatheradapter: RecyclerView.Adapter<weatheradapter.viewholder>() {
     private var weatherlist = emptyList<cuaca>()
@@ -27,9 +28,11 @@ class weatheradapter: RecyclerView.Adapter<weatheradapter.viewholder>() {
         var curitem = weatherlist[position]
         val feels = "Feels like ${curitem.feelslike} c"
         val humid = "Humidty ${curitem.humid} %"
+
+        val temp = round(curitem.temp.toDouble())
         holder.itemView.tv_weather_desc.text = curitem.desc
         holder.itemView.tv_weather_loc.text = curitem.loc
-        holder.itemView.tv_weather_temp.text = curitem.temp.toString()
+        holder.itemView.tv_weather_temp.text = temp.toString()
         holder.itemView.tv_weather_feels.text = feels
         holder.itemView.tv_weather_humid.text = humid
 
@@ -39,10 +42,6 @@ class weatheradapter: RecyclerView.Adapter<weatheradapter.viewholder>() {
             .load(curitem.image)
             .into(holder.itemView.img_weather_icon)
 
-//        holder.itemView.cv_weather.setOnClickListener {
-//            val intent = Fragment_WeatherDirections.actionFragmentWeatherToCurrWeather(curitem)
-//            holder.itemView.findNavController().navigate(intent)
-//        }
 
         holder.itemView.cv_weather.setOnClickListener {
             val intent = Intent(holder.itemView.context,Detail_weather::class.java)

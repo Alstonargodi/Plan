@@ -153,19 +153,45 @@ class Detail_weather : AppCompatActivity() {
                 else -> layout_detail_weather.setBackgroundResource(R.drawable.bgconclear)
             }
 
+            val loc = intent.getStringExtra("loc")
+
             tvdetail_weather_loc.setText(intent.getStringExtra("loc"))
-            tvdetail_weather_temp.setText(ftemp.toString())
+            tvdetail_weather_temp.setText(ftemp.toString()+ " c")
             tvdetail_weather_desc.setText(desc)
-            tvdetail_weather_feels.setText(intent.getStringExtra("feels"))
-            tvdetail_weather_wind.setText(intent.getStringExtra("wind"))
-            tvdetail_weather_visib.setText(intent.getStringExtra("visib"))
-            tvdetail_weather_presuare.setText(intent.getStringExtra("pres"))
-            tvdetail_weather_cloud.setText(intent.getStringExtra("cloud"))
+            tvdetail_weather_feels.setText(intent.getStringExtra("feels")+ " c")
+            tvdetail_weather_wind.setText(intent.getStringExtra("wind")+ " km/h")
+            tvdetail_weather_visib.setText(intent.getStringExtra("visib")+ " %")
+            tvdetail_weather_presuare.setText(intent.getStringExtra("pres")+ " %")
+            tvdetail_weather_cloud.setText(intent.getStringExtra("cloud")+ " %")
 
             Glide.with(this)
                 .asBitmap()
                 .load(image)
                 .into(imgv_weather)
+
+            //forecast
+            intent.getStringExtra("loc")?.let { cuacaviewmodel.getforecast(it) }
+            cuacaviewmodel.forecastrespon.observe(this, Observer { fore->
+                val data = fore.body()?.list
+                if (data != null) {
+                    for (i in 0 until data.size){
+                        val date = data[i].dtTxt
+                        val desc = data[i].weather.get(0).description
+                        val temp = data[i].main.temp.toString()
+
+                        val forcast = Foredata(
+                            date,
+                            desc,
+                            temp
+                        )
+
+                        //view pager
+                        Log.d("forecast",datalist.toString())
+                        datalist.add(forcast)
+                        foreadapter.setdata(datalist)
+                    }
+                }
+            })
 
     }
 

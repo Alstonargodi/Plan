@@ -80,7 +80,8 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
                 android:paddingLeft="5dp"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/textView49"
@@ -91,9 +92,9 @@
                 android:layout_marginBottom="8dp"
                 android:letterSpacing="0.1"
                 android:paddingLeft="5dp"
-                android:textSize="20sp"
+                android:text="Subtask"
                 android:textColor="#15A9EC"
-                android:text="subtask" />
+                android:textSize="20sp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recdetail_todoin"
@@ -107,7 +108,7 @@
             <ImageView
                 android:id="@+id/imgvdetail_todoin"
                 android:layout_width="match_parent"
-                android:layout_height="271dp"
+                android:layout_height="231dp"
                 android:padding="8dp"
                 tools:srcCompat="@tools:sample/avatars" />
 

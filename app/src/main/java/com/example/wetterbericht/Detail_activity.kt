@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.wetterbericht.model.room.subtaskinside
 import com.example.wetterbericht.view.adapter.Recyclerview.Detail.Tododetailsubadapter
 import com.example.wetterbericht.view.util.todo.Alarmreceiver
 import com.example.wetterbericht.viewmodel.room.todoviewmodel
@@ -14,6 +15,7 @@ import kotlinx.android.synthetic.main.activity_detail.*
 class Detail_activity : AppCompatActivity() {
     lateinit var tdoviewmodel: todoviewmodel
 
+    lateinit var datalist : ArrayList<subtaskinside>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
@@ -33,11 +35,14 @@ class Detail_activity : AppCompatActivity() {
         recview.adapter = adapter
         recview.layoutManager = LinearLayoutManager(this)
 
+        datalist = arrayListOf()
 
         tdoviewmodel.selectsub("aktivitas0")
         tdoviewmodel.readsubtaskin.observe(this, Observer { respon ->
             if(respon.isNotEmpty()){
                 for (i in 0 until respon.size){
+
+
                     adapter.setdata(respon)
                 }
             }
