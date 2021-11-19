@@ -53,6 +53,6 @@ when I'm going to plan something sometimes I have to look at the weather outside
 
 apps diagram : [wetterdo](https://github.com/Alstonargodi/Wetterdo/blob/master/diagram%20weeterdo.png)
 
-<img src="https://github.com/Alstonargodi/Wetterdo/blob/master/BANNER.png" width="100%">
+<img src="https://github.com/Alstonargodi/Wetterdo/blob/master/wetterdo.png" width="100%">
 
 
