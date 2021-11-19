@@ -64,4 +64,5 @@ Main user interface
 
 Detailed weather background change by condition
 
+<img src="https://github.com/Alstonargodi/Wetterdo/blob/master/weather.png" width="100%">
 
