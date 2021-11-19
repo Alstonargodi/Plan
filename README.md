@@ -57,6 +57,11 @@ when I'm going to plan something sometimes I have to look at the weather outside
 
 apps diagram : [wetterdo](https://github.com/Alstonargodi/Wetterdo/blob/master/diagram%20weeterdo.png)
 
+Main user interface 
+
 <img src="https://github.com/Alstonargodi/Wetterdo/blob/master/wetterdo.png" width="100%">
+
+
+Detailed weather background change by condition
 
 
