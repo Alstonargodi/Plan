@@ -56,16 +56,3 @@ apps diagram : [wetterdo](https://github.com/Alstonargodi/Wetterdo/blob/master/d
 <img src="https://github.com/Alstonargodi/Wetterdo/blob/master/BANNER.png" width="100%">
 
 
-# what is new
-
-3 hours forecast
-
-<img src="https://github.com/Alstonargodi/Wetterdo/blob/master/Screenshot_1631423734.png" width="25%">
-
-Update weather
-
-Weather by location
-
-Login and signup form
-
-
