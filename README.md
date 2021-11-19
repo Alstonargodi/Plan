@@ -38,6 +38,7 @@ when I'm going to plan something sometimes I have to look at the weather outside
 6. MVVM, an architecture in android separating view/fragment, business logic ,and model
 7. Room, Keeping data after retrieving from retrofit or adding data in local storage
 8. Graph, using library from [philjay](https://github.com/PhilJay/MPAndroidChart)
+9. AlarmManager , For reminderactivity
 
 
 <h2>:book: what I've been learning through this project</h2>
