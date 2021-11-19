@@ -1,8 +1,9 @@
-# Wetterdo
+<h1>Wetterdo</h1>
 
 when I'm going to plan something sometimes I have to look at the weather outside and then open the weather app, then I have an idea why not combine the two?. so I made this project,this app mixed beween todolist and weather app.
 
-# :pencil2: Features
+<h2>:pencil2: Features</h2>
+
 1. Weather view
 
    >Give about current weather information 
@@ -27,7 +28,8 @@ when I'm going to plan something sometimes I have to look at the weather outside
    
    >provide information about the weather forecast
    
-# :wrench: Implementation
+<h2>:wrench: Implementation</h2>
+
 1. Kotlin, main programming language for build this project
 2. Weather api provide by [Openweatherapi](https://weatherstack.com/) it's free 
 3. Retrofit, to handle call and consume REST api webservice
@@ -37,7 +39,8 @@ when I'm going to plan something sometimes I have to look at the weather outside
 7. Room, Keeping data after retrieving from retrofit or adding data in local storage
 8. Graph, using library from [philjay](https://github.com/PhilJay/MPAndroidChart)
 
-# :book: what I've been learning through this project
+
+<h2>:book: what I've been learning through this project</h2>
 
 1. current location by gps
 2. dialog fragment
@@ -49,7 +52,8 @@ when I'm going to plan something sometimes I have to look at the weather outside
 8. nested json
 9. Graph
 
-# Documentation
+
+<h2>Documentation</h2>
 
 apps diagram : [wetterdo](https://github.com/Alstonargodi/Wetterdo/blob/master/diagram%20weeterdo.png)
 
