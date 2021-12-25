@@ -25,19 +25,18 @@ class Fragment_activity_inside : Fragment() {
         localviewmodel = ViewModelProvider(this).get(todoviewmodel::class.java)
 
         val adapter = Todoinsideadapter()
-
         val recview = view.rectodo_inside
         recview.adapter = adapter
         recview.layoutManager = LinearLayoutManager(requireContext())
         localviewmodel.readinside.observe(viewLifecycleOwner, Observer { todo ->
-            adapter.setdata(todo)
+
 
             Log.d("item",adapter.itemCount.toString())
 
             if(adapter.itemCount == 0){
-                recview.setBackgroundResource(R.drawable.emptyview)
-            }else{
                 adapter.setdata(todo)
+            }else{
+                recview.setBackgroundResource(R.drawable.emptyview)
             }
 
 

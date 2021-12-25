@@ -7,69 +7,123 @@
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cv_weather_layout"
-        android:layout_width="330dp"
-        android:layout_height="105dp"
+        android:layout_width="370dp"
+        android:layout_height="121dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.448"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintStart_toStartOf="parent">
 
-        <TextView
-            android:id="@+id/tv_weather_loc"
-            android:layout_width="163dp"
-            android:layout_height="24dp"
-            android:fontFamily="@font/robotoregular"
-            android:text="Location"
-            android:textColor="#2E2B2B"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cv_weather_layout"
+            android:layout_width="346dp"
+            android:layout_height="98dp"
+            android:background="@drawable/bg_todo_card"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.466"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.015" />
+            app:layout_constraintVertical_bias="0.0">
 
-        <TextView
-            android:id="@+id/tv_weather_desc"
-            android:layout_width="163dp"
-            android:layout_height="23dp"
-            android:fontFamily="@font/robotoregular"
-            android:text="Forecast"
-            android:textColor="#2E2B2B"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_weather_loc"
-            app:layout_constraintVertical_bias="0.3" />
+            <TextView
+                android:id="@+id/tv_weather_loc"
+                android:layout_width="163dp"
+                android:layout_height="24dp"
+                android:fontFamily="@font/robotoregular"
+                android:text="Location"
+                android:textColor="#2E2B2B"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.087"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.187" />
 
-        <ImageView
-            android:id="@+id/img_weather_icon"
-            android:layout_width="47dp"
-            android:layout_height="51dp"
-            android:layout_marginStart="44dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tv_weather_desc"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.285"
-            tools:srcCompat="@tools:sample/avatars" />
+            <TextView
+                android:id="@+id/tv_weather_desc"
+                android:layout_width="163dp"
+                android:layout_height="23dp"
+                android:fontFamily="@font/robotoregular"
+                android:text="Forecast"
+                android:textColor="#2E2B2B"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.087"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_weather_loc"
+                app:layout_constraintVertical_bias="0.297" />
 
-        <TextView
-            android:id="@+id/tv_weather_temp"
-            android:layout_width="46dp"
-            android:layout_height="47dp"
-            android:fontFamily="@font/robotoregular"
-            android:gravity="center"
-            android:text="00"
-            android:textColor="#2E2B2B"
-            android:textSize="34sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.875"
-            app:layout_constraintStart_toEndOf="@+id/img_weather_icon"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.344" />
+            <TextView
+                android:id="@+id/tv_weather_humid"
+                android:layout_width="77dp"
+                android:layout_height="11dp"
+                android:layout_marginBottom="2dp"
+                android:fontFamily="@font/robotoregular"
+                android:gravity="center"
+                android:text="Humid"
+                android:textColor="#2E2B2B"
+                android:textSize="8sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.185"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_weather_desc"
+                app:layout_constraintVertical_bias="0.866" />
+
+            <TextView
+                android:id="@+id/tv_weather_feels"
+                android:layout_width="77dp"
+                android:layout_height="11dp"
+                android:layout_marginBottom="2dp"
+                android:fontFamily="@font/robotoregular"
+                android:gravity="center"
+                android:text="Feelslike"
+                android:textColor="#2E2B2B"
+                android:textSize="8sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.647"
+                app:layout_constraintStart_toEndOf="@+id/tv_weather_humid"
+                app:layout_constraintTop_toBottomOf="@+id/img_weather_icon"
+                app:layout_constraintVertical_bias="0.913" />
+
+            <ImageView
+                android:id="@+id/img_weather_icon"
+                android:layout_width="47dp"
+                android:layout_height="51dp"
+                android:layout_marginStart="32dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_weather_desc"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.255"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/tv_weather_temp"
+                android:layout_width="46dp"
+                android:layout_height="47dp"
+                android:fontFamily="@font/robotoregular"
+                android:gravity="center"
+                android:text="00"
+                android:textColor="#2E2B2B"
+                android:textSize="34sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/textView6"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/img_weather_icon"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.313" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="25dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="36dp"
+                android:layout_marginEnd="4dp"
+                android:text="C"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

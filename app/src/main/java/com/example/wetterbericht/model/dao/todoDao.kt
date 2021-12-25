@@ -24,7 +24,7 @@ abstract class todoDao {
 
 
     @Transaction
-    @Query("select*from tabelinside ORDER BY deadlinedate")
+    @Query("select*from tabelinside")
     abstract fun readinside() : LiveData<List<insidendsubtask>>
 
     @Transaction

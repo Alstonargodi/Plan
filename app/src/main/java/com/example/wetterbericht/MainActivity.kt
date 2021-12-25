@@ -110,6 +110,9 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        Alarmreceiver()
+        setalarm()
+
     }
 
     suspend fun gpsguaranted(){
@@ -212,8 +215,8 @@ class MainActivity : AppCompatActivity() {
 
                     if (waktu == jam){
                         val context = this
-                        Alarmreceiver()
-                        setalarm()
+//                        Alarmreceiver()
+//                        setalarm()
                     }
                 }
             }

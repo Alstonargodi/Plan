@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
@@ -56,23 +57,14 @@ class Fragment_Home : Fragment() {
         TabLayoutMediator(tablay,viewpager){tab,position ->
             when(position){
                 0 ->{
-                    tab.text = "outside"
+                    tab.text = "inside"
                 }
                 1 ->{
-                    tab.text = "inside"
+                    tab.text = "outside"
                 }
             }
         }.attach()
 
-        //todolist
-//        val madapter = todohomeadapter()
-//        val recyclerhome = view.recviewhome
-//        recyclerhome.adapter = madapter
-//        recyclerhome.layoutManager = LinearLayoutManager(requireContext())
-//        mroomodel = ViewModelProvider(this).get(todoviewmodel::class.java)
-//        mroomodel.readdata.observe(viewLifecycleOwner, Observer { data ->
-//            madapter.setdata(data)
-//        })
 
         return view
     }

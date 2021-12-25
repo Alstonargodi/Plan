@@ -7,13 +7,15 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/lay_bg_weather_home"
-        android:layout_width="317dp"
-        android:layout_height="169dp"
-        android:background="@drawable/wclear"
+        android:layout_width="409dp"
+        android:layout_height="151dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="305dp"

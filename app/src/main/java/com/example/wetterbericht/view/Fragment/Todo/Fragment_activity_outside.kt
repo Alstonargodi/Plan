@@ -26,11 +26,11 @@ class Fragment_activity_outside : Fragment() {
         recview.adapter = adapter
         recview.layoutManager = LinearLayoutManager(requireContext())
         localviewmodel.readoutside.observe(viewLifecycleOwner, Observer { data ->
-            adapter.setdata(data)
-            if(adapter.itemCount == 0){
-                recview.setBackgroundResource(R.drawable.emptyview)
-            }else{
 
+            if(adapter.itemCount == 0){
+                adapter.setdata(data)
+            }else{
+                recview.setBackgroundResource(R.drawable.emptyview)
             }
         })
 

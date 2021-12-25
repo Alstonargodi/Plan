@@ -97,14 +97,14 @@ class Detail_weather : AppCompatActivity() {
                 }
 
                 //background condition
-                when(desc){
-                    "few clouds" -> layout_detail_weather.setBackgroundResource(R.drawable.bgconcloud)
-                    "overcast clouds" -> layout_detail_weather.setBackgroundResource(R.drawable.bgconpartycloudy)
-                    "light rain" -> layout_detail_weather.setBackgroundResource(R.drawable.bgconrain)
-                    "moderate rain" -> layout_detail_weather.setBackgroundResource(R.drawable.bgconrain)
-                    "sunny" -> layout_detail_weather.setBackgroundResource(R.drawable.bgconclear)
-                    else -> layout_detail_weather.setBackgroundResource(R.drawable.bgconclear)
-                }
+//                when(desc){
+//                    "few clouds" -> layout_detail_weather.setBackgroundResource(R.drawable.bgconcloud)
+//                    "overcast clouds" -> layout_detail_weather.setBackgroundResource(R.drawable.bgconpartycloudy)
+//                    "light rain" -> layout_detail_weather.setBackgroundResource(R.drawable.bgconrain)
+//                    "moderate rain" -> layout_detail_weather.setBackgroundResource(R.drawable.bgconrain)
+//                    "sunny" -> layout_detail_weather.setBackgroundResource(R.drawable.bgconclear)
+//                    else -> layout_detail_weather.setBackgroundResource(R.drawable.bgconclear)
+//                }
 
             }else{
                 Toast.makeText(this,"Cannot find $lokasi", Toast.LENGTH_SHORT).show()
@@ -116,7 +116,7 @@ class Detail_weather : AppCompatActivity() {
         cuacaviewmodel.forecastrespon.observe(this, Observer { fore->
             val data = fore.body()?.list
             if (data != null) {
-                for (i in 0 until data.size){
+                for (i in data.indices){
                     val date = data[i].dtTxt
                     val desc = data[i].weather.get(0).description
                     val temp = data[i].main.temp.toString()
@@ -144,14 +144,14 @@ class Detail_weather : AppCompatActivity() {
             val image = intent.getStringExtra("link")
 
             //layout condition
-            when(desc){
-                "few clouds" -> layout_detail_weather.setBackgroundResource(R.drawable.bgconcloud)
-                "overcast clouds" -> layout_detail_weather.setBackgroundResource(R.drawable.bgconpartycloudy)
-                "light rain" -> layout_detail_weather.setBackgroundResource(R.drawable.bgconrain)
-                "moderate rain" -> layout_detail_weather.setBackgroundResource(R.drawable.bgconrain)
-                "sunny" -> layout_detail_weather.setBackgroundResource(R.drawable.bgconclear)
-                else -> layout_detail_weather.setBackgroundResource(R.drawable.bgconclear)
-            }
+//            when(desc){
+//                "few clouds" -> layout_detail_weather.setBackgroundResource(R.drawable.bgconcloud)
+//                "overcast clouds" -> layout_detail_weather.setBackgroundResource(R.drawable.bgconpartycloudy)
+//                "light rain" -> layout_detail_weather.setBackgroundResource(R.drawable.bgconrain)
+//                "moderate rain" -> layout_detail_weather.setBackgroundResource(R.drawable.bgconrain)
+//                "sunny" -> layout_detail_weather.setBackgroundResource(R.drawable.bgconclear)
+//                else -> layout_detail_weather.setBackgroundResource(R.drawable.bgconclear)
+//            }
 
             val loc = intent.getStringExtra("loc")
 

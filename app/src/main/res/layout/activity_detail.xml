@@ -105,13 +105,6 @@
                 android:layout_marginBottom="8dp"
                 android:paddingLeft="5dp" />
 
-            <ImageView
-                android:id="@+id/imgvdetail_todoin"
-                android:layout_width="match_parent"
-                android:layout_height="231dp"
-                android:padding="8dp"
-                tools:srcCompat="@tools:sample/avatars" />
-
         </LinearLayout>
 
     </LinearLayout>
