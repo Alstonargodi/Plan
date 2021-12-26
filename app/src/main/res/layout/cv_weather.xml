@@ -7,7 +7,7 @@
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="370dp"
+        android:layout_width="0dp"
         android:layout_height="121dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -15,9 +15,10 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cv_weather_layout"
-            android:layout_width="346dp"
+            android:layout_width="0dp"
             android:layout_height="98dp"
             android:background="@drawable/bg_todo_card"
+            android:backgroundTint="#E8E8E8"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.466"
@@ -89,10 +90,11 @@
 
             <ImageView
                 android:id="@+id/img_weather_icon"
-                android:layout_width="47dp"
+                android:layout_width="0dp"
                 android:layout_height="51dp"
                 android:layout_marginStart="32dp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tv_weather_temp"
                 app:layout_constraintStart_toEndOf="@+id/tv_weather_desc"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.255"
@@ -100,8 +102,8 @@
 
             <TextView
                 android:id="@+id/tv_weather_temp"
-                android:layout_width="46dp"
-                android:layout_height="47dp"
+                android:layout_width="0dp"
+                android:layout_height="43dp"
                 android:fontFamily="@font/robotoregular"
                 android:gravity="center"
                 android:text="00"
@@ -116,12 +118,13 @@
 
             <TextView
                 android:id="@+id/textView6"
-                android:layout_width="25dp"
+                android:layout_width="0dp"
                 android:layout_height="24dp"
                 android:layout_marginTop="36dp"
                 android:layout_marginEnd="4dp"
                 android:text="C"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_weather_temp"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

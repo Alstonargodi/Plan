@@ -5,7 +5,7 @@
     android:id="@+id/layout_detail_weather"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#03A9F4"
+    android:background="@drawable/day_rain"
     android:orientation="vertical"
     tools:context=".Detail_weather">
 
@@ -105,7 +105,7 @@
                 android:fontFamily="@font/abezeeregular"
                 android:gravity="center"
                 android:text="desc"
-                android:textColor="#FFFFFF"
+                android:textColor="#E4E4E4"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.473"
@@ -115,7 +115,9 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="#FFFFFF"
+                android:background="@drawable/bg_corner_abu"
+                android:backgroundTint="#46EBEBEB"
+
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -148,7 +150,7 @@
                             android:layout_marginLeft="8dp"
                             android:fontFamily="@font/righteous"
                             android:text="Feelslike"
-                            android:textColor="#6B6D6D" />
+                            android:textColor="#474747" />
 
                         <TextView
                             android:id="@+id/textView56"
@@ -157,7 +159,7 @@
                             android:layout_margin="8dp"
                             android:fontFamily="@font/righteous"
                             android:text="wind speed"
-                            android:textColor="#6B6D6D" />
+                            android:textColor="#474747" />
 
                         <TextView
                             android:id="@+id/textView58"
@@ -166,7 +168,7 @@
                             android:layout_margin="8dp"
                             android:fontFamily="@font/righteous"
                             android:text="visibility"
-                            android:textColor="#6B6D6D" />
+                            android:textColor="#474747" />
 
                         <TextView
                             android:id="@+id/textView60"
@@ -175,7 +177,7 @@
                             android:layout_margin="8dp"
                             android:fontFamily="@font/righteous"
                             android:text="presuere"
-                            android:textColor="#6B6D6D" />
+                            android:textColor="#474747" />
 
                         <TextView
                             android:id="@+id/textView62"
@@ -184,7 +186,7 @@
                             android:layout_margin="8dp"
                             android:fontFamily="@font/righteous"
                             android:text="cloud"
-                            android:textColor="#6B6D6D" />
+                            android:textColor="#474747" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -200,7 +202,7 @@
                             android:layout_marginRight="10dp"
                             android:gravity="center"
                             android:text="TextView"
-                            android:textColor="#4F4D4D" />
+                            android:textColor="#F8F8F8" />
 
                         <TextView
                             android:id="@+id/tvdetail_weather_wind"
@@ -209,7 +211,7 @@
                             android:layout_margin="5dp"
                             android:gravity="center"
                             android:text="TextView"
-                            android:textColor="#4F4D4D" />
+                            android:textColor="#F8F8F8" />
 
                         <TextView
                             android:id="@+id/tvdetail_weather_visib"
@@ -218,7 +220,7 @@
                             android:layout_margin="8dp"
                             android:gravity="center"
                             android:text="TextView"
-                            android:textColor="#4F4D4D" />
+                            android:textColor="#F8F8F8" />
 
                         <TextView
                             android:id="@+id/tvdetail_weather_presuare"
@@ -227,7 +229,7 @@
                             android:layout_margin="8dp"
                             android:gravity="center"
                             android:text="TextView"
-                            android:textColor="#4F4D4D" />
+                            android:textColor="#F8F8F8" />
 
                         <TextView
                             android:id="@+id/tvdetail_weather_cloud"
@@ -236,7 +238,7 @@
                             android:layout_margin="8dp"
                             android:gravity="center"
                             android:text="TextView"
-                            android:textColor="#4F4D4D" />
+                            android:textColor="#F8F8F8" />
                     </LinearLayout>
                 </LinearLayout>
 

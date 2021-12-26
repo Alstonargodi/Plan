@@ -42,13 +42,15 @@ class weatherhomeadapter: RecyclerView.Adapter<weatherhomeadapter.viewmodel>() {
 
 
         if(curitem.desc == "few clouds"){
-            holder.itemView.lay_bg_weather_home.setBackgroundResource(R.drawable.pantai)
+            holder.itemView.lay_bg_weather_home.setBackgroundResource(R.drawable.bgconpartycloudy)
+        }else if (curitem.desc == "scattered clouds") {
+            holder.itemView.lay_bg_weather_home.setBackgroundResource(R.drawable.day_clearsky)
         }else if (curitem.desc == "overcast clouds"){
-            holder.itemView.lay_bg_weather_home.setBackgroundResource(R.drawable.clearbg)
+            holder.itemView.lay_bg_weather_home.setBackgroundResource(R.drawable.day_clearsky)
         }else if(curitem.desc == "light rain"){
-            holder.itemView.lay_bg_weather_home.setBackgroundResource(R.drawable.wrain)
+            holder.itemView.lay_bg_weather_home.setBackgroundResource(R.drawable.day_rain)
         }else if (curitem.desc == "moderate rain"){
-            holder.itemView.lay_bg_weather_home.setBackgroundResource(R.drawable.wrain)
+            holder.itemView.lay_bg_weather_home.setBackgroundResource(R.drawable.day_rain)
         }
 
 

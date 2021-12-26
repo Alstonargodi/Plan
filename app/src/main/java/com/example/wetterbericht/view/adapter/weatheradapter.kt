@@ -55,9 +55,13 @@ class weatheradapter: RecyclerView.Adapter<weatheradapter.viewholder>() {
             intent.putExtra("cloud",curitem.cloud)
             intent.putExtra("link",curitem.image)
 
-
             holder.itemView.context.startActivity(intent)
+        }
 
+        when(curitem.desc){
+            "sunny"->{
+
+            }
         }
     }
 

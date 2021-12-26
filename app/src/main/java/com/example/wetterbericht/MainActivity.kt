@@ -73,10 +73,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        fab_add.setOnClickListener {
-            startActivity(Intent(this,Todo_add::class.java))
-        }
-
 
         //setup bottomnavmenu
         val navview : BottomNavigationView = navmenu
@@ -110,8 +106,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        Alarmreceiver()
-        setalarm()
+//        Alarmreceiver()
+//        setalarm()
 
     }
 

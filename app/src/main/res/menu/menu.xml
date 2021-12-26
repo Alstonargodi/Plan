@@ -12,7 +12,7 @@
     <item
         android:id="@+id/todo_add"
         android:icon="@drawable/tulis"
-        android:iconTint="@color/black"
+
         android:fontFamily="@font/righteous"
         />
     <item

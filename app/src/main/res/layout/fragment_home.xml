@@ -8,9 +8,9 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout4"
+        android:id="@+id/mainhomelay"
         android:layout_width="0dp"
-        android:layout_height="186dp"
+        android:layout_height="809dp"
         android:background="@drawable/corner10"
 
         app:layout_constraintBottom_toBottomOf="parent"
@@ -22,9 +22,9 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recviewweather"
             android:layout_width="0dp"
-            android:layout_height="145dp"
+            android:layout_height="0dp"
             android:background="@drawable/corner10"
-            android:backgroundTint="@color/white"
+            app:layout_constrainedHeight="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -36,9 +36,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="0dp"
-        android:layout_height="653dp"
+        android:layout_height="645dp"
         android:background="@drawable/cornerheader"
-        android:backgroundTint="#E5E5E5"
+        android:backgroundTint="#E7E5E5E5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.4"

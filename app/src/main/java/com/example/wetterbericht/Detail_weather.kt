@@ -97,14 +97,14 @@ class Detail_weather : AppCompatActivity() {
                 }
 
                 //background condition
-//                when(desc){
-//                    "few clouds" -> layout_detail_weather.setBackgroundResource(R.drawable.bgconcloud)
-//                    "overcast clouds" -> layout_detail_weather.setBackgroundResource(R.drawable.bgconpartycloudy)
-//                    "light rain" -> layout_detail_weather.setBackgroundResource(R.drawable.bgconrain)
-//                    "moderate rain" -> layout_detail_weather.setBackgroundResource(R.drawable.bgconrain)
-//                    "sunny" -> layout_detail_weather.setBackgroundResource(R.drawable.bgconclear)
-//                    else -> layout_detail_weather.setBackgroundResource(R.drawable.bgconclear)
-//                }
+                when(desc){
+                    "few clouds" -> layout_detail_weather.setBackgroundResource(R.drawable.bgconcloud)
+                    "overcast clouds" -> layout_detail_weather.setBackgroundResource(R.drawable.bgconpartycloudy)
+                    "light rain" -> layout_detail_weather.setBackgroundResource(R.drawable.bgconrain)
+                    "moderate rain" -> layout_detail_weather.setBackgroundResource(R.drawable.bgconrain)
+                    "sunny" -> layout_detail_weather.setBackgroundResource(R.drawable.bgconclear)
+                    else -> layout_detail_weather.setBackgroundResource(R.drawable.bgconclear)
+                }
 
             }else{
                 Toast.makeText(this,"Cannot find $lokasi", Toast.LENGTH_SHORT).show()

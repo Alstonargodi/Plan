@@ -33,22 +33,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        app:menu="@menu/menu">
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_add"
-            android:layout_width="wrap_content"
-            android:layout_height="76dp"
-            android:layout_marginLeft="130dp"
-            android:layout_marginBottom="5dp"
-            android:clickable="true"
-            android:scaleType="center"
-            app:backgroundTint="#2392C5"
-            app:fabCustomSize="34dp"
-            app:fabSize="mini"
-
-            app:srcCompat="@drawable/tulis" />
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
+        app:menu="@menu/menu"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
