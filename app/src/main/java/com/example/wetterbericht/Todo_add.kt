@@ -40,7 +40,6 @@ class Todo_add : AppCompatActivity() {
     private var adapterout = Addsuboutsideadapter()
 
     private var kategori : String = ""
-
     private var warna : Any = ""
     private var count : Int = 0
 

@@ -62,11 +62,14 @@ class Detail_weather : AppCompatActivity() {
                 val url = response.body()?.weather?.get(0)?.icon
                 val urlimage = "http://openweathermap.org/img/w/${url}.png"
 
+
+
+
                 tvdetail_weather_loc.setText(response.body()?.name.toString())
-                tvdetail_weather_temp.setText(response.body()?.main?.temp.toString())
+                tvdetail_weather_temp.setText(round(response.body()?.main?.temp!!).toString())
                 tvdetail_weather_desc.setText(desc)
-                tvdetail_weather_feels.setText(response.body()?.main?.feelsLike.toString()+ " c")
-                tvdetail_weather_wind.setText(response.body()?.wind?.speed.toString()+ " Km/h")
+                tvdetail_weather_feels.setText(round(response.body()?.main?.feelsLike!!).toString()+ " c")
+                tvdetail_weather_wind.setText(round(response.body()?.wind?.speed!!).toString()+ " Km/h")
                 tvdetail_weather_cloud.setText(response.body()?.clouds?.all.toString()+ " %")
                 tvdetail_weather_visib.setText(response.body()?.visibility.toString()+ " km")
                 tvdetail_weather_presuare.setText(response.body()?.main?.pressure.toString()+" mbar")
@@ -144,14 +147,14 @@ class Detail_weather : AppCompatActivity() {
             val image = intent.getStringExtra("link")
 
             //layout condition
-//            when(desc){
-//                "few clouds" -> layout_detail_weather.setBackgroundResource(R.drawable.bgconcloud)
-//                "overcast clouds" -> layout_detail_weather.setBackgroundResource(R.drawable.bgconpartycloudy)
-//                "light rain" -> layout_detail_weather.setBackgroundResource(R.drawable.bgconrain)
-//                "moderate rain" -> layout_detail_weather.setBackgroundResource(R.drawable.bgconrain)
-//                "sunny" -> layout_detail_weather.setBackgroundResource(R.drawable.bgconclear)
-//                else -> layout_detail_weather.setBackgroundResource(R.drawable.bgconclear)
-//            }
+            when(desc){
+                "few clouds" -> layout_detail_weather.setBackgroundResource(R.drawable.day_partlycloudy)
+                "overcast clouds" -> layout_detail_weather.setBackgroundResource(R.drawable.bgconpartycloudy)
+                "light rain" -> layout_detail_weather.setBackgroundResource(R.drawable.bgconrain)
+                "moderate rain" -> layout_detail_weather.setBackgroundResource(R.drawable.bgconrain)
+                "sunny" -> layout_detail_weather.setBackgroundResource(R.drawable.bgconclear)
+                else -> layout_detail_weather.setBackgroundResource(R.drawable.bgconclear)
+            }
 
             val loc = intent.getStringExtra("loc")
 

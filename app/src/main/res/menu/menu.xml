@@ -20,10 +20,6 @@
         android:icon="@drawable/awan"
         android:fontFamily="@font/righteous"
         />
-    <item
-        android:id="@+id/fragment_setting"
-        android:icon="@drawable/setting"
-        android:fontFamily="@font/righteous"
-        />
+
 
 </menu>

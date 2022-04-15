@@ -6,15 +6,33 @@
     android:layout_height="match_parent"
     tools:context=".Fragment_activity_outside">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recview_todo_out"
-        android:layout_width="396dp"
-        android:layout_height="654dp"
-
-        android:layout_marginTop="100dp"
+    <TextView
+        android:id="@+id/tvact_count_outside"
+        android:layout_width="159dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="250dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="500dp"
+        android:gravity="center"
+        android:text="activitas"
+        android:textColor="#302F2F"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.55" />
+        app:layout_constraintVertical_bias="0.243" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recview_todo_out"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvact_count_outside"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

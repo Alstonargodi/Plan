@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wetterbericht.R
 import com.example.wetterbericht.view.adapter.Recyclerview.Home.Todooutsideadapter
 import com.example.wetterbericht.viewmodel.room.todoviewmodel
+import kotlinx.android.synthetic.main.fragment_activity_inside.view.*
 import kotlinx.android.synthetic.main.fragment_activity_outside.view.*
 
 
@@ -27,11 +28,11 @@ class Fragment_activity_outside : Fragment() {
         recview.layoutManager = LinearLayoutManager(requireContext())
         localviewmodel.readoutside.observe(viewLifecycleOwner, Observer { data ->
 
-            if(adapter.itemCount == 0){
-                adapter.setdata(data)
-            }else{
-                recview.setBackgroundResource(R.drawable.emptyview)
-            }
+            adapter.setdata(data)
+
+            val count = "${adapter.itemCount} Activitas"
+
+            view.tvact_count_outside.setText(count.toString())
         })
 
         return view

@@ -41,6 +41,10 @@ class todoRepo(val dao: todoDao) {
         dao.deletedata(todo)
     }
 
+    fun deletefindinside(find : String){
+        dao.deletefindinside(find)
+    }
+
     fun deleteall(){
         dao.destroytodo()
     }

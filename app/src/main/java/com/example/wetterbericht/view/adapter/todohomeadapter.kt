@@ -4,7 +4,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.wetterbericht.Detail_todo
 import com.example.wetterbericht.R
 import com.example.wetterbericht.model.room.Inside
 import kotlinx.android.synthetic.main.cv_todo_home.view.*
@@ -22,7 +24,9 @@ class todohomeadapter: RecyclerView.Adapter<todohomeadapter.viewholder>() {
         holder.itemView.tv_home_date.text = curitem.deadlinedate.toString()
         holder.itemView.tv_home_time.text = curitem.deadlinetime.toString()
         holder.itemView.tv_home_status.text = curitem.status.toString()
+
     }
+
 
     override fun getItemCount(): Int {
         val jumlah = datalist.size

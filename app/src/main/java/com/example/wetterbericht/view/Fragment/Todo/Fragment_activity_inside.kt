@@ -29,18 +29,9 @@ class Fragment_activity_inside : Fragment() {
         recview.adapter = adapter
         recview.layoutManager = LinearLayoutManager(requireContext())
         localviewmodel.readinside.observe(viewLifecycleOwner, Observer { todo ->
-
-
-            Log.d("item",adapter.itemCount.toString())
-
-            if(adapter.itemCount == 0){
-                adapter.setdata(todo)
-            }else{
-                recview.setBackgroundResource(R.drawable.emptyview)
-            }
-
-
+            adapter.setdata(todo)
         })
+
 
         return view
     }

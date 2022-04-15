@@ -71,6 +71,12 @@ class todoviewmodel(application: Application): AndroidViewModel(application) {
         }
     }
 
+    fun deletefindinside(find : String){
+        viewModelScope.launch(Dispatchers.IO) {
+            repo.deletefindinside(find)
+        }
+    }
+
     fun deleteall(){
         viewModelScope.launch(Dispatchers.IO) {
             repo.deleteall()

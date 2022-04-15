@@ -37,8 +37,15 @@ abstract class todoDao {
     @Query("select*from subtaskinside where idsub like :name")
     abstract fun selectsubtask(name : String): LiveData<List<subtaskinside>>
 
+
     @Delete
     abstract fun deletedata(todo: Inside)
+
+
+    @Query("delete from tabelinside where title = :find")
+    abstract fun deletefindinside(find:String)
+
+
 
     @Update
     abstract fun updatedata(todo: Inside)

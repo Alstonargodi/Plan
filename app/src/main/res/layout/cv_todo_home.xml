@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout2"
+            android:id="@+id/layhome_todo"
             android:layout_width="0dp"
             android:layout_height="41dp"
             android:background="@drawable/shadow"
@@ -29,8 +29,8 @@
             <TextView
                 android:id="@+id/tv_home_status"
                 android:layout_width="166dp"
-                android:layout_height="34dp"
-                android:gravity="center|left"
+                android:layout_height="0dp"
+                android:gravity="left"
                 android:text="Buying cat food"
                 android:textColor="#FF5722"
                 android:textSize="10sp"

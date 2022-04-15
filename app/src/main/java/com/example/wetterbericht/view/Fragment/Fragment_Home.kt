@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wetterbericht.R
+import com.example.wetterbericht.databinding.FragmentHomeBinding
 import com.example.wetterbericht.view.adapter.Tab.Tabtodoadapter
 import com.example.wetterbericht.view.adapter.weatherhomeadapter
 import com.example.wetterbericht.viewmodel.room.Cuacaviewmodel
@@ -19,17 +20,18 @@ import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_home.view.*
 
 class Fragment_Home : Fragment() {
+    private lateinit var binding : FragmentHomeBinding
     lateinit var mroomodel : todoviewmodel
     lateinit var mcuacamodel : Cuacaviewmodel
 
     lateinit var tabadapter : Tabtodoadapter
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_home, container, false)
+        binding = FragmentHomeBinding.inflate(layoutInflater)
 
         //weather
         val cadapter = weatherhomeadapter()
-        val mrecview = view.recviewweather
+        val mrecview = binding.recviewweather
         mrecview.adapter = cadapter
         mrecview.layoutManager = LinearLayoutManager(requireContext())
         mcuacamodel = ViewModelProvider(this).get(Cuacaviewmodel::class.java)
@@ -49,8 +51,8 @@ class Fragment_Home : Fragment() {
         })
 
         val fragment = (activity as FragmentActivity).supportFragmentManager
-        val viewpager = view.viewp_act_home
-        val tablay = view.tabp_todo_home
+        val viewpager = binding.viewpActHome
+        val tablay = binding.tabpTodoHome
         tabadapter = Tabtodoadapter(fragment,lifecycle)
         viewpager.adapter = tabadapter
 
@@ -66,7 +68,7 @@ class Fragment_Home : Fragment() {
         }.attach()
 
 
-        return view
+        return binding.root
     }
 
 }

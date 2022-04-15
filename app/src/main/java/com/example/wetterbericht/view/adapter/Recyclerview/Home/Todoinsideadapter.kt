@@ -8,16 +8,19 @@ import com.example.wetterbericht.R
 import kotlinx.android.synthetic.main.tcv_todo_card.view.*
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 
-import com.example.wetterbericht.Detail_activity
+import com.example.wetterbericht.Detail_todo
 import com.example.wetterbericht.model.room.insidendsubtask
-import com.example.wetterbericht.view.receiver.alarmreceiver
-import com.example.wetterbericht.view.util.todo.Alarmreceiver
+import com.example.wetterbericht.viewmodel.room.todoviewmodel
 
 
 class Todoinsideadapter: RecyclerView.Adapter<Todoinsideadapter.viewholder>() {
+
+    lateinit var localvmodel : todoviewmodel
+
     var data = emptyList<insidendsubtask>()
 
     class viewholder(view : View): RecyclerView.ViewHolder(view) {}
@@ -30,28 +33,36 @@ class Todoinsideadapter: RecyclerView.Adapter<Todoinsideadapter.viewholder>() {
     override fun onBindViewHolder(holder: viewholder, position: Int) {
         val item = data[position]
         holder.itemView.tvtoxo_card_name.text = item.todo.title
-        holder.itemView.tvtoxo_card_tanggal.text = item.todo.deadlinedate
         holder.itemView.tvtoxo_card_waktu.text = item.todo.deadlinetime
 
         holder.itemView.lay_todo.setOnClickListener {
+            var dialog = Detail_todo()
+            var spfragment = (holder.itemView.context as AppCompatActivity).supportFragmentManager
 
-            val intent = Intent(holder.itemView.context,Detail_activity::class.java)
-            intent.putExtra("namaact",item.todo.title)
-            intent.putExtra("desc",item.todo.desc)
+            var args = Bundle()
+            args.putString("date",item.todo.deadlinedate)
+            args.putString("time",item.todo.deadlinetime)
+            args.putString("title",item.todo.title)
+            args.putString("desc",item.todo.desc)
 
 
 
-            holder.itemView.context.startActivity(intent)
+            dialog.setArguments(args)
+            dialog.show(spfragment,"dialog")
+
+
         }
+
     }
 
-    override fun getItemCount(): Int {
-        return data.size
-    }
+
+    override fun getItemCount(): Int = data.size
+
 
     fun setdata(list: List<insidendsubtask>){
         data = list
         notifyDataSetChanged()
     }
+
 
 }
