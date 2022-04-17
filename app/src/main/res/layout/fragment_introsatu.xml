@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context=".view.Login.Onboard.introsatu">
+    tools:context=".view.Login.onboarding.introsatu">
 
     <ImageView
         android:id="@+id/imageView"

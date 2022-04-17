@@ -3,19 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#03A9F4"
     android:layout_height="match_parent"
-    tools:context=".splashscreen">
+    android:background="#5584AC"
+    tools:context=".SplashScreen">
 
     <TextView
         android:id="@+id/textView15"
-        android:layout_width="355dp"
-        android:layout_height="85dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:fontFamily="@font/righteous"
         android:gravity="center"
-        android:text="Wetterdo"
+        android:text="Plan"
         android:textColor="#F4F4F4"
-        android:textSize="34sp"
+        android:textSize="60sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.578"

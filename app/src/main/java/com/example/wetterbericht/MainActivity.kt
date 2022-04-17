@@ -5,11 +5,11 @@ import android.os.Bundle
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.wetterbericht.databinding.ActivityMainBinding
-import com.example.wetterbericht.viewmodel.room.todoviewmodel
+import com.example.wetterbericht.viewmodel.LocalViewModel
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
-    lateinit var tdoviewmodel: todoviewmodel
+    lateinit var tdoviewmodel: LocalViewModel
 
 
     private var waktu : Long = 0

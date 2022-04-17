@@ -79,7 +79,7 @@
         </receiver>
 
         <activity
-            android:name=".DetailWeatherActivity"
+            android:name=".view.weather.DetailWeatherActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="false" />
 
@@ -88,11 +88,11 @@
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".view.Login.Onboard.Onboardmain"
+            android:name=".view.Login.onboarding.Onboardmain"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".Todo_add"
+            android:name=".view.todo.InsertTodoActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
@@ -112,7 +112,7 @@
             android:exported="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".splashscreen"
+            android:name=".SplashScreen"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>

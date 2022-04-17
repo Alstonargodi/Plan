@@ -5,8 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wetterbericht.R
-import com.example.wetterbericht.model.response.ForecastResponse
-import com.example.wetterbericht.model.response.Foredata
+import com.example.wetterbericht.model.remote.response.Foredata
 import kotlinx.android.synthetic.main.itemcv_forecast.view.*
 import kotlin.math.round
 
@@ -22,7 +21,7 @@ class ForecastAdapter(private val foreList : List<Foredata>)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = foreList[position]
 
-        val temp = round(item.temp.toDouble())
+        val temp = round(item.temp.toDouble()).toInt()
         holder.itemView.tv_f_date.text = item.date
         holder.itemView.tv_f_desc.text = item.desc
         holder.itemView.tv_f_temp.text = temp.toString() + " c"
