@@ -2,12 +2,12 @@ package com.example.wetterbericht.viewmodel.api
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.wetterbericht.model.repo.api.mainrepo
+import com.example.wetterbericht.model.repo.api.WeatherRepository
 
-class Vmfactory(val repo: mainrepo): ViewModelProvider.NewInstanceFactory() {
+class Vmfactory(val repo: WeatherRepository): ViewModelProvider.NewInstanceFactory() {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(Mainviewmodel::class.java)){
-            return Mainviewmodel(repo) as T
+        if (modelClass.isAssignableFrom(WeatherViewModel::class.java)){
+            return WeatherViewModel() as T
         }
         throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
     }

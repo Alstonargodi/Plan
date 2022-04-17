@@ -10,7 +10,7 @@ import com.example.wetterbericht.model.repo.room.CuacaRepo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class Cuacaviewmodel(application: Application): AndroidViewModel(application) {
+class RoomViewModel(application: Application): AndroidViewModel(application) {
         private val repo : CuacaRepo
         //read
         val readdata : LiveData<List<cuaca>>

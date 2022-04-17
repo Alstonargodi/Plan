@@ -7,8 +7,7 @@ import android.view.ViewGroup
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.example.wetterbericht.R
-import com.example.wetterbericht.model.APIforecast.Foredata
-import kotlinx.android.synthetic.main.cv_forecast.view.*
+import com.example.wetterbericht.model.response.Foredata
 import kotlinx.android.synthetic.main.vplay_forecast.view.*
 
 class vpweatheradapter(private val context: Context,private var fordata : List<Foredata>): PagerAdapter() {

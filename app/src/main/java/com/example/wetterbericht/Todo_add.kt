@@ -7,16 +7,10 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.widget.AdapterView
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.wetterbericht.model.APIweather.Main
 import com.example.wetterbericht.model.Firebase.Input
-import com.example.wetterbericht.model.Firebase.Insidedo
-import com.example.wetterbericht.model.Firebase.Subtaskdo
 import com.example.wetterbericht.model.room.Do.Outside
 import com.example.wetterbericht.model.room.Do.subtaskoutside
 import com.example.wetterbericht.model.room.Inside

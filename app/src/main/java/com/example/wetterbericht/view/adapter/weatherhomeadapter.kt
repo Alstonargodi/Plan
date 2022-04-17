@@ -1,7 +1,6 @@
 package com.example.wetterbericht.view.adapter
 
 import android.annotation.SuppressLint
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,8 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.wetterbericht.R
 import com.example.wetterbericht.model.room.cuaca
-import kotlinx.android.synthetic.main.cv_weather.view.*
-import kotlinx.android.synthetic.main.cv_weather_home.view.*
+import kotlinx.android.synthetic.main.itemcv_weather_home.view.*
 import kotlin.math.round
 
 class weatherhomeadapter: RecyclerView.Adapter<weatherhomeadapter.viewmodel>() {
@@ -19,7 +17,7 @@ class weatherhomeadapter: RecyclerView.Adapter<weatherhomeadapter.viewmodel>() {
     class viewmodel(itemview : View): RecyclerView.ViewHolder(itemview) {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): weatherhomeadapter.viewmodel {
-        return viewmodel(LayoutInflater.from(parent.context).inflate(R.layout.cv_weather_home,parent,false))
+        return viewmodel(LayoutInflater.from(parent.context).inflate(R.layout.itemcv_weather_home,parent,false))
     }
 
     @SuppressLint("SetTextI18n")

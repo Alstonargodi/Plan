@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+    <item
+        android:id="@+id/search_weather"
+        android:configChanges="keyboardHidden|orientation|screenSize"
+        android:fontFamily="@font/righteous"
+        android:icon="@drawable/ic_baseline_search_24"
+        android:title="searchweather"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:iconifiedByDefault="true"
+        app:showAsAction="collapseActionView|ifRoom" />
+</menu>

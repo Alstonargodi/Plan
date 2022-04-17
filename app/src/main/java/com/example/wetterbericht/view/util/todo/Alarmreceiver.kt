@@ -35,7 +35,7 @@ class Alarmreceiver: BroadcastReceiver() {
             val notification = NotificationCompat.Builder(context!!,"alarmid")
                 .setContentTitle("Reminder task")
                 .setContentText("notifikasi")
-                .setSmallIcon(R.drawable.ic_star_black_24dp)
+                .setSmallIcon(R.drawable.ic_baseline_star_24)
                 .setPriority(NotificationCompat.PRIORITY_LOW)
                 .setContentIntent(pendingintet)
                 .setAutoCancel(true)

@@ -1,4 +1,4 @@
-package com.example.wetterbericht.view.Fragment.Todo
+package com.example.wetterbericht.view.fragment.Todo
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,22 +11,21 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wetterbericht.R
 import com.example.wetterbericht.view.adapter.Recyclerview.Home.Todooutsideadapter
 import com.example.wetterbericht.viewmodel.room.todoviewmodel
-import kotlinx.android.synthetic.main.fragment_activity_inside.view.*
 import kotlinx.android.synthetic.main.fragment_activity_outside.view.*
 
 
-class Fragment_activity_outside : Fragment() {
-    lateinit var localviewmodel : todoviewmodel
+class OutsideActivityFragment : Fragment() {
+    private lateinit var localViewModel : todoviewmodel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_activity_outside, container, false)
-        localviewmodel = ViewModelProvider(this).get(todoviewmodel::class.java)
+        localViewModel = ViewModelProvider(this)[todoviewmodel::class.java]
 
         val adapter = Todooutsideadapter()
         val recview = view.recview_todo_out
         recview.adapter = adapter
         recview.layoutManager = LinearLayoutManager(requireContext())
-        localviewmodel.readoutside.observe(viewLifecycleOwner, Observer { data ->
+        localViewModel.readoutside.observe(viewLifecycleOwner, Observer { data ->
 
             adapter.setdata(data)
 

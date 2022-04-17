@@ -1,9 +1,8 @@
-package com.example.wetterbericht.view.Fragment
+package com.example.wetterbericht.view.fragment
 
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,24 +11,23 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.wetterbericht.R
 import com.example.wetterbericht.model.Firebase.Input
-import com.example.wetterbericht.model.repo.api.mainrepo
+import com.example.wetterbericht.model.repo.api.WeatherRepository
 import com.example.wetterbericht.view.Login.Loginactivity
-import com.example.wetterbericht.viewmodel.api.Mainviewmodel
+import com.example.wetterbericht.viewmodel.api.WeatherViewModel
 import com.example.wetterbericht.viewmodel.api.Vmfactory
-import com.example.wetterbericht.viewmodel.room.Cuacaviewmodel
+import com.example.wetterbericht.viewmodel.room.RoomViewModel
 import com.example.wetterbericht.viewmodel.room.todoviewmodel
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.fragment_setting.*
 import kotlinx.android.synthetic.main.fragment_setting.view.*
 
 
-class Fragment_Setting : Fragment() {
+class SettingFragment : Fragment() {
     lateinit var mviewmodel : todoviewmodel
-    lateinit var mapiviewmodel : Mainviewmodel
-    lateinit var mroomviewmodel : Cuacaviewmodel
+    lateinit var mapiviewmodel : WeatherViewModel
+    lateinit var mroomviewmodel : RoomViewModel
 
     //location
     lateinit var localclient : FusedLocationProviderClient
@@ -44,10 +42,10 @@ class Fragment_Setting : Fragment() {
         mviewmodel = ViewModelProvider(this).get(todoviewmodel::class.java)
 
         //weather
-        val repo = mainrepo()
+        val repo = WeatherRepository()
         val vmfactory = Vmfactory(repo)
-        mapiviewmodel = ViewModelProvider(this, vmfactory).get(Mainviewmodel::class.java) //set
-        mroomviewmodel = ViewModelProvider(this).get(Cuacaviewmodel::class.java)
+        mapiviewmodel = ViewModelProvider(this, vmfactory).get(WeatherViewModel::class.java) //set
+        mroomviewmodel = ViewModelProvider(this).get(RoomViewModel::class.java)
 
         //getemail
         val email = FirebaseAuth.getInstance().currentUser?.email

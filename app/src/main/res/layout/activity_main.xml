@@ -24,7 +24,7 @@
         android:id="@+id/navmenu"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_margin="10dp"
+        android:layout_margin="8dp"
         android:background="@drawable/bg_bottomneu"
         android:visibility="visible"
         app:itemIconSize="30dp"

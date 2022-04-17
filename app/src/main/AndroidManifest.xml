@@ -79,7 +79,7 @@
         </receiver>
 
         <activity
-            android:name=".Detail_weather"
+            android:name=".DetailWeatherActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="false" />
 
