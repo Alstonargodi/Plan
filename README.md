@@ -1,3 +1,3 @@
 <h1>Plan</h1>
 
-Submission fo #juaranadroid event
+Submission for #juaranadroid event
