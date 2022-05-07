@@ -4,57 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="10dp"
-    android:layout_marginEnd="10dp"
-    android:layout_marginBottom="30dp"
-    app:cardCornerRadius="5dp">
+    android:layout_margin="8dp"
+    app:cardElevation="0dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/lay_todo"
         android:layout_width="match_parent"
         android:layout_height="47dp"
-        android:background="#E9EEFA"
         tools:layout_editor_absoluteX="21dp"
         tools:layout_editor_absoluteY="16dp">
 
-        <TextView
-            android:id="@+id/tvtoxo_card_name"
-            android:layout_width="200dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="12dp"
-            android:fontFamily="@font/robotoregular"
-            android:gravity="center|left"
-            android:text="TextView"
-            android:textColor="#373737"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tvtoxo_card_name2"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tvtoxo_card_name2"
-            android:layout_width="10dp"
-            android:layout_height="0dp"
-            android:background="#FF810D"
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.481"
+            app:srcCompat="@drawable/ic_lingkaran" />
 
         <TextView
-            android:id="@+id/tvtoxo_card_waktu"
+            android:id="@+id/tvtoxo_card_name"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:gravity="center"
-            android:text="TextView"
-            android:textColor="#828181"
-            android:textSize="16sp"
-            android:textStyle="bold"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/abezeeregular"
+            android:gravity="center|left"
+            android:text="activity"
+            android:textColor="#373737"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.841"
-            app:layout_constraintStart_toEndOf="@+id/tvtoxo_card_name"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="@tools:sample/date/hhmm" />
+            app:layout_constraintStart_toEndOf="@+id/imageView4"
+            app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

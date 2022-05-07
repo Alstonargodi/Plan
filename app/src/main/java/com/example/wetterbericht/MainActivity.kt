@@ -2,10 +2,12 @@ package com.example.wetterbericht
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.navigation.findNavController
-import androidx.navigation.ui.setupWithNavController
+import android.view.View
+import androidx.fragment.app.Fragment
 import com.example.wetterbericht.databinding.ActivityMainBinding
-import com.example.wetterbericht.viewmodel.LocalViewModel
+import com.example.wetterbericht.view.fragment.HomeFragment
+import com.example.wetterbericht.view.fragment.WeatherFragment
+import com.example.wetterbericht.viewmodel.local.LocalViewModel
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
@@ -21,10 +23,28 @@ class MainActivity : AppCompatActivity() {
 
         window.statusBarColor = getColor(R.color.main)
 
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
 
-        binding.navmenu.setupWithNavController(findNavController(R.id.hostfragment))
 
+        binding.navmenu.setOnItemSelectedListener {
+            when(it.itemId){
+                R.id.fragment_home ->{
+                    setFragment(HomeFragment())
+                }
+                R.id.fragment_weather ->{
+                    setFragment(WeatherFragment())
+                }
+            }
+            true
+        }
+    }
 
+    private fun setFragment(fragment : Fragment){
+        val sFragment = supportFragmentManager
+        sFragment
+            .beginTransaction()
+            .replace(R.id.hostfragment, fragment)
+            .commit()
     }
 
 

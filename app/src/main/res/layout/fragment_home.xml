@@ -4,91 +4,144 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#5584AC"
+    android:background="#FFFFFF"
     tools:context=".view.fragment.HomeFragment">
 
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/detailtoolbar"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:paddingLeft="0dp"
-        android:theme="?attr/actionBarTheme">
+        android:layout_height="50dp"
+        android:background="@drawable/bg_headercorner"
+        android:contentInsetStart="0dp"
+        android:contentInsetLeft="0dp"
+        android:contentInsetEnd="0dp"
+        android:contentInsetRight="0dp"
+        android:minHeight="?attr/actionBarSize"
+        app:contentInsetEnd="0dp"
+        app:contentInsetLeft="0dp"
+        app:contentInsetRight="0dp"
+        app:contentInsetStart="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleMargin="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:paddingLeft="0dp"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="20dp">
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="86dp">
 
-            <TextView
-                android:id="@+id/tvdetail_weather_loc"
-                android:layout_width="0dp"
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="27dp"
                 android:layout_height="0dp"
-                android:fontFamily="@font/abezeeregular"
-                android:gravity="center|left"
-                android:includeFontPadding="false"
-                android:text="Today Activity"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:guidelineUseRtl="false"
+                android:layout_marginStart="5dp"
+                android:src="@drawable/ic_menu"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recviewweather"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/corner10"
+                android:visibility="visible"
+                app:layout_constrainedHeight="false"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView5"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:listitem="@layout/itemcv_weather_home" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.appcompat.widget.Toolbar>
 
-    <ScrollView
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:fadeScrollbars="false"
+        android:layout_height="50dp"
+
+        android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailtoolbar"
+        app:tabIndicatorColor="#C4C4C4"
+        app:tabIndicatorFullWidth="false"
+        app:tabTextAppearance="@style/MyCustomTextAppearance"
+        app:tabTextColor="#2D9CDB">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="10000dp"
-            android:orientation="vertical">
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="today" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="900dp">
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="upcoming" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recviewweather"
-                    android:layout_width="0dp"
-                    android:layout_height="150dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:background="@drawable/corner10"
-                    android:visibility="visible"
-                    app:layout_constrainedHeight="true"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.018"
-                    tools:listitem="@layout/itemcv_weather_home" />
+    </com.google.android.material.tabs.TabLayout>
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rectodo"
-                    android:layout_width="0dp"
-                    android:layout_height="735dp"
-                    android:layout_marginTop="40dp"
-                    android:background="@drawable/bg_corner_abu"
-                    android:padding="10dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/recviewweather"
-                    tools:listitem="@layout/tcv_todo_card" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rectodo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_add_todo"
+        tools:listitem="@layout/tcv_todo_card" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </LinearLayout>
-    </ScrollView>
+    <TextView
+        android:id="@+id/btn_add_todo"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="5dp"
+        android:drawableRight="@drawable/ic_baseline_add_24"
+        android:drawableTint="#2196F3"
+        android:fontFamily="@font/abezeeregular"
+        android:includeFontPadding="false"
+        android:padding="5dp"
+        android:text="New Activity"
+        android:textColor="#282828"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
+
+    <EditText
+        android:id="@+id/textView4"
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/bg_todo_card"
+        android:fontFamily="@font/abezeeregular"
+        android:hint="task name"
+        android:includeFontPadding="false"
+        android:paddingStart="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rectodo" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="10dp"
+        android:src="@drawable/ic_add_rounf"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/rectodo" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

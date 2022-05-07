@@ -5,14 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.wetterbericht.R
 import com.example.wetterbericht.databinding.FragmentHomeBinding
 import com.example.wetterbericht.model.local.WeatherLocal
 import com.example.wetterbericht.view.adapter.Recyclerview.TodoRvHomeAdapter
 import com.example.wetterbericht.view.adapter.WeatherRvHomeAdapter
-import com.example.wetterbericht.viewmodel.LocalViewModel
+import com.example.wetterbericht.view.todo.insert.InsertTodoFragment
+import com.example.wetterbericht.viewmodel.local.LocalViewModel
 import com.example.wetterbericht.viewmodel.utils.obtainViewModel
 
 class HomeFragment : Fragment() {
@@ -26,7 +26,7 @@ class HomeFragment : Fragment() {
         localViewModel = obtainViewModel(requireActivity())
 
         localViewModel.readWeatherLocal()
-        localViewModel.responWeatherLocal.observe(viewLifecycleOwner){
+        localViewModel.responseWeatherLocal.observe(viewLifecycleOwner){
             if (it.isEmpty()){
                 binding.recviewweather.visibility = View.GONE
             }else{
@@ -35,6 +35,14 @@ class HomeFragment : Fragment() {
             }
         }
 
+        binding.btnAddTodo.setOnClickListener {
+            val sFragment = requireActivity().supportFragmentManager
+           sFragment
+               .beginTransaction()
+               .replace(R.id.hostfragment, InsertTodoFragment())
+               .addToBackStack(null)
+               .commit()
+        }
 
 
         setTodo()
@@ -48,7 +56,7 @@ class HomeFragment : Fragment() {
         recview.adapter = adapter
         recview.layoutManager = LinearLayoutManager(requireContext())
         localViewModel.readTodoLocal()
-        localViewModel.responTodoLocal.observe(viewLifecycleOwner) { todo ->
+        localViewModel.responseTodoLocal.observe(viewLifecycleOwner) { todo ->
             adapter.setdata(todo)
         }
     }
@@ -58,7 +66,7 @@ class HomeFragment : Fragment() {
         val weatherRvAdapter = WeatherRvHomeAdapter()
         val weatherRv = binding.recviewweather
         weatherRv.adapter = weatherRvAdapter
-        weatherRv.layoutManager = LinearLayoutManager(requireContext())
+        weatherRv.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,true)
         weatherRvAdapter.setdata(data)
     }
 }

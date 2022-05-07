@@ -1,8 +1,8 @@
 package com.example.wetterbericht.model.remote.service
 
 import com.example.wetterbericht.model.remote.response.ForecastResponse
-import com.example.wetterbericht.model.remote.constant.Apikey_
-import com.example.wetterbericht.model.remote.constant.satuan
+import com.example.wetterbericht.model.remote.utils.Constant.Apikey_
+import com.example.wetterbericht.model.remote.utils.Constant.satuan
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.GET

@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.wetterbericht.view.weather.DetailWeatherActivity
@@ -20,8 +19,8 @@ import com.example.wetterbericht.model.local.WeatherLocal
 import com.example.wetterbericht.model.remote.service.WeatherResponse
 import com.example.wetterbericht.view.adapter.ForecastAdapter
 import com.example.wetterbericht.view.adapter.WeatherRvFavoriteAdapter
-import com.example.wetterbericht.viewmodel.LocalViewModel
-import com.example.wetterbericht.viewmodel.WeatherViewModel
+import com.example.wetterbericht.viewmodel.local.LocalViewModel
+import com.example.wetterbericht.viewmodel.remote.WeatherViewModel
 import com.example.wetterbericht.viewmodel.utils.obtainViewModel
 import kotlin.math.round
 
@@ -83,7 +82,7 @@ class WeatherFragment : Fragment(){
 
     private fun favoriteCity(){
         roomViewModel.readWeatherLocal()
-        roomViewModel.responWeatherLocal.observe(viewLifecycleOwner) { response ->
+        roomViewModel.responseWeatherLocal.observe(viewLifecycleOwner) { response ->
             setListFavCity(response)
             if (response.isNotEmpty()){
                 searchCurrentWeather(response[0].loc)

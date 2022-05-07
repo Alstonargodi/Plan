@@ -8,11 +8,8 @@ import com.example.wetterbericht.R
 import kotlinx.android.synthetic.main.tcv_todo_card.view.*
 
 import android.annotation.SuppressLint
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import com.example.wetterbericht.model.local.TodoLocal
-import com.example.wetterbericht.view.todo.DetailTodoDialog
-import com.example.wetterbericht.viewmodel.LocalViewModel
+import com.example.wetterbericht.viewmodel.local.LocalViewModel
 
 
 class TodoRvHomeAdapter: RecyclerView.Adapter<TodoRvHomeAdapter.viewholder>() {
@@ -31,25 +28,8 @@ class TodoRvHomeAdapter: RecyclerView.Adapter<TodoRvHomeAdapter.viewholder>() {
     override fun onBindViewHolder(holder: viewholder, position: Int) {
         val item = data[position]
         holder.itemView.tvtoxo_card_name.text = item.title
-        holder.itemView.tvtoxo_card_waktu.text = item.timeDeadline
-
-        holder.itemView.lay_todo.setOnClickListener {
-            var dialog = DetailTodoDialog()
-            var spfragment = (holder.itemView.context as AppCompatActivity).supportFragmentManager
-
-            var args = Bundle()
-            args.putString("date",item.dateDeadline)
-            args.putString("time",item.timeDeadline)
-            args.putString("title",item.title)
-            args.putString("desc",item.description)
 
 
-
-            dialog.setArguments(args)
-            dialog.show(spfragment,"dialog")
-
-
-        }
 
     }
 

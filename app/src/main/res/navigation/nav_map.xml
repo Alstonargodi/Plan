@@ -32,7 +32,7 @@
     </fragment>
     <activity
         android:id="@+id/splashscreen"
-        android:name="com.example.wetterbericht.SplashScreen"
+        android:name="com.example.wetterbericht.view.Login.onboarding.splashscreen.SplashScreen"
         android:label="activity_splashscreen"
         tools:layout="@layout/activity_splashscreen" />
     <fragment
