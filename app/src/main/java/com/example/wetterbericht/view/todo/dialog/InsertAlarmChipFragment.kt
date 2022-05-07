@@ -21,6 +21,11 @@ class InsertAlarmChipFragment : DialogFragment() {
     private lateinit var localViewModel: LocalViewModel
     private var formatTime = SimpleDateFormat("HH:mm", Locale.ENGLISH)
 
+    private lateinit var timeCallback : timeCallBack
+
+    fun onTimeCallback(timeCallBack: timeCallBack){
+        this.timeCallback = timeCallBack
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,8 +38,8 @@ class InsertAlarmChipFragment : DialogFragment() {
         }
         binding.btnAddchip.setOnClickListener {
             setChip()
+            this.dismiss()
         }
-
 
         return binding.root
     }
@@ -65,5 +70,10 @@ class InsertAlarmChipFragment : DialogFragment() {
         )
 
         localViewModel.insertAlarmChip(chip)
+        timeCallback.timeCallBack(time)
+    }
+
+    interface timeCallBack{
+        fun timeCallBack(time : String)
     }
 }
