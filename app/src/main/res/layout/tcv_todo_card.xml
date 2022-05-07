@@ -11,6 +11,7 @@
         android:id="@+id/lay_todo"
         android:layout_width="match_parent"
         android:layout_height="47dp"
+        android:background="#B39999"
         tools:layout_editor_absoluteX="21dp"
         tools:layout_editor_absoluteY="16dp">
 

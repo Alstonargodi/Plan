@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    tools:context=".view.todo.insert.InsertTodoFragment"
+    tools:context=".view.insert.insert.InsertTodoFragment"
     android:layout_height="match_parent">
 
     <LinearLayout
@@ -17,11 +17,48 @@
             android:layout_height="1000dp">
 
             <TextView
+                android:id="@+id/inserttitle4"
+                android:layout_width="0dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:fontFamily="@font/abezeeregular"
+                android:gravity="center|start"
+                android:text="Subtask"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inserttodo_description" />
+
+            <EditText
+                android:id="@+id/inserttodo_subtask"
+                android:layout_width="0dp"
+                android:layout_height="33dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="8dp"
+                android:background="#E1E1E1"
+                android:fontFamily="@font/abezeeregular"
+                android:gravity="center|start|center_horizontal"
+                android:padding="5dp"
+                android:textAlignment="center"
+                android:textColor="#3E3C3C"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toStartOf="@+id/btn_addsubtask"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inserttitle4" />
+
+            <TextView
                 android:id="@+id/inserttitle3"
                 android:layout_width="0dp"
                 android:layout_height="32dp"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:fontFamily="@font/abezeeregular"
                 android:gravity="center|start"
@@ -40,10 +77,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="8dp"
                 android:layout_marginEnd="10dp"
-                android:background="@drawable/bg_todo_card"
-                android:backgroundTint="#E1E1E1"
+                android:background="#E1E1E1"
                 android:fontFamily="@font/abezeeregular"
                 android:gravity="start|center_horizontal"
                 android:paddingStart="5dp"
@@ -122,6 +157,16 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/detailtoolbar2" />
 
+            <ImageView
+                android:id="@+id/btn_addsubtask"
+                android:layout_width="40dp"
+                android:layout_height="33dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/ic_add_rounf"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inserttitle4" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_chip"
                 android:layout_width="0dp"
@@ -140,11 +185,11 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="10dp"
-                android:background="#BCBBBB"
+                android:background="#E1E1E1"
                 android:fontFamily="@font/abezeeregular"
                 android:gravity="center"
-                android:text="add"
-                android:textColor="#FFFFFF"
+                android:text="pick"
+                android:textColor="#848383"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -156,10 +201,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="4dp"
                 android:layout_marginEnd="10dp"
-                android:background="@drawable/bg_todo_card"
-                android:backgroundTint="#E1E1E1"
+                android:background="#E1E1E1"
                 android:fontFamily="@font/abezeeregular"
                 android:gravity="center|start|center_horizontal"
                 android:padding="5dp"
@@ -194,7 +237,7 @@
                 android:layout_width="0dp"
                 android:layout_height="32dp"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:fontFamily="@font/abezeeregular"
                 android:gravity="center|start"
@@ -213,7 +256,7 @@
                 android:layout_width="0dp"
                 android:layout_height="32dp"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:fontFamily="@font/abezeeregular"
                 android:gravity="center|start"
@@ -226,6 +269,17 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/addtag" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_subtask"
+                android:layout_width="0dp"
+                android:layout_height="158dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inserttodo_subtask" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>

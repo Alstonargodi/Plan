@@ -1,4 +1,4 @@
-package com.example.wetterbericht.view.todo.insert
+package com.example.wetterbericht.view.insert.insert
 
 import android.graphics.Color
 import android.os.Bundle
@@ -8,9 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wetterbericht.databinding.FragmentInsertTodoBinding
-import com.example.wetterbericht.view.todo.adapter.ChipAdapter
-import com.example.wetterbericht.view.todo.dialog.InsertAlarmChipFragment
-import com.example.wetterbericht.view.todo.dialog.InsertTagFragment
+import com.example.wetterbericht.view.insert.adapter.ChipAdapter
+import com.example.wetterbericht.view.insert.dialog.InsertAlarmChipFragment
+import com.example.wetterbericht.view.insert.dialog.InsertTagFragment
 import com.example.wetterbericht.viewmodel.local.LocalViewModel
 import com.example.wetterbericht.viewmodel.utils.obtainViewModel
 import kotlinx.android.synthetic.main.fragment_insert_todo.*
@@ -48,6 +48,7 @@ class InsertTodoFragment : Fragment() {
             dialog.onTagCallBack(object : InsertTagFragment.onTagCallback{
                 override fun tagCallBack(name: String, color: Int) {
                     binding.addtag.text = "#$name"
+                    binding.addtag.setTextColor(Color.WHITE)
                     binding.addtag.setBackgroundColor(color)
                 }
             })

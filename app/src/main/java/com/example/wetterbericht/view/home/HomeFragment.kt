@@ -1,4 +1,4 @@
-package com.example.wetterbericht.view.fragment
+package com.example.wetterbericht.view.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,7 +11,7 @@ import com.example.wetterbericht.databinding.FragmentHomeBinding
 import com.example.wetterbericht.model.local.WeatherLocal
 import com.example.wetterbericht.view.adapter.Recyclerview.TodoRvHomeAdapter
 import com.example.wetterbericht.view.adapter.WeatherRvHomeAdapter
-import com.example.wetterbericht.view.todo.insert.InsertTodoFragment
+import com.example.wetterbericht.view.insert.insert.InsertTodoFragment
 import com.example.wetterbericht.viewmodel.local.LocalViewModel
 import com.example.wetterbericht.viewmodel.utils.obtainViewModel
 

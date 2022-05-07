@@ -8,7 +8,7 @@
     android:clipToPadding="false"
     android:paddingTop="@dimen/list_item_spacing_half"
     android:paddingBottom="@dimen/list_item_spacing_half"
-    tools:context=".view.todo.dialog.DetailTodoDialog">
+    tools:context=".view.home.DetailTodoDialog">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -113,5 +113,20 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvbottom_todo_title" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_subtask"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvbottom_todo_desc"
+            app:layout_constraintVertical_bias="0.26"
+            tools:listitem="@layout/tcv_todo_card" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

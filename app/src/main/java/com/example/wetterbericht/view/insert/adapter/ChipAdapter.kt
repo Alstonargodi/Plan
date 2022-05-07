@@ -1,4 +1,4 @@
-package com.example.wetterbericht.view.todo.adapter
+package com.example.wetterbericht.view.insert.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wetterbericht.R
 import com.example.wetterbericht.model.local.ChipAlarm
-import com.example.wetterbericht.view.todo.dialog.InsertAlarmChipFragment
 import kotlinx.android.synthetic.main.chip_card.view.*
 
 class ChipAdapter: RecyclerView.Adapter<ChipAdapter.ViewHolder>() {

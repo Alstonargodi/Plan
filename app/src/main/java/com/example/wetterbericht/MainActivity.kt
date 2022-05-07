@@ -5,8 +5,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.wetterbericht.databinding.ActivityMainBinding
-import com.example.wetterbericht.view.fragment.HomeFragment
-import com.example.wetterbericht.view.fragment.WeatherFragment
+import com.example.wetterbericht.view.home.HomeFragment
+import com.example.wetterbericht.view.weather.WeatherFragment
 import com.example.wetterbericht.viewmodel.local.LocalViewModel
 
 class MainActivity : AppCompatActivity() {

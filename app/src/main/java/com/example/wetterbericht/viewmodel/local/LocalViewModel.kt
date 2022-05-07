@@ -2,10 +2,8 @@ package com.example.wetterbericht.viewmodel.local
 
 import android.app.Application
 import androidx.lifecycle.*
-import com.example.wetterbericht.model.local.ChipAlarm
+import com.example.wetterbericht.model.local.*
 import com.example.wetterbericht.model.local.repository.TodoRepository
-import com.example.wetterbericht.model.local.TodoLocal
-import com.example.wetterbericht.model.local.WeatherLocal
 
 class LocalViewModel(application: Application): ViewModel() {
     private val todoRepo : TodoRepository = TodoRepository(application)
@@ -13,7 +11,7 @@ class LocalViewModel(application: Application): ViewModel() {
     var responseTodoLocal : LiveData<List<TodoLocal>> = MutableLiveData()
     var responseWeatherLocal : LiveData<List<WeatherLocal>> = MutableLiveData()
     var responseAlarmChip : LiveData<List<ChipAlarm>> = MutableLiveData()
-
+    var responseTodoandSubtask : LiveData<List<TodoandSubTask>> = MutableLiveData()
 
     fun readTodoLocal(){
         responseTodoLocal = todoRepo.readTodo
@@ -25,9 +23,19 @@ class LocalViewModel(application: Application): ViewModel() {
         responseAlarmChip = todoRepo.readChipAlarm
     }
 
+    fun readTodoandSubtask(name : String){
+        responseTodoandSubtask = todoRepo.readTodoSubtask(name)
+    }
+
+
     fun insertTodoLocal(data : TodoLocal){
         todoRepo.insertTodo(data)
     }
+
+    fun insertSubtask(data : TodoSubTask){
+        todoRepo.insertSubtask(data)
+    }
+
 
     fun insertWeatherLocal(data : WeatherLocal){
         todoRepo.insertWeather(data)

@@ -1,8 +1,10 @@
 package com.example.wetterbericht.model.local
 
 import android.os.Parcelable
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.Relation
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
@@ -17,15 +19,36 @@ data class WeatherLocal(
     val desc : String
 ) : Parcelable
 
-
 @Parcelize
 @Entity(tableName = "TodoTable")
 data class TodoLocal(
-    @PrimaryKey(autoGenerate = false)
+    @PrimaryKey
+    val doId : Int,
     val title: String,
     val description: String,
     val level : String,
     val dateDeadline: String,
     val timeDeadline : String,
-    val status: String,
+    val isComplete: Boolean,
 ):Parcelable
+
+
+@Entity
+data class TodoSubTask(
+    @PrimaryKey
+    val id : Int,
+    val title : String,
+    val isComplete: Boolean,
+    val todoId : Int
+)
+
+//one to many
+data class TodoandSubTask(
+    @Embedded
+    val todo : TodoLocal,
+    @Relation(
+        parentColumn = "doId",
+        entityColumn = "todoId"
+    )
+    val subtask : List<TodoSubTask>
+)

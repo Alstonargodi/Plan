@@ -92,7 +92,7 @@
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".view.todo.InsertTodoActivity"
+            android:name=".view.insert.InsertTodoActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity

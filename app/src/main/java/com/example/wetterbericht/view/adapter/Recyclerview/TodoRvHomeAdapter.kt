@@ -8,7 +8,10 @@ import com.example.wetterbericht.R
 import kotlinx.android.synthetic.main.tcv_todo_card.view.*
 
 import android.annotation.SuppressLint
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.wetterbericht.model.local.TodoLocal
+import com.example.wetterbericht.view.home.DetailTodoDialog
 import com.example.wetterbericht.viewmodel.local.LocalViewModel
 
 
@@ -30,6 +33,19 @@ class TodoRvHomeAdapter: RecyclerView.Adapter<TodoRvHomeAdapter.viewholder>() {
         holder.itemView.tvtoxo_card_name.text = item.title
 
 
+        holder.itemView.lay_todo.setOnClickListener {
+            var dialog = DetailTodoDialog()
+            var spfragment = (holder.itemView.context as AppCompatActivity).supportFragmentManager
+
+            var args = Bundle()
+            args.putString("date",item.dateDeadline)
+            args.putString("time",item.timeDeadline)
+            args.putString("title",item.title)
+            args.putString("desc",item.description)
+
+            dialog.setArguments(args)
+            dialog.show(spfragment,"dialog")
+        }
 
     }
 

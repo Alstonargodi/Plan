@@ -1,13 +1,11 @@
-package com.example.wetterbericht.view.todo.dialog
+package com.example.wetterbericht.view.insert.dialog
 
 import android.app.TimePickerDialog
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import com.example.wetterbericht.R
 import com.example.wetterbericht.databinding.FragmentInsertAlarmChipBinding
 import com.example.wetterbericht.model.local.ChipAlarm
 import com.example.wetterbericht.viewmodel.local.LocalViewModel

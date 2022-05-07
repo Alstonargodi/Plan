@@ -4,15 +4,17 @@ import android.content.Context
 import androidx.room.*
 import com.example.wetterbericht.model.local.ChipAlarm
 import com.example.wetterbericht.model.local.TodoLocal
+import com.example.wetterbericht.model.local.TodoSubTask
 import com.example.wetterbericht.model.local.WeatherLocal
 import com.example.wetterbericht.model.local.dao.TodoDao
 
 @Database(entities = [
     WeatherLocal::class,
     TodoLocal::class,
+    TodoSubTask::class,
     ChipAlarm::class
     ]
-    , version = 7
+    , version = 8
     ,exportSchema = false
 )
 abstract class TodoDatabase: RoomDatabase() {
