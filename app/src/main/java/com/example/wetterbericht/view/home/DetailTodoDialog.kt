@@ -63,9 +63,27 @@ class DetailTodoDialog : BottomSheetDialogFragment() {
 
         roomVModel.readTodoandSubtask(title)
         roomVModel.responseTodoandSubtask.observe(viewLifecycleOwner){
-            adapter.submitList(it)
+            it.forEach {
+                adapter.submitList(it.subtask)
+            }
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     //full dialog config
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = BottomSheetDialog(requireContext(), theme)

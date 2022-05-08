@@ -1,5 +1,6 @@
 package com.example.wetterbericht.view.insert.adapter
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,6 +28,7 @@ class ChipAdapter: RecyclerView.Adapter<ChipAdapter.ViewHolder>() {
         holder.itemView.tv_chip_title.text = item.name
 
         holder.itemView.tv_chip_title.setOnClickListener {
+            holder.itemView.tv_chip_title.setTextColor(Color.BLACK)
             timeCallback.timeCallBack(item.time)
         }
     }

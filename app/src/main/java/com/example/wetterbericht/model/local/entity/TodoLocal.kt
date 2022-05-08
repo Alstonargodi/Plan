@@ -23,7 +23,7 @@ data class WeatherLocal(
 @Entity(tableName = "TodoTable")
 data class TodoLocal(
     @PrimaryKey
-    val doId : Int,
+    val doId : String,
     val title: String,
     val description: String,
     val level : String,
@@ -35,11 +35,11 @@ data class TodoLocal(
 
 @Entity
 data class TodoSubTask(
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     val id : Int,
     val title : String,
     val isComplete: Boolean,
-    val todoId : Int
+    val todoId : String
 )
 
 //one to many

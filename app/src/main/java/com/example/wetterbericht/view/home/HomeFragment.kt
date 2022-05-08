@@ -11,6 +11,7 @@ import com.example.wetterbericht.databinding.FragmentHomeBinding
 import com.example.wetterbericht.model.local.WeatherLocal
 import com.example.wetterbericht.view.adapter.Recyclerview.TodoRvHomeAdapter
 import com.example.wetterbericht.view.adapter.WeatherRvHomeAdapter
+import com.example.wetterbericht.view.home.adapter.SubTaskAdapter
 import com.example.wetterbericht.view.insert.insert.InsertTodoFragment
 import com.example.wetterbericht.viewmodel.local.LocalViewModel
 import com.example.wetterbericht.viewmodel.utils.obtainViewModel
@@ -68,5 +69,19 @@ class HomeFragment : Fragment() {
         weatherRv.adapter = weatherRvAdapter
         weatherRv.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,true)
         weatherRvAdapter.setdata(data)
+    }
+
+    private fun readSubtask(title : String){
+        val adapter = SubTaskAdapter()
+        val recView = binding.rectodo
+        recView.adapter = adapter
+        recView.layoutManager = LinearLayoutManager(requireActivity())
+
+        localViewModel.readTodoandSubtask(title)
+        localViewModel.responseTodoandSubtask.observe(viewLifecycleOwner){
+            it.forEach {
+                adapter.submitList(it.subtask)
+            }
+        }
     }
 }

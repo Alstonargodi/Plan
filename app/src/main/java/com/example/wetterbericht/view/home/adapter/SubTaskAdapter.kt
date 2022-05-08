@@ -14,19 +14,11 @@ import com.example.wetterbericht.model.local.TodoandSubTask
 import com.example.wetterbericht.view.insert.adapter.ChipAdapter
 import kotlinx.android.synthetic.main.tcv_todo_card.view.*
 
-class SubTaskAdapter: ListAdapter<TodoandSubTask,SubTaskAdapter.ViewHolder>(
+class SubTaskAdapter: ListAdapter<TodoSubTask,SubTaskAdapter.ViewHolder>(
     ItemComprator()
 ){
 
-    class ViewHolder(private val binding: TcvTodoCardBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: TodoandSubTask) {
-            data.subtask.forEach {
-                binding.tvtoxoCardName.text = it.title
-                Log.d("adaptersub",it.title)
-            }
-        }
-    }
+    class ViewHolder(val binding: TcvTodoCardBinding) : RecyclerView.ViewHolder(binding.root) {}
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -35,18 +27,22 @@ class SubTaskAdapter: ListAdapter<TodoandSubTask,SubTaskAdapter.ViewHolder>(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        val data = getItem(position)
+        holder.binding.tvtoxoCardName.text= data.title
+
+
+
     }
 
 
 
-    class ItemComprator : DiffUtil.ItemCallback<TodoandSubTask>() {
-        override fun areItemsTheSame(oldItem: TodoandSubTask, newItem: TodoandSubTask): Boolean {
-            return oldItem === newItem
+    class ItemComprator : DiffUtil.ItemCallback<TodoSubTask>() {
+        override fun areItemsTheSame(oldItem: TodoSubTask, newItem: TodoSubTask): Boolean {
+            return oldItem.title == newItem.title
         }
 
-        override fun areContentsTheSame(oldItem: TodoandSubTask, newItem: TodoandSubTask): Boolean {
-            return oldItem.todo.title == newItem.todo.description
+        override fun areContentsTheSame(oldItem: TodoSubTask, newItem: TodoSubTask): Boolean {
+            return oldItem == newItem
         }
     }
 
