@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wetterbericht.databinding.FragmentInsertTodoBinding
@@ -51,9 +52,6 @@ class InsertTodoFragment : Fragment() {
         alarmReceiver = AlarmReceiver()
 
         readChipAlarm()
-
-
-
 
 
         binding.btnAddchipalarm.setOnClickListener {
@@ -182,13 +180,15 @@ class InsertTodoFragment : Fragment() {
         delay(2000L)
         localViewModel.readTodo(name)
         localViewModel.responseTodoSearch.observe(viewLifecycleOwner){
+            showToast("alarm set to ${it[0].timeDeadline}")
+            val alarmId= (1..200).random()
             alarmReceiver.setOneAlarm(
                 requireContext(),
                 type_one_time,
                 it[0].dateDeadline,
                 it[0].timeDeadline,
                 it[0].title,
-                2
+                alarmId
             )
         }
     }
@@ -198,10 +198,12 @@ class InsertTodoFragment : Fragment() {
         return formatter.toString()
     }
 
-
-
     companion object{
         const val time_key = "time_picker"
+    }
+
+    private fun showToast(title : String){
+        Toast.makeText(requireContext(),title,Toast.LENGTH_SHORT).show()
     }
 
 }

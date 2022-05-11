@@ -29,7 +29,7 @@ class DetailTodoDialog : BottomSheetDialogFragment() {
         _binding = FragmentDetailTodoListDialogBinding.inflate(inflater, container, false)
         roomVModel = obtainViewModel(requireActivity())
 
-        val deadlineDate = arguments?.getString("date")
+
         val deadlineTime = arguments?.getString("time")
         val title = arguments?.getString("title")
         val desc = arguments?.getString("desc")
@@ -37,10 +37,10 @@ class DetailTodoDialog : BottomSheetDialogFragment() {
 
         try {
             binding.apply {
-                tvbottomTodoDate.text = deadlineDate
                 tvbottomTodoTime.text = deadlineTime
                 tvbottomTodoTitle.text = title
                 tvbottomTodoDesc.text = desc
+
                 if (title != null) {
                     readSubtask(title)
                 }
