@@ -14,7 +14,7 @@ import com.example.wetterbericht.model.local.dao.TodoDao
     TodoSubTask::class,
     ChipAlarm::class
     ]
-    , version = 10
+    , version = 11
     ,exportSchema = false
 )
 abstract class TodoDatabase: RoomDatabase() {

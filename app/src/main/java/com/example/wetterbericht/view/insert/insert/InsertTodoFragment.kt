@@ -16,13 +16,15 @@ import com.example.wetterbericht.view.home.adapter.SubTaskAdapter
 import com.example.wetterbericht.view.insert.adapter.ChipAdapter
 import com.example.wetterbericht.view.insert.dialog.InsertAlarmChipFragment
 import com.example.wetterbericht.view.insert.dialog.InsertTagFragment
+import com.example.wetterbericht.util.AlarmReceiver
+import com.example.wetterbericht.util.AlarmReceiver.Companion.type_one_time
 import com.example.wetterbericht.viewmodel.local.LocalViewModel
 import com.example.wetterbericht.viewmodel.utils.obtainViewModel
-import kotlinx.android.synthetic.main.fragment_insert_todo.*
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 import java.util.*
+import kotlin.properties.Delegates
 import kotlin.streams.asSequence
 
 
@@ -37,7 +39,8 @@ class InsertTodoFragment : Fragment() {
         .joinToString("")
 
     private lateinit var alarm : String
-
+    private var leveColour by Delegates.notNull<Int>()
+    private lateinit var alarmReceiver : AlarmReceiver
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,6 +48,7 @@ class InsertTodoFragment : Fragment() {
     ): View {
         binding = FragmentInsertTodoBinding.inflate(layoutInflater)
         localViewModel = obtainViewModel(requireActivity())
+        alarmReceiver = AlarmReceiver()
 
         readChipAlarm()
 
@@ -72,6 +76,8 @@ class InsertTodoFragment : Fragment() {
                     binding.addtag.text = "#$name"
                     binding.addtag.setTextColor(Color.WHITE)
                     binding.addtag.setBackgroundColor(color)
+                    leveColour = color
+
                 }
             })
         }
@@ -112,7 +118,6 @@ class InsertTodoFragment : Fragment() {
         adapter.onTimeCallback(object : ChipAdapter.timeCallBack{
             override fun timeCallBack(time: String) {
                deadlineTime(time)
-                alarm = time
             }
         })
     }
@@ -121,6 +126,7 @@ class InsertTodoFragment : Fragment() {
         binding.etDeadlineTodo.apply {
             visibility = View.VISIBLE
             text = "Deadline set at $time"
+            alarm = time
         }
     }
 
@@ -137,19 +143,22 @@ class InsertTodoFragment : Fragment() {
     private fun insertTodo(){
         val name = binding.inserttodoName.text.toString()
         val description = binding.inserttodoDescription.text.toString()
-        val tag = binding.addtag.text.toString()
+        val levelTitle = binding.addtag.text.toString()
 
         val tempData = TodoLocal(
             userId,
             name,
             description,
-            tag,
+            levelTitle,
+            leveColour,
             getDate(),
             alarm,
             false
         )
 
 
+
+        //todo alarm
 
         taskList.forEach {
             val tempSubtask = TodoSubTask(
@@ -163,17 +172,31 @@ class InsertTodoFragment : Fragment() {
         }
         Log.d("insert todo",tempData.toString())
         localViewModel.insertTodoLocal(tempData)
+
+        lifecycleScope.launch {
+            setAlarm(name)
+        }
+    }
+
+    private suspend fun setAlarm(name : String){
+        delay(2000L)
+        localViewModel.readTodo(name)
+        localViewModel.responseTodoSearch.observe(viewLifecycleOwner){
+            alarmReceiver.setOneAlarm(
+                requireContext(),
+                type_one_time,
+                it[0].dateDeadline,
+                it[0].timeDeadline,
+                it[0].title,
+                2
+            )
+        }
     }
 
     private fun getDate(): String{
-        val formatter = LocalDate.now().plusDays(1)
+        val formatter = LocalDate.now()
         return formatter.toString()
     }
-
-
-
-
-
 
 
 

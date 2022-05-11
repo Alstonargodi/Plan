@@ -24,7 +24,8 @@ class TodoRepository(application: Application) {
     val readWeather : LiveData<List<WeatherLocal>> =
         dao.readWeather()
 
-
+    fun readTodo(name : String): LiveData<List<TodoLocal>> =
+        dao.readSearchTodo(name)
 
     fun readTodoSubtask(name : String): LiveData<List<TodoandSubTask>> =
        dao.getTodoandSubtask(name)

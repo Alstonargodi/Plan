@@ -23,6 +23,10 @@ abstract class TodoDao {
     @Query("select*from TodoTable")
     abstract fun readTodo() : LiveData<List<TodoLocal>>
 
+
+    @Query("select*from TodoTable where title = :name")
+    abstract fun readSearchTodo(name: String): LiveData<List<TodoLocal>>
+
     @Transaction
     @Query("select * from TodoTable where title = :name")
     abstract fun getTodoandSubtask(name : String): LiveData<List<TodoandSubTask>>

@@ -31,6 +31,7 @@ class TodoRvHomeAdapter: RecyclerView.Adapter<TodoRvHomeAdapter.viewholder>() {
     override fun onBindViewHolder(holder: viewholder, position: Int) {
         val item = data[position]
         holder.itemView.tvtoxo_card_name.text = item.title
+        holder.itemView.tvtoxo_card_name.setTextColor(item.levelColor)
 
 
         holder.itemView.lay_todo.setOnClickListener {

@@ -12,15 +12,23 @@ class LocalViewModel(application: Application): ViewModel() {
     var responseWeatherLocal : LiveData<List<WeatherLocal>> = MutableLiveData()
     var responseAlarmChip : LiveData<List<ChipAlarm>> = MutableLiveData()
     var responseTodoandSubtask : LiveData<List<TodoandSubTask>> = MutableLiveData()
+    var responseTodoSearch : LiveData<List<TodoLocal>> = MutableLiveData()
+
 
     fun readTodoLocal(){
         responseTodoLocal = todoRepo.readTodo
     }
+
     fun readWeatherLocal(){
         responseWeatherLocal = todoRepo.readWeather
     }
+
     fun readAlarmChip(){
         responseAlarmChip = todoRepo.readChipAlarm
+    }
+
+    fun readTodo(name: String){
+        responseTodoSearch = todoRepo.readTodo(name)
     }
 
     fun readTodoandSubtask(name : String){
