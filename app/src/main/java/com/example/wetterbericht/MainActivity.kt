@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.example.wetterbericht.databinding.ActivityMainBinding
 import com.example.wetterbericht.model.local.ChipAlarm
 import com.example.wetterbericht.view.home.HomeFragment
@@ -30,26 +32,13 @@ class MainActivity : AppCompatActivity() {
 
         setDefaultOption()
 
-        binding.navmenu.setOnItemSelectedListener {
-            when(it.itemId){
-                R.id.fragment_home ->{
-                    setFragment(HomeFragment())
-                }
-                R.id.fragment_weather ->{
-                    setFragment(WeatherFragment())
-                }
-            }
-            true
+        val navControl = findNavController(R.id.hostfragment)
+        binding.navmenu.apply {
+            setupWithNavController(navControl)
         }
     }
 
-    private fun setFragment(fragment : Fragment){
-        val sFragment = supportFragmentManager
-        sFragment
-            .beginTransaction()
-            .replace(R.id.hostfragment, fragment)
-            .commit()
-    }
+
 
     private fun setDefaultOption(){
         localViewModel.apply {
@@ -70,7 +59,6 @@ class MainActivity : AppCompatActivity() {
                 "19 : 00 PM"
             ))
         }
-
     }
 
 

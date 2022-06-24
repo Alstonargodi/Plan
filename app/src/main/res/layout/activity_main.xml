@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <androidx.fragment.app.FragmentContainerView
+    <fragment
         android:id="@+id/hostfragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="0dp"
@@ -23,8 +23,8 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navmenu"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@drawable/bg_bottomneu"
+        android:layout_height="48dp"
+        android:background="#2D9CDB"
         android:visibility="visible"
         app:itemIconSize="30dp"
         app:labelVisibilityMode="labeled"

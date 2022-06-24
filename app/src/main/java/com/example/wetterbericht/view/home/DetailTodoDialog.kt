@@ -1,6 +1,7 @@
 package com.example.wetterbericht.view.home
 
 import android.app.Dialog
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -11,6 +12,8 @@ import android.view.WindowManager
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wetterbericht.databinding.FragmentDetailTodoListDialogBinding
+import com.example.wetterbericht.model.local.TodoLocal
+import com.example.wetterbericht.view.home.HomeFragment.Companion.homepage_key
 import com.example.wetterbericht.view.home.adapter.SubTaskAdapter
 import com.example.wetterbericht.viewmodel.local.LocalViewModel
 import com.example.wetterbericht.viewmodel.utils.obtainViewModel
@@ -29,26 +32,25 @@ class DetailTodoDialog : BottomSheetDialogFragment() {
         _binding = FragmentDetailTodoListDialogBinding.inflate(inflater, container, false)
         roomVModel = obtainViewModel(requireActivity())
 
-
-        val deadlineTime = arguments?.getString("time")
-        val title = arguments?.getString("title")
-        val desc = arguments?.getString("desc")
+        val detailTodo = arguments?.getParcelable<TodoLocal>(homepage_key)
 
 
         try {
             binding.apply {
-                tvbottomTodoTime.text = deadlineTime
-                tvbottomTodoTitle.text = title
-                tvbottomTodoDesc.text = desc
+                if (detailTodo != null) {
+                    tvdetailTag.text = detailTodo.levelName
+                    tvdetailTag.setBackgroundColor(detailTodo.levelColor)
+                    tvdetailTag.setTextColor(Color.WHITE)
 
-                if (title != null) {
-                    readSubtask(title)
+                    tvbottomTodoTime.text = detailTodo.timeDeadline
+                    tvbottomTodoTitle.text = detailTodo.title
+                    tvbottomTodoDesc.text = detailTodo.description
+                    readSubtask(detailTodo.title)
                 }
             }
         }catch (e : Exception){
             Log.d("detailActivity",e.message.toString())
         }
-
 
 
         return binding.root

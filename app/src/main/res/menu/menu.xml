@@ -10,6 +10,11 @@
         android:fontFamily="@font/righteous"
         />
     <item
+        android:id="@+id/insertTodoFragment"
+        android:icon="@drawable/ic_add_rounf"
+        android:fontFamily="@font/righteous"
+        />
+    <item
         android:id="@+id/fragment_weather"
         android:icon="@drawable/ic_cloud"
         android:fontFamily="@font/righteous"

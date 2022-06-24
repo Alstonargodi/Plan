@@ -17,6 +17,7 @@ import java.util.*
 class InsertAlarmChipFragment : DialogFragment() {
     private lateinit var binding : FragmentInsertAlarmChipBinding
     private lateinit var localViewModel: LocalViewModel
+
     private var formatTime = SimpleDateFormat("HH:mm", Locale.ENGLISH)
 
     private lateinit var timeCallback : timeCallBack

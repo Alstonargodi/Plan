@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wetterbericht.R
 import com.example.wetterbericht.databinding.TcvTodoCardBinding
+import com.example.wetterbericht.databinding.TvcTodoSubtaskBinding
 import com.example.wetterbericht.model.local.TodoSubTask
 import com.example.wetterbericht.model.local.TodoandSubTask
 import com.example.wetterbericht.view.insert.adapter.ChipAdapter
@@ -18,17 +19,17 @@ class SubTaskAdapter: ListAdapter<TodoSubTask,SubTaskAdapter.ViewHolder>(
     ItemComprator()
 ){
 
-    class ViewHolder(val binding: TcvTodoCardBinding) : RecyclerView.ViewHolder(binding.root) {}
+    class ViewHolder(val binding: TvcTodoSubtaskBinding) : RecyclerView.ViewHolder(binding.root) {}
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = TcvTodoCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = TvcTodoSubtaskBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val data = getItem(position)
-        holder.binding.tvtoxoCardName.text= data.title
+        holder.binding.tvTitleSubtask.text= data.title
 
 
 

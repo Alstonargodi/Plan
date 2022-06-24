@@ -39,6 +39,7 @@ class InsertTodoFragment : Fragment() {
         .map(source::get)
         .joinToString("")
 
+
     private lateinit var alarm : String
     private var leveColour by Delegates.notNull<Int>()
     private lateinit var alarmReceiver : AlarmReceiver
@@ -153,10 +154,6 @@ class InsertTodoFragment : Fragment() {
             alarm,
             false
         )
-
-
-
-        //todo alarm
 
         taskList.forEach {
             val tempSubtask = TodoSubTask(

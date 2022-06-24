@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,7 +12,7 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/detailtoolbar"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="48dp"
         android:background="@drawable/bg_headercorner"
         android:contentInsetStart="0dp"
         android:contentInsetLeft="0dp"
@@ -39,7 +40,7 @@
                 android:id="@+id/imageView5"
                 android:layout_width="27dp"
                 android:layout_height="0dp"
-                android:layout_marginStart="5dp"
+                android:layout_marginStart="15dp"
                 android:src="@drawable/ic_menu"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -65,6 +66,8 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
 
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
         android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -91,57 +94,14 @@
         android:id="@+id/rectodo"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_add_todo"
+        app:layout_constraintTop_toBottomOf="@+id/tabLayout"
         tools:listitem="@layout/tcv_todo_card" />
-
-    <TextView
-        android:id="@+id/btn_add_todo"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="5dp"
-        android:drawableRight="@drawable/ic_baseline_add_24"
-        android:drawableTint="#2196F3"
-        android:fontFamily="@font/abezeeregular"
-        android:includeFontPadding="false"
-        android:padding="5dp"
-        android:text="New Activity"
-        android:textColor="#282828"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
-
-    <EditText
-        android:id="@+id/textView4"
-        android:layout_width="300dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="10dp"
-        android:background="@drawable/bg_todo_card"
-        android:fontFamily="@font/abezeeregular"
-        android:hint="task name"
-        android:includeFontPadding="false"
-        android:paddingStart="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rectodo" />
-
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:layout_marginEnd="10dp"
-        android:src="@drawable/ic_add_rounf"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/rectodo" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

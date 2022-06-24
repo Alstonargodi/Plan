@@ -77,4 +77,9 @@
             android:id="@+id/action_introtiga_to_onboardmain"
             app:destination="@id/onboardmain" />
     </fragment>
+    <fragment
+        android:id="@+id/insertTodoFragment"
+        android:name="com.example.wetterbericht.view.insert.insert.InsertTodoFragment"
+        android:label="fragment_insert_todo"
+        tools:layout="@layout/fragment_insert_todo" />
 </navigation>
