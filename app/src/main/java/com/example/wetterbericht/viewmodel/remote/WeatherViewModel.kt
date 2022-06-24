@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.wetterbericht.model.remote.response.ForecastResponse
 import com.example.wetterbericht.model.remote.service.WeatherResponse
-import com.example.wetterbericht.model.remote.repository.WeatherRepository
+import com.example.wetterbericht.model.repository.WeatherRepository
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback

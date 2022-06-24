@@ -1,19 +1,12 @@
-package com.example.wetterbericht.view.home.adapter
+package com.example.wetterbericht.view.fragment.home.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.wetterbericht.R
-import com.example.wetterbericht.databinding.TcvTodoCardBinding
 import com.example.wetterbericht.databinding.TvcTodoSubtaskBinding
 import com.example.wetterbericht.model.local.TodoSubTask
-import com.example.wetterbericht.model.local.TodoandSubTask
-import com.example.wetterbericht.view.insert.adapter.ChipAdapter
-import kotlinx.android.synthetic.main.tcv_todo_card.view.*
 
 class SubTaskAdapter: ListAdapter<TodoSubTask,SubTaskAdapter.ViewHolder>(
     ItemComprator()

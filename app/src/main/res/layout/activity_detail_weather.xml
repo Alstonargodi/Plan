@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#5584AC"
     android:orientation="vertical"
-    tools:context=".view.weather.DetailWeatherActivity">
+    tools:context=".view.fragment.weather.DetailWeatherActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_weather_detail"

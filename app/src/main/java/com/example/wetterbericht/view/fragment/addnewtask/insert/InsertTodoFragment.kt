@@ -1,8 +1,7 @@
-package com.example.wetterbericht.view.insert.insert
+package com.example.wetterbericht.view.fragment.addnewtask.insert
 
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,10 +12,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wetterbericht.databinding.FragmentInsertTodoBinding
 import com.example.wetterbericht.model.local.TodoLocal
 import com.example.wetterbericht.model.local.TodoSubTask
-import com.example.wetterbericht.view.home.adapter.SubTaskAdapter
-import com.example.wetterbericht.view.insert.adapter.ChipAdapter
-import com.example.wetterbericht.view.insert.dialog.InsertAlarmChipFragment
-import com.example.wetterbericht.view.insert.dialog.InsertTagFragment
+import com.example.wetterbericht.view.fragment.home.adapter.SubTaskAdapter
+import com.example.wetterbericht.view.fragment.addnewtask.adapter.ChipAdapter
+import com.example.wetterbericht.view.fragment.addnewtask.dialog.InsertAlarmChipFragment
+import com.example.wetterbericht.view.fragment.addnewtask.dialog.InsertTagFragment
 import com.example.wetterbericht.util.AlarmReceiver
 import com.example.wetterbericht.util.AlarmReceiver.Companion.type_one_time
 import com.example.wetterbericht.viewmodel.local.LocalViewModel
@@ -34,6 +33,7 @@ class InsertTodoFragment : Fragment() {
     private lateinit var localViewModel: LocalViewModel
     private var taskList = arrayListOf<TodoSubTask>()
     private val source = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
     private var userId = Random().ints(10, 0, source.length)
         .asSequence()
         .map(source::get)
@@ -131,9 +131,9 @@ class InsertTodoFragment : Fragment() {
 
     private fun readSubtask(){
         val adapter = SubTaskAdapter()
-        val recView = binding.rvSubtask
-        recView.adapter = adapter
-        recView.layoutManager = LinearLayoutManager(requireContext())
+        val recyclerView = binding.rvSubtask
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         adapter.submitList(taskList)
     }
@@ -163,9 +163,7 @@ class InsertTodoFragment : Fragment() {
                 it.todoId
             )
             localViewModel.insertSubtask(tempSubtask)
-            Log.d("insert todo",tempSubtask.toString())
         }
-        Log.d("insert todo",tempData.toString())
         localViewModel.insertTodoLocal(tempData)
 
         lifecycleScope.launch {
@@ -195,12 +193,14 @@ class InsertTodoFragment : Fragment() {
         return formatter.toString()
     }
 
+    private fun showToast(title : String){
+        Toast.makeText(requireContext(),title,Toast.LENGTH_SHORT).show()
+    }
+
     companion object{
         const val time_key = "time_picker"
     }
 
-    private fun showToast(title : String){
-        Toast.makeText(requireContext(),title,Toast.LENGTH_SHORT).show()
-    }
+
 
 }

@@ -3,7 +3,7 @@ package com.example.wetterbericht.viewmodel.local
 import android.app.Application
 import androidx.lifecycle.*
 import com.example.wetterbericht.model.local.*
-import com.example.wetterbericht.model.local.repository.TodoRepository
+import com.example.wetterbericht.model.repository.TodoRepository
 
 class LocalViewModel(application: Application): ViewModel() {
     private val todoRepo : TodoRepository = TodoRepository(application)

@@ -1,4 +1,4 @@
-package com.example.wetterbericht.model.local.repository
+package com.example.wetterbericht.model.repository
 
 import android.app.Application
 import androidx.lifecycle.LiveData
@@ -28,7 +28,7 @@ class TodoRepository(application: Application) {
         dao.readSearchTodo(name)
 
     fun readTodoSubtask(name : String): LiveData<List<TodoandSubTask>> =
-       dao.getTodoandSubtask(name)
+       dao.getTodoSubtask(name)
 
     fun insertWeather(data : WeatherLocal) =
         executorService.execute { dao.insertWeather(data) }

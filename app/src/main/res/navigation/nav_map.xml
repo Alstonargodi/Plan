@@ -11,19 +11,19 @@
         android:label="MainActivity" />
     <fragment
         android:id="@+id/fragment_home"
-        android:name="com.example.wetterbericht.view.home.HomeFragment"
+        android:name="com.example.wetterbericht.view.fragment.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_fragment_home_to_fragment_weather"
             app:destination="@id/fragment_weather" />
         <action
-            android:id="@+id/action_fragment_home_to_todo_add"
-            app:destination="@id/todo_add" />
+            android:id="@+id/action_fragment_home_to_menuFragment"
+            app:destination="@id/menuFragment" />
     </fragment>
     <fragment
         android:id="@+id/fragment_weather"
-        android:name="com.example.wetterbericht.view.weather.WeatherFragment"
+        android:name="com.example.wetterbericht.view.fragment.weather.WeatherFragment"
         android:label="fragment_weather"
         tools:layout="@layout/fragment_weather" >
         <action
@@ -59,13 +59,8 @@
         android:label="activity_onboardmain"
         tools:layout="@layout/activity_onboardmain" />
     <activity
-        android:id="@+id/todo_add"
-        android:name="com.example.wetterbericht.view.insert.InsertTodoActivity"
-        android:label="activity_todo_add"
-        tools:layout="@layout/activity_inserttodo" />
-    <activity
         android:id="@+id/detail_weather"
-        android:name="com.example.wetterbericht.view.weather.DetailWeatherActivity"
+        android:name="com.example.wetterbericht.view.fragment.weather.DetailWeatherActivity"
         android:label="activity_detail_weather"
         tools:layout="@layout/activity_detail_weather" />
     <fragment
@@ -79,7 +74,28 @@
     </fragment>
     <fragment
         android:id="@+id/insertTodoFragment"
-        android:name="com.example.wetterbericht.view.insert.insert.InsertTodoFragment"
+        android:name="com.example.wetterbericht.view.fragment.addnewtask.insert.InsertTodoFragment"
         android:label="fragment_insert_todo"
-        tools:layout="@layout/fragment_insert_todo" />
+        tools:layout="@layout/fragment_insert_todo" >
+        <action
+            android:id="@+id/action_insertTodoFragment_to_detailTodoDialog"
+            app:destination="@id/detailTodoDialog" />
+    </fragment>
+    <dialog
+        android:id="@+id/detailTodoDialog"
+        android:name="com.example.wetterbericht.view.fragment.home.DetailTodoDialog"
+        android:label="fragment_detail_todo_list_dialog"
+        tools:layout="@layout/fragment_detail_todo_list_dialog" />
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="com.example.wetterbericht.view.fragment.menu.MenuFragment"
+        android:label="fragment_menu"
+        tools:layout="@layout/fragment_menu" >
+        <action
+            android:id="@+id/action_menuFragment_to_fragment_home"
+            app:destination="@id/fragment_home" />
+        <action
+            android:id="@+id/action_menuFragment_to_fragment_weather"
+            app:destination="@id/fragment_weather" />
+    </fragment>
 </navigation>

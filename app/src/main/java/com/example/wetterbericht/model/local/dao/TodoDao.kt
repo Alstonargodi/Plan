@@ -29,12 +29,7 @@ abstract class TodoDao {
 
     @Transaction
     @Query("select * from TodoTable where title = :name")
-    abstract fun getTodoandSubtask(name : String): LiveData<List<TodoandSubTask>>
-
-
-
-
-
+    abstract fun getTodoSubtask(name : String): LiveData<List<TodoandSubTask>>
 
     @Query("delete from WeatherTable where loc like :name")
     abstract fun deleteWeather(name : String)

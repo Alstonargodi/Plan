@@ -75,7 +75,7 @@
         </receiver>
 
         <activity
-            android:name=".view.weather.DetailWeatherActivity"
+            android:name="com.example.wetterbericht.view.fragment.weather.DetailWeatherActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="false" />
 
@@ -88,7 +88,7 @@
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".view.insert.InsertTodoActivity"
+            android:name="com.example.wetterbericht.view.fragment.addnewtask.InsertTodoActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity

@@ -6,21 +6,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.weather.WeatherFragment"
+    tools:context=".view.fragment.weather.WeatherFragment"
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="-122dp">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_weather"
+        style="Theme.Wetterbericht"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="#5584AC"
+        android:layout_height="48dp"
+        android:background="@drawable/bg_headercorner"
         android:paddingLeft="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:subtitleTextColor="#EAE3E3"
-        style="Theme.Wetterbericht"
         app:titleTextAppearance="@style/ToolBarStyleLight">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -38,7 +38,7 @@
                 android:gravity="center|left"
                 android:includeFontPadding="false"
                 android:text="Today Weather"
-                android:textColor="#FFFFFF"
+                android:textColor="#03A9F4"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:guidelineUseRtl="false"
@@ -53,9 +53,9 @@
         android:id="@+id/cardView"
         android:layout_width="0dp"
         android:layout_height="270dp"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_weather">
@@ -169,13 +169,14 @@
         android:id="@+id/reclist"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7"
-        app:layout_constraintVertical_bias="0.618"
+        app:layout_constraintVertical_bias="0.110000014"
         tools:listitem="@layout/itemcv_weather">
 
     </androidx.recyclerview.widget.RecyclerView>
@@ -184,8 +185,8 @@
         android:id="@+id/textView7"
         android:layout_width="0dp"
         android:layout_height="21dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:fontFamily="@font/abezeeregular"
         android:includeFontPadding="false"
         android:text="Favorite Location"

@@ -1,4 +1,4 @@
-package com.example.wetterbericht.view.insert.adapter
+package com.example.wetterbericht.view.fragment.addnewtask.adapter
 
 import android.graphics.Color
 import android.view.LayoutInflater
