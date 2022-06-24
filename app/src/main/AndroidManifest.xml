@@ -69,13 +69,9 @@
         android:theme="@style/Theme.Wetterbericht">
 
         <receiver
-            android:name=".view.util.todo.Alarmreceiver"
+            android:name="com.example.wetterbericht.util.AlarmReceiver"
             android:enabled="true"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
-            </intent-filter>
         </receiver>
 
         <activity
@@ -92,7 +88,7 @@
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".view.todo.InsertTodoActivity"
+            android:name=".view.insert.InsertTodoActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
@@ -109,10 +105,11 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".MainActivity"
+            android:windowSoftInputMode="adjustPan"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".SplashScreen"
+            android:name=".view.Login.onboarding.splashscreen.SplashScreen"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>

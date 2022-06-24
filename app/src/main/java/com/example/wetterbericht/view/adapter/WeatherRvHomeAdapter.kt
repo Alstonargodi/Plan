@@ -27,11 +27,7 @@ class WeatherRvHomeAdapter: RecyclerView.Adapter<WeatherRvHomeAdapter.viewmodel>
         val temp = curitem.temp.toDouble()
         val ftemp = round(temp).toInt().toString()
         val feeltemp = round(curitem.feelslike.toDouble()).toInt()
-        holder.itemView.tv_homew_loca.text = curitem.loc
-        holder.itemView.tv_homew_desc.text = curitem.desc
-        holder.itemView.tv_homew_temp.text = ftemp + "C"
-        holder.itemView.tv_homew_humid.text = "Humidty " + curitem.humid
-        holder.itemView.tv_homew_feels.text = "Feels like " + feeltemp + "%"
+        holder.itemView.tv_homew_temp.text = ftemp
 
 
         Glide.with(holder.itemView.context)

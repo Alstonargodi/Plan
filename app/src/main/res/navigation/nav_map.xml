@@ -11,7 +11,7 @@
         android:label="MainActivity" />
     <fragment
         android:id="@+id/fragment_home"
-        android:name="com.example.wetterbericht.view.fragment.HomeFragment"
+        android:name="com.example.wetterbericht.view.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -23,7 +23,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_weather"
-        android:name="com.example.wetterbericht.view.fragment.WeatherFragment"
+        android:name="com.example.wetterbericht.view.weather.WeatherFragment"
         android:label="fragment_weather"
         tools:layout="@layout/fragment_weather" >
         <action
@@ -32,7 +32,7 @@
     </fragment>
     <activity
         android:id="@+id/splashscreen"
-        android:name="com.example.wetterbericht.SplashScreen"
+        android:name="com.example.wetterbericht.view.Login.onboarding.splashscreen.SplashScreen"
         android:label="activity_splashscreen"
         tools:layout="@layout/activity_splashscreen" />
     <fragment
@@ -60,7 +60,7 @@
         tools:layout="@layout/activity_onboardmain" />
     <activity
         android:id="@+id/todo_add"
-        android:name="com.example.wetterbericht.view.todo.InsertTodoActivity"
+        android:name="com.example.wetterbericht.view.insert.InsertTodoActivity"
         android:label="activity_todo_add"
         tools:layout="@layout/activity_inserttodo" />
     <activity
@@ -77,4 +77,9 @@
             android:id="@+id/action_introtiga_to_onboardmain"
             app:destination="@id/onboardmain" />
     </fragment>
+    <fragment
+        android:id="@+id/insertTodoFragment"
+        android:name="com.example.wetterbericht.view.insert.insert.InsertTodoFragment"
+        android:label="fragment_insert_todo"
+        tools:layout="@layout/fragment_insert_todo" />
 </navigation>

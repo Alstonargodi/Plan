@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.wetterbericht.R
@@ -15,8 +14,8 @@ import com.example.wetterbericht.model.remote.response.Foredata
 import com.example.wetterbericht.model.remote.response.ForecastResponse
 import com.example.wetterbericht.model.remote.service.WeatherResponse
 import com.example.wetterbericht.view.adapter.ForecastAdapter
-import com.example.wetterbericht.viewmodel.LocalViewModel
-import com.example.wetterbericht.viewmodel.WeatherViewModel
+import com.example.wetterbericht.viewmodel.local.LocalViewModel
+import com.example.wetterbericht.viewmodel.remote.WeatherViewModel
 import com.example.wetterbericht.viewmodel.utils.obtainViewModel
 import kotlin.math.round
 
