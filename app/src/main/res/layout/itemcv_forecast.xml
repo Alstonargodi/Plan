@@ -4,8 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="5dp"
-    android:layout_marginEnd="5dp"
     android:layout_marginBottom="10dp"
     app:cardCornerRadius="3dp"
     app:cardElevation="0dp">
@@ -13,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="68dp"
-        android:background="#F9F9F9">
+        android:background="#F3F3F3">
 
         <TextView
             android:id="@+id/tv_f_date"

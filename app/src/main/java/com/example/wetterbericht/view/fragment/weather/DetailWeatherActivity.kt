@@ -1,4 +1,4 @@
-package com.example.wetterbericht.view.weather
+package com.example.wetterbericht.view.fragment.weather
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

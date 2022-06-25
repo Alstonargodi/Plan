@@ -1,18 +1,12 @@
-package com.example.wetterbericht.view.home.adapter
+package com.example.wetterbericht.view.fragment.home.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.wetterbericht.R
-import kotlinx.android.synthetic.main.tcv_todo_card.view.*
 
 import android.annotation.SuppressLint
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import com.example.wetterbericht.databinding.TcvTodoCardBinding
 import com.example.wetterbericht.model.local.TodoLocal
-import com.example.wetterbericht.view.home.DetailTodoDialog
 
 
 class TodoRvHomeAdapter: RecyclerView.Adapter<TodoRvHomeAdapter.ViewHolder>() {

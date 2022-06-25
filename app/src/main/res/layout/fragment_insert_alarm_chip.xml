@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.insert.dialog.InsertAlarmChipFragment">
+    tools:context=".view.fragment.addnewtask.dialog.InsertAlarmChipFragment">
 
 
     <TextView
@@ -54,13 +54,33 @@
         android:fontFamily="@font/abezeeregular"
         android:gravity="center"
         android:includeFontPadding="false"
-        android:text="pick time"
+        android:text="Pick time"
         android:textColor="#212121"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etNewChip_name" />
+
+    <TextView
+        android:id="@+id/etNewChip_date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="20dp"
+        android:drawableStart="@drawable/ic_baseline_access_time_24"
+        android:drawableTint="#393838"
+        android:fontFamily="@font/abezeeregular"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:text="Pick date"
+        android:textColor="#212121"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etNewChip_time" />
 
     <EditText
         android:id="@+id/etNewChip_name"
@@ -80,7 +100,7 @@
         android:layout_width="0dp"
         android:layout_height="41dp"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="128dp"
         android:layout_marginEnd="100dp"
         android:backgroundTint="#4CAF50"
         android:fontFamily="@font/abezeeregular"
@@ -88,7 +108,7 @@
         android:text="add"
         android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etNewChip_time" />
 

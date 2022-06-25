@@ -1,4 +1,4 @@
-package com.example.wetterbericht.view.insert.dialog
+package com.example.wetterbericht.view.fragment.addnewtask.dialog
 
 import android.app.TimePickerDialog
 import android.os.Bundle

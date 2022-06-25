@@ -118,7 +118,6 @@ class AlarmReceiver : BroadcastReceiver() {
             dateFormat.isLenient = false
             dateFormat.parse(date)
             Log.d("alarm receiver","invalid")
-            //todo invalid
             false
         }catch (e : ParseException){
             Log.d("alarm receiver","valid")

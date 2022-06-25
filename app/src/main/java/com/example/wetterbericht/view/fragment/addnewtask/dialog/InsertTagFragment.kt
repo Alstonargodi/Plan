@@ -1,4 +1,4 @@
-package com.example.wetterbericht.view.insert.dialog
+package com.example.wetterbericht.view.fragment.addnewtask.dialog
 
 import android.os.Bundle
 import android.view.LayoutInflater

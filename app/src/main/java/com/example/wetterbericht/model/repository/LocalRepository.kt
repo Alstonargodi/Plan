@@ -1,4 +1,4 @@
-package com.example.wetterbericht.model.local.repository
+package com.example.wetterbericht.model.repository
 
 import android.app.Application
 import androidx.lifecycle.LiveData
@@ -9,7 +9,7 @@ import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
 
-class TodoRepository(application: Application) {
+class LocalRepository(application: Application) {
 
     private val executorService : ExecutorService = Executors.newSingleThreadExecutor()
     private val dao : TodoDao
@@ -28,7 +28,7 @@ class TodoRepository(application: Application) {
         dao.readSearchTodo(name)
 
     fun readTodoSubtask(name : String): LiveData<List<TodoandSubTask>> =
-       dao.getTodoandSubtask(name)
+       dao.getTodoSubtask(name)
 
     fun insertWeather(data : WeatherLocal) =
         executorService.execute { dao.insertWeather(data) }
@@ -39,6 +39,9 @@ class TodoRepository(application: Application) {
     fun insertSubtask(data : TodoSubTask){
         executorService.execute { dao.insertSubTask(data) }
     }
+
+    fun searchLocation(name: String): LiveData<List<WeatherLocal>> =
+        dao.searchLocation(name)
 
     fun deleteWeather(name : String) =
         dao.deleteWeather(name)

@@ -1,4 +1,4 @@
-package com.example.wetterbericht.view.home
+package com.example.wetterbericht.view.fragment.home
 
 import android.app.Dialog
 import android.graphics.Color
@@ -9,12 +9,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wetterbericht.databinding.FragmentDetailTodoListDialogBinding
 import com.example.wetterbericht.model.local.TodoLocal
-import com.example.wetterbericht.view.home.HomeFragment.Companion.homepage_key
-import com.example.wetterbericht.view.home.adapter.SubTaskAdapter
+import com.example.wetterbericht.view.fragment.home.HomeFragment.Companion.homepage_key
+import com.example.wetterbericht.view.fragment.home.adapter.SubTaskAdapter
 import com.example.wetterbericht.viewmodel.local.LocalViewModel
 import com.example.wetterbericht.viewmodel.utils.obtainViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior

@@ -1,4 +1,4 @@
-package com.example.wetterbericht.model.remote.repository
+package com.example.wetterbericht.model.repository
 
 import com.example.wetterbericht.model.remote.response.ForecastResponse
 import com.example.wetterbericht.model.remote.config.ApiConfig
@@ -6,7 +6,7 @@ import com.example.wetterbericht.model.remote.service.WeatherResponse
 import retrofit2.Call
 import retrofit2.Response
 
-class WeatherRepository(){
+class WeatherRepository {
     private val apiService = ApiConfig.getApiService()
 
     fun getWeatherBySearch(loc : Any): Call<WeatherResponse>{
