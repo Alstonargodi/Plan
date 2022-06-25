@@ -97,5 +97,12 @@
         <action
             android:id="@+id/action_menuFragment_to_fragment_weather"
             app:destination="@id/fragment_weather" />
+        <action
+            android:id="@+id/action_menuFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.wetterbericht.view.fragment.setting.SettingsFragment"
+        android:label="SettingsFragment" />
 </navigation>
