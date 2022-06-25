@@ -3,13 +3,11 @@ package com.example.wetterbericht.view.fragment.weather
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.wetterbericht.R
 import com.example.wetterbericht.databinding.ActivityDetailWeatherBinding
-import com.example.wetterbericht.model.local.entity.WeatherLocal
 import com.example.wetterbericht.model.remote.response.Foredata
 import com.example.wetterbericht.model.remote.response.ForecastResponse
 import com.example.wetterbericht.model.remote.service.WeatherResponse
@@ -106,9 +104,9 @@ class DetailWeatherActivity : AppCompatActivity() {
 
             forecastList.add(tempForecast)
             forecastAdapter = ForecastAdapter(forecastList.distinct())
-            val recview = binding.recviewForecast
-            recview.adapter = forecastAdapter
-            recview.layoutManager = LinearLayoutManager(this)
+            val recyclerView = binding.recviewForecast
+            recyclerView.adapter = forecastAdapter
+            recyclerView.layoutManager = LinearLayoutManager(this)
         }
     }
 

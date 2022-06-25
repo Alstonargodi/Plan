@@ -14,9 +14,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
     private lateinit var localViewModel: LocalViewModel
 
-
-    private var waktu : Long = 0
-    private var type : String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -41,19 +38,23 @@ class MainActivity : AppCompatActivity() {
         localViewModel.apply {
             insertAlarmChip(ChipAlarm(
                 "tonight",
-                "19 : 00 PM"
+                "19 : 00 PM",
+                0
             ))
             insertAlarmChip(ChipAlarm(
                 "tomorrow morning",
-                "05 : 00 AM"
+                "05 : 00 AM",
+                1
             ))
             insertAlarmChip(ChipAlarm(
                 "tomorrow noon",
-                "10 : 00 AM"
+                "10 : 00 AM",
+                1
             ))
             insertAlarmChip(ChipAlarm(
                 "tomorrow night",
-                "19 : 00 PM"
+                "19 : 00 PM",
+                1
             ))
         }
     }

@@ -1,32 +1,35 @@
 package com.example.wetterbericht.view.fragment.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wetterbericht.databinding.FragmentHomeBinding
 import com.example.wetterbericht.model.local.TodoLocal
 import com.example.wetterbericht.model.local.entity.WeatherLocal
-import com.example.wetterbericht.view.fragment.home.adapter.TodoRvHomeAdapter
 import com.example.wetterbericht.view.adapter.WeatherRvHomeAdapter
+import com.example.wetterbericht.view.fragment.home.adapter.TodoRvHomeAdapter
 import com.example.wetterbericht.viewmodel.local.LocalViewModel
+import com.example.wetterbericht.viewmodel.utils.ViewModelFactory
 import com.example.wetterbericht.viewmodel.utils.obtainViewModel
+import java.text.SimpleDateFormat
+import java.util.*
 
 class HomeFragment : Fragment() {
     private lateinit var binding : FragmentHomeBinding
-    private lateinit var localViewModel : LocalViewModel
 
+    private val roomViewModel : LocalViewModel by viewModels{ ViewModelFactory.getInstance(requireContext())}
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentHomeBinding.inflate(layoutInflater)
-        localViewModel = obtainViewModel(requireActivity())
 
-        localViewModel.readWeatherLocal()
-        localViewModel.responseWeatherLocal.observe(viewLifecycleOwner){
+        roomViewModel.readWeatherLocal().observe(viewLifecycleOwner){
             if (it.isEmpty()){
                 binding.recviewweather.visibility = View.GONE
             }else{
@@ -36,6 +39,8 @@ class HomeFragment : Fragment() {
         }
 
         setTodo()
+
+        dateTaskChecker()
 
         binding.btnHometomenu.setOnClickListener {
             findNavController().navigate(
@@ -50,8 +55,7 @@ class HomeFragment : Fragment() {
         val recyclerView = binding.rectodo
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        localViewModel.readTodoLocal()
-        localViewModel.responseTodoLocal.observe(viewLifecycleOwner) { todo ->
+        roomViewModel.readTodoLocal().observe(viewLifecycleOwner) { todo ->
             adapter.setdata(todo)
         }
 
@@ -69,6 +73,11 @@ class HomeFragment : Fragment() {
         weatherRv.adapter = weatherRvAdapter
         weatherRv.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,true)
         weatherRvAdapter.setdata(data)
+    }
+
+    private fun dateTaskChecker(){
+        val currentDate: String = SimpleDateFormat("d", Locale.getDefault()).format(Date())
+        Log.d("date sekarang", currentDate.toString())
     }
 
     private fun toDetailPage(data : TodoLocal){

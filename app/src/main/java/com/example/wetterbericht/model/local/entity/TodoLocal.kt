@@ -18,6 +18,7 @@ data class TodoLocal(
     val levelName : String,
     val levelColor : Int,
     val dateDeadline: String,
+    val dateId : Int,
     val timeDeadline : String,
     val isComplete: Boolean,
 ):Parcelable

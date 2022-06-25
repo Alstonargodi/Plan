@@ -8,6 +8,7 @@ import com.example.wetterbericht.model.local.ChipAlarm
 import com.example.wetterbericht.model.local.TodoLocal
 import com.example.wetterbericht.model.local.TodoSubTask
 import com.example.wetterbericht.model.local.dao.TodoDao
+import com.example.wetterbericht.model.local.dao.WeatherDao
 import com.example.wetterbericht.model.local.entity.WeatherLocal
 
 @Database(entities = [
@@ -16,27 +17,29 @@ import com.example.wetterbericht.model.local.entity.WeatherLocal
     TodoSubTask::class,
     ChipAlarm::class
     ]
-    , version = 12
+    ,version = 14
     ,exportSchema = false
 )
-abstract class TodoDatabase: RoomDatabase() {
-   abstract fun localDao() : TodoDao
+abstract class LocalDatabase: RoomDatabase() {
+
+   abstract fun todoDao() : TodoDao
+   abstract fun weatherDao(): WeatherDao
 
    companion object{
        @Volatile
-       private var minstance : TodoDatabase? = null
+       private var mInstance : LocalDatabase? = null
 
-       fun setDatabase(context: Context): TodoDatabase {
-           val INSTANCE = minstance
+       fun setDatabase(context: Context): LocalDatabase {
+           val INSTANCE = mInstance
            if(INSTANCE != null){
                return INSTANCE
            }else{
                synchronized(this){
                 val instance = Room
-                    .databaseBuilder(context.applicationContext, TodoDatabase::class.java,"dbcuac")
+                    .databaseBuilder(context.applicationContext, LocalDatabase::class.java,"dbcuac")
                     .fallbackToDestructiveMigration()
                     .build()
-                   minstance = instance
+                   mInstance = instance
                    return instance
                }
            }

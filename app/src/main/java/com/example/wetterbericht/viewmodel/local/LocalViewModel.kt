@@ -6,63 +6,48 @@ import com.example.wetterbericht.model.local.*
 import com.example.wetterbericht.model.local.entity.WeatherLocal
 import com.example.wetterbericht.model.repository.LocalRepository
 
-class LocalViewModel(application: Application): ViewModel() {
-    private val todoRepo : LocalRepository = LocalRepository(application)
-
-    var responseTodoLocal : LiveData<List<TodoLocal>> = MutableLiveData()
-    var responseWeatherLocal : LiveData<List<WeatherLocal>> = MutableLiveData()
-    var responseAlarmChip : LiveData<List<ChipAlarm>> = MutableLiveData()
-    var responseTodoandSubtask : LiveData<List<TodoandSubTask>> = MutableLiveData()
-    var responseTodoSearch : LiveData<List<TodoLocal>> = MutableLiveData()
+class LocalViewModel(private val repository: LocalRepository): ViewModel() {
 
 
-    fun readTodoLocal(){
-        responseTodoLocal = todoRepo.readTodo
-    }
+    fun readTodoLocal(): LiveData<List<TodoLocal>> =
+        repository.readTodo()
 
-    fun readWeatherLocal(){
-        responseWeatherLocal = todoRepo.readWeather
-    }
+    fun readWeatherLocal(): LiveData<List<WeatherLocal>> =
+        repository.readWeather()
 
-    fun readAlarmChip(){
-        responseAlarmChip = todoRepo.readChipAlarm
-    }
-
-    fun readTodo(name: String){
-        responseTodoSearch = todoRepo.readTodo(name)
-    }
-
-    fun readTodoandSubtask(name : String){
-        responseTodoandSubtask = todoRepo.readTodoSubtask(name)
-    }
+    fun readAlarmChip(): LiveData<List<ChipAlarm>> =
+        repository.readChipAlarm()
 
 
-    fun insertTodoLocal(data : TodoLocal){
-        todoRepo.insertTodo(data)
-    }
+    fun readTodo(name: String): LiveData<List<TodoLocal>> =
+        repository.readSearchTodo(name)
 
-    fun insertSubtask(data : TodoSubTask){
-        todoRepo.insertSubtask(data)
-    }
 
-    fun insertWeatherLocal(data : WeatherLocal){
-        todoRepo.insertWeather(data)
-    }
+    fun readTodoSubtask(name : String): LiveData<List<TodoandSubTask>> =
+        repository.readTodoSubtask(name)
 
-    fun insertAlarmChip(alarm : ChipAlarm){
-        todoRepo.insertAlarmChip(alarm)
-    }
+
+    fun insertTodoLocal(data : TodoLocal) = repository.insertTodo(data)
+
+
+    fun insertSubtask(data : TodoSubTask) = repository.insertSubtask(data)
+
+
+    fun insertWeatherLocal(data : WeatherLocal) = repository.insertWeather(data)
+
+
+    fun insertAlarmChip(alarm : ChipAlarm) = repository.insertAlarmChip(alarm)
+
 
     fun searchLocation(name: String): LiveData<List<WeatherLocal>> =
-        todoRepo.searchLocation(name)
+        repository.searchLocation(name)
 
-    fun deleteTodoLocal(name : String){
-        todoRepo.deleteTodo(name)
-    }
 
-    fun deleteWeatherLocal(name : String){
-        todoRepo.deleteWeather(name)
-    }
+    fun deleteTodoLocal(name : String) = repository.deleteTodo(name)
+
+
+    fun deleteWeatherLocal(name : String) = repository.deleteWeather(name)
+
 
 
 }

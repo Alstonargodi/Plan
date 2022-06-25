@@ -9,12 +9,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wetterbericht.databinding.FragmentDetailTodoListDialogBinding
 import com.example.wetterbericht.model.local.TodoLocal
 import com.example.wetterbericht.view.fragment.home.HomeFragment.Companion.homepage_key
 import com.example.wetterbericht.view.fragment.home.adapter.SubTaskAdapter
 import com.example.wetterbericht.viewmodel.local.LocalViewModel
+import com.example.wetterbericht.viewmodel.utils.ViewModelFactory
 import com.example.wetterbericht.viewmodel.utils.obtainViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -24,15 +26,13 @@ class DetailTodoDialog : BottomSheetDialogFragment() {
     private var _binding: FragmentDetailTodoListDialogBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var roomVModel : LocalViewModel
+    private val roomViewModel : LocalViewModel by viewModels{ ViewModelFactory.getInstance(requireContext())}
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentDetailTodoListDialogBinding.inflate(inflater, container, false)
-        roomVModel = obtainViewModel(requireActivity())
 
         val detailTodo = arguments?.getParcelable<TodoLocal>(homepage_key)
-
 
         try {
             binding.apply {
@@ -62,27 +62,12 @@ class DetailTodoDialog : BottomSheetDialogFragment() {
         recView.adapter = adapter
         recView.layoutManager = LinearLayoutManager(requireActivity())
 
-        roomVModel.readTodoandSubtask(title)
-        roomVModel.responseTodoandSubtask.observe(viewLifecycleOwner){
+        roomViewModel.readTodoSubtask(title).observe(viewLifecycleOwner){
             it.forEach {
                 adapter.submitList(it.subtask)
             }
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     //full dialog config

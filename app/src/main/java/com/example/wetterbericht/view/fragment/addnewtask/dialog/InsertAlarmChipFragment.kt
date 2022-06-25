@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.viewModels
 import com.example.wetterbericht.databinding.FragmentInsertAlarmChipBinding
 import com.example.wetterbericht.model.local.ChipAlarm
 import com.example.wetterbericht.viewmodel.local.LocalViewModel
+import com.example.wetterbericht.viewmodel.utils.ViewModelFactory
 import com.example.wetterbericht.viewmodel.utils.obtainViewModel
 import java.text.SimpleDateFormat
 import java.util.*
@@ -16,7 +18,8 @@ import java.util.*
 
 class InsertAlarmChipFragment : DialogFragment() {
     private lateinit var binding : FragmentInsertAlarmChipBinding
-    private lateinit var localViewModel: LocalViewModel
+
+    private val roomViewModel : LocalViewModel by viewModels{ ViewModelFactory.getInstance(requireContext())}
 
     private var formatTime = SimpleDateFormat("HH:mm", Locale.ENGLISH)
 
@@ -30,7 +33,7 @@ class InsertAlarmChipFragment : DialogFragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentInsertAlarmChipBinding.inflate(layoutInflater)
-        localViewModel = obtainViewModel(requireActivity())
+
 
         binding.etNewChipTime.setOnClickListener {
             timePicker()
@@ -45,12 +48,12 @@ class InsertAlarmChipFragment : DialogFragment() {
 
     private fun timePicker(){
         val calendar = Calendar.getInstance()
-        val timePick = TimePickerDialog(requireContext(), { view, hourOfDay, minute ->
+        val timePick = TimePickerDialog(requireContext(), { _, hourOfDay, minute ->
             val timeTemp = Calendar.getInstance()
             timeTemp.set(Calendar.HOUR_OF_DAY,hourOfDay)
             timeTemp.set(Calendar.MINUTE,minute)
-            val settime = formatTime.format(timeTemp.time)
-            binding.etNewChipTime.text = settime
+            val timeSet = formatTime.format(timeTemp.time)
+            binding.etNewChipTime.text = timeSet
         },
             calendar.get(Calendar.HOUR_OF_DAY),
             calendar.get(Calendar.MINUTE),
@@ -65,10 +68,11 @@ class InsertAlarmChipFragment : DialogFragment() {
 
         val chip = ChipAlarm(
             name,
-            time
+            time,
+            1
         )
 
-        localViewModel.insertAlarmChip(chip)
+        roomViewModel.insertAlarmChip(chip)
         timeCallback.timeCallBack(time)
     }
 

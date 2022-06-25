@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wetterbericht.databinding.FragmentInsertTodoBinding
@@ -16,13 +17,14 @@ import com.example.wetterbericht.view.fragment.home.adapter.SubTaskAdapter
 import com.example.wetterbericht.view.fragment.addnewtask.adapter.ChipAdapter
 import com.example.wetterbericht.view.fragment.addnewtask.dialog.InsertAlarmChipFragment
 import com.example.wetterbericht.view.fragment.addnewtask.dialog.InsertTagFragment
-import com.example.wetterbericht.util.AlarmReceiver
-import com.example.wetterbericht.util.AlarmReceiver.Companion.type_one_time
+import com.example.wetterbericht.util.TaskReminder
+import com.example.wetterbericht.util.TaskReminder.Companion.type_one_time
 import com.example.wetterbericht.viewmodel.local.LocalViewModel
+import com.example.wetterbericht.viewmodel.utils.ViewModelFactory
 import com.example.wetterbericht.viewmodel.utils.obtainViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import java.time.LocalDate
+import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.properties.Delegates
 import kotlin.streams.asSequence
@@ -30,7 +32,8 @@ import kotlin.streams.asSequence
 
 class InsertTodoFragment : Fragment() {
     private lateinit var binding : FragmentInsertTodoBinding
-    private lateinit var localViewModel: LocalViewModel
+    private val roomViewModel : LocalViewModel by viewModels{ ViewModelFactory.getInstance(requireContext())}
+
     private var taskList = arrayListOf<TodoSubTask>()
     private val source = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
@@ -42,15 +45,15 @@ class InsertTodoFragment : Fragment() {
 
     private lateinit var alarm : String
     private var leveColour by Delegates.notNull<Int>()
-    private lateinit var alarmReceiver : AlarmReceiver
+    private lateinit var taskReminder : TaskReminder
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentInsertTodoBinding.inflate(layoutInflater)
-        localViewModel = obtainViewModel(requireActivity())
-        alarmReceiver = AlarmReceiver()
+
+        taskReminder = TaskReminder()
 
         readChipAlarm()
 
@@ -109,8 +112,7 @@ class InsertTodoFragment : Fragment() {
         sideRv.adapter = adapter
         sideRv.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
 
-        localViewModel.readAlarmChip()
-        localViewModel.responseAlarmChip.observe(viewLifecycleOwner){
+        roomViewModel.readAlarmChip().observe(viewLifecycleOwner){
             adapter.setData(it)
         }
 
@@ -144,6 +146,8 @@ class InsertTodoFragment : Fragment() {
         val description = binding.inserttodoDescription.text.toString()
         val levelTitle = binding.addtag.text.toString()
 
+
+
         val tempData = TodoLocal(
             userId,
             name,
@@ -151,6 +155,7 @@ class InsertTodoFragment : Fragment() {
             levelTitle,
             leveColour,
             getDate(),
+            getDay(),
             alarm,
             false
         )
@@ -162,9 +167,9 @@ class InsertTodoFragment : Fragment() {
                 it.isComplete,
                 it.todoId
             )
-            localViewModel.insertSubtask(tempSubtask)
+            roomViewModel.insertSubtask(tempSubtask)
         }
-        localViewModel.insertTodoLocal(tempData)
+        roomViewModel.insertTodoLocal(tempData)
 
         lifecycleScope.launch {
             setAlarm(name)
@@ -173,11 +178,10 @@ class InsertTodoFragment : Fragment() {
 
     private suspend fun setAlarm(name : String){
         delay(2000L)
-        localViewModel.readTodo(name)
-        localViewModel.responseTodoSearch.observe(viewLifecycleOwner){
+        roomViewModel.readTodo(name).observe(viewLifecycleOwner){
             showToast("alarm set to ${it[0].timeDeadline}")
             val alarmId= (1..200).random()
-            alarmReceiver.setOneAlarm(
+            taskReminder.setOneAlarm(
                 requireContext(),
                 type_one_time,
                 it[0].dateDeadline,
@@ -188,9 +192,12 @@ class InsertTodoFragment : Fragment() {
         }
     }
 
-    private fun getDate(): String{
-        val formatter = LocalDate.now()
-        return formatter.toString()
+    private fun getDate(): String {
+        return SimpleDateFormat("dd-MM-yyy", Locale.getDefault()).format(Date())
+    }
+
+    private fun getDay(): Int {
+        return SimpleDateFormat("dd", Locale.getDefault()).format(Date()).toInt()
     }
 
     private fun showToast(title : String){

@@ -19,6 +19,7 @@ import com.example.wetterbericht.model.remote.service.WeatherResponse
 import com.example.wetterbericht.view.adapter.ForecastAdapter
 import com.example.wetterbericht.viewmodel.local.LocalViewModel
 import com.example.wetterbericht.viewmodel.remote.WeatherViewModel
+import com.example.wetterbericht.viewmodel.utils.ViewModelFactory
 import com.example.wetterbericht.viewmodel.utils.obtainViewModel
 import kotlin.math.round
 
@@ -28,7 +29,8 @@ class WeatherFragment : Fragment(){
     private lateinit var binding : FragmentWeatherBinding
 
     private val weatherViewModel by viewModels<WeatherViewModel>()
-    private lateinit var roomViewModel : LocalViewModel
+
+    private val roomViewModel : LocalViewModel by viewModels{ ViewModelFactory.getInstance(requireContext())}
 
 
     private lateinit var forecastAdapter: ForecastAdapter
@@ -40,7 +42,6 @@ class WeatherFragment : Fragment(){
         binding = FragmentWeatherBinding.inflate(layoutInflater)
         setHasOptionsMenu(true)
         (requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbarWeather)
-        roomViewModel = obtainViewModel(requireActivity())
 
         favoriteCity()
 
@@ -72,8 +73,7 @@ class WeatherFragment : Fragment(){
     }
 
     private fun favoriteCity(){
-        roomViewModel.readWeatherLocal()
-        roomViewModel.responseWeatherLocal.observe(viewLifecycleOwner) { response ->
+        roomViewModel.readWeatherLocal().observe(viewLifecycleOwner) { response ->
             if (response.isNotEmpty()) {
                 searchCurrentWeather(response[0].loc)
                 binding.tvWeatherNodata.visibility = View.GONE

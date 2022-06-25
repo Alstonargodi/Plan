@@ -31,19 +31,6 @@ abstract class TodoDao {
     abstract fun deleteTodo(name : String)
 
 
-
-    @Query("select*from WeatherTable")
-    abstract fun readWeather() : LiveData<List<WeatherLocal>>
-
-    @Query("delete from WeatherTable where loc like :name")
-    abstract fun deleteWeather(name : String)
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun insertWeather(data : WeatherLocal)
-
-    @Query("select*from weathertable where loc like :name ")
-    abstract fun searchLocation(name: String): LiveData<List<WeatherLocal>>
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract fun insertAlarmChip(alarm : ChipAlarm)
 

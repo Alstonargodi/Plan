@@ -10,7 +10,8 @@ import kotlinx.android.parcel.Parcelize
 data class ChipAlarm(
     @PrimaryKey(autoGenerate = false)
     val name : String,
-    val time : String
+    val time : String,
+    val sumDay : Int,
 ):Parcelable
 
 

@@ -16,7 +16,7 @@ import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 
-class AlarmReceiver : BroadcastReceiver() {
+class TaskReminder : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         val type = intent.getStringExtra(extra_type)
         val message = intent.getStringExtra(extra_message)
@@ -39,7 +39,7 @@ class AlarmReceiver : BroadcastReceiver() {
             return
 
         val alarManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        val intent = Intent(context, AlarmReceiver::class.java)
+        val intent = Intent(context, TaskReminder::class.java)
         intent.putExtra(extra_message,message)
         intent.putExtra(extra_type,type)
         intent.putExtra(extra_id,id)
