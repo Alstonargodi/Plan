@@ -7,8 +7,7 @@ import com.example.wetterbericht.model.local.*
 @Dao
 abstract class TodoDao {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun insertWeather(data : WeatherLocal)
+
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract fun insertTodo(data : TodoLocal)
@@ -16,9 +15,6 @@ abstract class TodoDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract fun insertSubTask(sub : TodoSubTask)
 
-
-    @Query("select*from WeatherTable")
-    abstract fun readWeather() : LiveData<List<WeatherLocal>>
 
     @Query("select*from TodoTable")
     abstract fun readTodo() : LiveData<List<TodoLocal>>
@@ -31,12 +27,22 @@ abstract class TodoDao {
     @Query("select * from TodoTable where title = :name")
     abstract fun getTodoSubtask(name : String): LiveData<List<TodoandSubTask>>
 
-    @Query("delete from WeatherTable where loc like :name")
-    abstract fun deleteWeather(name : String)
-
     @Query("delete from TodoTable where title like :name ")
     abstract fun deleteTodo(name : String)
 
+
+
+    @Query("select*from WeatherTable")
+    abstract fun readWeather() : LiveData<List<WeatherLocal>>
+
+    @Query("delete from WeatherTable where loc like :name")
+    abstract fun deleteWeather(name : String)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    abstract fun insertWeather(data : WeatherLocal)
+
+    @Query("select*from weathertable where loc like :name ")
+    abstract fun searchLocation(name: String): LiveData<List<WeatherLocal>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract fun insertAlarmChip(alarm : ChipAlarm)

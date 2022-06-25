@@ -3,6 +3,7 @@ package com.example.wetterbericht.view.fragment.weather
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -14,7 +15,6 @@ import com.example.wetterbericht.R
 import com.example.wetterbericht.databinding.FragmentWeatherBinding
 import com.example.wetterbericht.model.remote.response.ForecastResponse
 import com.example.wetterbericht.model.remote.response.Foredata
-import com.example.wetterbericht.model.local.WeatherLocal
 import com.example.wetterbericht.model.remote.service.WeatherResponse
 import com.example.wetterbericht.view.adapter.ForecastAdapter
 import com.example.wetterbericht.view.adapter.WeatherRvFavoriteAdapter
@@ -28,11 +28,10 @@ class WeatherFragment : Fragment(){
 
     private lateinit var binding : FragmentWeatherBinding
 
-    private val mainViewModel by viewModels<WeatherViewModel>()
-
+    private val weatherViewModel by viewModels<WeatherViewModel>()
     private lateinit var roomViewModel : LocalViewModel
 
-    private lateinit var favoriteAdapter : WeatherRvFavoriteAdapter
+
     private lateinit var forecastAdapter: ForecastAdapter
 
     private var forecastList = ArrayList<Foredata>()
@@ -44,14 +43,7 @@ class WeatherFragment : Fragment(){
         (requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbarWeather)
         roomViewModel = obtainViewModel(requireActivity())
 
-
         favoriteCity()
-
-        mainViewModel.isLoading.observe(viewLifecycleOwner){
-            binding.pgbarWeather.visibility = if (it) View.VISIBLE else View.GONE
-        }
-
-
 
         return binding.root
     }
@@ -62,13 +54,13 @@ class WeatherFragment : Fragment(){
         inflater.inflate(R.menu.weather_toolbar,menu)
 
         val searchView = menu.findItem(R.id.search_weather).actionView as SearchView
-
         searchView.apply {
             queryHint = "Enter Location"
 
             setOnQueryTextListener(object : SearchView.OnQueryTextListener{
                 override fun onQueryTextSubmit(query: String?): Boolean {
                     searchCurrentWeather(query ?: "")
+                    locationChecker(query ?: "")
                     return true
                 }
 
@@ -82,23 +74,15 @@ class WeatherFragment : Fragment(){
     private fun favoriteCity(){
         roomViewModel.readWeatherLocal()
         roomViewModel.responseWeatherLocal.observe(viewLifecycleOwner) { response ->
-            setListFavCity(response)
             if (response.isNotEmpty()){
                 searchCurrentWeather(response[0].loc)
             }
         }
     }
 
-    private fun setListFavCity(list : List<WeatherLocal>){
-        favoriteAdapter = WeatherRvFavoriteAdapter()
-        favoriteAdapter.setdata(list)
-        val recyclerView = binding.reclist
-        recyclerView.adapter = favoriteAdapter
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-    }
 
     private fun searchCurrentWeather(city : String){
-        mainViewModel.apply {
+        weatherViewModel.apply {
             getWeatherSearch(city)
             weatherSearchRespon.observe(viewLifecycleOwner){
                 setWeatherCard(it)
@@ -111,6 +95,16 @@ class WeatherFragment : Fragment(){
         }
     }
 
+    private fun locationChecker(location : String){
+        roomViewModel.searchLocation(location).observe(viewLifecycleOwner){
+            if (it.isNullOrEmpty()){
+                binding.btnSetLocation.visibility = View.VISIBLE
+            }else{
+                binding.btnSetLocation.visibility = View.GONE
+            }
+        }
+    }
+
     private fun setWeatherCard(data : WeatherResponse){
         binding.apply {
             data.apply {
@@ -118,10 +112,14 @@ class WeatherFragment : Fragment(){
                 tvweatherCon.text = weather[0].description
 
                 val temp = round(main.temp).toInt()
+                val visibility = visibility / 1000
+
                 tvweatherTemp.text = temp.toString() + " c"
 
-                tvweatherClouds.text = "Clouds " + clouds.all.toString()
-                tvweatherFeels.text =  "Feels like " +main.feelsLike.toString()
+                tvweatherClouds.text = "Clouds  ${clouds.all} %"
+                tvweatherFeels.text =  "Feels like ${main.feelsLike} C "
+                tvweatherWindspeed.text = "Wind Speed ${wind.speed} km/h"
+                tvweatherVisibilty.text = "Visibilty $visibility Km"
 
                 val url = weather[0].icon
                 val icon = "http://openweathermap.org/img/w/${url}.png"
@@ -156,9 +154,9 @@ class WeatherFragment : Fragment(){
 
             forecastList.add(tempForecast)
             forecastAdapter = ForecastAdapter(forecastList.distinct())
-            val recview = binding.weatherForecast
-            recview.adapter = forecastAdapter
-            recview.layoutManager = LinearLayoutManager(requireContext())
+            val recyclerView = binding.weatherForecast
+            recyclerView.adapter = forecastAdapter
+            recyclerView.layoutManager = LinearLayoutManager(requireContext())
         }
     }
 }

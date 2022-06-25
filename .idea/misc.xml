@@ -99,7 +99,7 @@
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout-xxxhdpi/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout/Activity_main.xml" value="0.55" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout/activity_detail.xml" value="0.30994152046783624" />
-        <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout/activity_detail_weather.xml" value="0.33" />
+        <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout/activity_detail_weather.xml" value="0.5" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout/activity_inserttodo.xml" value="0.33" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout/activity_loginactivity.xml" value="0.25" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout/activity_main.xml" value="0.5" />
@@ -138,7 +138,7 @@
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout/fragment_setting.xml" value="0.5" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout/fragment_todo.xml" value="1.0" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout/fragment_update.xml" value="0.33" />
-        <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout/fragment_weather.xml" value="0.5" />
+        <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout/fragment_weather.xml" value="0.67" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout/itemcv_forecast.xml" value="0.67" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout/itemcv_weather.xml" value="0.5" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Wetterbericht/app/src/main/res/layout/itemcv_weather_home.xml" value="0.33" />

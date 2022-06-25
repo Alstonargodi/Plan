@@ -9,7 +9,7 @@ import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
 
-class TodoRepository(application: Application) {
+class LocalRepository(application: Application) {
 
     private val executorService : ExecutorService = Executors.newSingleThreadExecutor()
     private val dao : TodoDao
@@ -39,6 +39,9 @@ class TodoRepository(application: Application) {
     fun insertSubtask(data : TodoSubTask){
         executorService.execute { dao.insertSubTask(data) }
     }
+
+    fun searchLocation(name: String): LiveData<List<WeatherLocal>> =
+        dao.searchLocation(name)
 
     fun deleteWeather(name : String) =
         dao.deleteWeather(name)
