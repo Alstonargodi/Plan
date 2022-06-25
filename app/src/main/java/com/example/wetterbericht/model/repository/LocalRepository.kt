@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import com.example.wetterbericht.model.local.*
 import com.example.wetterbericht.model.local.dao.TodoDao
 import com.example.wetterbericht.model.local.database.TodoDatabase
+import com.example.wetterbericht.model.local.entity.WeatherLocal
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 

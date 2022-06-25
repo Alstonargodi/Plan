@@ -9,7 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wetterbericht.databinding.FragmentHomeBinding
 import com.example.wetterbericht.model.local.TodoLocal
-import com.example.wetterbericht.model.local.WeatherLocal
+import com.example.wetterbericht.model.local.entity.WeatherLocal
 import com.example.wetterbericht.view.fragment.home.adapter.TodoRvHomeAdapter
 import com.example.wetterbericht.view.adapter.WeatherRvHomeAdapter
 import com.example.wetterbericht.viewmodel.local.LocalViewModel

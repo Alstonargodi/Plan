@@ -3,10 +3,10 @@ package com.example.wetterbericht.model.local.dao
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.wetterbericht.model.local.*
+import com.example.wetterbericht.model.local.entity.WeatherLocal
 
 @Dao
 abstract class TodoDao {
-
 
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

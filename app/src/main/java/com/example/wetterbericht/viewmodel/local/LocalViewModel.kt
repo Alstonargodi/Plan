@@ -3,6 +3,7 @@ package com.example.wetterbericht.viewmodel.local
 import android.app.Application
 import androidx.lifecycle.*
 import com.example.wetterbericht.model.local.*
+import com.example.wetterbericht.model.local.entity.WeatherLocal
 import com.example.wetterbericht.model.repository.LocalRepository
 
 class LocalViewModel(application: Application): ViewModel() {
