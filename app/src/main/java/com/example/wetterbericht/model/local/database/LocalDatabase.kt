@@ -17,7 +17,7 @@ import com.example.wetterbericht.model.local.entity.WeatherLocal
     TodoSubTask::class,
     ChipAlarm::class
     ]
-    ,version = 14
+    ,version = 15
     ,exportSchema = false
 )
 abstract class LocalDatabase: RoomDatabase() {

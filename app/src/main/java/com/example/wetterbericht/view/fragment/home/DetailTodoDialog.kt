@@ -41,7 +41,7 @@ class DetailTodoDialog : BottomSheetDialogFragment() {
                     tvdetailTag.setBackgroundColor(detailTodo.levelColor)
                     tvdetailTag.setTextColor(Color.WHITE)
 
-                    tvbottomTodoTime.text = detailTodo.timeDeadline
+                    tvbottomTodoTime.text = detailTodo.dateStart
                     tvbottomTodoTitle.text = detailTodo.title
                     tvbottomTodoDesc.text = detailTodo.description
                     readSubtask(detailTodo.title)

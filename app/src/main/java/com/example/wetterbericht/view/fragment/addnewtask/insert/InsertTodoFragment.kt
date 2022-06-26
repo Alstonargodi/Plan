@@ -127,7 +127,7 @@ class InsertTodoFragment : Fragment() {
     private fun deadlineTime(time : String){
         binding.etDeadlineTodo.apply {
             visibility = View.VISIBLE
-            text = "Deadline set at $time"
+            text = "notif me every $time minute"
             alarm = time
         }
     }
@@ -158,6 +158,7 @@ class InsertTodoFragment : Fragment() {
             getDate(),
             getDay(),
             alarm,
+            alarm,
             false
         )
 
@@ -180,13 +181,13 @@ class InsertTodoFragment : Fragment() {
     private suspend fun setAlarm(name : String){
         delay(2000L)
         roomViewModel.readTodo(name).observe(viewLifecycleOwner){
-            showToast("alarm set to ${it[0].timeDeadline}")
+            showToast("add new task")
             val alarmId= (1..200).random()
             taskReminder.setOneAlarm(
                 requireContext(),
                 type_one_time,
-                it[0].dateDeadline,
-                it[0].timeDeadline,
+                it[0].dateStart,
+                it[0].endTime,
                 it[0].title,
                 alarmId
             )
