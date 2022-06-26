@@ -27,6 +27,11 @@ abstract class TodoDao {
     @Query("select * from TodoTable where title = :name")
     abstract fun getTodoSubtask(name : String): LiveData<List<TodoandSubTask>>
 
+
+    @Query("select * from todotable where dateStart like :date")
+    abstract fun getTodayTask(date: String):LiveData<List<TodoLocal>>
+
+
     @Query("delete from TodoTable where title like :name ")
     abstract fun deleteTodo(name : String)
 

@@ -27,6 +27,10 @@ class LocalViewModel(private val repository: LocalRepository): ViewModel() {
         repository.readTodoSubtask(name)
 
 
+    fun getTodayTask(): LiveData<List<TodoLocal>> =
+        repository.getTodayTask()
+
+
     fun insertTodoLocal(data : TodoLocal) = repository.insertTodo(data)
 
 

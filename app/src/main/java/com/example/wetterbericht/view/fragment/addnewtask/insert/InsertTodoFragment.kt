@@ -1,5 +1,7 @@
 package com.example.wetterbericht.view.fragment.addnewtask.insert
 
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -21,8 +23,6 @@ import com.example.wetterbericht.util.TaskReminder
 import com.example.wetterbericht.util.TaskReminder.Companion.type_one_time
 import com.example.wetterbericht.viewmodel.local.LocalViewModel
 import com.example.wetterbericht.viewmodel.utils.ViewModelFactory
-import com.example.wetterbericht.viewmodel.utils.obtainViewModel
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
@@ -31,9 +31,12 @@ import kotlin.properties.Delegates
 import kotlin.streams.asSequence
 
 
-class InsertTodoFragment : Fragment() {
+class InsertTodoFragment : Fragment(){
     private lateinit var binding : FragmentInsertTodoBinding
     private val roomViewModel : LocalViewModel by viewModels{ ViewModelFactory.getInstance(requireContext())}
+
+    private var formatTime = SimpleDateFormat("HH:mm", Locale.ENGLISH)
+    private var formatDate = SimpleDateFormat("yyy-MM-dd", Locale.getDefault())
 
     private var taskList = arrayListOf<TodoSubTask>()
     private val source = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -56,62 +59,52 @@ class InsertTodoFragment : Fragment() {
 
         taskReminder = TaskReminder()
 
-        readChipAlarm()
+        readChipReminder()
 
+
+        return binding.root
+    }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         binding.btnAddchipalarm.setOnClickListener {
-            val dialog = InsertAlarmChipFragment()
-            val sFragment= requireActivity().supportFragmentManager
-            dialog.show(sFragment,"dialog")
-            dialog.onTimeCallback(object : InsertAlarmChipFragment.timeCallBack{
-                override fun timeCallBack(time: String) {
-                    deadlineTime(time)
-                }
-            })
+            showNewAddAlarm()
         }
 
         binding.addtag.setOnClickListener {
-            val dialog = InsertTagFragment()
-            val sFragment= requireActivity().supportFragmentManager
-            dialog.show(sFragment,"dialog")
-            dialog.onTagCallBack(object : InsertTagFragment.onTagCallback{
-                override fun tagCallBack(name: String, color: Int) {
-                    binding.addtag.text = "#$name"
-                    binding.addtag.setTextColor(Color.WHITE)
-                    binding.addtag.setBackgroundColor(color)
-                    leveColour = color
-
-                }
-            })
+            showAddNewTag()
         }
 
 
         binding.btnAddsubtask.setOnClickListener {
-            val task = binding.inserttodoSubtask.text.toString()
-            val temp = TodoSubTask(
-                0,
-                task,
-                false,
-                userId
-            )
-            taskList.add(temp)
-            lifecycleScope.launch {
-                readSubtask()
-            }
+            newSubtask()
         }
 
         binding.btnaddtodo.setOnClickListener {
             insertTodo()
         }
 
-        return binding.root
+        binding.btnTodoTimestart.setOnClickListener {
+            timePicker("start")
+        }
+
+        binding.btnTodoTimeend.setOnClickListener {
+            timePicker("end")
+        }
+
+        binding.btnTodoDatestart.setOnClickListener {
+            datePicker()
+        }
     }
 
-    private fun readChipAlarm(){
+
+    private fun readChipReminder(){
         val adapter = ChipAdapter()
-        val sideRv = binding.rvChip
-        sideRv.adapter = adapter
-        sideRv.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+        val sideRecyclerView = binding.rvChip
+        sideRecyclerView.adapter = adapter
+        sideRecyclerView.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
 
         roomViewModel.readAlarmChip().observe(viewLifecycleOwner){
             adapter.setData(it)
@@ -134,9 +127,9 @@ class InsertTodoFragment : Fragment() {
 
     private fun readSubtask(){
         val adapter = SubTaskAdapter()
-        val recyclerView = binding.rvSubtask
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        val taskRecyclerView = binding.rvSubtask
+        taskRecyclerView.adapter = adapter
+        taskRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         adapter.submitList(taskList)
     }
@@ -146,7 +139,9 @@ class InsertTodoFragment : Fragment() {
         val name = binding.inserttodoName.text.toString()
         val description = binding.inserttodoDescription.text.toString()
         val levelTitle = binding.addtag.text.toString()
-
+        val startTime = binding.tvTodoTimestart.text.toString()
+        val endTime = binding.tvTodoTimeend.text.toString()
+        val dateStart = binding.btnTodoDatestart.text.toString()
 
 
         val tempData = TodoLocal(
@@ -155,10 +150,10 @@ class InsertTodoFragment : Fragment() {
             description,
             levelTitle,
             leveColour,
-            getDate(),
-            getDay(),
-            alarm,
-            alarm,
+            dateStart,
+            alarm.toInt(),
+            startTime,
+            endTime,
             false
         )
 
@@ -194,20 +189,89 @@ class InsertTodoFragment : Fragment() {
         }
     }
 
-    private fun getDate(): String {
-        return SimpleDateFormat("dd-MM-yyy", Locale.getDefault()).format(Date())
+    private fun showNewAddAlarm(){
+        val dialog = InsertAlarmChipFragment()
+        val sFragment= requireActivity().supportFragmentManager
+        dialog.show(sFragment,"dialog")
+        dialog.onTimeCallback(object : InsertAlarmChipFragment.timeCallBack{
+            override fun timeCallBack(time: String) {
+                deadlineTime(time)
+            }
+        })
     }
 
-    private fun getDay(): Int {
-        return SimpleDateFormat("dd", Locale.getDefault()).format(Date()).toInt()
+    private fun showAddNewTag(){
+        val dialog = InsertTagFragment()
+        val supportFragment= requireActivity().supportFragmentManager
+        dialog.show(supportFragment,"dialog")
+        dialog.onTagCallBack(object : InsertTagFragment.onTagCallback{
+            override fun tagCallBack(name: String, color: Int) {
+                binding.addtag.text = "#$name"
+                binding.addtag.setTextColor(Color.WHITE)
+                binding.addtag.setBackgroundColor(color)
+                leveColour = color
+            }
+        })
+    }
+
+    private fun newSubtask(){
+        val task = binding.inserttodoSubtask.text.toString()
+        val temp = TodoSubTask(
+            0,
+            task,
+            false,
+            userId
+        )
+        taskList.add(temp)
+        lifecycleScope.launch {
+            readSubtask()
+        }
     }
 
     private fun showToast(title : String){
         Toast.makeText(requireContext(),title,Toast.LENGTH_SHORT).show()
     }
 
-    companion object{
-        const val time_key = "time_picker"
+    private fun timePicker(tag : String){
+        val calendar = Calendar.getInstance()
+        val timePick = TimePickerDialog(requireContext(), { _, hourOfDay, minute ->
+            val timeTemp = Calendar.getInstance()
+            timeTemp.set(Calendar.HOUR_OF_DAY,hourOfDay)
+            timeTemp.set(Calendar.MINUTE,minute)
+            val timeSet = formatTime.format(timeTemp.time)
+
+            when(tag){
+                "start"->{
+                    binding.tvTodoTimestart.text = timeSet
+                }
+                "end"->{
+                    binding.tvTodoTimeend.text = timeSet
+                }
+            }
+
+        },
+            calendar.get(Calendar.HOUR_OF_DAY),
+            calendar.get(Calendar.MINUTE),
+            false
+        )
+        timePick.show()
+    }
+
+    private fun datePicker(){
+        val instance = Calendar.getInstance()
+        val datePicker = DatePickerDialog(requireContext(),{_,year,month,dayOfMonth ->
+            val calendar = Calendar.getInstance()
+            calendar.set(Calendar.DAY_OF_MONTH,dayOfMonth)
+            calendar.set(Calendar.MONTH,month)
+            calendar.set(Calendar.YEAR,year)
+            val setdate = formatDate.format(calendar.time)
+            binding.btnTodoDatestart.text = setdate.toString()
+        },
+            instance.get(Calendar.YEAR),
+            instance.get(Calendar.MONTH),
+            instance.get(Calendar.DAY_OF_MONTH)
+        )
+        datePicker.show()
     }
 
 
