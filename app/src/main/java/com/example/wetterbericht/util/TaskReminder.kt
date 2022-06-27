@@ -32,7 +32,6 @@ class TaskReminder : BroadcastReceiver() {
 
     fun setDailyReminder(context: Context,interval : Long){
         val alarManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-
         val intent = Intent(context,TaskReminder::class.java)
 
         val calendar = Calendar.getInstance()
@@ -101,7 +100,6 @@ class TaskReminder : BroadcastReceiver() {
             }
 
             val notification = builder.build()
-            Log.d("alarm","alarm muni")
             notificationManager.notify(NOTIFICATION_ID,notification)
         }
     }
