@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.wetterbericht.R
-import com.example.wetterbericht.model.local.WeatherLocal
+import com.example.wetterbericht.model.local.entity.WeatherLocal
 import kotlinx.android.synthetic.main.itemcv_weather_home.view.*
 import kotlin.math.round
 
@@ -26,7 +26,7 @@ class WeatherRvHomeAdapter: RecyclerView.Adapter<WeatherRvHomeAdapter.viewmodel>
 
         val temp = curitem.temp.toDouble()
         val ftemp = round(temp).toInt().toString()
-        val feeltemp = round(curitem.feelslike.toDouble()).toInt()
+        val feeltemp = round(curitem.feelLike.toDouble()).toInt()
         holder.itemView.tv_homew_temp.text = ftemp
 
 

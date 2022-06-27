@@ -1,10 +1,9 @@
 package com.example.wetterbericht.view.fragment.weather
 
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.*
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
@@ -13,13 +12,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.wetterbericht.R
 import com.example.wetterbericht.databinding.FragmentWeatherBinding
+import com.example.wetterbericht.model.local.entity.WeatherLocal
 import com.example.wetterbericht.model.remote.response.ForecastResponse
 import com.example.wetterbericht.model.remote.response.Foredata
 import com.example.wetterbericht.model.remote.service.WeatherResponse
 import com.example.wetterbericht.view.adapter.ForecastAdapter
-import com.example.wetterbericht.view.adapter.WeatherRvFavoriteAdapter
 import com.example.wetterbericht.viewmodel.local.LocalViewModel
 import com.example.wetterbericht.viewmodel.remote.WeatherViewModel
+import com.example.wetterbericht.viewmodel.utils.ViewModelFactory
 import com.example.wetterbericht.viewmodel.utils.obtainViewModel
 import kotlin.math.round
 
@@ -29,7 +29,8 @@ class WeatherFragment : Fragment(){
     private lateinit var binding : FragmentWeatherBinding
 
     private val weatherViewModel by viewModels<WeatherViewModel>()
-    private lateinit var roomViewModel : LocalViewModel
+
+    private val roomViewModel : LocalViewModel by viewModels{ ViewModelFactory.getInstance(requireContext())}
 
 
     private lateinit var forecastAdapter: ForecastAdapter
@@ -41,7 +42,6 @@ class WeatherFragment : Fragment(){
         binding = FragmentWeatherBinding.inflate(layoutInflater)
         setHasOptionsMenu(true)
         (requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbarWeather)
-        roomViewModel = obtainViewModel(requireActivity())
 
         favoriteCity()
 
@@ -61,6 +61,7 @@ class WeatherFragment : Fragment(){
                 override fun onQueryTextSubmit(query: String?): Boolean {
                     searchCurrentWeather(query ?: "")
                     locationChecker(query ?: "")
+                    binding.tvWeatherNodata.visibility = View.GONE
                     return true
                 }
 
@@ -72,10 +73,12 @@ class WeatherFragment : Fragment(){
     }
 
     private fun favoriteCity(){
-        roomViewModel.readWeatherLocal()
-        roomViewModel.responseWeatherLocal.observe(viewLifecycleOwner) { response ->
-            if (response.isNotEmpty()){
+        roomViewModel.readWeatherLocal().observe(viewLifecycleOwner) { response ->
+            if (response.isNotEmpty()) {
                 searchCurrentWeather(response[0].loc)
+                binding.tvWeatherNodata.visibility = View.GONE
+            }else{
+                binding.tvWeatherNodata.visibility = View.VISIBLE
             }
         }
     }
@@ -94,6 +97,7 @@ class WeatherFragment : Fragment(){
             }
         }
     }
+
 
     private fun locationChecker(location : String){
         roomViewModel.searchLocation(location).observe(viewLifecycleOwner){
@@ -114,10 +118,10 @@ class WeatherFragment : Fragment(){
                 val temp = round(main.temp).toInt()
                 val visibility = visibility / 1000
 
-                tvweatherTemp.text = temp.toString() + " c"
+                tvweatherTemp.text = "$temp c"
 
                 tvweatherClouds.text = "Clouds  ${clouds.all} %"
-                tvweatherFeels.text =  "Feels like ${main.feelsLike} C "
+                tvweatherFeels.text =  "Feels like ${main.feelsLike} c "
                 tvweatherWindspeed.text = "Wind Speed ${wind.speed} km/h"
                 tvweatherVisibilty.text = "Visibilty $visibility Km"
 
@@ -129,12 +133,7 @@ class WeatherFragment : Fragment(){
                     .load(icon)
                     .into(imgIconweather)
 
-                tvdetailWeatherLoc.setOnClickListener {
-                    val intent = Intent(requireContext(), DetailWeatherActivity::class.java)
-                    intent.putExtra("lokasi",name)
-                    startActivity(intent)
-                }
-
+                btnSetLocation.setOnClickListener { setCurrentLocation(data) }
             }
         }
     }
@@ -158,5 +157,25 @@ class WeatherFragment : Fragment(){
             recyclerView.adapter = forecastAdapter
             recyclerView.layoutManager = LinearLayoutManager(requireContext())
         }
+    }
+
+    private fun setCurrentLocation(data : WeatherResponse){
+        val temperature = round(data.main.temp).toInt()
+
+        val iconUrl = data.weather[0].icon
+        val conditionIcon = "http://openweathermap.org/img/w/${iconUrl}.png"
+
+        val temp = WeatherLocal(
+            0,
+            data.name,
+            temperature.toString(),
+            conditionIcon,
+            data.main.feelsLike.toString(),
+            data.wind.speed.toString(),
+            data.weather[0].description
+        )
+
+        roomViewModel.insertWeatherLocal(temp)
+        Toast.makeText(requireContext(),"Set as current location", Toast.LENGTH_SHORT).show()
     }
 }

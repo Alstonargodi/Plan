@@ -55,7 +55,6 @@
         android:layout_height="24dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:text="clouds"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/img_iconweather"
         app:layout_constraintTop_toTopOf="@+id/img_iconweather" />
@@ -67,7 +66,6 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="20dp"
-        android:text="feels like"
         app:layout_constraintBottom_toBottomOf="@+id/img_iconweather"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/img_iconweather"
@@ -80,7 +78,6 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="2dp"
         android:layout_marginEnd="16dp"
-        android:text="wind speed"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tvweather_temp"
         app:layout_constraintTop_toTopOf="@+id/tvweather_temp" />
@@ -92,7 +89,6 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
-        android:text="visibility"
         app:layout_constraintBottom_toBottomOf="@+id/tvweather_temp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tvweather_temp"
@@ -119,7 +115,6 @@
         android:layout_marginTop="8dp"
         android:fontFamily="@font/abezeeregular"
         android:includeFontPadding="false"
-        android:text="adsad"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/btn_set_location"
@@ -132,11 +127,11 @@
         android:layout_height="61dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="5dp"
+        android:fontFamily="@font/robotoregular"
         android:gravity="center"
         android:includeFontPadding="false"
-        android:text="00 c"
         android:textColor="#4C4C4C"
-        android:textSize="52sp"
+        android:textSize="53sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_iconweather" />
 
@@ -160,7 +155,6 @@
         android:fontFamily="@font/abezeeregular"
         android:gravity="center"
         android:includeFontPadding="false"
-        android:text="asdas"
         android:textColor="#2196F3"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -180,5 +174,22 @@
         app:layout_constraintBottom_toBottomOf="@+id/tvweather_loc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvweather_loc" />
+
+    <TextView
+        android:id="@+id/tv_weather_nodata"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/robotoregular"
+        android:includeFontPadding="false"
+        android:text="Lets set a new location"
+        android:textColor="#282424"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvweather_loc"
+        app:layout_constraintVertical_bias="0.32999998" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

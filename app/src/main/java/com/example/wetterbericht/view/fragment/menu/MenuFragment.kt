@@ -37,6 +37,12 @@ class MenuFragment : Fragment() {
             )
         }
 
+        binding.btnMenuSetting.setOnClickListener {
+            findNavController().navigate(
+                MenuFragmentDirections.actionMenuFragmentToSettingsFragment()
+            )
+        }
+
         return binding.root
     }
 

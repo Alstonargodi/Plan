@@ -3,10 +3,10 @@ package com.example.wetterbericht.model.local.dao
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.wetterbericht.model.local.*
+import com.example.wetterbericht.model.local.entity.WeatherLocal
 
 @Dao
 abstract class TodoDao {
-
 
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -27,22 +27,23 @@ abstract class TodoDao {
     @Query("select * from TodoTable where title = :name")
     abstract fun getTodoSubtask(name : String): LiveData<List<TodoandSubTask>>
 
+
+    @Query("select * from todotable where dateDay = :date")
+    abstract fun getTodayTaskReminder(date: Int): List<TodoLocal>
+
+    @Query("select * from todotable where dateDay = :date")
+    abstract fun getTodayTask(date: Int):LiveData<List<TodoLocal>>
+
+    @Query("select * from todotable where dateDay > :date")
+    abstract fun getUpcomingTask(date: Int):LiveData<List<TodoLocal>>
+
+    @Query("select * from todotable where dateDay < :date")
+    abstract fun getPreviousTask(date: Int):LiveData<List<TodoLocal>>
+
+
     @Query("delete from TodoTable where title like :name ")
     abstract fun deleteTodo(name : String)
 
-
-
-    @Query("select*from WeatherTable")
-    abstract fun readWeather() : LiveData<List<WeatherLocal>>
-
-    @Query("delete from WeatherTable where loc like :name")
-    abstract fun deleteWeather(name : String)
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun insertWeather(data : WeatherLocal)
-
-    @Query("select*from weathertable where loc like :name ")
-    abstract fun searchLocation(name: String): LiveData<List<WeatherLocal>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract fun insertAlarmChip(alarm : ChipAlarm)

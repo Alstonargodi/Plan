@@ -7,17 +7,6 @@ import androidx.room.PrimaryKey
 import androidx.room.Relation
 import kotlinx.android.parcel.Parcelize
 
-@Parcelize
-@Entity(tableName = "WeatherTable")
-data class WeatherLocal(
-    @PrimaryKey(autoGenerate = false)
-    val loc : String,
-    val temp : String,
-    val image : String,
-    val feelslike : String,
-    val humid : String,
-    val desc : String
-) : Parcelable
 
 @Parcelize
 @Entity(tableName = "TodoTable")
@@ -28,8 +17,11 @@ data class TodoLocal(
     val description: String,
     val levelName : String,
     val levelColor : Int,
-    val dateDeadline: String,
-    val timeDeadline : String,
+    val dateStart: String,
+    val notificationInterval : Int,
+    val dateDay : Int,
+    val startTime : String,
+    val endTime : String,
     val isComplete: Boolean,
 ):Parcelable
 

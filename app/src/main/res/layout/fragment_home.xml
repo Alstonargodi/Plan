@@ -74,9 +74,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detailtoolbar"
         app:tabIndicatorColor="#C4C4C4"
-        app:tabIndicatorFullWidth="false"
+        app:tabIndicatorFullWidth="true"
         app:tabTextAppearance="@style/MyCustomTextAppearance"
         app:tabTextColor="#2D9CDB">
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="previous" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
@@ -101,7 +106,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tabLayout"
-        tools:listitem="@layout/tcv_todo_card" />
+        tools:listitem="@layout/tcv_todo_card" >
+
+    </androidx.recyclerview.widget.RecyclerView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

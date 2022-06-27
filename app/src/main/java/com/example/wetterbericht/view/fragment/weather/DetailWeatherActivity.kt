@@ -3,13 +3,11 @@ package com.example.wetterbericht.view.fragment.weather
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.wetterbericht.R
 import com.example.wetterbericht.databinding.ActivityDetailWeatherBinding
-import com.example.wetterbericht.model.local.WeatherLocal
 import com.example.wetterbericht.model.remote.response.Foredata
 import com.example.wetterbericht.model.remote.response.ForecastResponse
 import com.example.wetterbericht.model.remote.service.WeatherResponse
@@ -55,10 +53,6 @@ class DetailWeatherActivity : AppCompatActivity() {
             getWeatherSearch(city)
             weatherSearchRespon.observe(this@DetailWeatherActivity){ respon ->
                 setWeatherCurrent(respon)
-
-                binding.btnFavorit2.setOnClickListener {
-                    setFavorite(respon)
-                }
             }
             getWeatherForecast(city)
             forecastRespon.observe(this@DetailWeatherActivity){
@@ -110,29 +104,12 @@ class DetailWeatherActivity : AppCompatActivity() {
 
             forecastList.add(tempForecast)
             forecastAdapter = ForecastAdapter(forecastList.distinct())
-            val recview = binding.recviewForecast
-            recview.adapter = forecastAdapter
-            recview.layoutManager = LinearLayoutManager(this)
+            val recyclerView = binding.recviewForecast
+            recyclerView.adapter = forecastAdapter
+            recyclerView.layoutManager = LinearLayoutManager(this)
         }
     }
 
-    private fun setFavorite(data : WeatherResponse){
-        val suhu = round(data.main.temp).toInt()
 
-        val url = data.weather[0].icon
-        val icon = "http://openweathermap.org/img/w/${url}.png"
-
-        val temp = WeatherLocal(
-            data.name,
-            suhu.toString(),
-            icon,
-            data.main.feelsLike.toString(),
-            data.wind.speed.toString(),
-            data.weather[0].description
-        )
-
-        roomViewModel.insertWeatherLocal(temp)
-        Toast.makeText(this,"Add new location", Toast.LENGTH_SHORT).show()
-    }
 
 }

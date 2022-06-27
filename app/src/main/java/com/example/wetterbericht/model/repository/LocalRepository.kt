@@ -1,57 +1,93 @@
 package com.example.wetterbericht.model.repository
 
-import android.app.Application
 import androidx.lifecycle.LiveData
 import com.example.wetterbericht.model.local.*
 import com.example.wetterbericht.model.local.dao.TodoDao
-import com.example.wetterbericht.model.local.database.TodoDatabase
+import com.example.wetterbericht.model.local.database.LocalDatabase
+import com.example.wetterbericht.model.local.entity.WeatherLocal
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.util.*
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
 
-class LocalRepository(application: Application) {
+class LocalRepository(database : LocalDatabase) {
 
-    private val executorService : ExecutorService = Executors.newSingleThreadExecutor()
-    private val dao : TodoDao
+    private val executorService = Executors.newSingleThreadExecutor()
+    private val task = database.todoDao()
+    private val weather = database.weatherDao()
+    private val currentDate = LocalDateTime.now().dayOfMonth
 
-    init {
-        val db = TodoDatabase.setDatabase(application)
-        dao = db.localDao()
-    }
+    //task local
+    fun readTodo() : LiveData<List<TodoLocal>> = task.readTodo()
 
-    val readTodo : LiveData<List<TodoLocal>> =
-        dao.readTodo()
-    val readWeather : LiveData<List<WeatherLocal>> =
-        dao.readWeather()
+    fun readChipAlarm() : LiveData<List<ChipAlarm>> = task.readAlarmChip()
 
-    fun readTodo(name : String): LiveData<List<TodoLocal>> =
-        dao.readSearchTodo(name)
-
-    fun readTodoSubtask(name : String): LiveData<List<TodoandSubTask>> =
-       dao.getTodoSubtask(name)
-
-    fun insertWeather(data : WeatherLocal) =
-        executorService.execute { dao.insertWeather(data) }
-
-    fun insertTodo(data : TodoLocal) =
-        executorService.execute{ dao.insertTodo(data) }
-
-    fun insertSubtask(data : TodoSubTask){
-        executorService.execute { dao.insertSubTask(data) }
-    }
-
-    fun searchLocation(name: String): LiveData<List<WeatherLocal>> =
-        dao.searchLocation(name)
-
-    fun deleteWeather(name : String) =
-        dao.deleteWeather(name)
-    fun deleteTodo(name : String) =
-        dao.deleteTodo(name)
-
-
-    val readChipAlarm : LiveData<List<ChipAlarm>> =
-        dao.readAlarmChip()
 
     fun insertAlarmChip(alarm : ChipAlarm) =
-        executorService.execute { dao.insertAlarmChip(alarm) }
+        executorService.execute { task.insertAlarmChip(alarm) }
+
+    fun readSearchTodo(name : String): LiveData<List<TodoLocal>> =
+        task.readSearchTodo(name)
+
+    fun readTodoSubtask(name : String): LiveData<List<TodoandSubTask>> =
+        task.getTodoSubtask(name)
+
+
+    fun getTodayTaskReminder(): List<TodoLocal>{
+      return task.getTodayTaskReminder(currentDate)
+    }
+
+
+    fun getTodayTask(): LiveData<List<TodoLocal>>{
+      return task.getTodayTask(currentDate)
+    }
+
+    fun getUpcomingTask(): LiveData<List<TodoLocal>>{
+        return task.getUpcomingTask(currentDate)
+    }
+
+    fun getPreviousTask(): LiveData<List<TodoLocal>>{
+        return task.getPreviousTask(currentDate)
+    }
+
+
+    fun insertTodo(data : TodoLocal) =
+        executorService.execute{ task.insertTodo(data) }
+
+    fun insertSubtask(data : TodoSubTask){
+        executorService.execute { task.insertSubTask(data) }
+    }
+
+    fun deleteTodo(name : String) =
+        task.deleteTodo(name)
+
+
+
+
+
+
+
+
+    //weather local
+    fun readWeather() : LiveData<List<WeatherLocal>> = weather.readWeather()
+
+
+    fun insertWeather(data : WeatherLocal) =
+        executorService.execute { weather.insertWeather(data) }
+
+
+    fun searchLocation(name: String): LiveData<List<WeatherLocal>> =
+        weather.searchLocation(name)
+
+    fun deleteWeather(name : String) =
+        weather.deleteWeather(name)
+
+
+
+
+
+
 }
