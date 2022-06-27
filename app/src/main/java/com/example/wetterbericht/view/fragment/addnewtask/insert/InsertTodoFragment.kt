@@ -20,7 +20,6 @@ import com.example.wetterbericht.view.fragment.addnewtask.adapter.ChipAdapter
 import com.example.wetterbericht.view.fragment.addnewtask.dialog.InsertAlarmChipFragment
 import com.example.wetterbericht.view.fragment.addnewtask.dialog.InsertTagFragment
 import com.example.wetterbericht.util.TaskReminder
-import com.example.wetterbericht.util.TaskReminder.Companion.type_one_time
 import com.example.wetterbericht.viewmodel.local.LocalViewModel
 import com.example.wetterbericht.viewmodel.utils.ViewModelFactory
 import kotlinx.coroutines.delay
@@ -171,25 +170,11 @@ class InsertTodoFragment : Fragment(){
         }
         roomViewModel.insertTodoLocal(tempData)
 
-        lifecycleScope.launch {
-            setAlarm(name)
-        }
+
     }
 
     private suspend fun setAlarm(name : String){
-        delay(2000L)
-        roomViewModel.readTodo(name).observe(viewLifecycleOwner){
-            showToast("add new task")
-            val alarmId= (1..200).random()
-            taskReminder.setOneAlarm(
-                requireContext(),
-                type_one_time,
-                it[0].dateStart,
-                it[0].endTime,
-                it[0].title,
-                alarmId
-            )
-        }
+
     }
 
     private fun showNewAddAlarm(){

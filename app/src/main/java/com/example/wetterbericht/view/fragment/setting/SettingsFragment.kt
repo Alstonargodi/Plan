@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreference
 import com.example.wetterbericht.R
+import com.example.wetterbericht.util.TaskReminder
+import com.google.android.gms.tasks.Task
 
 class SettingsFragment : PreferenceFragmentCompat() {
 
@@ -14,7 +16,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
         notificationPrefrence?.setOnPreferenceChangeListener { prefrence, value ->
             if (value as Boolean) {
-
+                TaskReminder().setDailyReminder(requireContext())
             }else{
 
             }

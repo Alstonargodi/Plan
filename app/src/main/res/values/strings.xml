@@ -8,6 +8,9 @@
     <string name="pref_notify_summary">Daily reminder for nearest schedule of the day.</string>
     <string name="pref_notify_name">Notification</string>
 
+
+
+    <string name="notification_format">%3$s | %1$s - %2$s </string>
     <string name="display_header">Display</string>
     <string name="pref_dark_title">Dark mode</string>
     <string name="pref_key_dark" translatable="false">key_dark_mode</string>

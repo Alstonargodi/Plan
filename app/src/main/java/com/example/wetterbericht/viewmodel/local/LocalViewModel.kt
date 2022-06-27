@@ -1,6 +1,5 @@
 package com.example.wetterbericht.viewmodel.local
 
-import android.app.Application
 import androidx.lifecycle.*
 import com.example.wetterbericht.model.local.*
 import com.example.wetterbericht.model.local.entity.WeatherLocal
@@ -31,7 +30,7 @@ class LocalViewModel(private val repository: LocalRepository): ViewModel() {
         repository.getTodayTask()
 
     fun getUpcomingTask(): LiveData<List<TodoLocal>> =
-        repository.getUpcomingtask()
+        repository.getUpcomingTask()
 
     fun getPreviousTask(): LiveData<List<TodoLocal>> =
         repository.getPreviousTask()

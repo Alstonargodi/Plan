@@ -11,130 +11,114 @@ import android.os.Build
 import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
+import com.example.wetterbericht.MainActivity
 import com.example.wetterbericht.R
+import com.example.wetterbericht.model.local.TodoLocal
+import com.example.wetterbericht.model.local.database.LocalDatabase
+import com.example.wetterbericht.model.repository.LocalRepository
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
+import java.util.concurrent.Executors
 
 class TaskReminder : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
-        val type = intent.getStringExtra(extra_type)
-        val message = intent.getStringExtra(extra_message)
-        val id = intent.getIntExtra(extra_id,0)
-
-        if (message != null && type !=null){
-            showAlarmNotification(context,type,message,id)
+        Executors.newSingleThreadExecutor().execute {
+            val task = LocalRepository(LocalDatabase.setDatabase(context)).getTodayTaskReminder()
+            showAlarmNotification(context,task)
         }
     }
 
-    fun setOneAlarm(
-        context: Context,
-        type : String,
-        date : String,
-        time : String,
-        message : String,
-        id : Int
-    ){
-        if (isDateInvalid(date, date_format) || isDateInvalid(time, time_format))
-            return
 
+    fun setDailyReminder(context: Context){
         val alarManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        val intent = Intent(context, TaskReminder::class.java)
-        intent.putExtra(extra_message,message)
-        intent.putExtra(extra_type,type)
-        intent.putExtra(extra_id,id)
 
+        Executors.newSingleThreadExecutor().execute {
+            val task = LocalRepository(LocalDatabase.setDatabase(context)).getTodayTaskReminder()
+            task.forEach {
+                val interval = it.notificationInterval
 
-        Log.d("set time to","$date $time")
-        val dateArray = date.split("-").toTypedArray()
-        val timeArray = time.split(":").toTypedArray()
+                val intent = Intent(context,TaskReminder::class.java)
 
+                val calendar = Calendar.getInstance()
+                calendar.set(Calendar.HOUR_OF_DAY, 5)
+                calendar.set(Calendar.MINUTE, 0)
+                calendar.set(Calendar.SECOND, 0)
 
-        val calendar = Calendar.getInstance()
-        calendar.set(Calendar.YEAR,Integer.parseInt(dateArray[0]))
-        calendar.set(Calendar.MONTH, Integer.parseInt(dateArray[1]) - 1)
-        calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(dateArray[2]))
-        calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(timeArray[0]))
-        calendar.set(Calendar.MINUTE, Integer.parseInt(timeArray[1]))
-        calendar.set(Calendar.SECOND, 0)
+                val pendingIntent = PendingIntent.getBroadcast(
+                    context,
+                    interval,
+                    intent,
+                    PendingIntent.FLAG_IMMUTABLE
+                )
 
-        val pendingIntent = PendingIntent.getBroadcast(
-            context,
-            id,
-            intent,
-            PendingIntent.FLAG_IMMUTABLE
-        )
-
-        alarManager.set(
-            AlarmManager.RTC_WAKEUP,
-            calendar.timeInMillis,
-            pendingIntent
-        )
+                alarManager.setInexactRepeating(
+                    AlarmManager.RTC_WAKEUP,
+                    calendar.timeInMillis,
+                    1000,
+                    pendingIntent
+                )
+            }
+        }
 
     }
 
 
-    private fun showAlarmNotification(
-        context: Context,
-        title : String,
-        message : String,
-        notificationId : Int
-    ){
-        val channelId = "channel_1"
-        val channelName = "Alarm_channel"
+    private fun showAlarmNotification(context: Context, data : List<TodoLocal>){
+        data.forEach {
+            val notificationStyle = NotificationCompat.InboxStyle()
+            val notificationFormat = context.resources.getString(R.string.notification_format)
+            val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
-        val notificationManagerCompact = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        val builder = NotificationCompat.Builder(context,channelId)
-            .setSmallIcon(R.drawable.ic_baseline_star_24)
-            .setContentTitle(title)
-            .setContentText(message)
-            .setColor(ContextCompat.getColor(context,android.R.color.transparent))
-            .setVibrate(longArrayOf(1000, 1000, 1000, 1000, 1000))
+            val intent = Intent(context,MainActivity::class.java)
 
-        //todo 1.5 add notif channel FOR ANDROID OREO +
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-            val channel = NotificationChannel(
-                channelId,
-                channelName,
-                NotificationManager.IMPORTANCE_DEFAULT
+            val pendingIntent = PendingIntent.getActivity(
+                context,
+                it.notificationInterval,
+                intent,
+                PendingIntent.FLAG_IMMUTABLE
             )
 
-            channel.enableVibration(true)
-            channel.vibrationPattern = longArrayOf(1000, 1000, 1000, 1000, 1000)
-            builder.setChannelId(channelId)
-            notificationManagerCompact.createNotificationChannel(channel)
+            data.forEach { value ->
+                val task = String.format(notificationFormat,value.startTime,value.endTime,value.title)
+                notificationStyle.addLine(task)
+            }
+
+
+            val builder = NotificationCompat.Builder(context, it.notificationInterval.toString())
+                .setContentIntent(pendingIntent)
+                .setSmallIcon(R.drawable.ic_baseline_star_24)
+                .setContentTitle("today task")
+                .setStyle(notificationStyle)
+                .setColor(ContextCompat.getColor(context,android.R.color.transparent))
+                .setVibrate(longArrayOf(1000, 1000, 1000, 1000, 1000))
+
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+                val channel = NotificationChannel(
+                    it.notificationInterval.toString(),
+                    NOTIFICATION_Channel_NAME,
+                    NotificationManager.IMPORTANCE_DEFAULT
+                )
+
+                channel.enableVibration(true)
+                channel.vibrationPattern = longArrayOf(1000, 1000, 1000, 1000, 1000)
+                builder.setChannelId(it.notificationInterval.toString())
+                notificationManager.createNotificationChannel(channel)
+            }
+
+            val notification = builder.build()
+            Log.d("alarm","alarm muni")
+            notificationManager.notify(it.notificationInterval,notification)
         }
 
-
-        val notification = builder.build()
-        Log.d("alarm","alarm muni")
-        notificationManagerCompact.notify(notificationId,notification)
-    }
-
-
-    private fun isDateInvalid(date : String,format : String): Boolean{
-        return try {
-            val dateFormat = SimpleDateFormat(format, Locale.getDefault())
-            dateFormat.isLenient = false
-            dateFormat.parse(date)
-            Log.d("alarm receiver","invalid")
-            false
-        }catch (e : ParseException){
-            Log.d("alarm receiver","valid")
-            true
-        }
     }
 
 
     companion object{
-        const val date_format = "yyyy-MM-dd"
-        const val time_format = "HH:mm"
-
-        const val extra_type = "type"
-        const val extra_message = "pesan"
-        const val extra_id = "id"
-
-        const val type_one_time = "onetimealarm"
-//        const val ONETIME_ID = 100
+        const val ID_REPEATING = 101
+        const val NOTIFICATION_ID = 201
+        const val NOTIFICATION_Channel_ID = "Repeat_Notification"
+        const val NOTIFICATION_Channel_NAME = "Repeat_task"
     }
 }

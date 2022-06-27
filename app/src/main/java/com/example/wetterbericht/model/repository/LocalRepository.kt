@@ -13,12 +13,12 @@ import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
 
-class LocalRepository(private val database : LocalDatabase) {
+class LocalRepository(database : LocalDatabase) {
 
     private val executorService = Executors.newSingleThreadExecutor()
     private val task = database.todoDao()
     private val weather = database.weatherDao()
-
+    private val currentDate = LocalDateTime.now().dayOfMonth
 
     //task local
     fun readTodo() : LiveData<List<TodoLocal>> = task.readTodo()
@@ -35,18 +35,21 @@ class LocalRepository(private val database : LocalDatabase) {
     fun readTodoSubtask(name : String): LiveData<List<TodoandSubTask>> =
         task.getTodoSubtask(name)
 
-    fun getTodayTask(): LiveData<List<TodoLocal>>{
-        val currentDate = LocalDateTime.now().dayOfMonth
-        return task.getTodayTask(currentDate)
+
+    fun getTodayTaskReminder(): List<TodoLocal>{
+      return task.getTodayTaskReminder(currentDate)
     }
 
-    fun getUpcomingtask(): LiveData<List<TodoLocal>>{
-        val currentDate = LocalDateTime.now().dayOfMonth
+
+    fun getTodayTask(): LiveData<List<TodoLocal>>{
+      return task.getTodayTask(currentDate)
+    }
+
+    fun getUpcomingTask(): LiveData<List<TodoLocal>>{
         return task.getUpcomingTask(currentDate)
     }
 
     fun getPreviousTask(): LiveData<List<TodoLocal>>{
-        val currentDate = LocalDateTime.now().dayOfMonth
         return task.getPreviousTask(currentDate)
     }
 
@@ -60,7 +63,6 @@ class LocalRepository(private val database : LocalDatabase) {
 
     fun deleteTodo(name : String) =
         task.deleteTodo(name)
-
 
 
 

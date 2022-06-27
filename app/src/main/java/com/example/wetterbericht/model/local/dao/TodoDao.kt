@@ -28,6 +28,8 @@ abstract class TodoDao {
     abstract fun getTodoSubtask(name : String): LiveData<List<TodoandSubTask>>
 
 
+    @Query("select * from todotable where dateDay = :date")
+    abstract fun getTodayTaskReminder(date: Int): List<TodoLocal>
 
     @Query("select * from todotable where dateDay = :date")
     abstract fun getTodayTask(date: Int):LiveData<List<TodoLocal>>
