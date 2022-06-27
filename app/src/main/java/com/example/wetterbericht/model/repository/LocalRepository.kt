@@ -7,6 +7,7 @@ import com.example.wetterbericht.model.local.database.LocalDatabase
 import com.example.wetterbericht.model.local.entity.WeatherLocal
 import java.text.SimpleDateFormat
 import java.time.LocalDate
+import java.time.LocalDateTime
 import java.util.*
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
@@ -35,8 +36,18 @@ class LocalRepository(private val database : LocalDatabase) {
         task.getTodoSubtask(name)
 
     fun getTodayTask(): LiveData<List<TodoLocal>>{
-        val currentDate = LocalDate.now().toString()
+        val currentDate = LocalDateTime.now().dayOfMonth
         return task.getTodayTask(currentDate)
+    }
+
+    fun getUpcomingtask(): LiveData<List<TodoLocal>>{
+        val currentDate = LocalDateTime.now().dayOfMonth
+        return task.getUpcomingTask(currentDate)
+    }
+
+    fun getPreviousTask(): LiveData<List<TodoLocal>>{
+        val currentDate = LocalDateTime.now().dayOfMonth
+        return task.getPreviousTask(currentDate)
     }
 
 

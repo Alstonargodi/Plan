@@ -19,6 +19,7 @@ import com.example.wetterbericht.viewmodel.local.LocalViewModel
 import com.example.wetterbericht.viewmodel.utils.ViewModelFactory
 import com.google.android.material.tabs.TabLayout
 import java.time.LocalDate
+import java.time.LocalDateTime
 
 class HomeFragment : Fragment() {
     private lateinit var binding : FragmentHomeBinding
@@ -31,25 +32,19 @@ class HomeFragment : Fragment() {
         showCurrentWeather()
 
 
-        binding.tabLayout.getTabAt(0)?.select()
+        binding.tabLayout.getTabAt(1)?.select()
         showTodayTaskList()
 
         binding.tabLayout.setOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 when(tab?.position){
-                    0->{showTodayTaskList()}
-                    1->{showUpComingTaskList()}
+                    0->{showPreviousTask()}
+                    1->{showTodayTaskList()}
+                    2->{showUpComingTaskList()}
                 }
             }
-
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
-
-            }
-
-            override fun onTabReselected(tab: TabLayout.Tab?) {
-
-            }
-
+            override fun onTabUnselected(tab: TabLayout.Tab?) {}
+            override fun onTabReselected(tab: TabLayout.Tab?) {}
         })
 
         return binding.root
@@ -77,50 +72,35 @@ class HomeFragment : Fragment() {
     }
 
     private fun showTodayTaskList(){
+        roomViewModel.getTodayTask().observe(viewLifecycleOwner) { data ->
+            showTaskList(data)
+        }
+    }
+
+    private fun showUpComingTaskList(){
+        roomViewModel.getUpcomingTask().observe(viewLifecycleOwner) { data ->
+            showTaskList(data)
+        }
+    }
+
+    private fun showPreviousTask(){
+        roomViewModel.getPreviousTask().observe(viewLifecycleOwner) { data ->
+            showTaskList(data)
+        }
+    }
+
+    private fun showTaskList(data : List<TodoLocal>){
         val adapter = TodoRvHomeAdapter()
         val taskRecyclerView = binding.rectodo
         taskRecyclerView.adapter = adapter
         taskRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        roomViewModel.getTodayTask().observe(viewLifecycleOwner) { todo ->
-            adapter.setdata(todo)
-        }
-
+        adapter.setdata(data)
 
         adapter.detilOnItemCallback(object : TodoRvHomeAdapter.detailCallBack{
             override fun detailCallBack(data: TodoLocal) {
                 showDetailTaskDialog(data)
             }
         })
-    }
-
-    private fun showUpComingTaskList(){
-        val currentDate = LocalDate.now().toString()
-        val adapter = TodoRvHomeAdapter()
-        val taskRecyclerView = binding.rectodo
-        taskRecyclerView.adapter = adapter
-        taskRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        roomViewModel.readTodoLocal().observe(viewLifecycleOwner) { data ->
-            data.forEach { value ->
-                if (value.dateStart != currentDate){
-                    adapter.setdata(data)
-                }
-            }
-        }
-    }
-
-    private fun showPreviousTask(){
-        val currentDate = LocalDate.now().toString()
-        val adapter = TodoRvHomeAdapter()
-        val taskRecyclerView = binding.rectodo
-        taskRecyclerView.adapter = adapter
-        taskRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        roomViewModel.readTodoLocal().observe(viewLifecycleOwner) { data ->
-            data.forEach { value ->
-                if (value.dateStart != currentDate){
-                    adapter.setdata(data)
-                }
-            }
-        }
     }
 
 
