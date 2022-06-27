@@ -9,17 +9,26 @@ import com.example.wetterbericht.databinding.TcvTodoCardBinding
 import com.example.wetterbericht.model.local.TodoLocal
 
 
-class TodoRvHomeAdapter: RecyclerView.Adapter<TodoRvHomeAdapter.ViewHolder>() {
+class TodoRecyclerViewHomeAdapter(private val data: List<TodoLocal>)
+    : RecyclerView.Adapter<TodoRecyclerViewHomeAdapter.ViewHolder>() {
 
-    //todo binding
-    var data = emptyList<TodoLocal>()
+    private lateinit var detailCallback : DetailCallback
 
-    private lateinit var detailCallback : detailCallBack
 
-    fun detilOnItemCallback(callback : detailCallBack){
+    fun detailOnItemCallback(callback : DetailCallback){
         this.detailCallback = callback
     }
-    class ViewHolder(var binding : TcvTodoCardBinding): RecyclerView.ViewHolder(binding.root)
+
+    class ViewHolder(var binding : TcvTodoCardBinding): RecyclerView.ViewHolder(binding.root){
+        private lateinit var detailTodo : TodoLocal
+        fun bind(item : TodoLocal){
+            detailTodo = item
+            binding.tvtoxoCardName.text = item.title
+            binding.tvtoxoCardName.setTextColor(item.levelColor)
+        }
+
+        fun getData(): TodoLocal = detailTodo
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(TcvTodoCardBinding.inflate(LayoutInflater.from(parent.context),parent,false))
@@ -28,9 +37,7 @@ class TodoRvHomeAdapter: RecyclerView.Adapter<TodoRvHomeAdapter.ViewHolder>() {
     @SuppressLint("ClickableViewAccessibility")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = data[position]
-        holder.binding.tvtoxoCardName.text = item.title
-        holder.binding.tvtoxoCardName.setTextColor(item.levelColor)
-
+        holder.bind(item)
 
         holder.binding.layTodo.setOnClickListener {
             detailCallback.detailCallBack(item)
@@ -38,17 +45,9 @@ class TodoRvHomeAdapter: RecyclerView.Adapter<TodoRvHomeAdapter.ViewHolder>() {
 
     }
 
-
     override fun getItemCount(): Int = data.size
 
-
-    fun setdata(list: List<TodoLocal>){
-        data = list
-        notifyDataSetChanged()
-    }
-
-
-    interface detailCallBack{
+    interface DetailCallback{
         fun detailCallBack(data : TodoLocal)
     }
 }
