@@ -37,6 +37,7 @@ class LocalRepository(database : LocalDatabase) {
 
 
     fun getTodayTaskReminder(): List<TodoLocal>{
+
       return task.getTodayTaskReminder(currentDate)
     }
 

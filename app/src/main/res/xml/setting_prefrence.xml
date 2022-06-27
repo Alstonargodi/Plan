@@ -5,7 +5,15 @@
         <SwitchPreference
             app:key="@string/pref_key_notify"
             app:summary="task reminder"
-            app:title="notification" />
+            app:title="Notification Reminder" />
+
+        <ListPreference
+            app:defaultValue="@string/pref_dark_auto"
+            app:entries="@array/interval_mode"
+            app:entryValues="@array/interval_mode"
+            app:key="@string/pref_key_interval"
+            app:title="Interval"
+            app:useSimpleSummaryProvider="true" />
 
     </PreferenceCategory>
 
@@ -15,8 +23,8 @@
             app:defaultValue="@string/pref_dark_auto"
             app:entries="@array/dark_mode"
             app:entryValues="@array/dark_mode"
-            app:key="@string/pref_key_dark"
-            app:title="themeMode"
+            app:key="@string/pref_key_interval"
+            app:title="mode"
             app:useSimpleSummaryProvider="true" />
 
     </PreferenceCategory>
