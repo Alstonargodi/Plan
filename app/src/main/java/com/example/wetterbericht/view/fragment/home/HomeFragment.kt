@@ -125,6 +125,7 @@ class HomeFragment : Fragment() {
             dialog.show(supportFragment, dialog_key)
     }
 
+
     inner class Callback : ItemTouchHelper.Callback(){
         override fun getMovementFlags(
             recyclerView: RecyclerView,

@@ -79,8 +79,8 @@ class TaskReminder : BroadcastReceiver() {
 
             val builder = NotificationCompat.Builder(context, NOTIFICATION_Channel_ID)
                 .setContentIntent(pendingIntent)
-                .setSmallIcon(R.drawable.ic_baseline_star_24)
-                .setContentTitle("today task")
+                .setSmallIcon(R.drawable.ic_task)
+                .setContentTitle("Today task")
                 .setStyle(notificationStyle)
                 .setColor(ContextCompat.getColor(context,android.R.color.transparent))
                 .setVibrate(longArrayOf(1000, 1000, 1000, 1000, 1000))
