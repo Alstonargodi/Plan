@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,7 +21,6 @@ import com.example.wetterbericht.view.fragment.addnewtask.dialog.InsertTagFragme
 import com.example.wetterbericht.util.TaskReminder
 import com.example.wetterbericht.viewmodel.local.LocalViewModel
 import com.example.wetterbericht.viewmodel.utils.ViewModelFactory
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
@@ -48,7 +46,6 @@ class InsertTodoFragment : Fragment(){
         .joinToString("")
 
 
-    private lateinit var alarm : String
     private var leveColour by Delegates.notNull<Int>()
     private lateinit var taskReminder : TaskReminder
 
@@ -62,7 +59,6 @@ class InsertTodoFragment : Fragment(){
 
         readChipReminder()
 
-
         return binding.root
     }
 
@@ -71,7 +67,7 @@ class InsertTodoFragment : Fragment(){
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnAddchipalarm.setOnClickListener {
-            showNewAddAlarm()
+            insertNewStartTimeChip()
         }
 
         binding.addtag.setOnClickListener {
@@ -80,7 +76,7 @@ class InsertTodoFragment : Fragment(){
 
 
         binding.btnAddsubtask.setOnClickListener {
-            newSubtask()
+            insertNewSubtask()
         }
 
         binding.btnaddtodo.setOnClickListener {
@@ -113,17 +109,13 @@ class InsertTodoFragment : Fragment(){
 
         adapter.onTimeCallback(object : ChipAdapter.timeCallBack{
             override fun timeCallBack(time: String) {
-               deadlineTime(time)
+               timeStart(time)
             }
         })
     }
 
-    private fun deadlineTime(time : String){
-        binding.etDeadlineTodo.apply {
-            visibility = View.VISIBLE
-            text = "notif me every $time minute"
-            alarm = time
-        }
+    private fun timeStart(time : String){
+        binding.tvTodoTimestart.text = time
     }
 
     private fun readSubtask(){
@@ -137,7 +129,7 @@ class InsertTodoFragment : Fragment(){
 
 
     private fun insertTodo(){
-        val name = binding.inserttodoName.text.toString()
+        val name = binding.addtag.text.toString()
         val description = binding.inserttodoDescription.text.toString()
         val levelTitle = binding.addtag.text.toString()
         val startTime = binding.tvTodoTimestart.text.toString()
@@ -152,7 +144,7 @@ class InsertTodoFragment : Fragment(){
             levelTitle,
             leveColour,
             dateStart,
-            alarm.toInt(),
+            20,
             pickerDay,
             startTime,
             endTime,
@@ -173,17 +165,14 @@ class InsertTodoFragment : Fragment(){
 
     }
 
-    private suspend fun setAlarm(name : String){
 
-    }
-
-    private fun showNewAddAlarm(){
+    private fun insertNewStartTimeChip(){
         val dialog = InsertAlarmChipFragment()
         val sFragment= requireActivity().supportFragmentManager
         dialog.show(sFragment,"dialog")
         dialog.onTimeCallback(object : InsertAlarmChipFragment.timeCallBack{
             override fun timeCallBack(time: String) {
-                deadlineTime(time)
+                timeStart(time)
             }
         })
     }
@@ -194,7 +183,7 @@ class InsertTodoFragment : Fragment(){
         dialog.show(supportFragment,"dialog")
         dialog.onTagCallBack(object : InsertTagFragment.onTagCallback{
             override fun tagCallBack(name: String, color: Int) {
-                binding.addtag.text = "#$name"
+                binding.addtag.text = name
                 binding.addtag.setTextColor(Color.WHITE)
                 binding.addtag.setBackgroundColor(color)
                 leveColour = color
@@ -202,7 +191,7 @@ class InsertTodoFragment : Fragment(){
         })
     }
 
-    private fun newSubtask(){
+    private fun insertNewSubtask(){
         val task = binding.inserttodoSubtask.text.toString()
         val temp = TodoSubTask(
             0,
@@ -216,9 +205,6 @@ class InsertTodoFragment : Fragment(){
         }
     }
 
-    private fun showToast(title : String){
-        Toast.makeText(requireContext(),title,Toast.LENGTH_SHORT).show()
-    }
 
     private fun timePicker(tag : String){
         val calendar = Calendar.getInstance()

@@ -132,7 +132,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/inserttodo_name" />
+                app:layout_constraintTop_toBottomOf="@+id/addtag" />
 
             <EditText
                 android:id="@+id/inserttodo_description"
@@ -200,51 +200,12 @@
                 android:background="#E1E1E1"
                 android:fontFamily="@font/abezeeregular"
                 android:gravity="center"
-                android:text="add"
                 android:textColor="#848383"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/inserttitle" />
-
-            <EditText
-                android:id="@+id/inserttodo_name"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="15dp"
-                android:background="#E1E1E1"
-                android:fontFamily="@font/abezeeregular"
-                android:gravity="center|start|center_horizontal"
-                android:padding="5dp"
-                android:textAlignment="center"
-                android:textColor="#3E3C3C"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/inserttitle2" />
-
-            <TextView
-                android:id="@+id/et_deadline_todo"
-                android:layout_width="0dp"
-                android:layout_height="32dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="10dp"
-                android:fontFamily="@font/robotoregular"
-                android:gravity="center"
-                android:text="notif me every"
-                android:textColor="#1E1E1E"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rv_chip" />
 
             <TextView
                 android:id="@+id/inserttitle"
@@ -255,7 +216,7 @@
                 android:layout_marginEnd="15dp"
                 android:fontFamily="@font/robotoregular"
                 android:gravity="center|start"
-                android:text="Tag"
+                android:text="Name"
                 android:textColor="#000000"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -326,25 +287,6 @@
                 app:layout_constraintTop_toTopOf="@+id/btn_todo_timeend"
                 app:layout_constraintVertical_bias="0.0" />
 
-            <TextView
-                android:id="@+id/inserttitle2"
-                android:layout_width="0dp"
-                android:layout_height="32dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="15dp"
-                android:fontFamily="@font/robotoregular"
-                android:gravity="center|start"
-                android:text="Name"
-                android:textColor="#000000"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:visibility="visible"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/addtag" />
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_subtask"
                 android:layout_width="0dp"
@@ -366,7 +308,7 @@
                 android:src="@drawable/ic_baseline_timer_24"
                 android:tint="#4CAF50"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et_deadline_todo" />
+                app:layout_constraintTop_toBottomOf="@+id/rv_chip" />
 
             <ImageView
                 android:id="@+id/btn_todo_timeend"
