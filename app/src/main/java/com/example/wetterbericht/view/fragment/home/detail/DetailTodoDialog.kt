@@ -1,7 +1,6 @@
-package com.example.wetterbericht.view.fragment.home
+package com.example.wetterbericht.view.fragment.home.detail
 
 import android.app.Dialog
-import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -14,13 +13,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wetterbericht.databinding.FragmentDetailTodoListDialogBinding
 import com.example.wetterbericht.model.local.TodoLocal
 import com.example.wetterbericht.view.fragment.home.HomeFragment.Companion.homepage_key
-import com.example.wetterbericht.view.fragment.home.adapter.SubTaskAdapter
+import com.example.wetterbericht.view.fragment.home.adapter.SubtaskRecyclerViewAdapter
 import com.example.wetterbericht.viewmodel.local.LocalViewModel
 import com.example.wetterbericht.viewmodel.utils.ViewModelFactory
-import com.example.wetterbericht.viewmodel.utils.obtainViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import java.lang.Exception
+import java.text.SimpleDateFormat
+import java.util.*
 
 class DetailTodoDialog : BottomSheetDialogFragment() {
     private var _binding: FragmentDetailTodoListDialogBinding? = null
@@ -32,19 +32,13 @@ class DetailTodoDialog : BottomSheetDialogFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentDetailTodoListDialogBinding.inflate(inflater, container, false)
 
-        val detailTodo = arguments?.getParcelable<TodoLocal>(homepage_key)
+        val detailTodo = requireArguments().getParcelable<TodoLocal>(homepage_key)
 
         try {
             binding.apply {
                 if (detailTodo != null) {
-                    tvdetailTag.text = detailTodo.levelName
-                    tvdetailTag.setBackgroundColor(detailTodo.levelColor)
-                    tvdetailTag.setTextColor(Color.WHITE)
-
-                    tvbottomTodoTime.text = detailTodo.dateStart
-                    tvbottomTodoTitle.text = detailTodo.title
-                    tvbottomTodoDesc.text = detailTodo.description
-                    readSubtask(detailTodo.title)
+                    showDetailTask(detailTodo)
+                    showSubtask(detailTodo.title)
                 }
             }
         }catch (e : Exception){
@@ -55,9 +49,17 @@ class DetailTodoDialog : BottomSheetDialogFragment() {
         return binding.root
     }
 
+    private fun showDetailTask(detailTodo : TodoLocal){
+        binding.tvbottomTodoTitle.setTextColor(detailTodo.levelColor)
+        val result = "${detailTodo.startTime}-${detailTodo.endTime}"
+        binding.tvbottomTodoTime.text = result
+        binding.tvbottomTodoTitle.text = detailTodo.title
+        binding.tvbottomTodoDesc.text = detailTodo.description
+    }
 
-    private fun readSubtask(title : String){
-        val adapter = SubTaskAdapter()
+
+    private fun showSubtask(title : String){
+        val adapter = SubtaskRecyclerViewAdapter()
         val recView = binding.rvSubtask
         recView.adapter = adapter
         recView.layoutManager = LinearLayoutManager(requireActivity())

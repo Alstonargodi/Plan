@@ -8,7 +8,7 @@ import com.example.wetterbericht.view.Login.onboarding.Introtiga
 import com.example.wetterbericht.view.Login.onboarding.introdua
 import com.example.wetterbericht.view.Login.onboarding.introsatu
 
-class Tabonboardadapter(activity : FragmentManager,lifecycle: Lifecycle): FragmentStateAdapter(activity,lifecycle) {
+class OnBoardingAdapter(activity : FragmentManager, lifecycle: Lifecycle): FragmentStateAdapter(activity,lifecycle) {
     override fun getItemCount(): Int {
         return 3
     }

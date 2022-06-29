@@ -16,11 +16,10 @@ import com.example.wetterbericht.model.local.entity.WeatherLocal
 import com.example.wetterbericht.model.remote.response.ForecastResponse
 import com.example.wetterbericht.model.remote.response.Foredata
 import com.example.wetterbericht.model.remote.service.WeatherResponse
-import com.example.wetterbericht.view.adapter.ForecastAdapter
+import com.example.wetterbericht.view.adapter.ForecastRecyclerViewAdapter
 import com.example.wetterbericht.viewmodel.local.LocalViewModel
 import com.example.wetterbericht.viewmodel.remote.WeatherViewModel
 import com.example.wetterbericht.viewmodel.utils.ViewModelFactory
-import com.example.wetterbericht.viewmodel.utils.obtainViewModel
 import kotlin.math.round
 
 
@@ -33,7 +32,7 @@ class WeatherFragment : Fragment(){
     private val roomViewModel : LocalViewModel by viewModels{ ViewModelFactory.getInstance(requireContext())}
 
 
-    private lateinit var forecastAdapter: ForecastAdapter
+    private lateinit var forecastRecyclerViewAdapter: ForecastRecyclerViewAdapter
 
     private var forecastList = ArrayList<Foredata>()
 
@@ -152,9 +151,9 @@ class WeatherFragment : Fragment(){
             )
 
             forecastList.add(tempForecast)
-            forecastAdapter = ForecastAdapter(forecastList.distinct())
+            forecastRecyclerViewAdapter = ForecastRecyclerViewAdapter(forecastList.distinct())
             val recyclerView = binding.weatherForecast
-            recyclerView.adapter = forecastAdapter
+            recyclerView.adapter = forecastRecyclerViewAdapter
             recyclerView.layoutManager = LinearLayoutManager(requireContext())
         }
     }

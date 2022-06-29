@@ -30,36 +30,29 @@ class TaskReminder : BroadcastReceiver() {
     }
 
 
-    fun setDailyReminder(context: Context){
+    fun setDailyReminder(context: Context,interval : Long){
         val alarManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val intent = Intent(context,TaskReminder::class.java)
 
-        Executors.newSingleThreadExecutor().execute {
-            val task = LocalRepository(LocalDatabase.setDatabase(context)).getTodayTaskReminder()
-            task.forEach {
-                val interval = it.notificationInterval
+        //start reminder from 5 am
+        val calendar = Calendar.getInstance()
+        calendar.set(Calendar.HOUR_OF_DAY, 5)
+        calendar.set(Calendar.MINUTE, 0)
+        calendar.set(Calendar.SECOND, 0)
 
-                val intent = Intent(context,TaskReminder::class.java)
+        val pendingIntent = PendingIntent.getBroadcast(
+            context,
+            ID_REPEATING,
+            intent,
+            PendingIntent.FLAG_IMMUTABLE
+        )
 
-                val calendar = Calendar.getInstance()
-                calendar.set(Calendar.HOUR_OF_DAY, 5)
-                calendar.set(Calendar.MINUTE, 0)
-                calendar.set(Calendar.SECOND, 0)
-
-                val pendingIntent = PendingIntent.getBroadcast(
-                    context,
-                    interval,
-                    intent,
-                    PendingIntent.FLAG_IMMUTABLE
-                )
-
-                alarManager.setInexactRepeating(
-                    AlarmManager.RTC_WAKEUP,
-                    calendar.timeInMillis,
-                    1000,
-                    pendingIntent
-                )
-            }
-        }
+        alarManager.setInexactRepeating(
+            AlarmManager.RTC_WAKEUP,
+            calendar.timeInMillis,
+            interval,
+            pendingIntent
+        )
 
     }
 
@@ -74,7 +67,7 @@ class TaskReminder : BroadcastReceiver() {
 
             val pendingIntent = PendingIntent.getActivity(
                 context,
-                it.notificationInterval,
+                NOTIFICATION_ID,
                 intent,
                 PendingIntent.FLAG_IMMUTABLE
             )
@@ -85,10 +78,10 @@ class TaskReminder : BroadcastReceiver() {
             }
 
 
-            val builder = NotificationCompat.Builder(context, it.notificationInterval.toString())
+            val builder = NotificationCompat.Builder(context, NOTIFICATION_Channel_ID)
                 .setContentIntent(pendingIntent)
-                .setSmallIcon(R.drawable.ic_baseline_star_24)
-                .setContentTitle("today task")
+                .setSmallIcon(R.drawable.ic_task)
+                .setContentTitle("Today task")
                 .setStyle(notificationStyle)
                 .setColor(ContextCompat.getColor(context,android.R.color.transparent))
                 .setVibrate(longArrayOf(1000, 1000, 1000, 1000, 1000))
@@ -96,22 +89,36 @@ class TaskReminder : BroadcastReceiver() {
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
                 val channel = NotificationChannel(
-                    it.notificationInterval.toString(),
+                    NOTIFICATION_Channel_ID,
                     NOTIFICATION_Channel_NAME,
                     NotificationManager.IMPORTANCE_DEFAULT
                 )
 
                 channel.enableVibration(true)
                 channel.vibrationPattern = longArrayOf(1000, 1000, 1000, 1000, 1000)
-                builder.setChannelId(it.notificationInterval.toString())
+                builder.setChannelId(NOTIFICATION_Channel_ID)
                 notificationManager.createNotificationChannel(channel)
             }
 
             val notification = builder.build()
-            Log.d("alarm","alarm muni")
-            notificationManager.notify(it.notificationInterval,notification)
+            notificationManager.notify(NOTIFICATION_ID,notification)
         }
+    }
 
+    fun cancelAlarm(context : Context){
+        val alarManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+
+        val intent = Intent(context,TaskReminder::class.java)
+
+        val pendingIntent = PendingIntent.getBroadcast(
+            context,
+            ID_REPEATING,
+            intent,
+            PendingIntent.FLAG_IMMUTABLE
+        )
+
+        pendingIntent.cancel()
+        alarManager.cancel(pendingIntent)
     }
 
 

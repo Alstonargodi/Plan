@@ -1,18 +1,16 @@
 package com.example.wetterbericht.view.adapter
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.wetterbericht.view.fragment.weather.DetailWeatherActivity
 import com.example.wetterbericht.R
 import com.example.wetterbericht.model.local.entity.WeatherLocal
 import kotlinx.android.synthetic.main.itemcv_weather.view.*
 import kotlin.math.round
 
-class WeatherRvFavoriteAdapter: RecyclerView.Adapter<WeatherRvFavoriteAdapter.viewholder>() {
+class WeatherFavoriteRecyclerViewAdapter: RecyclerView.Adapter<WeatherFavoriteRecyclerViewAdapter.viewholder>() {
     private var weatherlist = emptyList<WeatherLocal>()
 
     class viewholder(itemview : View): RecyclerView.ViewHolder(itemview) {}
@@ -38,18 +36,7 @@ class WeatherRvFavoriteAdapter: RecyclerView.Adapter<WeatherRvFavoriteAdapter.vi
             .into(holder.itemView.img_weather_icon)
 
 
-        holder.itemView.cv_weather.setOnClickListener {
-            val intent = Intent(holder.itemView.context, DetailWeatherActivity::class.java)
-            intent.putExtra("loc",curitem.loc)
 
-            holder.itemView.context.startActivity(intent)
-        }
-
-        when(curitem.desc){
-            "sunny"->{
-
-            }
-        }
     }
 
     override fun getItemCount(): Int {

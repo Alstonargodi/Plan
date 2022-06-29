@@ -37,23 +37,23 @@ class MainActivity : AppCompatActivity() {
     private fun setDefaultOption(){
         localViewModel.apply {
             insertAlarmChip(ChipAlarm(
-                "normal",
-                "30",
+                "morning",
+                "07:00",
                 0
             ))
             insertAlarmChip(ChipAlarm(
-                "not important",
-                "25",
+                "middle day",
+                "09:00",
                 1
             ))
             insertAlarmChip(ChipAlarm(
-                "important",
-                "10",
+                "noon",
+                "12:00",
                 1
             ))
             insertAlarmChip(ChipAlarm(
-                "very important",
-                "5",
+                "afternoon",
+                "15:00",
                 1
             ))
         }

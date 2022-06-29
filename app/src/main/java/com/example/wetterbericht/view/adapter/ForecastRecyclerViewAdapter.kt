@@ -9,8 +9,8 @@ import com.example.wetterbericht.model.remote.response.Foredata
 import kotlinx.android.synthetic.main.itemcv_forecast.view.*
 import kotlin.math.round
 
-class ForecastAdapter(private val foreList : List<Foredata>)
-    : RecyclerView.Adapter<ForecastAdapter.ViewHolder>() {
+class ForecastRecyclerViewAdapter(private val foreList : List<Foredata>)
+    : RecyclerView.Adapter<ForecastRecyclerViewAdapter.ViewHolder>() {
 
     class ViewHolder(itemView : View): RecyclerView.ViewHolder(itemView) {}
 

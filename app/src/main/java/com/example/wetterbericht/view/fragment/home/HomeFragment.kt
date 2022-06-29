@@ -1,25 +1,26 @@
 package com.example.wetterbericht.view.fragment.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.get
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.wetterbericht.databinding.FragmentHomeBinding
 import com.example.wetterbericht.model.local.TodoLocal
 import com.example.wetterbericht.model.local.entity.WeatherLocal
-import com.example.wetterbericht.view.adapter.WeatherRvHomeAdapter
-import com.example.wetterbericht.view.fragment.home.adapter.TodoRvHomeAdapter
+import com.example.wetterbericht.view.adapter.WeatherHomeRecyclerViewAdapter
+import com.example.wetterbericht.view.fragment.home.adapter.TodoRecyclerViewAdapter
+import com.example.wetterbericht.view.fragment.home.detail.DetailTodoDialog
 import com.example.wetterbericht.viewmodel.local.LocalViewModel
 import com.example.wetterbericht.viewmodel.utils.ViewModelFactory
 import com.google.android.material.tabs.TabLayout
-import java.time.LocalDate
-import java.time.LocalDateTime
+import java.util.concurrent.Executors
 
 class HomeFragment : Fragment() {
     private lateinit var binding : FragmentHomeBinding
@@ -31,6 +32,8 @@ class HomeFragment : Fragment() {
         binding = FragmentHomeBinding.inflate(layoutInflater)
         showCurrentWeather()
 
+
+        ItemTouchHelper(Callback()).attachToRecyclerView(binding.rectodo)
 
         binding.tabLayout.getTabAt(1)?.select()
         showTodayTaskList()
@@ -90,22 +93,22 @@ class HomeFragment : Fragment() {
     }
 
     private fun showTaskList(data : List<TodoLocal>){
-        val adapter = TodoRvHomeAdapter()
+        val adapter = TodoRecyclerViewAdapter(data)
         val taskRecyclerView = binding.rectodo
         taskRecyclerView.adapter = adapter
         taskRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        adapter.setdata(data)
-
-        adapter.detilOnItemCallback(object : TodoRvHomeAdapter.detailCallBack{
+        adapter.detailOnItemCallback(object : TodoRecyclerViewAdapter.DetailCallback{
             override fun detailCallBack(data: TodoLocal) {
                 showDetailTaskDialog(data)
             }
         })
+
+
     }
 
 
     private fun setCurrentWeather(data : List<WeatherLocal>){
-        val weatherRvAdapter = WeatherRvHomeAdapter()
+        val weatherRvAdapter = WeatherHomeRecyclerViewAdapter()
         val weatherRecyclerView = binding.recviewweather
         weatherRecyclerView.adapter = weatherRvAdapter
         weatherRecyclerView.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,true)
@@ -122,6 +125,32 @@ class HomeFragment : Fragment() {
             dialog.show(supportFragment, dialog_key)
     }
 
+
+    inner class Callback : ItemTouchHelper.Callback(){
+        override fun getMovementFlags(
+            recyclerView: RecyclerView,
+            viewHolder: RecyclerView.ViewHolder
+        ): Int {
+           return makeMovementFlags(0,ItemTouchHelper.RIGHT)
+        }
+
+        override fun onMove(
+            recyclerView: RecyclerView,
+            viewHolder: RecyclerView.ViewHolder,
+            target: RecyclerView.ViewHolder
+        ): Boolean {
+            return false
+        }
+
+        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+            val task = (viewHolder as TodoRecyclerViewAdapter.ViewHolder).getData()
+            Toast.makeText(requireContext(),"Delete ${task.title}",Toast.LENGTH_SHORT).show()
+            Executors.newSingleThreadExecutor().execute {
+                roomViewModel.deleteTodoLocal(task.title)
+            }
+        }
+
+    }
     companion object{
         const val homepage_key = "detailpage"
         const val dialog_key = "dialog"

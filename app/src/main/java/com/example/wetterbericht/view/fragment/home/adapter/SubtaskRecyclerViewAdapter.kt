@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.wetterbericht.databinding.TvcTodoSubtaskBinding
 import com.example.wetterbericht.model.local.TodoSubTask
 
-class SubTaskAdapter: ListAdapter<TodoSubTask,SubTaskAdapter.ViewHolder>(
+class SubtaskRecyclerViewAdapter: ListAdapter<TodoSubTask,SubtaskRecyclerViewAdapter.ViewHolder>(
     ItemComprator()
 ){
 

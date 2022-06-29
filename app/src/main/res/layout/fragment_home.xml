@@ -67,6 +67,7 @@
         android:layout_height="50dp"
 
         android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="15dp"
         android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -100,13 +101,13 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tabLayout"
-        tools:listitem="@layout/tcv_todo_card" >
+        tools:listitem="@layout/tcv_todo_card">
 
     </androidx.recyclerview.widget.RecyclerView>
 
