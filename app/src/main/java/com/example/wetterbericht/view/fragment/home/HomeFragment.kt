@@ -1,7 +1,6 @@
 package com.example.wetterbericht.view.fragment.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,8 +14,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.wetterbericht.databinding.FragmentHomeBinding
 import com.example.wetterbericht.model.local.TodoLocal
 import com.example.wetterbericht.model.local.entity.WeatherLocal
-import com.example.wetterbericht.view.adapter.WeatherRvHomeAdapter
-import com.example.wetterbericht.view.fragment.home.adapter.TodoRecyclerViewHomeAdapter
+import com.example.wetterbericht.view.adapter.WeatherHomeRecyclerViewAdapter
+import com.example.wetterbericht.view.fragment.home.adapter.TodoRecyclerViewAdapter
+import com.example.wetterbericht.view.fragment.home.detail.DetailTodoDialog
 import com.example.wetterbericht.viewmodel.local.LocalViewModel
 import com.example.wetterbericht.viewmodel.utils.ViewModelFactory
 import com.google.android.material.tabs.TabLayout
@@ -93,11 +93,11 @@ class HomeFragment : Fragment() {
     }
 
     private fun showTaskList(data : List<TodoLocal>){
-        val adapter = TodoRecyclerViewHomeAdapter(data)
+        val adapter = TodoRecyclerViewAdapter(data)
         val taskRecyclerView = binding.rectodo
         taskRecyclerView.adapter = adapter
         taskRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        adapter.detailOnItemCallback(object : TodoRecyclerViewHomeAdapter.DetailCallback{
+        adapter.detailOnItemCallback(object : TodoRecyclerViewAdapter.DetailCallback{
             override fun detailCallBack(data: TodoLocal) {
                 showDetailTaskDialog(data)
             }
@@ -108,7 +108,7 @@ class HomeFragment : Fragment() {
 
 
     private fun setCurrentWeather(data : List<WeatherLocal>){
-        val weatherRvAdapter = WeatherRvHomeAdapter()
+        val weatherRvAdapter = WeatherHomeRecyclerViewAdapter()
         val weatherRecyclerView = binding.recviewweather
         weatherRecyclerView.adapter = weatherRvAdapter
         weatherRecyclerView.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,true)
@@ -143,7 +143,7 @@ class HomeFragment : Fragment() {
         }
 
         override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-            val task = (viewHolder as TodoRecyclerViewHomeAdapter.ViewHolder).getData()
+            val task = (viewHolder as TodoRecyclerViewAdapter.ViewHolder).getData()
             Toast.makeText(requireContext(),"Delete ${task.title}",Toast.LENGTH_SHORT).show()
             Executors.newSingleThreadExecutor().execute {
                 roomViewModel.deleteTodoLocal(task.title)

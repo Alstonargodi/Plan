@@ -34,6 +34,7 @@ class TaskReminder : BroadcastReceiver() {
         val alarManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(context,TaskReminder::class.java)
 
+        //start reminder from 5 am
         val calendar = Calendar.getInstance()
         calendar.set(Calendar.HOUR_OF_DAY, 5)
         calendar.set(Calendar.MINUTE, 0)

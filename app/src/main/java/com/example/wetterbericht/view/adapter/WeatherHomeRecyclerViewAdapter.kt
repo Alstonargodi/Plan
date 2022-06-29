@@ -11,7 +11,7 @@ import com.example.wetterbericht.model.local.entity.WeatherLocal
 import kotlinx.android.synthetic.main.itemcv_weather_home.view.*
 import kotlin.math.round
 
-class WeatherRvHomeAdapter: RecyclerView.Adapter<WeatherRvHomeAdapter.viewmodel>() {
+class WeatherHomeRecyclerViewAdapter: RecyclerView.Adapter<WeatherHomeRecyclerViewAdapter.viewmodel>() {
     private var datalist = emptyList<WeatherLocal>()
 
     class viewmodel(itemview : View): RecyclerView.ViewHolder(itemview) {}

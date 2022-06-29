@@ -37,10 +37,8 @@ class LocalRepository(database : LocalDatabase) {
 
 
     fun getTodayTaskReminder(): List<TodoLocal>{
-
       return task.getTodayTaskReminder(currentDate)
     }
-
 
     fun getTodayTask(): LiveData<List<TodoLocal>>{
       return task.getTodayTask(currentDate)
@@ -54,7 +52,6 @@ class LocalRepository(database : LocalDatabase) {
         return task.getPreviousTask(currentDate)
     }
 
-
     fun insertTodo(data : TodoLocal) =
         executorService.execute{ task.insertTodo(data) }
 
@@ -66,19 +63,13 @@ class LocalRepository(database : LocalDatabase) {
         task.deleteTodo(name)
 
 
-
-
-
-
-
-
     //weather local
-    fun readWeather() : LiveData<List<WeatherLocal>> = weather.readWeather()
+    fun getWeatherCityName(): WeatherLocal = weather.getWeatherLocationName()
 
+    fun readWeather() : LiveData<List<WeatherLocal>> = weather.readWeather()
 
     fun insertWeather(data : WeatherLocal) =
         executorService.execute { weather.insertWeather(data) }
-
 
     fun searchLocation(name: String): LiveData<List<WeatherLocal>> =
         weather.searchLocation(name)

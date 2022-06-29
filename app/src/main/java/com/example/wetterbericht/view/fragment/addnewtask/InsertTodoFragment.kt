@@ -1,4 +1,4 @@
-package com.example.wetterbericht.view.fragment.addnewtask.insert
+package com.example.wetterbericht.view.fragment.addnewtask
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wetterbericht.databinding.FragmentInsertTodoBinding
 import com.example.wetterbericht.model.local.TodoLocal
 import com.example.wetterbericht.model.local.TodoSubTask
-import com.example.wetterbericht.view.fragment.home.adapter.SubTaskAdapter
+import com.example.wetterbericht.view.fragment.home.adapter.SubtaskRecyclerViewAdapter
 import com.example.wetterbericht.view.fragment.addnewtask.adapter.ChipAdapter
 import com.example.wetterbericht.view.fragment.addnewtask.dialog.InsertAlarmChipFragment
 import com.example.wetterbericht.view.fragment.addnewtask.dialog.InsertTagFragment
@@ -119,7 +119,7 @@ class InsertTodoFragment : Fragment(){
     }
 
     private fun readSubtask(){
-        val adapter = SubTaskAdapter()
+        val adapter = SubtaskRecyclerViewAdapter()
         val taskRecyclerView = binding.rvSubtask
         taskRecyclerView.adapter = adapter
         taskRecyclerView.layoutManager = LinearLayoutManager(requireContext())
@@ -161,8 +161,6 @@ class InsertTodoFragment : Fragment(){
             roomViewModel.insertSubtask(tempSubtask)
         }
         roomViewModel.insertTodoLocal(tempData)
-
-
     }
 
 

@@ -7,12 +7,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.wetterbericht.MainActivity
 import com.example.wetterbericht.R
-import com.example.wetterbericht.view.adapter.Recyclerview.Tabonboardadapter
+import com.example.wetterbericht.view.adapter.Recyclerview.OnBoardingAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_onboardmain.*
 
 class Onboardmain : AppCompatActivity() {
-    lateinit var adapterpager : Tabonboardadapter
+    lateinit var adapterpager : OnBoardingAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +28,7 @@ class Onboardmain : AppCompatActivity() {
         val viewpager = vp_onboard
         val indpager = tab_onboard
 
-        adapterpager = Tabonboardadapter(fragmentmanager,lifecycle)
+        adapterpager = OnBoardingAdapter(fragmentmanager,lifecycle)
         viewpager.adapter = adapterpager
 
         TabLayoutMediator(indpager,viewpager){tab,position ->

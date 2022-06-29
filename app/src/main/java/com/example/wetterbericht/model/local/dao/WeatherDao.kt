@@ -21,4 +21,7 @@ abstract class WeatherDao {
 
     @Query("select*from weathertable where loc like :name ")
     abstract fun searchLocation(name: String): LiveData<List<WeatherLocal>>
+
+    @Query("select*from weathertable")
+    abstract fun getWeatherLocationName() : WeatherLocal
 }

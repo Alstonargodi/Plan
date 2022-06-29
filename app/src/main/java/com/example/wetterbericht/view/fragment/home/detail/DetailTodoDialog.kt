@@ -1,4 +1,4 @@
-package com.example.wetterbericht.view.fragment.home
+package com.example.wetterbericht.view.fragment.home.detail
 
 import android.app.Dialog
 import android.os.Bundle
@@ -13,22 +13,18 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wetterbericht.databinding.FragmentDetailTodoListDialogBinding
 import com.example.wetterbericht.model.local.TodoLocal
 import com.example.wetterbericht.view.fragment.home.HomeFragment.Companion.homepage_key
-import com.example.wetterbericht.view.fragment.home.adapter.SubTaskAdapter
+import com.example.wetterbericht.view.fragment.home.adapter.SubtaskRecyclerViewAdapter
 import com.example.wetterbericht.viewmodel.local.LocalViewModel
 import com.example.wetterbericht.viewmodel.utils.ViewModelFactory
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import java.lang.Exception
 import java.text.SimpleDateFormat
-import java.time.LocalDate
 import java.util.*
 
 class DetailTodoDialog : BottomSheetDialogFragment() {
     private var _binding: FragmentDetailTodoListDialogBinding? = null
     private val binding get() = _binding!!
-
-
-    private val timeFormat = SimpleDateFormat("hh:mm", Locale.getDefault())
 
     private val roomViewModel : LocalViewModel by viewModels{ ViewModelFactory.getInstance(requireContext())}
 
@@ -63,7 +59,7 @@ class DetailTodoDialog : BottomSheetDialogFragment() {
 
 
     private fun showSubtask(title : String){
-        val adapter = SubTaskAdapter()
+        val adapter = SubtaskRecyclerViewAdapter()
         val recView = binding.rvSubtask
         recView.adapter = adapter
         recView.layoutManager = LinearLayoutManager(requireActivity())

@@ -74,6 +74,12 @@
             android:exported="true">
         </receiver>
 
+        <receiver
+            android:name="com.example.wetterbericht.util.WeatherUpdate"
+            android:enabled="true"
+            android:exported="true">
+        </receiver>
+
         <activity
             android:name="com.example.wetterbericht.view.fragment.weather.DetailWeatherActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"

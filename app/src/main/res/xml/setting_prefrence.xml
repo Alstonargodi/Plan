@@ -29,4 +29,13 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory app:title="Weather">
+
+        <SwitchPreference
+            app:key="@string/pref_update_weather"
+            app:summary="task reminder"
+            app:title="Daily update" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>

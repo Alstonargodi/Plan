@@ -9,8 +9,8 @@ import com.example.wetterbericht.databinding.TcvTodoCardBinding
 import com.example.wetterbericht.model.local.TodoLocal
 
 
-class TodoRecyclerViewHomeAdapter(private val data: List<TodoLocal>)
-    : RecyclerView.Adapter<TodoRecyclerViewHomeAdapter.ViewHolder>() {
+class TodoRecyclerViewAdapter(private val data: List<TodoLocal>)
+    : RecyclerView.Adapter<TodoRecyclerViewAdapter.ViewHolder>() {
 
     private lateinit var detailCallback : DetailCallback
 

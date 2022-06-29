@@ -74,7 +74,7 @@
     </fragment>
     <fragment
         android:id="@+id/insertTodoFragment"
-        android:name="com.example.wetterbericht.view.fragment.addnewtask.insert.InsertTodoFragment"
+        android:name="com.example.wetterbericht.view.fragment.addnewtask.InsertTodoFragment"
         android:label="fragment_insert_todo"
         tools:layout="@layout/fragment_insert_todo" >
         <action
@@ -83,7 +83,7 @@
     </fragment>
     <dialog
         android:id="@+id/detailTodoDialog"
-        android:name="com.example.wetterbericht.view.fragment.home.DetailTodoDialog"
+        android:name="com.example.wetterbericht.view.fragment.home.detail.DetailTodoDialog"
         android:label="fragment_detail_todo_list_dialog"
         tools:layout="@layout/fragment_detail_todo_list_dialog" />
     <fragment
