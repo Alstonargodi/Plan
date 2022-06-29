@@ -10,7 +10,7 @@ import android.content.Intent
 import android.os.Build
 import android.util.Log
 import androidx.core.app.NotificationCompat
-import com.example.wetterbericht.MainActivity
+import com.example.wetterbericht.view.MainActivity
 import com.example.wetterbericht.R
 import com.example.wetterbericht.model.local.database.LocalDatabase
 import com.example.wetterbericht.model.local.entity.WeatherLocal
@@ -76,7 +76,7 @@ class WeatherUpdate : BroadcastReceiver() {
 
     private fun showWeatherNotification(context: Context,data : WeatherResponse){
         val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        val intent = Intent(context,MainActivity::class.java)
+        val intent = Intent(context, MainActivity::class.java)
 
         val temperature = round(data.main.temp).toInt()
         val iconUrl = "http://openweathermap.org/img/w/${data.weather[0].icon}.png"

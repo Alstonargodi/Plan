@@ -1,4 +1,4 @@
-package com.example.wetterbericht.view.adapter
+package com.example.wetterbericht.view.fragment.weather.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater

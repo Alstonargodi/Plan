@@ -1,4 +1,4 @@
-package com.example.wetterbericht.view.adapter
+package com.example.wetterbericht.view.fragment.weather.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.wetterbericht.R
 import com.example.wetterbericht.model.remote.response.Foredata
 import kotlinx.android.synthetic.main.itemcv_forecast.view.*
-import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter

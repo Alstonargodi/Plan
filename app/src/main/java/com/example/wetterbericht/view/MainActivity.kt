@@ -1,10 +1,11 @@
-package com.example.wetterbericht
+package com.example.wetterbericht.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.wetterbericht.R
 import com.example.wetterbericht.databinding.ActivityMainBinding
 import com.example.wetterbericht.model.local.ChipAlarm
 import com.example.wetterbericht.viewmodel.local.LocalViewModel
