@@ -80,6 +80,9 @@
         <action
             android:id="@+id/action_insertTodoFragment_to_detailTodoDialog"
             app:destination="@id/detailTodoDialog" />
+        <action
+            android:id="@+id/action_insertTodoFragment_to_fragment_home"
+            app:destination="@id/fragment_home" />
     </fragment>
     <dialog
         android:id="@+id/detailTodoDialog"

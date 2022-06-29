@@ -21,14 +21,14 @@
             android:layout_marginTop="12dp"
             android:fontFamily="@font/abezeeregular"
             android:includeFontPadding="false"
-            android:text="TextView"
+            android:text="wenesday , 9 : 00"
             android:textColor="#565353"
+            android:textSize="12sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/tv_f_temp"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="@tools:sample/date/ddmmyy" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_f_desc"
