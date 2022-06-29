@@ -57,9 +57,9 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
         weatherPreference?.setOnPreferenceChangeListener { _, value ->
             if (value as Boolean) {
-               WeatherUpdate().setDailyUpdate(requireContext())
+                WeatherUpdate().setDailyUpdate(requireContext())
             }else{
-
+                WeatherUpdate().cancelUpdateWeather(requireContext())
             }
             true
         }

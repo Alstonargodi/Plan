@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wetterbericht.databinding.FragmentInsertTodoBinding
 import com.example.wetterbericht.model.local.TodoLocal
@@ -161,6 +162,9 @@ class InsertTodoFragment : Fragment(){
             roomViewModel.insertSubtask(tempSubtask)
         }
         roomViewModel.insertTodoLocal(tempData)
+        findNavController().navigate(
+            InsertTodoFragmentDirections.actionInsertTodoFragmentToFragmentHome()
+        )
     }
 
 
@@ -202,7 +206,6 @@ class InsertTodoFragment : Fragment(){
             readSubtask()
         }
     }
-
 
     private fun timePicker(tag : String){
         val calendar = Calendar.getInstance()

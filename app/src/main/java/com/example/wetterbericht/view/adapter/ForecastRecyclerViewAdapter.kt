@@ -7,6 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.wetterbericht.R
 import com.example.wetterbericht.model.remote.response.Foredata
 import kotlinx.android.synthetic.main.itemcv_forecast.view.*
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.LocalTime
+import java.time.format.DateTimeFormatter
 import kotlin.math.round
 
 class ForecastRecyclerViewAdapter(private val foreList : List<Foredata>)
@@ -20,11 +24,16 @@ class ForecastRecyclerViewAdapter(private val foreList : List<Foredata>)
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = foreList[position]
+        val dateFormat = DateTimeFormatter.ofPattern("yyy-MM-dd HH:mm:ss")
+        val date = LocalDate.parse(item.date,dateFormat)
+        val time = LocalTime.parse(item.date,dateFormat)
+
+        val tvDateFormat = "${date.dayOfWeek}, ${time}"
 
         val temp = round(item.temp.toDouble()).toInt()
-        holder.itemView.tv_f_date.text = item.date
+        holder.itemView.tv_f_date.text = tvDateFormat
         holder.itemView.tv_f_desc.text = item.desc
-        holder.itemView.tv_f_temp.text = temp.toString() + " c"
+        holder.itemView.tv_f_temp.text = "$temp c"
 
     }
 

@@ -53,7 +53,7 @@ class WeatherUpdate : BroadcastReceiver() {
         alarmManager.setInexactRepeating(
             AlarmManager.RTC_WAKEUP,
             calendar.timeInMillis,
-            3600000,
+            1800000,
             pendingIntent
         )
     }
@@ -119,11 +119,25 @@ class WeatherUpdate : BroadcastReceiver() {
             notificationBuilder.setChannelId(WEATHER_NOTIFICATION_CHANNEL_ID)
             notificationManager.createNotificationChannel(channel)
         }
-
         val notification = notificationBuilder.build()
         notificationManager.notify(UPDATE_ID,notification)
-
     }
+
+    fun cancelUpdateWeather(context: Context){
+        val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val intent = Intent(context,WeatherUpdate::class.java)
+
+        val pendingIntent = PendingIntent.getBroadcast(
+            context,
+            UPDATE_ID,
+            intent,
+            PendingIntent.FLAG_IMMUTABLE
+        )
+        pendingIntent.cancel()
+        alarmManager.cancel(pendingIntent)
+    }
+
+
     companion object{
         const val UPDATE_REPEAT = 201
         const val UPDATE_ID = 202
