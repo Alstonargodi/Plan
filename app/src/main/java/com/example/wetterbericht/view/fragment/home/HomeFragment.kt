@@ -112,7 +112,7 @@ class HomeFragment : Fragment() {
         val weatherRecyclerView = binding.recviewweather
         weatherRecyclerView.adapter = weatherRvAdapter
         weatherRecyclerView.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,true)
-        weatherRvAdapter.setdata(data)
+        weatherRvAdapter.setData(data)
     }
 
 

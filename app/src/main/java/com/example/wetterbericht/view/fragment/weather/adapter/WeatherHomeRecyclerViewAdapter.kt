@@ -22,19 +22,17 @@ class WeatherHomeRecyclerViewAdapter: RecyclerView.Adapter<WeatherHomeRecyclerVi
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: viewmodel, position: Int) {
-        var curitem = datalist[position]
+        val item = datalist[position]
 
-        val temp = curitem.temp.toDouble()
-        val ftemp = round(temp).toInt().toString()
-        val feeltemp = round(curitem.feelLike.toDouble()).toInt()
-        holder.itemView.tv_homew_temp.text = ftemp
+        val temp = item.temp.toDouble()
+        val temperature = round(temp).toInt().toString()
+        holder.itemView.tv_homew_temp.text = temperature
 
 
         Glide.with(holder.itemView.context)
             .asBitmap()
-            .load(curitem.image)
+            .load(item.image)
             .into(holder.itemView.img_home_icon)
-
 
     }
 
@@ -42,7 +40,7 @@ class WeatherHomeRecyclerViewAdapter: RecyclerView.Adapter<WeatherHomeRecyclerVi
         return datalist.size
     }
 
-    fun setdata(data : List<WeatherLocal>){
+    fun setData(data : List<WeatherLocal>){
         datalist = data
         notifyDataSetChanged()
     }

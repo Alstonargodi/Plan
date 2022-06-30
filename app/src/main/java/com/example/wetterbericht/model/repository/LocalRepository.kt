@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import com.example.wetterbericht.model.local.*
 import com.example.wetterbericht.model.local.dao.TodoDao
 import com.example.wetterbericht.model.local.database.LocalDatabase
+import com.example.wetterbericht.model.local.entity.HabitsLocal
 import com.example.wetterbericht.model.local.entity.WeatherLocal
 import java.text.SimpleDateFormat
 import java.time.LocalDate
@@ -17,17 +18,18 @@ class LocalRepository(database : LocalDatabase) {
 
     private val executorService = Executors.newSingleThreadExecutor()
     private val task = database.todoDao()
+    private val habits = database.habitsDao()
     private val weather = database.weatherDao()
     private val currentDate = LocalDateTime.now().dayOfMonth
 
-    //task local
-    fun readTodo() : LiveData<List<TodoLocal>> = task.readTodo()
-
+    //time chip
     fun readChipAlarm() : LiveData<List<ChipAlarm>> = task.readAlarmChip()
-
 
     fun insertAlarmChip(alarm : ChipAlarm) =
         executorService.execute { task.insertAlarmChip(alarm) }
+
+    //task
+    fun readTodo() : LiveData<List<TodoLocal>> = task.readTodo()
 
     fun readSearchTodo(name : String): LiveData<List<TodoLocal>> =
         task.readSearchTodo(name)
@@ -35,6 +37,12 @@ class LocalRepository(database : LocalDatabase) {
     fun readTodoSubtask(name : String): LiveData<List<TodoandSubTask>> =
         task.getTodoSubtask(name)
 
+    fun insertTodo(data : TodoLocal) =
+        executorService.execute{ task.insertTodo(data) }
+
+    fun insertSubtask(data : TodoSubTask){
+        executorService.execute { task.insertSubTask(data) }
+    }
 
     fun getTodayTaskReminder(): List<TodoLocal>{
       return task.getTodayTaskReminder(currentDate)
@@ -52,18 +60,19 @@ class LocalRepository(database : LocalDatabase) {
         return task.getPreviousTask(currentDate)
     }
 
-    fun insertTodo(data : TodoLocal) =
-        executorService.execute{ task.insertTodo(data) }
-
-    fun insertSubtask(data : TodoSubTask){
-        executorService.execute { task.insertSubTask(data) }
-    }
-
     fun deleteTodo(name : String) =
         task.deleteTodo(name)
 
+    //habits
+    fun readHabits(): LiveData<List<HabitsLocal>> = habits.readHabits()
 
-    //weather local
+    fun insertHabits(data : HabitsLocal) =
+        executorService.execute { habits.insertHabits(data) }
+
+    fun deleteHabits(name: String) =
+        habits.deleteHabits(name)
+
+    //weather
     fun getWeatherCityName(): WeatherLocal = weather.getWeatherLocationName()
 
     fun readWeather() : LiveData<List<WeatherLocal>> = weather.readWeather()
@@ -76,10 +85,5 @@ class LocalRepository(database : LocalDatabase) {
 
     fun deleteWeather(name : String) =
         weather.deleteWeather(name)
-
-
-
-
-
 
 }
