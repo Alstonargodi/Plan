@@ -40,10 +40,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:src="@drawable/back"
-                android:tint="#000000"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="#2196F3" />
 
             <TextView
                 android:id="@+id/titlemenu"
@@ -82,7 +82,7 @@
 
             <ImageView
                 android:id="@+id/btn_menu_todo"
-                android:layout_width="71dp"
+                android:layout_width="0dp"
                 android:layout_height="58dp"
                 android:layout_marginTop="16dp"
                 android:src="@drawable/ic_book_check"
@@ -150,7 +150,7 @@
 
             <ImageView
                 android:id="@+id/btn_menu_weather"
-                android:layout_width="71dp"
+                android:layout_width="0dp"
                 android:layout_height="58dp"
                 android:layout_marginTop="16dp"
                 android:src="@drawable/awan"
@@ -199,7 +199,7 @@
 
             <ImageView
                 android:id="@+id/btn_menu_habits"
-                android:layout_width="71dp"
+                android:layout_width="0dp"
                 android:layout_height="58dp"
                 android:layout_marginTop="16dp"
                 android:src="@drawable/ic_baseline_timer_24"
@@ -249,7 +249,7 @@
 
             <ImageView
                 android:id="@+id/btn_menu_setting"
-                android:layout_width="71dp"
+                android:layout_width="0dp"
                 android:layout_height="58dp"
                 android:layout_marginTop="16dp"
                 android:src="@drawable/ic_baseline_settings_24"

@@ -31,6 +31,12 @@ class HabitsListFragment : Fragment() {
             )
         }
 
+        binding.btnbackHabits.setOnClickListener {
+            findNavController().navigate(
+                HabitsListFragmentDirections.actionHabitsListFragmentToMenuFragment()
+            )
+        }
+
     }
 
 

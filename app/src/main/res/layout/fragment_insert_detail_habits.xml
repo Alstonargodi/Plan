@@ -35,11 +35,22 @@
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="86dp">
 
+            <ImageView
+                android:id="@+id/btnback_insert_habits"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="#2196F3" />
+
             <TextView
                 android:id="@+id/textView6"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginEnd="15dp"
                 android:fontFamily="@font/abezeeregular"
                 android:gravity="center|left"
@@ -49,7 +60,7 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/btnback_insert_habits"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -60,7 +71,7 @@
         android:layout_width="0dp"
         android:layout_height="32dp"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="15dp"
         android:fontFamily="@font/robotoregular"
         android:gravity="center|start"
@@ -79,7 +90,7 @@
         android:layout_width="0dp"
         android:layout_height="32dp"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="15dp"
         android:fontFamily="@font/robotoregular"
         android:gravity="center|start"
@@ -136,6 +147,7 @@
         android:layout_marginEnd="15dp"
         android:backgroundTint="#2196F3"
         android:text="add new habits"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_inserthabits_duration" />
