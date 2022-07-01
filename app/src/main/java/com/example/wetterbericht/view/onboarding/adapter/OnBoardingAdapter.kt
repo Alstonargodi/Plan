@@ -1,12 +1,12 @@
-package com.example.wetterbericht.view.adapter.Recyclerview
+package com.example.wetterbericht.view.onboarding.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.wetterbericht.view.Login.onboarding.Introtiga
-import com.example.wetterbericht.view.Login.onboarding.introdua
-import com.example.wetterbericht.view.Login.onboarding.introsatu
+import com.example.wetterbericht.view.onboarding.page.IntroThree
+import com.example.wetterbericht.view.onboarding.page.IntroOne
+import com.example.wetterbericht.view.onboarding.page.IntroTwo
 
 class OnBoardingAdapter(activity : FragmentManager, lifecycle: Lifecycle): FragmentStateAdapter(activity,lifecycle) {
     override fun getItemCount(): Int {
@@ -16,13 +16,13 @@ class OnBoardingAdapter(activity : FragmentManager, lifecycle: Lifecycle): Fragm
     override fun createFragment(position: Int): Fragment {
         return when(position){
             0->{
-                introsatu()
+                IntroTwo()
             }
             1->{
-                introdua()
+                IntroOne()
             }
             2->{
-                Introtiga()
+                IntroThree()
             }
             else -> Fragment()
         }

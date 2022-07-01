@@ -43,6 +43,12 @@ class MenuFragment : Fragment() {
             )
         }
 
+        binding.btnMenuHabits.setOnClickListener {
+            findNavController().navigate(
+                MenuFragmentDirections.actionMenuFragmentToHabitsListFragment()
+            )
+        }
+
         return binding.root
     }
 

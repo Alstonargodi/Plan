@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.wetterbericht.databinding.FragmentHomeBinding
 import com.example.wetterbericht.model.local.TodoLocal
 import com.example.wetterbericht.model.local.entity.WeatherLocal
-import com.example.wetterbericht.view.adapter.WeatherHomeRecyclerViewAdapter
+import com.example.wetterbericht.view.fragment.weather.adapter.WeatherHomeRecyclerViewAdapter
 import com.example.wetterbericht.view.fragment.home.adapter.TodoRecyclerViewAdapter
 import com.example.wetterbericht.view.fragment.home.detail.DetailTodoDialog
 import com.example.wetterbericht.viewmodel.local.LocalViewModel
@@ -112,7 +112,7 @@ class HomeFragment : Fragment() {
         val weatherRecyclerView = binding.recviewweather
         weatherRecyclerView.adapter = weatherRvAdapter
         weatherRecyclerView.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,true)
-        weatherRvAdapter.setdata(data)
+        weatherRvAdapter.setData(data)
     }
 
 

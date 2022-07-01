@@ -90,7 +90,7 @@
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".view.Login.onboarding.Onboardmain"
+            android:name="com.example.wetterbericht.view.onboarding.OnBoardingActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
@@ -110,12 +110,12 @@
             android:exported="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".MainActivity"
+            android:name=".view.MainActivity"
             android:windowSoftInputMode="adjustPan"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".view.Login.onboarding.splashscreen.SplashScreen"
+            android:name="com.example.wetterbericht.view.onboarding.splashscreen.SplashScreen"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>

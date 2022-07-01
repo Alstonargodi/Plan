@@ -2,11 +2,11 @@ package com.example.wetterbericht.viewmodel.local
 
 import androidx.lifecycle.*
 import com.example.wetterbericht.model.local.*
+import com.example.wetterbericht.model.local.entity.HabitsLocal
 import com.example.wetterbericht.model.local.entity.WeatherLocal
 import com.example.wetterbericht.model.repository.LocalRepository
 
 class LocalViewModel(private val repository: LocalRepository): ViewModel() {
-
 
     fun readTodoLocal(): LiveData<List<TodoLocal>> =
         repository.readTodo()
@@ -53,9 +53,13 @@ class LocalViewModel(private val repository: LocalRepository): ViewModel() {
 
     fun deleteTodoLocal(name : String) = repository.deleteTodo(name)
 
+    fun readHabits(): LiveData<List<HabitsLocal>> =
+        repository.readHabits()
 
-    fun deleteWeatherLocal(name : String) = repository.deleteWeather(name)
+    fun insertHabits(data : HabitsLocal) =
+        repository.insertHabits(data)
 
-
+    fun deleteHabits(name : String)=
+        repository.deleteHabits(name)
 
 }

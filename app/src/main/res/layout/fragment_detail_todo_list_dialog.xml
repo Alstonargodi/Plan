@@ -63,6 +63,7 @@
             android:layout_width="0dp"
             android:layout_height="32dp"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="20dp"
             android:background="#F7F7F7"
             android:drawableTint="#2196F3"
@@ -77,10 +78,35 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvbottom_todo_date"
+            app:layout_constraintVertical_bias="0.007" />
+
+        <TextView
+            android:id="@+id/tvbottom_todo_date"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="20dp"
+            android:background="#F7F7F7"
+            android:drawableTint="#2196F3"
+            android:fontFamily="@font/abezeeregular"
+            android:gravity="center|start"
+            android:includeFontPadding="false"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:text="Deadline date"
+            android:textColor="#171717"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView13"
-            app:layout_constraintVertical_bias="0.018" />
+            app:layout_constraintVertical_bias="0.01" />
 
         <TextView
             android:id="@+id/tvbottom_todo_desc"

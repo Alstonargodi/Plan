@@ -8,13 +8,11 @@ import com.example.wetterbericht.model.local.entity.WeatherLocal
 @Dao
 abstract class TodoDao {
 
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract fun insertTodo(data : TodoLocal)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract fun insertSubTask(sub : TodoSubTask)
-
 
     @Query("select*from TodoTable")
     abstract fun readTodo() : LiveData<List<TodoLocal>>

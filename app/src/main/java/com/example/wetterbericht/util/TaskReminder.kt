@@ -8,16 +8,13 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.os.Build
-import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
-import com.example.wetterbericht.MainActivity
+import com.example.wetterbericht.view.MainActivity
 import com.example.wetterbericht.R
 import com.example.wetterbericht.model.local.TodoLocal
 import com.example.wetterbericht.model.local.database.LocalDatabase
 import com.example.wetterbericht.model.repository.LocalRepository
-import java.text.ParseException
-import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.Executors
 
@@ -63,7 +60,7 @@ class TaskReminder : BroadcastReceiver() {
             val notificationFormat = context.resources.getString(R.string.notification_format)
             val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
-            val intent = Intent(context,MainActivity::class.java)
+            val intent = Intent(context, MainActivity::class.java)
 
             val pendingIntent = PendingIntent.getActivity(
                 context,

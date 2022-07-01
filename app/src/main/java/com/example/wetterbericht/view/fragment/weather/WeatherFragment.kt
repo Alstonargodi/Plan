@@ -16,7 +16,7 @@ import com.example.wetterbericht.model.local.entity.WeatherLocal
 import com.example.wetterbericht.model.remote.response.ForecastResponse
 import com.example.wetterbericht.model.remote.response.Foredata
 import com.example.wetterbericht.model.remote.service.WeatherResponse
-import com.example.wetterbericht.view.adapter.ForecastRecyclerViewAdapter
+import com.example.wetterbericht.view.fragment.weather.adapter.ForecastRecyclerViewAdapter
 import com.example.wetterbericht.viewmodel.local.LocalViewModel
 import com.example.wetterbericht.viewmodel.remote.WeatherViewModel
 import com.example.wetterbericht.viewmodel.utils.ViewModelFactory

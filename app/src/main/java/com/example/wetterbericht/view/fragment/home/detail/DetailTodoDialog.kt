@@ -55,6 +55,7 @@ class DetailTodoDialog : BottomSheetDialogFragment() {
         binding.tvbottomTodoTime.text = result
         binding.tvbottomTodoTitle.text = detailTodo.title
         binding.tvbottomTodoDesc.text = detailTodo.description
+        binding.tvbottomTodoDate.text = detailTodo.dateStart
     }
 
 
