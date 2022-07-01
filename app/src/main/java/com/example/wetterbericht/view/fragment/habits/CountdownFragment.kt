@@ -35,10 +35,13 @@ class CountdownFragment : Fragment() {
 
         countViewModel.progressBar.observe(viewLifecycleOwner){
             Log.d("progress bar",it.toString())
-            binding.pgBarCountdown.setProgress(it,true)
             binding.pgcircleCountdown.setProgress(it,true)
         }
 
+        countViewModel.eventFinish.observe(viewLifecycleOwner){
+            countViewModel.resetTimer()
+            binding.pgcircleCountdown.setProgress(0,false)
+        }
         return binding.root
     }
 
