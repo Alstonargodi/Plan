@@ -12,6 +12,11 @@ class CountDownViewModel: ViewModel() {
     private val initialTime = MutableLiveData<Long>()
     private val durationTime = MutableLiveData<Long>()
 
+    val progressBar = MutableLiveData<Int>()
+
+    private var number = 0
+
+
     val currentTimeString = Transformations.map(durationTime){ time ->
         DateUtils.formatElapsedTime(time / 1000)
     }
@@ -24,6 +29,8 @@ class CountDownViewModel: ViewModel() {
         countDownTimer = object : CountDownTimer(convertTime,1000){
             override fun onTick(timeRemind: Long) {
                 durationTime.value = timeRemind
+                number++
+                progressBar.value = number * 100/(convertTime.toInt()/1000)
             }
 
             override fun onFinish() {
