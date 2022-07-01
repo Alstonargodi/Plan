@@ -13,13 +13,13 @@ class CountDownViewModel: ViewModel() {
     private val durationTime = MutableLiveData<Long>()
 
     val currentTimeString = Transformations.map(durationTime){ time ->
-        DateUtils.formatElapsedTime(time)
+        DateUtils.formatElapsedTime(time / 1000)
     }
 
     fun setInitialCountDown(time : Long){
         val convertTime = time * 60 * 1000
         initialTime.value = convertTime
-        initialTime.value = convertTime
+        durationTime.value = convertTime
 
         countDownTimer = object : CountDownTimer(convertTime,1000){
             override fun onTick(timeRemind: Long) {
@@ -27,7 +27,7 @@ class CountDownViewModel: ViewModel() {
             }
 
             override fun onFinish() {
-                TODO("Not yet implemented")
+                resetTimer()
             }
         }
     }

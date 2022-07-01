@@ -56,6 +56,9 @@ class InsertDetailHabitsFragment : Fragment() {
 
         localViewModel.insertHabits(insertData)
 
+        findNavController().navigate(
+            InsertDetailHabitsFragmentDirections.actionInsertDetailHabitsFragmentToHabitsListFragment()
+        )
 
     }
 

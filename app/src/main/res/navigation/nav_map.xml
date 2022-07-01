@@ -137,5 +137,23 @@
         <action
             android:id="@+id/action_habitsListFragment_to_menuFragment"
             app:destination="@id/menuFragment" />
+        <action
+            android:id="@+id/action_habitsListFragment_to_countdownFragment"
+            app:destination="@id/countdownFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/countdownFragment"
+        android:name="com.example.wetterbericht.view.fragment.habits.CountdownFragment"
+        android:label="fragment_countdown"
+        tools:layout="@layout/fragment_countdown" >
+        <argument
+            android:name="time"
+            app:argType="integer" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_countdownFragment_to_habitsListFragment"
+            app:destination="@id/habitsListFragment" />
     </fragment>
 </navigation>
