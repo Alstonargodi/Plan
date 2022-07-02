@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import com.example.wetterbericht.R
 import com.example.wetterbericht.databinding.FragmentCountdownBinding
 import com.example.wetterbericht.viewmodel.countdown.CountDownViewModel
 
@@ -49,13 +48,25 @@ class CountdownFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnCountdownStart.setOnClickListener {
-            countViewModel.start()
+            countViewModel.startTimer()
+            statusButton(true)
+        }
+
+
+        binding.btnCountdownStop.setOnClickListener {
+            countViewModel.resetTimer()
+            binding.pgcircleCountdown.setProgress(0,false)
+            statusButton(false)
         }
     }
 
     private fun countdown(time : Long){
         countViewModel.setInitialCountDown(time)
+    }
 
+    private fun statusButton(status : Boolean){
+        binding.btnCountdownStart.isEnabled = !status
+        binding.btnCountdownStop.isEnabled = status
     }
 
 

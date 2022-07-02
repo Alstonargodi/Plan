@@ -9,7 +9,8 @@ import androidx.lifecycle.ViewModel
 
 class CountDownViewModel: ViewModel() {
 
-    private lateinit var countDownTimer: CountDownTimer
+    private var countDownTimer: CountDownTimer? = null
+
     private val initialTime = MutableLiveData<Long>()
     private val durationTime = MutableLiveData<Long>()
 
@@ -18,13 +19,9 @@ class CountDownViewModel: ViewModel() {
 
     private var number = 0
 
-
     val currentTimeString = Transformations.map(durationTime){ time ->
         DateUtils.formatElapsedTime(time / 1000)
     }
-
-
-
 
     fun setInitialCountDown(time : Long){
         val convertTime = time * 60 * 1000
@@ -44,12 +41,12 @@ class CountDownViewModel: ViewModel() {
         }
     }
 
-    fun start(){
-        countDownTimer.start()
+    fun startTimer(){
+        countDownTimer?.start()
     }
 
     fun resetTimer(): Boolean{
-        countDownTimer.cancel()
+        countDownTimer?.cancel()
         durationTime.value = initialTime.value
         eventFinish.value = true
         return true
@@ -57,7 +54,7 @@ class CountDownViewModel: ViewModel() {
 
     override fun onCleared() {
         super.onCleared()
-        countDownTimer.cancel()
+        countDownTimer?.cancel()
     }
 
 
