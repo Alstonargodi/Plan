@@ -11,6 +11,12 @@ import com.example.wetterbericht.model.repository.localrepository.LocalRepositor
 
 class LocalViewModel(private val repository: LocalRepository): ViewModel() {
 
+    fun getOnboardingStatus(): LiveData<Boolean> = repository.getOnboardingStatus()
+
+    suspend fun savePreferences(onBoard : Boolean){
+        repository.savePreferences(onBoard)
+    }
+
     fun readTodoLocal(): LiveData<List<TodoLocal>> =
         repository.readTodo()
 

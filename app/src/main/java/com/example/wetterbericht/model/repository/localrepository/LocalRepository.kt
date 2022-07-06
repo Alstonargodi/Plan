@@ -1,6 +1,7 @@
 package com.example.wetterbericht.model.repository.localrepository
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.asLiveData
 import com.example.wetterbericht.model.local.*
 import com.example.wetterbericht.model.local.database.LocalDatabase
 import com.example.wetterbericht.model.local.entity.habits.HabitsLocal
@@ -8,21 +9,31 @@ import com.example.wetterbericht.model.local.entity.todolist.TodoLocal
 import com.example.wetterbericht.model.local.entity.todolist.TodoSubTask
 import com.example.wetterbericht.model.local.entity.todolist.TodoandSubTask
 import com.example.wetterbericht.model.local.entity.weather.WeatherLocal
+import com.example.wetterbericht.model.local.preferences.OnboardingPreferences
 import java.time.LocalDateTime
 import java.util.concurrent.Executors
 
 
-class LocalRepository(database : LocalDatabase) {
-
+class LocalRepository(
+    database : LocalDatabase,
+    onBoardingPreferences: OnboardingPreferences
+) {
     private val executorService = Executors.newSingleThreadExecutor()
     private val task = database.todoDao()
     private val habits = database.habitsDao()
     private val weather = database.weatherDao()
     private val currentDate = LocalDateTime.now().dayOfMonth
+    private val preferences = onBoardingPreferences
+
+    //onboarding
+    fun getOnboardingStatus(): LiveData<Boolean> = preferences.getOnboardingStatus().asLiveData()
+
+    suspend fun savePreferences(onBoard : Boolean){
+        preferences.savePreferences(onBoard)
+    }
 
     //time chip
     fun readChipAlarm() : LiveData<List<ChipAlarm>> = task.readAlarmChip()
-
     fun insertAlarmChip(alarm : ChipAlarm) =
         executorService.execute { task.insertAlarmChip(alarm) }
 
@@ -81,7 +92,7 @@ class LocalRepository(database : LocalDatabase) {
     fun searchLocation(name: String): LiveData<List<WeatherLocal>> =
         weather.searchLocation(name)
 
-    fun deleteWeather(name : String) =
-        weather.deleteWeather(name)
+
+
 
 }

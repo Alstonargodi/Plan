@@ -14,6 +14,8 @@ import com.example.wetterbericht.view.activity.mainactivity.MainActivity
 import com.example.wetterbericht.R
 import com.example.wetterbericht.model.local.entity.todolist.TodoLocal
 import com.example.wetterbericht.model.local.database.LocalDatabase
+import com.example.wetterbericht.model.local.preferences.OnboardingPreferences
+import com.example.wetterbericht.model.local.preferences.dataStore
 import com.example.wetterbericht.model.repository.localrepository.LocalRepository
 import java.util.*
 import java.util.concurrent.Executors
@@ -21,8 +23,14 @@ import java.util.concurrent.Executors
 class TaskReminder : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         Executors.newSingleThreadExecutor().execute {
-            val task = LocalRepository(LocalDatabase.setDatabase(context)).getTodayTaskReminder()
-            showAlarmNotification(context,task)
+            val task = LocalRepository(
+                LocalDatabase.setDatabase(context),
+                OnboardingPreferences.getInstance(context.dataStore)
+            ).getTodayTaskReminder()
+            if (task.isNotEmpty()){
+                showAlarmNotification(context,task)
+            }
+
         }
     }
 
