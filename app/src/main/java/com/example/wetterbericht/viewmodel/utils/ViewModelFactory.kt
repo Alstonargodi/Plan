@@ -1,10 +1,9 @@
 package com.example.wetterbericht.viewmodel.utils
 
-import android.app.Application
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.wetterbericht.model.injection.Injection
+import com.example.wetterbericht.injection.Injection
 import com.example.wetterbericht.model.repository.LocalRepository
 import com.example.wetterbericht.viewmodel.local.LocalViewModel
 import com.example.wetterbericht.viewmodel.remote.WeatherViewModel

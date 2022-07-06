@@ -1,4 +1,4 @@
-package com.example.wetterbericht.model.injection
+package com.example.wetterbericht.injection
 
 import android.content.Context
 import com.example.wetterbericht.model.local.database.LocalDatabase

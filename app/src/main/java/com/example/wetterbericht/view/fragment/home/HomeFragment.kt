@@ -24,14 +24,11 @@ import java.util.concurrent.Executors
 
 class HomeFragment : Fragment() {
     private lateinit var binding : FragmentHomeBinding
-
     private val roomViewModel : LocalViewModel by viewModels{ ViewModelFactory.getInstance(requireContext())}
-
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentHomeBinding.inflate(layoutInflater)
         showCurrentWeather()
-
 
         ItemTouchHelper(Callback()).attachToRecyclerView(binding.rectodo)
 
@@ -49,13 +46,11 @@ class HomeFragment : Fragment() {
             override fun onTabUnselected(tab: TabLayout.Tab?) {}
             override fun onTabReselected(tab: TabLayout.Tab?) {}
         })
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         binding.btnHometomenu.setOnClickListener {
             findNavController().navigate(
                 HomeFragmentDirections.actionFragmentHomeToMenuFragment()
@@ -102,10 +97,7 @@ class HomeFragment : Fragment() {
                 showDetailTaskDialog(data)
             }
         })
-
-
     }
-
 
     private fun setCurrentWeather(data : List<WeatherLocal>){
         val weatherRvAdapter = WeatherHomeRecyclerViewAdapter()
@@ -114,7 +106,6 @@ class HomeFragment : Fragment() {
         weatherRecyclerView.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,true)
         weatherRvAdapter.setData(data)
     }
-
 
     private fun showDetailTaskDialog(data : TodoLocal){
             val dialog = DetailTodoDialog()
@@ -155,5 +146,4 @@ class HomeFragment : Fragment() {
         const val homepage_key = "detailpage"
         const val dialog_key = "dialog"
     }
-
 }

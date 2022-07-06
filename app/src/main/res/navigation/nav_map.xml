@@ -20,6 +20,9 @@
         <action
             android:id="@+id/action_fragment_home_to_menuFragment"
             app:destination="@id/menuFragment" />
+        <action
+            android:id="@+id/action_fragment_home_to_countdownFragment"
+            app:destination="@id/countdownFragment" />
     </fragment>
     <fragment
         android:id="@+id/fragment_weather"
@@ -88,7 +91,11 @@
         android:id="@+id/detailTodoDialog"
         android:name="com.example.wetterbericht.view.fragment.home.detail.DetailTodoDialog"
         android:label="fragment_detail_todo_list_dialog"
-        tools:layout="@layout/fragment_detail_todo_list_dialog" />
+        tools:layout="@layout/fragment_detail_todo_list_dialog" >
+        <action
+            android:id="@+id/action_detailTodoDialog_to_countdownFragment"
+            app:destination="@id/countdownFragment" />
+    </dialog>
     <fragment
         android:id="@+id/menuFragment"
         android:name="com.example.wetterbericht.view.fragment.menu.MenuFragment"
