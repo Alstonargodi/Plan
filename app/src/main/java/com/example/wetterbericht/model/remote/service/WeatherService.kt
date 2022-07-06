@@ -19,15 +19,6 @@ interface WeatherService {
         @Query("appid") api_key : String = weatherApiKey
     ): Call<WeatherResponse>
 
-
-    @GET("weather")
-    suspend fun getDatabyLocation(
-        @Query("lat") Lot : Double,
-        @Query("lon") lon : Double,
-        @Query("units") units : String = weatherUnit,
-        @Query("appid") Apikey : String = weatherApiKey
-    ): Response<WeatherResponse>
-
     @GET("forecast")
     fun getForecast(
         @Query("q") Location: Any,

@@ -14,6 +14,8 @@ import com.example.wetterbericht.view.activity.mainactivity.MainActivity
 import com.example.wetterbericht.R
 import com.example.wetterbericht.model.local.database.LocalDatabase
 import com.example.wetterbericht.model.local.entity.weather.WeatherLocal
+import com.example.wetterbericht.model.local.preferences.OnboardingPreferences
+import com.example.wetterbericht.model.local.preferences.dataStore
 import com.example.wetterbericht.model.remote.openweather.weather.WeatherResponse
 import com.example.wetterbericht.model.repository.localrepository.LocalRepository
 import com.example.wetterbericht.model.repository.weatherrepository.WeatherRepository
@@ -27,9 +29,15 @@ import kotlin.math.round
 class WeatherUpdate : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         Executors.newSingleThreadExecutor().execute {
-            val cityName = LocalRepository(LocalDatabase.setDatabase(context)).getWeatherCityName()
-            Log.d("location", cityName.loc)
-            updateWeatherData(context,cityName.loc)
+            val cityName = LocalRepository(
+                LocalDatabase.setDatabase(context),
+                OnboardingPreferences.getInstance(context.dataStore)
+            ).getWeatherCityName()
+
+            if (cityName.loc.isNotEmpty()){
+                updateWeatherData(context,cityName.loc)
+            }
+
         }
     }
 
@@ -77,10 +85,8 @@ class WeatherUpdate : BroadcastReceiver() {
     private fun showWeatherNotification(context: Context,data : WeatherResponse){
         val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val intent = Intent(context, MainActivity::class.java)
-
         val temperature = round(data.main.temp).toInt()
         val iconUrl = "http://openweathermap.org/img/w/${data.weather[0].icon}.png"
-
         val insertData = WeatherLocal(
             0,
             data.name,
@@ -90,7 +96,10 @@ class WeatherUpdate : BroadcastReceiver() {
             data.wind.speed.toString(),
             data.weather[0].description
         )
-        LocalRepository(LocalDatabase.setDatabase(context)).insertWeather(insertData)
+        LocalRepository(
+            LocalDatabase.setDatabase(context),
+            OnboardingPreferences.getInstance(context.dataStore)
+        ).insertWeather(insertData)
 
 
         val pendingIntent = PendingIntent.getActivity(

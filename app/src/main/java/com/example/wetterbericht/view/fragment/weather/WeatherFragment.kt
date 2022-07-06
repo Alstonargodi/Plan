@@ -24,38 +24,27 @@ import kotlin.math.round
 
 
 class WeatherFragment : Fragment(){
-
     private lateinit var binding : FragmentWeatherBinding
-
     private val weatherViewModel by viewModels<WeatherViewModel>()
-
     private val roomViewModel : LocalViewModel by viewModels{ ViewModelFactory.getInstance(requireContext())}
-
-
     private lateinit var forecastRecyclerViewAdapter: ForecastRecyclerViewAdapter
-
     private var forecastList = ArrayList<ForecastItem>()
-
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentWeatherBinding.inflate(layoutInflater)
         setHasOptionsMenu(true)
         (requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbarWeather)
-
         favoriteCity()
-
+        fetchChecker()
         return binding.root
     }
 
 
-
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.weather_toolbar,menu)
-
         val searchView = menu.findItem(R.id.search_weather).actionView as SearchView
         searchView.apply {
             queryHint = "Enter Location"
-
             setOnQueryTextListener(object : SearchView.OnQueryTextListener{
                 override fun onQueryTextSubmit(query: String?): Boolean {
                     searchCurrentWeather(query ?: "")
@@ -63,7 +52,6 @@ class WeatherFragment : Fragment(){
                     binding.tvWeatherNodata.visibility = View.GONE
                     return true
                 }
-
                 override fun onQueryTextChange(newText: String?): Boolean {
                     return false
                 }
@@ -86,12 +74,12 @@ class WeatherFragment : Fragment(){
     private fun searchCurrentWeather(city : String){
         weatherViewModel.apply {
             getWeatherSearch(city)
-            weatherSearchRespon.observe(viewLifecycleOwner){
+            weatherSearchResponse.observe(viewLifecycleOwner){
                 setWeatherCard(it)
                 forecastList.clear()
             }
             getWeatherForecast(city)
-            forecastRespon.observe(viewLifecycleOwner){
+            forecastResponse.observe(viewLifecycleOwner){
                 setWeatherForecast(it)
             }
         }
@@ -160,10 +148,8 @@ class WeatherFragment : Fragment(){
 
     private fun setCurrentLocation(data : WeatherResponse){
         val temperature = round(data.main.temp).toInt()
-
         val iconUrl = data.weather[0].icon
         val conditionIcon = "http://openweathermap.org/img/w/${iconUrl}.png"
-
         val temp = WeatherLocal(
             0,
             data.name,
@@ -173,8 +159,21 @@ class WeatherFragment : Fragment(){
             data.wind.speed.toString(),
             data.weather[0].description
         )
-
         roomViewModel.insertWeatherLocal(temp)
         Toast.makeText(requireContext(),"Set as current location", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun fetchChecker(){
+        weatherViewModel.isLoading.observe(viewLifecycleOwner){ loading ->
+            if(loading){
+                binding.pgbarWeather.visibility = View.VISIBLE
+            }else{
+                binding.pgbarWeather.visibility = View.GONE
+            }
+        }
+        weatherViewModel.status.observe(viewLifecycleOwner){ status ->
+            binding.tvWeatherStatus.visibility = View.VISIBLE
+            binding.tvWeatherStatus.text = status
+        }
     }
 }

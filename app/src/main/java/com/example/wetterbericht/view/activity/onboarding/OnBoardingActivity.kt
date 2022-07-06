@@ -5,20 +5,29 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.wetterbericht.view.activity.mainactivity.MainActivity
 import com.example.wetterbericht.databinding.ActivityOnboardmainBinding
 import com.example.wetterbericht.view.activity.onboarding.adapter.OnBoardingAdapter
+import com.example.wetterbericht.viewmodel.localviewmodel.LocalViewModel
+import com.example.wetterbericht.viewmodel.viewmodelfactory.ViewModelFactory
 import com.google.android.material.tabs.TabLayoutMediator
+import kotlinx.coroutines.launch
 
 class OnBoardingActivity : AppCompatActivity() {
     private lateinit var adapterPager : OnBoardingAdapter
     private lateinit var binding: ActivityOnboardmainBinding
 
+    private val localViewModel : LocalViewModel by viewModels{
+        ViewModelFactory.getInstance(this)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityOnboardmainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         onBoardingIntro()
     }
 
@@ -51,9 +60,10 @@ class OnBoardingActivity : AppCompatActivity() {
         }
     }
 
-    private fun onBoardFinished(): Boolean{
-        val sharedPrefrence = Activity().getSharedPreferences("onboard",Context.MODE_PRIVATE)
-        return sharedPrefrence.getBoolean("finish",false)
+    private fun onBoardFinished() {
+        lifecycleScope.launch {
+            localViewModel.savePreferences(true)
+        }
     }
 
 

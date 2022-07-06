@@ -13,9 +13,6 @@ class WeatherRepository {
         return apiService.getDataBySearch(loc)
     }
 
-    suspend fun getWeatherByLocation(lat : Double, lon : Double): Response<WeatherResponse>{
-        return apiService.getDatabyLocation(lat,lon)
-    }
 
     fun getWeatherForecast(loc: Any): Call<ForecastResponse>{
         return apiService.getForecast(loc)

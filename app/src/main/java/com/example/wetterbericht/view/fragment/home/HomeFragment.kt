@@ -97,6 +97,12 @@ class HomeFragment : Fragment() {
                 showDetailTaskDialog(data)
             }
         })
+
+        if (data.isEmpty()){
+            binding.tvActivitesStatus.visibility = View.VISIBLE
+        }else{
+            binding.tvActivitesStatus.visibility = View.GONE
+        }
     }
 
     private fun setCurrentWeather(data : List<WeatherLocal>){

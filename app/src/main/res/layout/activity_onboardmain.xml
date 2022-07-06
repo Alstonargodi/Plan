@@ -58,6 +58,7 @@
             android:id="@+id/btn_onboard_next"
             android:layout_width="91dp"
             android:layout_height="25dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
             android:background="@drawable/borderblue"
             android:backgroundTint="#2196F3"
