@@ -5,8 +5,8 @@ import androidx.preference.ListPreference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreference
 import com.example.wetterbericht.R
-import com.example.wetterbericht.util.TaskReminder
-import com.example.wetterbericht.util.WeatherUpdate
+import com.example.wetterbericht.helpers.taskreminder.TaskReminder
+import com.example.wetterbericht.helpers.weatherupdate.WeatherUpdate
 
 class SettingsFragment : PreferenceFragmentCompat() {
 

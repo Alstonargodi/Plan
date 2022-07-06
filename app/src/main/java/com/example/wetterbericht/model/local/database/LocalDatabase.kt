@@ -5,13 +5,13 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.wetterbericht.model.local.ChipAlarm
-import com.example.wetterbericht.model.local.TodoLocal
-import com.example.wetterbericht.model.local.TodoSubTask
-import com.example.wetterbericht.model.local.dao.HabitsDao
-import com.example.wetterbericht.model.local.dao.TodoDao
-import com.example.wetterbericht.model.local.dao.WeatherDao
-import com.example.wetterbericht.model.local.entity.HabitsLocal
-import com.example.wetterbericht.model.local.entity.WeatherLocal
+import com.example.wetterbericht.model.local.entity.todolist.TodoLocal
+import com.example.wetterbericht.model.local.entity.todolist.TodoSubTask
+import com.example.wetterbericht.model.local.dao.habits.HabitsDao
+import com.example.wetterbericht.model.local.dao.todolist.TodoDao
+import com.example.wetterbericht.model.local.dao.weather.WeatherDao
+import com.example.wetterbericht.model.local.entity.habits.HabitsLocal
+import com.example.wetterbericht.model.local.entity.weather.WeatherLocal
 
 @Database(entities = [
     WeatherLocal::class,

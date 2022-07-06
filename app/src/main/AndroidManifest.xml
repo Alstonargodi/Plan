@@ -69,13 +69,13 @@
         android:theme="@style/Theme.Wetterbericht">
 
         <receiver
-            android:name="com.example.wetterbericht.util.TaskReminder"
+            android:name="com.example.wetterbericht.helpers.taskreminder.TaskReminder"
             android:enabled="true"
             android:exported="true">
         </receiver>
 
         <receiver
-            android:name="com.example.wetterbericht.util.WeatherUpdate"
+            android:name="com.example.wetterbericht.helpers.weatherupdate.WeatherUpdate"
             android:enabled="true"
             android:exported="true">
         </receiver>
@@ -90,11 +90,11 @@
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name="com.example.wetterbericht.view.onboarding.OnBoardingActivity"
+            android:name="com.example.wetterbericht.view.activity.onboarding.OnBoardingActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name="com.example.wetterbericht.view.fragment.addnewtask.InsertTodoActivity"
+            android:name="com.example.wetterbericht.view.fragment.insertnewtask.InsertTodoActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
@@ -110,12 +110,12 @@
             android:exported="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".view.MainActivity"
+            android:name=".view.activity.mainactivity.MainActivity"
             android:windowSoftInputMode="adjustPan"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name="com.example.wetterbericht.view.onboarding.splashscreen.SplashScreen"
+            android:name="com.example.wetterbericht.view.activity.splashscreen.SplashScreen"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>

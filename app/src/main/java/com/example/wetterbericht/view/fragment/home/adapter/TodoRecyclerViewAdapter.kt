@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
 import android.annotation.SuppressLint
-import com.example.wetterbericht.databinding.TcvTodoCardBinding
-import com.example.wetterbericht.model.local.TodoLocal
+import com.example.wetterbericht.databinding.ItemcvTodoBinding
+import com.example.wetterbericht.model.local.entity.todolist.TodoLocal
 
 
 class TodoRecyclerViewAdapter(private val data: List<TodoLocal>)
@@ -19,7 +19,7 @@ class TodoRecyclerViewAdapter(private val data: List<TodoLocal>)
         this.detailCallback = callback
     }
 
-    class ViewHolder(var binding : TcvTodoCardBinding): RecyclerView.ViewHolder(binding.root){
+    class ViewHolder(var binding : ItemcvTodoBinding): RecyclerView.ViewHolder(binding.root){
         private lateinit var detailTodo : TodoLocal
         fun bind(item : TodoLocal){
             detailTodo = item
@@ -31,7 +31,7 @@ class TodoRecyclerViewAdapter(private val data: List<TodoLocal>)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(TcvTodoCardBinding.inflate(LayoutInflater.from(parent.context),parent,false))
+        return ViewHolder(ItemcvTodoBinding.inflate(LayoutInflater.from(parent.context),parent,false))
     }
 
     @SuppressLint("ClickableViewAccessibility")

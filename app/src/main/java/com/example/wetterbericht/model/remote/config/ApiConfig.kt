@@ -1,7 +1,7 @@
 package com.example.wetterbericht.model.remote.config
 
 import com.example.wetterbericht.BuildConfig
-import com.example.wetterbericht.model.remote.utils.Constant.base_url
+import com.example.wetterbericht.model.remote.utils.Constant.weatherBaseURL
 import com.example.wetterbericht.model.remote.service.WeatherService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -21,7 +21,7 @@ object ApiConfig {
             .addInterceptor(loggingInterceptor)
             .build()
         val retrofit = Retrofit.Builder()
-            .baseUrl(base_url)
+            .baseUrl(weatherBaseURL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()

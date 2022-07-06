@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context=".view.onboarding.page.IntroTwo">
+    tools:context=".view.activity.onboarding.page.IntroTwo">
 
     <ImageView
         android:id="@+id/imageView"

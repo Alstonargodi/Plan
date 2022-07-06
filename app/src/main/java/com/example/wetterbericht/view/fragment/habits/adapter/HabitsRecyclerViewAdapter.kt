@@ -4,8 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wetterbericht.databinding.ItemcvHabitsBinding
-import com.example.wetterbericht.model.local.entity.HabitsLocal
-import com.example.wetterbericht.view.fragment.home.adapter.TodoRecyclerViewAdapter
+import com.example.wetterbericht.model.local.entity.habits.HabitsLocal
 
 class HabitsRecyclerViewAdapter(private val data : List<HabitsLocal>)
     : RecyclerView.Adapter<HabitsRecyclerViewAdapter.ViewHolder>(){

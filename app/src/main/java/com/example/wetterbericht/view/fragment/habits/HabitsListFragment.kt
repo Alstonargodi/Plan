@@ -8,13 +8,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.wetterbericht.R
 import com.example.wetterbericht.databinding.FragmentHabitsListBinding
-import com.example.wetterbericht.model.local.entity.HabitsLocal
+import com.example.wetterbericht.model.local.entity.habits.HabitsLocal
 import com.example.wetterbericht.view.fragment.habits.adapter.HabitsRecyclerViewAdapter
-import com.example.wetterbericht.view.fragment.home.HomeFragment
-import com.example.wetterbericht.viewmodel.local.LocalViewModel
-import com.example.wetterbericht.viewmodel.utils.ViewModelFactory
+import com.example.wetterbericht.viewmodel.localviewmodel.LocalViewModel
+import com.example.wetterbericht.viewmodel.viewmodelfactory.ViewModelFactory
 
 
 class HabitsListFragment : Fragment() {

@@ -12,14 +12,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.wetterbericht.R
 import com.example.wetterbericht.databinding.FragmentWeatherBinding
-import com.example.wetterbericht.model.local.entity.WeatherLocal
-import com.example.wetterbericht.model.remote.response.ForecastResponse
-import com.example.wetterbericht.model.remote.response.Foredata
-import com.example.wetterbericht.model.remote.service.WeatherResponse
+import com.example.wetterbericht.model.local.entity.weather.WeatherLocal
+import com.example.wetterbericht.model.remote.openweather.forecast.ForecastResponse
+import com.example.wetterbericht.model.remote.openweather.forecast.ForecastItem
+import com.example.wetterbericht.model.remote.openweather.weather.WeatherResponse
 import com.example.wetterbericht.view.fragment.weather.adapter.ForecastRecyclerViewAdapter
-import com.example.wetterbericht.viewmodel.local.LocalViewModel
-import com.example.wetterbericht.viewmodel.remote.WeatherViewModel
-import com.example.wetterbericht.viewmodel.utils.ViewModelFactory
+import com.example.wetterbericht.viewmodel.localviewmodel.LocalViewModel
+import com.example.wetterbericht.viewmodel.weatherviewmodel.WeatherViewModel
+import com.example.wetterbericht.viewmodel.viewmodelfactory.ViewModelFactory
 import kotlin.math.round
 
 
@@ -34,7 +34,7 @@ class WeatherFragment : Fragment(){
 
     private lateinit var forecastRecyclerViewAdapter: ForecastRecyclerViewAdapter
 
-    private var forecastList = ArrayList<Foredata>()
+    private var forecastList = ArrayList<ForecastItem>()
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -144,7 +144,7 @@ class WeatherFragment : Fragment(){
             val desc = data[i].weather[0].description
             val temp = data[i].main.temp.toString()
 
-            val tempForecast = Foredata(
+            val tempForecast = ForecastItem(
                 date,
                 desc,
                 temp
