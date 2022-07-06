@@ -150,7 +150,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvbottom_todo_title" />
 
-    <Button
+    <TextView
         android:id="@+id/btn_habits_todo_dialog"
         android:layout_width="0dp"
         android:clickable="true"
