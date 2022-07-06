@@ -11,20 +11,16 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wetterbericht.databinding.FragmentDetailTodoListDialogBinding
-import com.example.wetterbericht.model.local.TodoLocal
+import com.example.wetterbericht.model.local.entity.todolist.TodoLocal
 import com.example.wetterbericht.view.fragment.home.HomeFragment.Companion.homepage_key
 import com.example.wetterbericht.view.fragment.home.HomeFragmentDirections
 import com.example.wetterbericht.view.fragment.home.adapter.SubtaskRecyclerViewAdapter
-import com.example.wetterbericht.viewmodel.local.LocalViewModel
-import com.example.wetterbericht.viewmodel.utils.ViewModelFactory
+import com.example.wetterbericht.viewmodel.localviewmodel.LocalViewModel
+import com.example.wetterbericht.viewmodel.viewmodelfactory.ViewModelFactory
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.LocalDateTime
 import java.time.LocalTime
-import java.util.*
 import kotlin.math.abs
 
 class DetailTodoDialog : BottomSheetDialogFragment() {

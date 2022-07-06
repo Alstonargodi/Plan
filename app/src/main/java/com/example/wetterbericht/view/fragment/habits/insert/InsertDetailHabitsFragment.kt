@@ -7,11 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.example.wetterbericht.R
 import com.example.wetterbericht.databinding.FragmentInsertDetailHabitsBinding
-import com.example.wetterbericht.model.local.entity.HabitsLocal
-import com.example.wetterbericht.viewmodel.local.LocalViewModel
-import com.example.wetterbericht.viewmodel.utils.ViewModelFactory
+import com.example.wetterbericht.model.local.entity.habits.HabitsLocal
+import com.example.wetterbericht.viewmodel.localviewmodel.LocalViewModel
+import com.example.wetterbericht.viewmodel.viewmodelfactory.ViewModelFactory
 
 
 class InsertDetailHabitsFragment : Fragment() {

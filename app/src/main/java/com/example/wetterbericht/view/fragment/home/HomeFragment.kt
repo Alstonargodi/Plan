@@ -12,13 +12,13 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wetterbericht.databinding.FragmentHomeBinding
-import com.example.wetterbericht.model.local.TodoLocal
-import com.example.wetterbericht.model.local.entity.WeatherLocal
+import com.example.wetterbericht.model.local.entity.todolist.TodoLocal
+import com.example.wetterbericht.model.local.entity.weather.WeatherLocal
 import com.example.wetterbericht.view.fragment.weather.adapter.WeatherHomeRecyclerViewAdapter
 import com.example.wetterbericht.view.fragment.home.adapter.TodoRecyclerViewAdapter
 import com.example.wetterbericht.view.fragment.home.detail.DetailTodoDialog
-import com.example.wetterbericht.viewmodel.local.LocalViewModel
-import com.example.wetterbericht.viewmodel.utils.ViewModelFactory
+import com.example.wetterbericht.viewmodel.localviewmodel.LocalViewModel
+import com.example.wetterbericht.viewmodel.viewmodelfactory.ViewModelFactory
 import com.google.android.material.tabs.TabLayout
 import java.util.concurrent.Executors
 

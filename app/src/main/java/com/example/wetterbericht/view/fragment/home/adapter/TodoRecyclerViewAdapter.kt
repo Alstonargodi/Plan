@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 import android.annotation.SuppressLint
 import com.example.wetterbericht.databinding.TcvTodoCardBinding
-import com.example.wetterbericht.model.local.TodoLocal
+import com.example.wetterbericht.model.local.entity.todolist.TodoLocal
 
 
 class TodoRecyclerViewAdapter(private val data: List<TodoLocal>)

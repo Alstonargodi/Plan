@@ -7,7 +7,7 @@
 
     <activity
         android:id="@+id/mainActivity"
-        android:name="com.example.wetterbericht.view.MainActivity"
+        android:name="com.example.wetterbericht.view.activity.mainactivity.MainActivity"
         android:label="MainActivity" />
     <fragment
         android:id="@+id/fragment_home"
@@ -35,12 +35,12 @@
     </fragment>
     <activity
         android:id="@+id/splashscreen"
-        android:name="com.example.wetterbericht.view.onboarding.splashscreen.SplashScreen"
+        android:name="com.example.wetterbericht.view.activity.splashscreen.SplashScreen"
         android:label="activity_splashscreen"
         tools:layout="@layout/activity_splashscreen" />
     <fragment
         android:id="@+id/introsatu"
-        android:name="com.example.wetterbericht.view.onboarding.page.IntroTwo"
+        android:name="com.example.wetterbericht.view.activity.onboarding.page.IntroTwo"
         android:label="fragment_introsatu"
         tools:layout="@layout/fragment_introsatu" >
         <action
@@ -49,7 +49,7 @@
     </fragment>
     <fragment
         android:id="@+id/introdua"
-        android:name="com.example.wetterbericht.view.onboarding.page.IntroOne"
+        android:name="com.example.wetterbericht.view.activity.onboarding.page.IntroOne"
         android:label="fragment_introdua"
         tools:layout="@layout/fragment_introdua" >
         <action
@@ -58,7 +58,7 @@
     </fragment>
     <activity
         android:id="@+id/onboardmain"
-        android:name="com.example.wetterbericht.view.onboarding.OnBoardingActivity"
+        android:name="com.example.wetterbericht.view.activity.onboarding.OnBoardingActivity"
         android:label="activity_onboardmain"
         tools:layout="@layout/activity_onboardmain" />
     <activity
@@ -68,7 +68,7 @@
         tools:layout="@layout/activity_detail_weather" />
     <fragment
         android:id="@+id/introtiga"
-        android:name="com.example.wetterbericht.view.onboarding.page.IntroThree"
+        android:name="com.example.wetterbericht.view.activity.onboarding.page.IntroThree"
         android:label="fragment_introtiga"
         tools:layout="@layout/fragment_introtiga" >
         <action
@@ -77,7 +77,7 @@
     </fragment>
     <fragment
         android:id="@+id/insertTodoFragment"
-        android:name="com.example.wetterbericht.view.fragment.addnewtask.InsertTodoFragment"
+        android:name="com.example.wetterbericht.view.fragment.insertnewtask.InsertTodoFragment"
         android:label="fragment_insert_todo"
         tools:layout="@layout/fragment_insert_todo" >
         <action

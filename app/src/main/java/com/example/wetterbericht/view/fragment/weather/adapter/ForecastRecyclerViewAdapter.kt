@@ -5,14 +5,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wetterbericht.R
-import com.example.wetterbericht.model.remote.response.Foredata
+import com.example.wetterbericht.model.remote.openweather.forecast.ForecastItem
 import kotlinx.android.synthetic.main.itemcv_forecast.view.*
 import java.time.LocalDate
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 import kotlin.math.round
 
-class ForecastRecyclerViewAdapter(private val foreList : List<Foredata>)
+class ForecastRecyclerViewAdapter(private val foreList : List<ForecastItem>)
     : RecyclerView.Adapter<ForecastRecyclerViewAdapter.ViewHolder>() {
 
     class ViewHolder(itemView : View): RecyclerView.ViewHolder(itemView) {}

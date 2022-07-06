@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.wetterbericht.R
-import com.example.wetterbericht.model.local.entity.WeatherLocal
+import com.example.wetterbericht.model.local.entity.weather.WeatherLocal
 import kotlinx.android.synthetic.main.itemcv_weather_home.view.*
 import kotlin.math.round
 
