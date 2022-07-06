@@ -33,8 +33,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
-
     private fun setDefaultOption(){
         localViewModel.apply {
             insertAlarmChip(ChipAlarm(

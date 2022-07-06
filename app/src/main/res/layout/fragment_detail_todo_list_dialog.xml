@@ -130,7 +130,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView14"
         app:layout_constraintVertical_bias="0.028"
-        tools:listitem="@layout/tvc_todo_subtask" />
+        tools:listitem="@layout/itemcv_todo_subtask" />
 
     <TextView
         android:id="@+id/textView13"
