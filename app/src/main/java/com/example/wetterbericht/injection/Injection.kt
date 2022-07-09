@@ -27,11 +27,10 @@ object Injection {
 
     private fun providedRepository(context: Context): ILocalRepository{
         val localDataSource = provideDataSource(context)
-        //at com.example.wetterbericht.injection.Injection.providedRepository(Injection.kt:29)
         return TodoRepository(localDataSource)
     }
 
-    fun provideDataSource(context: Context): ILocalDataSource{
+    private fun provideDataSource(context: Context): ILocalDataSource{
         return LocalDataSource(context)
     }
 

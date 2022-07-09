@@ -13,7 +13,7 @@ import com.example.wetterbericht.model.repository.localrepository.LocalRepositor
 class LocalViewModel(
     private val repository: LocalRepository,
     private val todoUseCase: LocalUseCase
-    ): ViewModel() {
+): ViewModel() {
 
     fun getOnboardingStatus(): LiveData<Boolean> = repository.getOnboardingStatus()
 
@@ -25,12 +25,11 @@ class LocalViewModel(
         todoUseCase.readTodoLocal()
 
 
-
     fun readWeatherLocal(): LiveData<List<WeatherLocal>> =
         repository.readWeather()
 
     fun readAlarmChip(): LiveData<List<ChipAlarm>> =
-        repository.readChipAlarm()
+        todoUseCase.readChipTime()
 
 
     fun readTodo(name: String): LiveData<List<TodoLocal>> =
@@ -42,7 +41,7 @@ class LocalViewModel(
 
 
     fun getTodayTask(): LiveData<List<TodoLocal>> =
-        repository.getTodayTask()
+        todoUseCase.getTodayTask()
 
     fun getUpcomingTask(): LiveData<List<TodoLocal>> =
         repository.getUpcomingTask()
@@ -50,16 +49,16 @@ class LocalViewModel(
     fun getPreviousTask(): LiveData<List<TodoLocal>> =
         repository.getPreviousTask()
 
-    fun insertTodoLocal(data : TodoLocal) = repository.insertTodo(data)
+    fun insertTodoLocal(data : TodoLocal) = todoUseCase.insertTodoList(data)
 
 
-    fun insertSubtask(data : TodoSubTask) = repository.insertSubtask(data)
+    fun insertSubtask(data : TodoSubTask) = todoUseCase.insertSubtask(data)
 
 
     fun insertWeatherLocal(data : WeatherLocal) = repository.insertWeather(data)
 
 
-    fun insertAlarmChip(alarm : ChipAlarm) = repository.insertAlarmChip(alarm)
+    fun insertAlarmChip(alarm : ChipAlarm) = todoUseCase.insertChipTime(alarm)
 
 
     fun searchLocation(name: String): LiveData<List<WeatherLocal>> =
