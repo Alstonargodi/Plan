@@ -1,6 +1,7 @@
 package com.example.wetterbericht.viewmodel.localviewmodel
 
 import androidx.lifecycle.*
+import com.example.wetterbericht.domain.LocalUseCase
 import com.example.wetterbericht.model.local.*
 import com.example.wetterbericht.model.local.entity.habits.HabitsLocal
 import com.example.wetterbericht.model.local.entity.todolist.TodoLocal
@@ -9,7 +10,10 @@ import com.example.wetterbericht.model.local.entity.todolist.TodoandSubTask
 import com.example.wetterbericht.model.local.entity.weather.WeatherLocal
 import com.example.wetterbericht.model.repository.localrepository.LocalRepository
 
-class LocalViewModel(private val repository: LocalRepository): ViewModel() {
+class LocalViewModel(
+    private val repository: LocalRepository,
+    private val todoUseCase: LocalUseCase
+    ): ViewModel() {
 
     fun getOnboardingStatus(): LiveData<Boolean> = repository.getOnboardingStatus()
 
@@ -17,8 +21,10 @@ class LocalViewModel(private val repository: LocalRepository): ViewModel() {
         repository.savePreferences(onBoard)
     }
 
-    fun readTodoLocal(): LiveData<List<TodoLocal>> =
-        repository.readTodo()
+    fun readTodoLocalUse(): LiveData<List<TodoLocal>> =
+        todoUseCase.readTodoLocal()
+
+
 
     fun readWeatherLocal(): LiveData<List<WeatherLocal>> =
         repository.readWeather()

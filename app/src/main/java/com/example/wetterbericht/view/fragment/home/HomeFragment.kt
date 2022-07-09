@@ -1,6 +1,7 @@
 package com.example.wetterbericht.view.fragment.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -46,6 +47,14 @@ class HomeFragment : Fragment() {
             override fun onTabUnselected(tab: TabLayout.Tab?) {}
             override fun onTabReselected(tab: TabLayout.Tab?) {}
         })
+
+
+        roomViewModel.readTodoLocalUse().observe(viewLifecycleOwner){
+            Log.d("todousecase",it.toString())
+        }
+
+
+
         return binding.root
     }
 
