@@ -23,7 +23,7 @@ class SplashScreen : AppCompatActivity() {
         setContentView(R.layout.activity_splashscreen)
         window.statusBarColor = getColor(R.color.spalshscreen)
 
-        localViewModel.getOnboardingStatus().observe(this){status->
+        localViewModel.getOnBoardingStatus().observe(this){ status->
             if (status){
                 Handler(Looper.getMainLooper()).postDelayed({
                     startActivity(Intent(this, MainActivity::class.java))

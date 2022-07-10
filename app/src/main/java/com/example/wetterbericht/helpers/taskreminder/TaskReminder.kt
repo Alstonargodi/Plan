@@ -12,6 +12,8 @@ import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import com.example.wetterbericht.view.activity.mainactivity.MainActivity
 import com.example.wetterbericht.R
+import com.example.wetterbericht.domain.LocalUseCase
+import com.example.wetterbericht.injection.Injection
 import com.example.wetterbericht.model.local.entity.todolist.TodoLocal
 import com.example.wetterbericht.model.local.database.LocalDatabase
 import com.example.wetterbericht.model.local.preferences.OnboardingPreferences
@@ -23,15 +25,13 @@ import java.util.concurrent.Executors
 class TaskReminder : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         Executors.newSingleThreadExecutor().execute {
-            val task = LocalRepository(
-                LocalDatabase.setDatabase(context),
-                OnboardingPreferences.getInstance(context.dataStore)
-            ).getTodayTaskReminder()
+            val todoUseCase = Injection.providedUseCase(context)
+            val task = todoUseCase.getTodayTaskReminder()
             if (task.isNotEmpty()){
                 showAlarmNotification(context,task)
             }
-
         }
+
     }
 
 

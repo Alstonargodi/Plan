@@ -26,7 +26,8 @@ class LocalRepository(
     private val preferences = onBoardingPreferences
 
     //onboarding
-    fun getOnboardingStatus(): LiveData<Boolean> = preferences.getOnboardingStatus().asLiveData()
+    fun getOnboardingStatus(): LiveData<Boolean> =
+        preferences.getOnboardingStatus().asLiveData()
 
     suspend fun savePreferences(onBoard : Boolean){
         preferences.savePreferences(onBoard)

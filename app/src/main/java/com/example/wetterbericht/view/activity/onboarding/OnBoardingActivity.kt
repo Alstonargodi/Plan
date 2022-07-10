@@ -1,13 +1,10 @@
 package com.example.wetterbericht.view.activity.onboarding
 
-import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.wetterbericht.view.activity.mainactivity.MainActivity
 import com.example.wetterbericht.databinding.ActivityOnboardmainBinding
 import com.example.wetterbericht.view.activity.onboarding.adapter.OnBoardingAdapter
@@ -62,7 +59,7 @@ class OnBoardingActivity : AppCompatActivity() {
 
     private fun onBoardFinished() {
         lifecycleScope.launch {
-            localViewModel.savePreferences(true)
+            localViewModel.saveOnBoardingStatus(true)
         }
     }
 
