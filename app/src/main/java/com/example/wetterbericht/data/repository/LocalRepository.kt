@@ -1,0 +1,97 @@
+package com.example.wetterbericht.data.repository
+
+import androidx.lifecycle.LiveData
+import com.example.wetterbericht.domain.ILocalRepository
+import com.example.wetterbericht.data.local.source.ILocalDataSource
+import com.example.wetterbericht.data.local.ChipAlarm
+import com.example.wetterbericht.data.local.entity.habits.HabitsLocal
+import com.example.wetterbericht.data.local.entity.todolist.TodoLocal
+import com.example.wetterbericht.data.local.entity.todolist.TodoSubTask
+import com.example.wetterbericht.data.local.entity.todolist.TodoandSubTask
+import com.example.wetterbericht.data.local.entity.weather.WeatherLocal
+
+class LocalRepository(
+    private val dataSource: ILocalDataSource
+):ILocalRepository {
+
+    override fun getOnBoardingStatus(): LiveData<Boolean> {
+        return dataSource.getOnBoardingStatus()
+    }
+
+    override suspend fun saveOnBoardingStatus(onBoard: Boolean) {
+       dataSource.saveOnBoardingStatus(onBoard)
+    }
+
+    override fun readChipTime(): LiveData<List<ChipAlarm>> {
+        return dataSource.readChipTime()
+    }
+
+    override fun insertChipTime(alarm: ChipAlarm) {
+        dataSource.insertChipTime(alarm)
+    }
+
+    override fun readTodoLocal(): LiveData<List<TodoLocal>> {
+        return dataSource.readTodoLocal()
+    }
+
+    override fun readTodoSubtask(name: String): LiveData<List<TodoandSubTask>> {
+        return dataSource.readTodoSubtask(name)
+    }
+
+    override fun getTodayTask(date : Int): LiveData<List<TodoLocal>> {
+        return dataSource.getTodayTask(date)
+    }
+
+    override fun getUpComingTask(date: Int): LiveData<List<TodoLocal>> {
+        return dataSource.getUpComingTask(date)
+    }
+
+    override fun getPreviousTask(date: Int): LiveData<List<TodoLocal>> {
+        return dataSource.getPreviousTask(date)
+    }
+
+    override fun getTodayTaskReminder(date: Int): List<TodoLocal> {
+        return dataSource.getTodayTaskReminder(date)
+    }
+
+    override fun insertTodoList(data: TodoLocal) {
+        dataSource.insertTodoList(data)
+    }
+
+    override fun insertSubtask(data: TodoSubTask) {
+        dataSource.insertSubtask(data)
+    }
+
+    override fun deleteTodoList(name: String) {
+        dataSource.deleteTodoList(name)
+    }
+
+    override fun readHabitsLocal(): LiveData<List<HabitsLocal>> {
+        return dataSource.readHabitsLocal()
+    }
+
+    override fun insertHabitsLocal(data: HabitsLocal) {
+        dataSource.insertHabitsLocal(data)
+    }
+
+    override fun deleteHabitsLocal(name: String) {
+        dataSource.deleteHabitsLocal(name)
+    }
+
+    override fun readWeatherLocal(): LiveData<List<WeatherLocal>> {
+       return dataSource.readWeatherLocal()
+    }
+
+    override fun getWeatherCityname(): WeatherLocal {
+        return dataSource.getWeatherCityname()
+    }
+
+    override fun insertWeatherLocal(data: WeatherLocal) {
+        dataSource.insertWeatherLocal(data)
+    }
+
+    override fun searchWeatherLocal(name: String): LiveData<List<WeatherLocal>> {
+        return dataSource.searchWeatherLocal(name)
+    }
+
+}

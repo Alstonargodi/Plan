@@ -1,11 +1,12 @@
 package com.example.wetterbericht.domain
 
 import androidx.lifecycle.LiveData
-import com.example.wetterbericht.model.local.ChipAlarm
-import com.example.wetterbericht.model.local.entity.habits.HabitsLocal
-import com.example.wetterbericht.model.local.entity.todolist.TodoLocal
-import com.example.wetterbericht.model.local.entity.todolist.TodoSubTask
-import com.example.wetterbericht.model.local.entity.todolist.TodoandSubTask
+import com.example.wetterbericht.data.local.ChipAlarm
+import com.example.wetterbericht.data.local.entity.habits.HabitsLocal
+import com.example.wetterbericht.data.local.entity.todolist.TodoLocal
+import com.example.wetterbericht.data.local.entity.todolist.TodoSubTask
+import com.example.wetterbericht.data.local.entity.todolist.TodoandSubTask
+import com.example.wetterbericht.data.local.entity.weather.WeatherLocal
 
 interface ILocalRepository {
     //onboarding
@@ -25,6 +26,14 @@ interface ILocalRepository {
     fun getPreviousTask(date: Int): LiveData<List<TodoLocal>>
     fun deleteTodoList(name : String)
     //habits
+    fun readHabitsLocal(): LiveData<List<HabitsLocal>>
     fun insertHabitsLocal(data: HabitsLocal)
+    fun deleteHabitsLocal(name: String)
+    //weather
+    fun readWeatherLocal(): LiveData<List<WeatherLocal>>
+    fun getWeatherCityname(): WeatherLocal
+    fun insertWeatherLocal(data : WeatherLocal)
+    fun searchWeatherLocal(name: String): LiveData<List<WeatherLocal>>
+
 
 }

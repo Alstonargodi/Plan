@@ -1,17 +1,15 @@
 package com.example.wetterbericht.viewmodel.localviewmodel
 
 import androidx.lifecycle.*
-import com.example.wetterbericht.domain.LocalUseCase
-import com.example.wetterbericht.model.local.*
-import com.example.wetterbericht.model.local.entity.habits.HabitsLocal
-import com.example.wetterbericht.model.local.entity.todolist.TodoLocal
-import com.example.wetterbericht.model.local.entity.todolist.TodoSubTask
-import com.example.wetterbericht.model.local.entity.todolist.TodoandSubTask
-import com.example.wetterbericht.model.local.entity.weather.WeatherLocal
-import com.example.wetterbericht.model.repository.localrepository.LocalRepository
+import com.example.wetterbericht.domain.localusecase.LocalUseCase
+import com.example.wetterbericht.data.local.*
+import com.example.wetterbericht.data.local.entity.habits.HabitsLocal
+import com.example.wetterbericht.data.local.entity.todolist.TodoLocal
+import com.example.wetterbericht.data.local.entity.todolist.TodoSubTask
+import com.example.wetterbericht.data.local.entity.todolist.TodoandSubTask
+import com.example.wetterbericht.data.local.entity.weather.WeatherLocal
 
 class LocalViewModel(
-    private val repository: LocalRepository,
     private val todoUseCase: LocalUseCase
 ): ViewModel() {
 
@@ -24,11 +22,14 @@ class LocalViewModel(
     }
 
     //todolist
-    fun insertTodoLocal(data : TodoLocal) = todoUseCase.insertTodoList(data)
+    fun insertTodoLocal(data : TodoLocal) =
+        todoUseCase.insertTodoList(data)
 
-    fun insertAlarmChip(alarm : ChipAlarm) = todoUseCase.insertChipTime(alarm)
+    fun insertAlarmChip(alarm : ChipAlarm) =
+        todoUseCase.insertChipTime(alarm)
 
-    fun insertSubtask(data : TodoSubTask) = todoUseCase.insertSubtask(data)
+    fun insertSubtask(data : TodoSubTask) =
+        todoUseCase.insertSubtask(data)
 
     fun readTodoLocalUse(): LiveData<List<TodoLocal>> =
         todoUseCase.readTodoLocal()
@@ -48,25 +49,26 @@ class LocalViewModel(
     fun readAlarmChip(): LiveData<List<ChipAlarm>> =
         todoUseCase.readChipTime()
 
-    fun deleteTodoLocal(name : String) = todoUseCase.deleteTodoList(name)
+    fun deleteTodoLocal(name : String) =
+        todoUseCase.deleteTodoList(name)
 
     //habits
     fun readHabits(): LiveData<List<HabitsLocal>> =
-        repository.readHabits()
+        todoUseCase.readHabitsLocal()
 
     fun insertHabits(data : HabitsLocal) =
         todoUseCase.insertHabitsLocal(data)
 
     fun deleteHabits(name : String)=
-        repository.deleteHabits(name)
+        todoUseCase.deleteHabitsLocal(name)
 
     //weather
     fun readWeatherLocal(): LiveData<List<WeatherLocal>> =
-        repository.readWeather()
+        todoUseCase.readWeatherLocal()
 
     fun insertWeatherLocal(data : WeatherLocal) =
-        repository.insertWeather(data)
+        todoUseCase.insertWeatherLocal(data)
 
     fun searchLocation(name: String): LiveData<List<WeatherLocal>> =
-        repository.searchLocation(name)
+        todoUseCase.searchWeatherLocal(name)
 }

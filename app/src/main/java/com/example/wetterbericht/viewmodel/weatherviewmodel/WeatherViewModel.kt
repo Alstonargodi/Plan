@@ -3,9 +3,9 @@ package com.example.wetterbericht.viewmodel.weatherviewmodel
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.wetterbericht.model.remote.openweather.forecast.ForecastResponse
-import com.example.wetterbericht.model.remote.openweather.weather.WeatherResponse
-import com.example.wetterbericht.model.repository.weatherrepository.WeatherRepository
+import com.example.wetterbericht.data.remote.openweather.forecast.ForecastResponse
+import com.example.wetterbericht.data.remote.openweather.weather.WeatherResponse
+import com.example.wetterbericht.data.repository.WeatherRepository
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

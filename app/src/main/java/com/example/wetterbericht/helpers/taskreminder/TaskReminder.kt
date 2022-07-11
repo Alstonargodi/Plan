@@ -10,15 +10,10 @@ import android.content.Intent
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
-import com.example.wetterbericht.view.activity.mainactivity.MainActivity
+import com.example.wetterbericht.presentation.activity.mainactivity.MainActivity
 import com.example.wetterbericht.R
-import com.example.wetterbericht.domain.LocalUseCase
 import com.example.wetterbericht.injection.Injection
-import com.example.wetterbericht.model.local.entity.todolist.TodoLocal
-import com.example.wetterbericht.model.local.database.LocalDatabase
-import com.example.wetterbericht.model.local.preferences.OnboardingPreferences
-import com.example.wetterbericht.model.local.preferences.dataStore
-import com.example.wetterbericht.model.repository.localrepository.LocalRepository
+import com.example.wetterbericht.data.local.entity.todolist.TodoLocal
 import java.util.*
 import java.util.concurrent.Executors
 

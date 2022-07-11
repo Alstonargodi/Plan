@@ -3,15 +3,13 @@ package com.example.wetterbericht.viewmodel.viewmodelfactory
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.wetterbericht.domain.LocalUseCase
+import com.example.wetterbericht.domain.localusecase.LocalUseCase
 import com.example.wetterbericht.injection.Injection
-import com.example.wetterbericht.model.repository.localrepository.LocalRepository
 import com.example.wetterbericht.viewmodel.localviewmodel.LocalViewModel
 import com.example.wetterbericht.viewmodel.weatherviewmodel.WeatherViewModel
 
 @Suppress("UNCHECKED_CAST")
 class ViewModelFactory private constructor(
-    private val localRepository: LocalRepository,
     private val localUseCase: LocalUseCase
 ) : ViewModelProvider.NewInstanceFactory() {
     companion object{
@@ -21,7 +19,6 @@ class ViewModelFactory private constructor(
             if (instance == null){
                 synchronized(ViewModelFactory::class.java){
                     instance = ViewModelFactory(
-                        Injection.provideLocalRepository(context),
                         Injection.providedUseCase(context)
                     )
                 }
@@ -35,7 +32,7 @@ class ViewModelFactory private constructor(
             return WeatherViewModel() as T
         }
         else if (modelClass.isAssignableFrom(LocalViewModel::class.java)){
-            return LocalViewModel(localRepository,localUseCase) as T
+            return LocalViewModel(localUseCase) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
     }
