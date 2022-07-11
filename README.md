@@ -121,6 +121,9 @@ Current
  - [x] Local Database
  - [x] Repository
  - [x] ViewModel
+ - [x] Local Usecase
+ - [ ] Remote Usecase
+ 
 
 Next Plan
 
