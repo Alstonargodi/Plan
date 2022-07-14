@@ -155,7 +155,7 @@
         tools:layout="@layout/fragment_countdown" >
         <argument
             android:name="time"
-            app:argType="integer" />
+            app:argType="long" />
         <argument
             android:name="name"
             app:argType="string" />

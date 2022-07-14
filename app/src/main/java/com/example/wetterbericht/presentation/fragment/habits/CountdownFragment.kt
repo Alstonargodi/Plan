@@ -22,7 +22,7 @@ class CountdownFragment : Fragment() {
         binding = FragmentCountdownBinding.inflate(layoutInflater)
 
         val name = CountdownFragmentArgs.fromBundle(requireArguments()).name
-        val duration = CountdownFragmentArgs.fromBundle(requireArguments()).time.toLong()
+        val duration = CountdownFragmentArgs.fromBundle(requireArguments()).time
 
         binding.tvCountdownName.text = name
 
@@ -33,7 +33,6 @@ class CountdownFragment : Fragment() {
         }
 
         countViewModel.progressBar.observe(viewLifecycleOwner){
-            Log.d("progress bar",it.toString())
             binding.pgcircleCountdown.setProgress(it,true)
         }
 

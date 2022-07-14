@@ -70,7 +70,7 @@ abstract class LocalDatabase: RoomDatabase() {
                        dao.insertHabits(HabitsLocal(
                            item.getInt("id"),
                            item.getString("title"),
-                           item.getInt("focusTime"),
+                           item.getLong("focusTime"),
                            item.getString("startTime"),
                            item.getString("priorityLevel")
                        ))
@@ -85,7 +85,7 @@ abstract class LocalDatabase: RoomDatabase() {
            val builder = StringBuilder()
            val resources = context.resources.openRawResource(R.raw.habit)
            val reader = BufferedReader(InputStreamReader(resources))
-           var line : String
+           var line : String?
            try {
                 while (reader.readLine().also { line = it } != null){
                     builder.append(line)

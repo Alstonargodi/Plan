@@ -15,7 +15,7 @@ data class HabitsLocal(
     @NonNull
     val title : String,
     @NonNull
-    val minuteFocus : Int,
+    val minuteFocus : Long,
     @NonNull
     val startTime : String,
     @NonNull

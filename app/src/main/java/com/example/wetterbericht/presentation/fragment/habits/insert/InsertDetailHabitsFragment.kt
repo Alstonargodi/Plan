@@ -50,7 +50,7 @@ class InsertDetailHabitsFragment : Fragment() {
         val insertData = HabitsLocal(
             0,
             name,
-            duration,
+            duration.toLong(),
             "0",
             ""
         )
