@@ -8,7 +8,7 @@
         android:id="@+id/action_filter"
         android:orderInCategory="101"
         android:title="Filterhabits"
-        android:icon="@drawable/ic_expand_left"
+        android:icon="@drawable/ic_baseline_filter_list_24"
         app:showAsAction="ifRoom"
         />
 </menu>
