@@ -9,7 +9,7 @@
 
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/detailtoolbar4"
+        android:id="@+id/habitstoolbar"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:background="@drawable/bg_headercorner"
@@ -51,7 +51,7 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginStart="10dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="200dp"
                 android:fontFamily="@font/abezeeregular"
                 android:gravity="center|left"
                 android:text="Habits"
@@ -76,7 +76,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailtoolbar4"
+        app:layout_constraintTop_toBottomOf="@+id/habitstoolbar"
         tools:listitem="@layout/itemcv_habits" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -89,6 +89,6 @@
         app:layout_constraintEnd_toEndOf="@+id/rv_habits_list"
         app:layout_constraintHorizontal_bias="0.952"
         app:layout_constraintStart_toStartOf="@+id/rv_habits_list"
-        app:layout_constraintTop_toBottomOf="@+id/detailtoolbar4"
+        app:layout_constraintTop_toBottomOf="@+id/habitstoolbar"
         app:layout_constraintVertical_bias="0.936" />
 </androidx.constraintlayout.widget.ConstraintLayout>

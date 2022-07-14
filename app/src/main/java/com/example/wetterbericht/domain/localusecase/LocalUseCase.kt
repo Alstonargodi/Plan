@@ -1,12 +1,16 @@
 package com.example.wetterbericht.domain.localusecase
 
 import androidx.lifecycle.LiveData
+import androidx.paging.DataSource
+import androidx.paging.PagedList
+import androidx.sqlite.db.SupportSQLiteQuery
 import com.example.wetterbericht.data.local.ChipAlarm
 import com.example.wetterbericht.data.local.entity.habits.HabitsLocal
 import com.example.wetterbericht.data.local.entity.todolist.TodoLocal
 import com.example.wetterbericht.data.local.entity.todolist.TodoSubTask
 import com.example.wetterbericht.data.local.entity.todolist.TodoandSubTask
 import com.example.wetterbericht.data.local.entity.weather.WeatherLocal
+import com.example.wetterbericht.helpers.sortfilter.HabitSortType
 
 interface LocalUseCase{
     //onboarding
@@ -25,7 +29,8 @@ interface LocalUseCase{
     fun getUpComingTask(): LiveData<List<TodoLocal>>
     fun getPreviousTask(): LiveData<List<TodoLocal>>
     fun deleteTodoList(name : String)
-    //habits
+    //habits : LiveData<PagedList<HabitsLocal>>
+    fun getHabits(filter : HabitSortType): LiveData<PagedList<HabitsLocal>>
     fun readHabitsLocal(): LiveData<List<HabitsLocal>>
     fun insertHabitsLocal(data: HabitsLocal)
     fun deleteHabitsLocal(name: String)

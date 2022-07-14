@@ -1,15 +1,18 @@
 package com.example.wetterbericht.presentation.fragment.habits
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.*
+import android.widget.PopupMenu
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.wetterbericht.R
 import com.example.wetterbericht.databinding.FragmentHabitsListBinding
 import com.example.wetterbericht.data.local.entity.habits.HabitsLocal
+import com.example.wetterbericht.helpers.sortfilter.HabitSortType
 import com.example.wetterbericht.presentation.fragment.habits.adapter.HabitsRecyclerViewAdapter
 import com.example.wetterbericht.viewmodel.localviewmodel.LocalViewModel
 import com.example.wetterbericht.viewmodel.viewmodelfactory.ViewModelFactory
@@ -27,9 +30,25 @@ class HabitsListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHabitsListBinding.inflate(layoutInflater)
-
+        setHasOptionsMenu(true)
+        (requireActivity() as AppCompatActivity).setSupportActionBar(binding.habitstoolbar)
         showHabitsList()
         return binding.root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.habits_menu,menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId){
+            R.id.action_filter->{
+                showFilteringMenu()
+                true
+            }
+            else -> { true }
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -50,7 +69,7 @@ class HabitsListFragment : Fragment() {
     }
 
     private fun showHabitsList(){
-        localViewModel.readHabits().observe(viewLifecycleOwner){
+        localViewModel.getHabits().observe(viewLifecycleOwner){
             val adapter = HabitsRecyclerViewAdapter(it)
             val recyclerView = binding.rvHabitsList
             recyclerView.adapter = adapter
@@ -60,12 +79,30 @@ class HabitsListFragment : Fragment() {
                 override fun detailHabitsCallback(data: HabitsLocal) {
                     findNavController().navigate(
                         HabitsListFragmentDirections.actionHabitsListFragmentToCountdownFragment(
-                            data.duration,data.name
+                            data.minuteFocus,data.title
                         )
                     )
                 }
             })
+        }
+    }
 
+    private fun showFilteringMenu(){
+        val view = requireActivity().findViewById<View>(R.id.action_filter) ?: return
+        PopupMenu(requireContext(),view).run {
+            menuInflater.inflate(R.menu.habits_filter, menu)
+
+            setOnMenuItemClickListener {
+                localViewModel.filter(
+                    when(it.itemId){
+                        R.id.minutes_focus -> HabitSortType.MINUTE_FOCUS
+                        R.id.title_name -> HabitSortType.TITLE_NAME
+                        else -> HabitSortType.START_TIME
+                    }
+                )
+                true
+            }
+            show()
         }
     }
 

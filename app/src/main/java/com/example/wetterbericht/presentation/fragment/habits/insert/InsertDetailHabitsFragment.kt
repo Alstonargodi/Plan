@@ -50,7 +50,9 @@ class InsertDetailHabitsFragment : Fragment() {
         val insertData = HabitsLocal(
             0,
             name,
-            duration
+            duration,
+            "0",
+            ""
         )
 
         localViewModel.insertHabits(insertData)

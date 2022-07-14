@@ -25,8 +25,9 @@ import kotlin.math.round
 
 class WeatherFragment : Fragment(){
     private lateinit var binding : FragmentWeatherBinding
-    private val weatherViewModel by viewModels<WeatherViewModel>()
+    private val weatherViewModel : WeatherViewModel by viewModels{ ViewModelFactory.getInstance(requireContext())}
     private val roomViewModel : LocalViewModel by viewModels{ ViewModelFactory.getInstance(requireContext())}
+
     private lateinit var forecastRecyclerViewAdapter: ForecastRecyclerViewAdapter
     private var forecastList = ArrayList<ForecastItem>()
 

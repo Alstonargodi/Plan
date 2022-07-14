@@ -1,7 +1,8 @@
-package com.example.wetterbericht.data.repository
+package com.example.wetterbericht.data.repository.local
 
 import androidx.lifecycle.LiveData
-import com.example.wetterbericht.domain.ILocalRepository
+import androidx.paging.DataSource
+import androidx.sqlite.db.SupportSQLiteQuery
 import com.example.wetterbericht.data.local.source.ILocalDataSource
 import com.example.wetterbericht.data.local.ChipAlarm
 import com.example.wetterbericht.data.local.entity.habits.HabitsLocal
@@ -12,7 +13,7 @@ import com.example.wetterbericht.data.local.entity.weather.WeatherLocal
 
 class LocalRepository(
     private val dataSource: ILocalDataSource
-):ILocalRepository {
+): ILocalRepository {
 
     override fun getOnBoardingStatus(): LiveData<Boolean> {
         return dataSource.getOnBoardingStatus()
@@ -66,6 +67,10 @@ class LocalRepository(
         dataSource.deleteTodoList(name)
     }
 
+    override fun getHabits(query: SupportSQLiteQuery): DataSource.Factory<Int, HabitsLocal> {
+        return dataSource.getHabits(query)
+    }
+
     override fun readHabitsLocal(): LiveData<List<HabitsLocal>> {
         return dataSource.readHabitsLocal()
     }
@@ -82,8 +87,8 @@ class LocalRepository(
        return dataSource.readWeatherLocal()
     }
 
-    override fun getWeatherCityname(): WeatherLocal {
-        return dataSource.getWeatherCityname()
+    override fun getWeatherCityName(): WeatherLocal {
+        return dataSource.getWeatherByCityName()
     }
 
     override fun insertWeatherLocal(data: WeatherLocal) {

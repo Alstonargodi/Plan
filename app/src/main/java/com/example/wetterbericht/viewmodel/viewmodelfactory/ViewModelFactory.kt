@@ -4,13 +4,15 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.wetterbericht.domain.localusecase.LocalUseCase
+import com.example.wetterbericht.domain.remoteusecase.RemoteUseCase
 import com.example.wetterbericht.injection.Injection
 import com.example.wetterbericht.viewmodel.localviewmodel.LocalViewModel
 import com.example.wetterbericht.viewmodel.weatherviewmodel.WeatherViewModel
 
 @Suppress("UNCHECKED_CAST")
 class ViewModelFactory private constructor(
-    private val localUseCase: LocalUseCase
+    private val localUseCase: LocalUseCase,
+    private val remoteUseCase: RemoteUseCase
 ) : ViewModelProvider.NewInstanceFactory() {
     companion object{
         @Volatile
@@ -19,7 +21,8 @@ class ViewModelFactory private constructor(
             if (instance == null){
                 synchronized(ViewModelFactory::class.java){
                     instance = ViewModelFactory(
-                        Injection.providedUseCase(context)
+                        Injection.providedUseCase(context),
+                        Injection.provideWeatherUseCase()
                     )
                 }
             }
@@ -29,7 +32,7 @@ class ViewModelFactory private constructor(
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(WeatherViewModel::class.java)){
-            return WeatherViewModel() as T
+            return WeatherViewModel(remoteUseCase) as T
         }
         else if (modelClass.isAssignableFrom(LocalViewModel::class.java)){
             return LocalViewModel(localUseCase) as T

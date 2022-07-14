@@ -17,8 +17,8 @@ class HabitsRecyclerViewAdapter(private val data : List<HabitsLocal>)
 
     class ViewHolder(val binding : ItemcvHabitsBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(item : HabitsLocal){
-            binding.tvHabitsName.text = item.name
-            binding.tvHabitsDuration.text = item.duration.toString()
+            binding.tvHabitsName.text = item.title
+            binding.tvHabitsDuration.text = item.minuteFocus.toString()
         }
     }
 

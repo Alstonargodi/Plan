@@ -1,13 +1,17 @@
 package com.example.wetterbericht.domain.localusecase
 
 import androidx.lifecycle.LiveData
+import androidx.paging.LivePagedListBuilder
+import androidx.paging.PagedList
 import com.example.wetterbericht.data.local.ChipAlarm
 import com.example.wetterbericht.data.local.entity.habits.HabitsLocal
 import com.example.wetterbericht.data.local.entity.todolist.TodoLocal
 import com.example.wetterbericht.data.local.entity.todolist.TodoSubTask
 import com.example.wetterbericht.data.local.entity.todolist.TodoandSubTask
 import com.example.wetterbericht.data.local.entity.weather.WeatherLocal
-import com.example.wetterbericht.domain.ILocalRepository
+import com.example.wetterbericht.data.repository.local.ILocalRepository
+import com.example.wetterbericht.helpers.sortfilter.HabitSortType
+import com.example.wetterbericht.helpers.sortfilter.SortUtils
 import java.time.LocalDateTime
 
 //where business logic
@@ -66,6 +70,18 @@ class LocalInteractor(private val repository: ILocalRepository): LocalUseCase {
         repository.deleteTodoList(name)
     }
 
+    override fun getHabits(filter : HabitSortType): LiveData<PagedList<HabitsLocal>> {
+        val query = SortUtils.getSortedQuery(filter)
+        val habits = repository.getHabits(query)
+
+        val pagedConfig = PagedList.Config.Builder()
+            .setEnablePlaceholders(true)
+            .setPageSize(5)
+            .build()
+
+        return LivePagedListBuilder(habits,pagedConfig).build()
+    }
+
     override fun readHabitsLocal(): LiveData<List<HabitsLocal>> {
         return repository.readHabitsLocal()
     }
@@ -83,7 +99,7 @@ class LocalInteractor(private val repository: ILocalRepository): LocalUseCase {
     }
 
     override fun getWeatherCityname(): WeatherLocal {
-        return repository.getWeatherCityname()
+        return repository.getWeatherCityName()
     }
 
     override fun insertWeatherLocal(data: WeatherLocal) {

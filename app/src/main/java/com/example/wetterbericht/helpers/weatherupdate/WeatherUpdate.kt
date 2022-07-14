@@ -15,7 +15,6 @@ import com.example.wetterbericht.R
 import com.example.wetterbericht.injection.Injection
 import com.example.wetterbericht.data.local.entity.weather.WeatherLocal
 import com.example.wetterbericht.data.remote.openweather.weather.WeatherResponse
-import com.example.wetterbericht.data.repository.WeatherRepository
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -60,7 +59,7 @@ class WeatherUpdate : BroadcastReceiver() {
     }
 
     private fun updateWeatherData(context: Context,cityName: String){
-        val getWeather = WeatherRepository().getWeatherBySearch(cityName)
+        val getWeather = Injection.provideWeatherUseCase().getWeatherBySearch(cityName)
         getWeather.enqueue(object : Callback<WeatherResponse>{
             override fun onResponse(call: Call<WeatherResponse>, response: Response<WeatherResponse>) {
                 if (response.isSuccessful){

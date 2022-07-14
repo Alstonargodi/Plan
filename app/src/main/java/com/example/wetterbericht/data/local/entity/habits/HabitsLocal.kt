@@ -13,7 +13,11 @@ data class HabitsLocal(
     @NonNull
     val habitsId : Int,
     @NonNull
-    val name : String,
+    val title : String,
     @NonNull
-    val duration : Int,
+    val minuteFocus : Int,
+    @NonNull
+    val startTime : String,
+    @NonNull
+    val priorityLevel : String
 ): Parcelable

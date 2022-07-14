@@ -1,6 +1,8 @@
 package com.example.wetterbericht.data.local.source
 
 import androidx.lifecycle.LiveData
+import androidx.paging.DataSource
+import androidx.sqlite.db.SupportSQLiteQuery
 import com.example.wetterbericht.data.local.ChipAlarm
 import com.example.wetterbericht.data.local.entity.habits.HabitsLocal
 import com.example.wetterbericht.data.local.entity.todolist.TodoLocal
@@ -26,12 +28,13 @@ interface ILocalDataSource {
     fun getPreviousTask(date: Int): LiveData<List<TodoLocal>>
     fun deleteTodoList(name : String)
     //habits
+    fun getHabits(query: SupportSQLiteQuery): DataSource.Factory<Int,HabitsLocal>
     fun readHabitsLocal(): LiveData<List<HabitsLocal>>
     fun insertHabitsLocal(data: HabitsLocal)
     fun deleteHabitsLocal(name: String)
     //weather
     fun readWeatherLocal(): LiveData<List<WeatherLocal>>
-    fun getWeatherCityname(): WeatherLocal
+    fun getWeatherByCityName(): WeatherLocal
     fun insertWeatherLocal(data : WeatherLocal)
     fun searchWeatherLocal(name: String): LiveData<List<WeatherLocal>>
 }

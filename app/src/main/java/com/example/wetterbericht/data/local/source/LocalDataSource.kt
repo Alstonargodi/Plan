@@ -3,6 +3,8 @@ package com.example.wetterbericht.data.local.source
 import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData
+import androidx.paging.DataSource
+import androidx.sqlite.db.SupportSQLiteQuery
 import com.example.wetterbericht.data.local.ChipAlarm
 import com.example.wetterbericht.data.local.database.LocalDatabase
 import com.example.wetterbericht.data.local.entity.habits.HabitsLocal
@@ -15,9 +17,9 @@ import com.example.wetterbericht.data.local.preferences.dataStore
 import java.util.concurrent.Executors
 
 class LocalDataSource(val context: Context) : ILocalDataSource {
-    private val todoDao = LocalDatabase.setDatabase(context).todoDao()
-    private val habitsDao = LocalDatabase.setDatabase(context).habitsDao()
-    private val weatherDao = LocalDatabase.setDatabase(context).weatherDao()
+    private val todoDao = LocalDatabase.setInstance(context).todoDao()
+    private val habitsDao = LocalDatabase.setInstance(context).habitsDao()
+    private val weatherDao = LocalDatabase.setInstance(context).weatherDao()
 
     private val executorService = Executors.newSingleThreadExecutor()
     private val onBoardingPreferences = OnboardingPreferences.getInstance(context.dataStore)
@@ -74,6 +76,10 @@ class LocalDataSource(val context: Context) : ILocalDataSource {
         todoDao.deleteTodo(name)
     }
 
+    override fun getHabits(query: SupportSQLiteQuery): DataSource.Factory<Int, HabitsLocal> {
+        return habitsDao.getHabits(query)
+    }
+
     override fun readHabitsLocal(): LiveData<List<HabitsLocal>> {
        return habitsDao.readHabits()
     }
@@ -90,7 +96,7 @@ class LocalDataSource(val context: Context) : ILocalDataSource {
         return weatherDao.readWeather()
     }
 
-    override fun getWeatherCityname(): WeatherLocal {
+    override fun getWeatherByCityName(): WeatherLocal {
         return weatherDao.getWeatherLocationName()
     }
 

@@ -1,6 +1,9 @@
 package com.example.wetterbericht.viewmodel.localviewmodel
 
 import androidx.lifecycle.*
+import androidx.paging.DataSource
+import androidx.paging.PagedList
+import androidx.sqlite.db.SupportSQLiteQuery
 import com.example.wetterbericht.domain.localusecase.LocalUseCase
 import com.example.wetterbericht.data.local.*
 import com.example.wetterbericht.data.local.entity.habits.HabitsLocal
@@ -8,10 +11,16 @@ import com.example.wetterbericht.data.local.entity.todolist.TodoLocal
 import com.example.wetterbericht.data.local.entity.todolist.TodoSubTask
 import com.example.wetterbericht.data.local.entity.todolist.TodoandSubTask
 import com.example.wetterbericht.data.local.entity.weather.WeatherLocal
+import com.example.wetterbericht.helpers.sortfilter.HabitSortType
 
 class LocalViewModel(
     private val todoUseCase: LocalUseCase
 ): ViewModel() {
+    private val _filter = MutableLiveData<HabitSortType>()
+
+    init {
+        _filter.value = HabitSortType.START_TIME
+    }
 
     //onboarding
     fun getOnBoardingStatus(): LiveData<Boolean> =
@@ -53,6 +62,9 @@ class LocalViewModel(
         todoUseCase.deleteTodoList(name)
 
     //habits
+    fun getHabits(): LiveData<PagedList<HabitsLocal>> =
+        _filter.switchMap { todoUseCase.getHabits(it) }
+
     fun readHabits(): LiveData<List<HabitsLocal>> =
         todoUseCase.readHabitsLocal()
 
@@ -71,4 +83,8 @@ class LocalViewModel(
 
     fun searchLocation(name: String): LiveData<List<WeatherLocal>> =
         todoUseCase.searchWeatherLocal(name)
+
+    fun filter(filter : HabitSortType){
+        _filter.value = filter
+    }
 }
