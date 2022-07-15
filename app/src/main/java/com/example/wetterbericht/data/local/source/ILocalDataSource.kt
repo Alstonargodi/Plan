@@ -18,6 +18,8 @@ interface ILocalDataSource {
     fun readChipTime():LiveData<List<ChipAlarm>>
     fun insertChipTime(alarm: ChipAlarm)
     //todolist
+    fun readNearestActiveTask(): TodoLocal
+    fun readTodoTaskFilter(query: SupportSQLiteQuery): DataSource.Factory<Int,TodoLocal>
     fun insertTodoList(data : TodoLocal)
     fun insertSubtask(data : TodoSubTask)
     fun readTodoSubtask(name : String): LiveData<List<TodoandSubTask>>

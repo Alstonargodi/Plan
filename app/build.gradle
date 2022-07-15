@@ -127,4 +127,7 @@ dependencies {
     implementation "androidx.paging:paging-runtime-ktx:3.1.1"
     implementation "androidx.viewpager2:viewpager2:1.0.0"
 
+    //workermanager
+    implementation "androidx.work:work-runtime-ktx:2.7.1"
+
 }

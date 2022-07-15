@@ -51,7 +51,11 @@ abstract class LocalDatabase: RoomDatabase() {
                         override fun onCreate(db: SupportSQLiteDatabase) {
                             super.onCreate(db)
                             Executors.newSingleThreadExecutor().execute {
-                                fillWithStartingData(context,setInstance(context).habitsDao())
+                                fillWithStartingData(
+                                    context,
+                                    setInstance(context).habitsDao(),
+                                    setInstance(context).todoDao()
+                                )
                             }
                         }
                     }).build()
@@ -61,18 +65,39 @@ abstract class LocalDatabase: RoomDatabase() {
            }
 
 
-       private fun fillWithStartingData(context: Context,dao: HabitsDao){
-            val jsonArray = loadJson(context)
+       private fun fillWithStartingData(
+           context: Context, habitsDao: HabitsDao, todoDao: TodoDao
+       ){
+           val habitsJsonArray = loadHabitsJson(context)
+           val todoJsonArray = loadTodoJson(context)
            try {
-               if (jsonArray != null){
-                   for (i in 0 until jsonArray.length()){
-                       val item = jsonArray.getJSONObject(i)
-                       dao.insertHabits(HabitsLocal(
-                           item.getInt("id"),
-                           item.getString("title"),
-                           item.getLong("focusTime"),
-                           item.getString("startTime"),
-                           item.getString("priorityLevel")
+               if (habitsJsonArray != null){
+                   for (i in 0 until habitsJsonArray.length()){
+                       val item = habitsJsonArray.getJSONObject(i)
+                       habitsDao.insertHabits(HabitsLocal(
+                           habitsId = item.getInt("id"),
+                           title = item.getString("title"),
+                           minuteFocus = item.getLong("focusTime"),
+                           startTime = item.getString("startTime"),
+                           priorityLevel = item.getString("priorityLevel")
+                       ))
+                   }
+               }
+               if (todoJsonArray != null){
+                   for (i in 0 until todoJsonArray.length()){
+                       val item = todoJsonArray.getJSONObject(i)
+                       todoDao.insertTodoList(TodoLocal(
+                           taskID = item.getInt("id").toString(),
+                           title = item.getString("title"),
+                           description = item.getString("description"),
+                           levelColor = item.getInt("levelColor") ,
+                           dateStart = item.getString("dateStart"),
+                           dateDay = item.getInt("dateDay"),
+                           dateDueMillis = item.getLong("dueDate") ,
+                           notificationInterval = item.getInt("notificationInterval"),
+                           startTime = item.getString("startTime"),
+                           endTime = item.getString("endTime") ,
+                           isComplete = item.getBoolean("completed")
                        ))
                    }
                }
@@ -81,7 +106,7 @@ abstract class LocalDatabase: RoomDatabase() {
            }
        }
 
-       private fun loadJson(context: Context): JSONArray?{
+       private fun loadHabitsJson(context: Context): JSONArray?{
            val builder = StringBuilder()
            val resources = context.resources.openRawResource(R.raw.habit)
            val reader = BufferedReader(InputStreamReader(resources))
@@ -96,6 +121,25 @@ abstract class LocalDatabase: RoomDatabase() {
                exception.printStackTrace()
            } catch (exception: JSONException) {
                exception.printStackTrace()
+           }
+           return null
+       }
+
+       private fun loadTodoJson(context: Context): JSONArray?{
+           val builder = StringBuilder()
+           val resources = context.resources.openRawResource(R.raw.task)
+           val reader = BufferedReader(InputStreamReader(resources))
+           var line : String?
+           try {
+               while (reader.readLine().also { line = it } != null){
+                   builder.append(line)
+               }
+               val json = JSONObject(builder.toString())
+               return json.getJSONArray("tasks")
+           }catch (e : IOException){
+               e.printStackTrace()
+           }catch (e : JSONException){
+               e.printStackTrace()
            }
            return null
        }

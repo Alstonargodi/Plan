@@ -5,3 +5,9 @@ enum class HabitSortType {
     MINUTE_FOCUS,
     TITLE_NAME
 }
+
+enum class TodoSortType{
+    ALL_TASKS,
+    ACTIVE_TASKS,
+    COMPLETED_TASKS,
+}

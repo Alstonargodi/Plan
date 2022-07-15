@@ -31,6 +31,14 @@ class LocalRepository(
         dataSource.insertChipTime(alarm)
     }
 
+    override fun readNearestActiveTask(): TodoLocal {
+        return dataSource.readNearestActiveTask()
+    }
+
+    override fun readTodoTaskFilter(query: SupportSQLiteQuery): DataSource.Factory<Int, TodoLocal> {
+       return dataSource.readTodoTaskFilter(query)
+    }
+
     override fun readTodoLocal(): LiveData<List<TodoLocal>> {
         return dataSource.readTodoLocal()
     }

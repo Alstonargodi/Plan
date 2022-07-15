@@ -1,10 +1,7 @@
 package com.example.wetterbericht.data.local.entity.todolist
 
 import android.os.Parcelable
-import androidx.room.Embedded
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import androidx.room.Relation
+import androidx.room.*
 import kotlinx.android.parcel.Parcelize
 
 
@@ -12,19 +9,20 @@ import kotlinx.android.parcel.Parcelize
 @Entity(tableName = "TodoTable")
 data class TodoLocal(
     @PrimaryKey
-    val doId : String,
+    val taskID : String,
     val title: String,
     val description: String,
-    val levelName : String,
     val levelColor : Int,
     val dateStart: String,
-    val notificationInterval : Int,
     val dateDay : Int,
+    val dateDueMillis : Long,
+    val notificationInterval : Int,
     val startTime : String,
     val endTime : String,
+
+    @ColumnInfo(name = "completed")
     val isComplete: Boolean,
 ):Parcelable
-
 
 @Entity
 data class TodoSubTask(
@@ -34,13 +32,12 @@ data class TodoSubTask(
     val isComplete: Boolean,
     val todoId : String
 )
-
 //one to many
 data class TodoandSubTask(
     @Embedded
     val todo : TodoLocal,
     @Relation(
-        parentColumn = "doId",
+        parentColumn = "taskID",
         entityColumn = "todoId"
     )
     val subtask : List<TodoSubTask>

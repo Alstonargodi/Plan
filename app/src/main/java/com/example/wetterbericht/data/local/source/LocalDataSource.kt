@@ -33,39 +33,47 @@ class LocalDataSource(val context: Context) : ILocalDataSource {
     }
 
     override fun readChipTime(): LiveData<List<ChipAlarm>> {
-       return todoDao.readAlarmChip()
+       return todoDao.readTimeChip()
     }
 
     override fun insertChipTime(alarm: ChipAlarm) {
-        executorService.execute { todoDao.insertAlarmChip(alarm) }
+        executorService.execute { todoDao.insertTimeChip(alarm) }
+    }
+
+    override fun readNearestActiveTask(): TodoLocal {
+        return todoDao.readNearestActiveTask()
+    }
+
+    override fun readTodoTaskFilter(query: SupportSQLiteQuery): DataSource.Factory<Int, TodoLocal> {
+        return todoDao.readTodoTaskFilter(query)
     }
 
     override fun readTodoSubtask(name: String): LiveData<List<TodoandSubTask>> {
-        return todoDao.getTodoSubtask(name)
+        return todoDao.readSubTaskTodoList(name)
     }
 
     override fun readTodoLocal(): LiveData<List<TodoLocal>> {
-        return todoDao.readTodo()
+        return todoDao.readTodoList()
     }
 
     override fun getTodayTask(date : Int): LiveData<List<TodoLocal>> {
-       return todoDao.getTodayTask(date)
+       return todoDao.readTodayTask(date)
     }
 
     override fun getUpComingTask(date: Int): LiveData<List<TodoLocal>> {
-        return todoDao.getUpcomingTask(date)
+        return todoDao.readUpcomingTask(date)
     }
 
     override fun getPreviousTask(date: Int): LiveData<List<TodoLocal>> {
-        return todoDao.getPreviousTask(date)
+        return todoDao.readPreviousTask(date)
     }
 
     override fun getTodayTaskReminder(date : Int): List<TodoLocal> {
-        return todoDao.getTodayTaskReminder(date)
+        return todoDao.readTodayTaskReminder(date)
     }
 
     override fun insertTodoList(data: TodoLocal) {
-        executorService.execute { todoDao.insertTodo(data) }
+        executorService.execute { todoDao.insertTodoList(data) }
     }
 
     override fun insertSubtask(data: TodoSubTask) {
@@ -73,7 +81,7 @@ class LocalDataSource(val context: Context) : ILocalDataSource {
     }
 
     override fun deleteTodoList(name: String) {
-        todoDao.deleteTodo(name)
+        todoDao.deleteTodoTask(name)
     }
 
     override fun getHabits(query: SupportSQLiteQuery): DataSource.Factory<Int, HabitsLocal> {

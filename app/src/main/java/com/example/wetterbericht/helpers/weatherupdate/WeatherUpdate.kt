@@ -26,7 +26,7 @@ class WeatherUpdate : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         Executors.newSingleThreadExecutor().execute {
             val weatherDao = Injection.providedUseCase(context)
-            val cityName = weatherDao.getWeatherCityname()
+            val cityName = weatherDao.getWeatherCityName()
             if (cityName.loc.isNotEmpty()){
                 updateWeatherData(context,cityName.loc)
             }

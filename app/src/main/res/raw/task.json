@@ -1,0 +1,43 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Task new",
+      "description": "New task",
+      "levelColor" : -8036865,
+      "dateStart" : "2022-07-15",
+      "dateDay" : 15,
+      "dueDate": 1577811600000,
+      "notificationInterval": 20,
+      "startTime": "07:00",
+      "endTime": "09:00",
+      "completed": false
+    },
+    {
+      "id": 2,
+      "title": "Try test",
+      "description": "trying testing",
+      "levelColor" : -8036865,
+      "dateStart" : "2022-07-15",
+      "dateDay" : 15,
+      "dueDate": 1655226000000,
+      "notificationInterval": 20,
+      "startTime": "07:00",
+      "endTime": "09:00",
+      "completed": true
+    },
+    {
+      "id": 3,
+      "title": "Take exam",
+      "description": "Exam day",
+      "levelColor" : -8036865,
+      "dateStart" : "2022-07-15",
+      "dateDay" : 15,
+      "dueDate": 1735578000000,
+      "notificationInterval": 20,
+      "startTime": "07:00",
+      "endTime": "09:00",
+      "completed": false
+    }
+  ]
+}

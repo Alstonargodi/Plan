@@ -18,14 +18,16 @@ interface ILocalRepository {
     fun readChipTime():LiveData<List<ChipAlarm>>
     fun insertChipTime(alarm: ChipAlarm)
     //todolist
-    fun insertTodoList(data : TodoLocal)
-    fun insertSubtask(data : TodoSubTask)
+    fun readNearestActiveTask(): TodoLocal
+    fun readTodoTaskFilter(query: SupportSQLiteQuery): DataSource.Factory<Int,TodoLocal>
     fun readTodoLocal(): LiveData<List<TodoLocal>>
     fun readTodoSubtask(name : String): LiveData<List<TodoandSubTask>>
     fun getTodayTaskReminder(date : Int): List<TodoLocal>
     fun getTodayTask(date : Int): LiveData<List<TodoLocal>>
     fun getUpComingTask(date : Int): LiveData<List<TodoLocal>>
     fun getPreviousTask(date: Int): LiveData<List<TodoLocal>>
+    fun insertTodoList(data : TodoLocal)
+    fun insertSubtask(data : TodoSubTask)
     fun deleteTodoList(name : String)
     //habits
     fun getHabits(query: SupportSQLiteQuery): DataSource.Factory<Int,HabitsLocal>
@@ -37,6 +39,4 @@ interface ILocalRepository {
     fun getWeatherCityName(): WeatherLocal
     fun insertWeatherLocal(data : WeatherLocal)
     fun searchWeatherLocal(name: String): LiveData<List<WeatherLocal>>
-
-
 }

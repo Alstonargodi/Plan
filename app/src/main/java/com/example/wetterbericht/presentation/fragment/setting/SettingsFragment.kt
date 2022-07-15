@@ -4,28 +4,34 @@ import android.os.Bundle
 import androidx.preference.ListPreference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreference
+import androidx.work.Data
+import androidx.work.PeriodicWorkRequest
+import androidx.work.WorkManager
 import com.example.wetterbericht.R
 import com.example.wetterbericht.helpers.taskreminder.TaskReminder
+import com.example.wetterbericht.helpers.taskreminder.TaskReminderWorkManager
 import com.example.wetterbericht.helpers.weatherupdate.WeatherUpdate
+import java.util.concurrent.TimeUnit
 
 class SettingsFragment : PreferenceFragmentCompat() {
+
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.setting_prefrence, rootKey)
 
         var notify = false
-
         val notificationPreference = findPreference<SwitchPreference>(getString(R.string.pref_key_notify))
         val intervalPreference = findPreference<ListPreference>(getString(R.string.pref_key_interval))
         val weatherPreference = findPreference<SwitchPreference>(getString(R.string.pref_update_weather))
 
         notificationPreference?.setOnPreferenceChangeListener { _, value ->
+
             if (value as Boolean) {
                 notify = value
-                setReminderNotification(1000)
+                setIntervalTime(1000,true)
             }else{
                 notify = false
-                TaskReminder().cancelAlarm(requireContext())
+                setIntervalTime(0,false)
             }
             true
         }
@@ -34,26 +40,24 @@ class SettingsFragment : PreferenceFragmentCompat() {
             if (notify){
                 when(newValue as String){
                     "10 minutes"->{
-                        setReminderNotification(600000)
+                        setIntervalTime(600000,true)
                     }
                     "15 minutes"->{
-                        setReminderNotification(1200000)
+                        setIntervalTime(1200000,true)
                     }
                     "25 minutes"->{
-                        setReminderNotification(1500000)
+                        setIntervalTime(1500000,true)
                     }
                     "30 minutes"->{
-                        setReminderNotification(1800000)
+                        setIntervalTime(1800000,true)
                     }
                     "60 minutes"->{
-                        setReminderNotification(3600000)
+                        setIntervalTime(3600000,true)
                     }
                 }
             }
-
             true
         }
-
 
         weatherPreference?.setOnPreferenceChangeListener { _, value ->
             if (value as Boolean) {
@@ -65,9 +69,23 @@ class SettingsFragment : PreferenceFragmentCompat() {
         }
     }
 
-    private fun setReminderNotification(interval : Long){
-        TaskReminder().setDailyReminder(requireContext(),interval)
+
+    private fun setIntervalTime(intervalTime : Long, activated : Boolean){
+        val workManager = WorkManager.getInstance(requireContext())
+        val notificationBuilder = Data.Builder()
+            .putString(TaskReminder.NOTIFICATION_Channel_ID,"TaskReminder")
+            .build()
+        val periodicAlarm = PeriodicWorkRequest.Builder(
+            TaskReminderWorkManager::class.java,
+            intervalTime,
+            TimeUnit.MILLISECONDS
+        ).setInputData(notificationBuilder).build()
+
+        if(activated){
+            workManager.enqueue(periodicAlarm)
+        }else{
+            workManager.pruneWork()
+            workManager.cancelAllWork()
+        }
     }
-
-
 }

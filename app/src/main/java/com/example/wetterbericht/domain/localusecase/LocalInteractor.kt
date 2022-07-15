@@ -3,6 +3,7 @@ package com.example.wetterbericht.domain.localusecase
 import androidx.lifecycle.LiveData
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
+import androidx.sqlite.db.SupportSQLiteQuery
 import com.example.wetterbericht.data.local.ChipAlarm
 import com.example.wetterbericht.data.local.entity.habits.HabitsLocal
 import com.example.wetterbericht.data.local.entity.todolist.TodoLocal
@@ -12,6 +13,7 @@ import com.example.wetterbericht.data.local.entity.weather.WeatherLocal
 import com.example.wetterbericht.data.repository.local.ILocalRepository
 import com.example.wetterbericht.helpers.sortfilter.HabitSortType
 import com.example.wetterbericht.helpers.sortfilter.SortUtils
+import com.example.wetterbericht.helpers.sortfilter.TodoSortType
 import java.time.LocalDateTime
 
 //where business logic
@@ -32,6 +34,22 @@ class LocalInteractor(private val repository: ILocalRepository): LocalUseCase {
 
     override fun insertChipTime(alarm: ChipAlarm) {
         return repository.insertChipTime(alarm)
+    }
+
+    override fun readNearestActiveTask(): TodoLocal {
+        return repository.readNearestActiveTask()
+    }
+
+    override fun readTodoTaskFilter(query: TodoSortType): LiveData<PagedList<TodoLocal>> {
+        val todoQuery = SortUtils.getFilterQueryTodo(query)
+        val habits = repository.readTodoTaskFilter(todoQuery)
+
+        val pagedConfig = PagedList.Config.Builder()
+            .setEnablePlaceholders(true)
+            .setPageSize(5)
+            .build()
+
+        return LivePagedListBuilder(habits,pagedConfig).build()
     }
 
     override fun readTodoSubtask(name: String): LiveData<List<TodoandSubTask>> {
@@ -71,7 +89,7 @@ class LocalInteractor(private val repository: ILocalRepository): LocalUseCase {
     }
 
     override fun getHabits(filter : HabitSortType): LiveData<PagedList<HabitsLocal>> {
-        val query = SortUtils.getSortedQuery(filter)
+        val query = SortUtils.getSortedQueryHabits(filter)
         val habits = repository.getHabits(query)
 
         val pagedConfig = PagedList.Config.Builder()
@@ -98,7 +116,7 @@ class LocalInteractor(private val repository: ILocalRepository): LocalUseCase {
         return repository.readWeatherLocal()
     }
 
-    override fun getWeatherCityname(): WeatherLocal {
+    override fun getWeatherCityName(): WeatherLocal {
         return repository.getWeatherCityName()
     }
 
