@@ -19,7 +19,6 @@ import com.example.wetterbericht.helpers.ConstantTask.formatDate
 import com.example.wetterbericht.helpers.ConstantTask.formatDay
 import com.example.wetterbericht.helpers.ConstantTask.formatTime
 import com.example.wetterbericht.helpers.ConstantTask.userId
-import com.example.wetterbericht.helpers.taskreminder.TaskReminder
 import com.example.wetterbericht.presentation.fragment.home.adapter.SubtaskRecyclerViewAdapter
 import com.example.wetterbericht.presentation.fragment.insertnewtask.adapter.ChipAdapter
 import com.example.wetterbericht.presentation.fragment.insertnewtask.dialog.InsertAlarmChipFragment
@@ -38,16 +37,13 @@ class InsertTodoFragment : Fragment(){
     private var numberDay = 0
     private var millisDay : Long = 0
     private var taskList = arrayListOf<TodoSubTask>()
-
     private var leveColour by Delegates.notNull<Int>()
-    private lateinit var taskReminder : TaskReminder
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentInsertTodoBinding.inflate(layoutInflater)
-        taskReminder = TaskReminder()
         readChipReminder()
         return binding.root
     }
@@ -77,7 +73,6 @@ class InsertTodoFragment : Fragment(){
                 datePicker()
             }
         }
-
     }
 
 

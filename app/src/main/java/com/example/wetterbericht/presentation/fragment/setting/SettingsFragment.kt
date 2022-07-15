@@ -8,8 +8,8 @@ import androidx.work.Data
 import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkManager
 import com.example.wetterbericht.R
-import com.example.wetterbericht.helpers.taskreminder.TaskReminder
 import com.example.wetterbericht.helpers.taskreminder.TaskReminderWorkManager
+import com.example.wetterbericht.helpers.taskreminder.TaskReminderWorkManager.Companion.NOTIFICATION_Channel_ID
 import com.example.wetterbericht.helpers.weatherupdate.WeatherUpdate
 import java.util.concurrent.TimeUnit
 
@@ -73,7 +73,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
     private fun setIntervalTime(intervalTime : Long, activated : Boolean){
         val workManager = WorkManager.getInstance(requireContext())
         val notificationBuilder = Data.Builder()
-            .putString(TaskReminder.NOTIFICATION_Channel_ID,"TaskReminder")
+            .putString(NOTIFICATION_Channel_ID,"TaskReminder")
             .build()
         val periodicAlarm = PeriodicWorkRequest.Builder(
             TaskReminderWorkManager::class.java,

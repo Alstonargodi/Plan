@@ -1,9 +1,7 @@
 package com.example.wetterbericht.viewmodel.localviewmodel
 
 import androidx.lifecycle.*
-import androidx.paging.DataSource
 import androidx.paging.PagedList
-import androidx.sqlite.db.SupportSQLiteQuery
 import com.example.wetterbericht.domain.localusecase.LocalUseCase
 import com.example.wetterbericht.data.local.*
 import com.example.wetterbericht.data.local.entity.habits.HabitsLocal
@@ -12,14 +10,17 @@ import com.example.wetterbericht.data.local.entity.todolist.TodoSubTask
 import com.example.wetterbericht.data.local.entity.todolist.TodoandSubTask
 import com.example.wetterbericht.data.local.entity.weather.WeatherLocal
 import com.example.wetterbericht.helpers.sortfilter.HabitSortType
+import com.example.wetterbericht.helpers.sortfilter.TodoSortType
 
 class LocalViewModel(
     private val todoUseCase: LocalUseCase
 ): ViewModel() {
-    private val _filter = MutableLiveData<HabitSortType>()
+    private val habitsFilter = MutableLiveData<HabitSortType>()
+    private val todoFilter = MutableLiveData<TodoSortType>()
 
     init {
-        _filter.value = HabitSortType.START_TIME
+        habitsFilter.value = HabitSortType.START_TIME
+        todoFilter.value = TodoSortType.ALL_TASKS
     }
 
     //onboarding
@@ -31,14 +32,8 @@ class LocalViewModel(
     }
 
     //todolist
-    fun insertTodoLocal(data : TodoLocal) =
-        todoUseCase.insertTodoList(data)
-
-    fun insertAlarmChip(alarm : ChipAlarm) =
-        todoUseCase.insertChipTime(alarm)
-
-    fun insertSubtask(data : TodoSubTask) =
-        todoUseCase.insertSubtask(data)
+    fun readTodoTaskFilter(): LiveData<PagedList<TodoLocal>> =
+        todoFilter.switchMap { todoUseCase.readTodoTaskFilter(it) }
 
     fun readTodoLocalUse(): LiveData<List<TodoLocal>> =
         todoUseCase.readTodoLocal()
@@ -58,12 +53,25 @@ class LocalViewModel(
     fun readAlarmChip(): LiveData<List<ChipAlarm>> =
         todoUseCase.readChipTime()
 
+    fun insertTodoLocal(data : TodoLocal) =
+        todoUseCase.insertTodoList(data)
+
+    fun insertAlarmChip(alarm : ChipAlarm) =
+        todoUseCase.insertChipTime(alarm)
+
+    fun insertSubtask(data : TodoSubTask) =
+        todoUseCase.insertSubtask(data)
+
+    fun updateTask(todoLocal: TodoLocal,completed : Boolean){
+
+    }
+
     fun deleteTodoLocal(name : String) =
         todoUseCase.deleteTodoList(name)
 
     //habits
     fun getHabits(): LiveData<PagedList<HabitsLocal>> =
-        _filter.switchMap { todoUseCase.getHabits(it) }
+        habitsFilter.switchMap { todoUseCase.getHabits(it) }
 
     fun readHabits(): LiveData<List<HabitsLocal>> =
         todoUseCase.readHabitsLocal()
@@ -73,6 +81,10 @@ class LocalViewModel(
 
     fun deleteHabits(name : String)=
         todoUseCase.deleteHabitsLocal(name)
+
+    fun filter(filter : HabitSortType){
+        habitsFilter.value = filter
+    }
 
     //weather
     fun readWeatherLocal(): LiveData<List<WeatherLocal>> =
@@ -84,7 +96,5 @@ class LocalViewModel(
     fun searchLocation(name: String): LiveData<List<WeatherLocal>> =
         todoUseCase.searchWeatherLocal(name)
 
-    fun filter(filter : HabitSortType){
-        _filter.value = filter
-    }
+
 }

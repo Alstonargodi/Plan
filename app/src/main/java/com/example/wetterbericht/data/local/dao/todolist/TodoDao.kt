@@ -41,7 +41,7 @@ abstract class TodoDao {
     abstract fun updateTaskStatus(id : Int,status : Boolean)
 
     //task reminder
-    @Query("select * from todotable where dateDay = :date")
+    @Query("select * from todotable where dateDay =:date and completed =0 order by dateDueMillis asc")
     abstract fun readTodayTaskReminder(date: Int): List<TodoLocal>
 
     @Query("select * from todotable where dateDay = :date")

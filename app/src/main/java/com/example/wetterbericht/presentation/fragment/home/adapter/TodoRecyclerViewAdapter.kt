@@ -7,10 +7,13 @@ import androidx.recyclerview.widget.RecyclerView
 import android.annotation.SuppressLint
 import com.example.wetterbericht.databinding.ItemcvTodoBinding
 import com.example.wetterbericht.data.local.entity.todolist.TodoLocal
+import com.example.wetterbericht.presentation.componen.TaskTitleView
 
 
-class TodoRecyclerViewAdapter(private val data: List<TodoLocal>)
-    : RecyclerView.Adapter<TodoRecyclerViewAdapter.ViewHolder>() {
+class TodoRecyclerViewAdapter(
+        private val data: List<TodoLocal>,
+        val onChecked: (TodoLocal,Boolean) -> Unit
+    ) : RecyclerView.Adapter<TodoRecyclerViewAdapter.ViewHolder>() {
 
     private lateinit var detailCallback : DetailCallback
 
@@ -25,6 +28,23 @@ class TodoRecyclerViewAdapter(private val data: List<TodoLocal>)
             detailTodo = item
             binding.tvtoxoCardName.text = item.title
             binding.tvtoxoCardName.setTextColor(item.levelColor)
+
+            when{
+                item.isComplete->{
+                    binding.tvtoxoCardName.state = TaskTitleView.DONE
+                    binding.checkboxtask.isChecked = true
+                }
+                item.dateDueMillis < System.currentTimeMillis()->{
+                    binding.tvtoxoCardName.state = TaskTitleView.OVERDUE
+                    binding.checkboxtask.isChecked = false
+                }
+                else->{
+                    binding.tvtoxoCardName.state = TaskTitleView.NORMAL
+                    binding.checkboxtask.isChecked = false
+                }
+            }
+
+
         }
 
         fun getData(): TodoLocal = detailTodo
@@ -41,6 +61,10 @@ class TodoRecyclerViewAdapter(private val data: List<TodoLocal>)
 
         holder.binding.layTodo.setOnClickListener {
             detailCallback.detailCallBack(item)
+        }
+
+        holder.binding.checkboxtask.setOnClickListener {
+            onChecked(item,!item.isComplete)
         }
 
     }

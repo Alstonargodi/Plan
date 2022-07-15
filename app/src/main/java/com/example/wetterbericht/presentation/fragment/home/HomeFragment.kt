@@ -48,11 +48,9 @@ class HomeFragment : Fragment() {
             override fun onTabReselected(tab: TabLayout.Tab?) {}
         })
 
-
         roomViewModel.readTodoLocalUse().observe(viewLifecycleOwner){
             Log.d("todousecase",it.toString())
         }
-
 
 
         return binding.root
@@ -79,8 +77,8 @@ class HomeFragment : Fragment() {
     }
 
     private fun showTodayTaskList(){
-        roomViewModel.getTodayTask().observe(viewLifecycleOwner) { data ->
-            showTaskList(data)
+        roomViewModel.readTodoTaskFilter().observe(viewLifecycleOwner){ respon ->
+            showTaskList(respon)
         }
     }
 
@@ -97,7 +95,9 @@ class HomeFragment : Fragment() {
     }
 
     private fun showTaskList(data : List<TodoLocal>){
-        val adapter = TodoRecyclerViewAdapter(data)
+        val adapter = TodoRecyclerViewAdapter(data) { value, condition ->
+            roomViewModel.updateTask(value, condition)
+        }
         val taskRecyclerView = binding.rectodo
         taskRecyclerView.adapter = adapter
         taskRecyclerView.layoutManager = LinearLayoutManager(requireContext())

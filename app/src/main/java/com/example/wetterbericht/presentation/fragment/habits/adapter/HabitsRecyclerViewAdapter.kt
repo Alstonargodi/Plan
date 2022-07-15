@@ -19,6 +19,7 @@ class HabitsRecyclerViewAdapter(private val data : List<HabitsLocal>)
         fun bind(item : HabitsLocal){
             binding.tvHabitsName.text = item.title
             binding.tvHabitsDuration.text = item.minuteFocus.toString()
+
         }
     }
 
