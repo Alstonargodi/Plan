@@ -17,18 +17,19 @@ class TodoRecyclerViewAdapter(
 
     private lateinit var detailCallback : DetailCallback
 
-
     fun detailOnItemCallback(callback : DetailCallback){
         this.detailCallback = callback
     }
 
     class ViewHolder(var binding : ItemcvTodoBinding): RecyclerView.ViewHolder(binding.root){
         private lateinit var detailTodo : TodoLocal
+        //TODO 9
         fun bind(item : TodoLocal){
             detailTodo = item
             binding.tvtoxoCardName.text = item.title
             binding.tvtoxoCardName.setTextColor(item.levelColor)
 
+            //TODO 10
             when{
                 item.isComplete->{
                     binding.tvtoxoCardName.state = TaskTitleView.DONE
@@ -43,13 +44,11 @@ class TodoRecyclerViewAdapter(
                     binding.checkboxtask.isChecked = false
                 }
             }
-
-
         }
-
         fun getData(): TodoLocal = detailTodo
     }
 
+    //TODO 8
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(ItemcvTodoBinding.inflate(LayoutInflater.from(parent.context),parent,false))
     }
@@ -66,7 +65,6 @@ class TodoRecyclerViewAdapter(
         holder.binding.checkboxtask.setOnClickListener {
             onChecked(item,!item.isComplete)
         }
-
     }
 
     override fun getItemCount(): Int = data.size

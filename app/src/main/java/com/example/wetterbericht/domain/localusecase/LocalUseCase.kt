@@ -32,6 +32,7 @@ interface LocalUseCase{
     fun insertTodoList(data : TodoLocal)
     fun insertSubtask(data : TodoSubTask)
     fun deleteTodoList(name : String)
+    fun updateTaskStatus(id : Int,status : Boolean)
     //habits
     fun getHabits(filter : HabitSortType): LiveData<PagedList<HabitsLocal>>
     fun readHabitsLocal(): LiveData<List<HabitsLocal>>

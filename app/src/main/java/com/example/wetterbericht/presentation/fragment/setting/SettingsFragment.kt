@@ -14,8 +14,6 @@ import com.example.wetterbericht.helpers.weatherupdate.WeatherUpdate
 import java.util.concurrent.TimeUnit
 
 class SettingsFragment : PreferenceFragmentCompat() {
-
-
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.setting_prefrence, rootKey)
 
@@ -24,8 +22,8 @@ class SettingsFragment : PreferenceFragmentCompat() {
         val intervalPreference = findPreference<ListPreference>(getString(R.string.pref_key_interval))
         val weatherPreference = findPreference<SwitchPreference>(getString(R.string.pref_update_weather))
 
+        //TODO 13
         notificationPreference?.setOnPreferenceChangeListener { _, value ->
-
             if (value as Boolean) {
                 notify = value
                 setIntervalTime(1000,true)

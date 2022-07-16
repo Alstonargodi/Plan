@@ -50,7 +50,7 @@ abstract class LocalDatabase: RoomDatabase() {
                     ).addCallback(object : Callback(){
                         override fun onCreate(db: SupportSQLiteDatabase) {
                             super.onCreate(db)
-                            Executors.newSingleThreadExecutor().execute {
+                            Executors.newSingleThreadExecutor().execute {  //TODO 3
                                 fillWithStartingData(
                                     context,
                                     setInstance(context).habitsDao(),

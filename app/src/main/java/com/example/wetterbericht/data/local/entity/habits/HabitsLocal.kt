@@ -6,6 +6,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 
+//TODO 1
 @Parcelize
 @Entity(tableName = "HabitsTable")
 data class HabitsLocal(

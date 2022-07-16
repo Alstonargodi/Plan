@@ -29,6 +29,7 @@ interface ILocalDataSource {
     fun getUpComingTask(date : Int): LiveData<List<TodoLocal>>
     fun getPreviousTask(date: Int): LiveData<List<TodoLocal>>
     fun deleteTodoList(name : String)
+    fun updateTaskStatus(id : Int,status : Boolean)
     //habits
     fun getHabits(query: SupportSQLiteQuery): DataSource.Factory<Int,HabitsLocal>
     fun readHabitsLocal(): LiveData<List<HabitsLocal>>

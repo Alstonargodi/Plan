@@ -22,8 +22,7 @@ class TaskReminderWorkManager(
     private val todoUse = Injection.providedUseCase(context)
     private val nearestTask = todoUse.getTodayTaskReminder()
 
-    private val pendingIntent: PendingIntent = PendingIntent
-        .getActivity(
+    private val pendingIntent: PendingIntent = PendingIntent.getActivity(
             context,
             NOTIFICATION_ID,
             Intent(context, MainActivity::class.java),
@@ -31,6 +30,7 @@ class TaskReminderWorkManager(
     )
 
     override fun doWork(): Result {
+        //TODO 14
         val notificationPreference = PreferenceManager.getDefaultSharedPreferences(applicationContext)
         val notification = notificationPreference.getBoolean(applicationContext.getString(R.string.pref_key_notify), false)
 

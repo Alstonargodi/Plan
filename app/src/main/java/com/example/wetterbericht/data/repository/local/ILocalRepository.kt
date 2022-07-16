@@ -29,6 +29,7 @@ interface ILocalRepository {
     fun insertTodoList(data : TodoLocal)
     fun insertSubtask(data : TodoSubTask)
     fun deleteTodoList(name : String)
+    fun updateTaskStatus(id : Int,status : Boolean)
     //habits
     fun getHabits(query: SupportSQLiteQuery): DataSource.Factory<Int,HabitsLocal>
     fun readHabitsLocal(): LiveData<List<HabitsLocal>>

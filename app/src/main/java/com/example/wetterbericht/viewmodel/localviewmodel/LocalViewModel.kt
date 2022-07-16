@@ -17,6 +17,7 @@ class LocalViewModel(
 ): ViewModel() {
     private val habitsFilter = MutableLiveData<HabitSortType>()
     private val todoFilter = MutableLiveData<TodoSortType>()
+    val snackbarEvent = MutableLiveData<String>()
 
     init {
         habitsFilter.value = HabitSortType.START_TIME
@@ -62,12 +63,16 @@ class LocalViewModel(
     fun insertSubtask(data : TodoSubTask) =
         todoUseCase.insertSubtask(data)
 
-    fun updateTask(todoLocal: TodoLocal,completed : Boolean){
-
+    fun updateTask(taskId : Int,completed : Boolean){
+        todoUseCase.updateTaskStatus(taskId,completed)
     }
 
-    fun deleteTodoLocal(name : String) =
+    fun deleteTodoLocal(name : String){
         todoUseCase.deleteTodoList(name)
+        snackbarEvent.value = name
+    }
+
+
 
     //habits
     fun getHabits(): LiveData<PagedList<HabitsLocal>> =

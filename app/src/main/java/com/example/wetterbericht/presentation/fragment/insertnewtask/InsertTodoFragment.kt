@@ -60,9 +60,6 @@ class InsertTodoFragment : Fragment(){
             btnAddsubtask.setOnClickListener {
                 insertNewSubtask()
             }
-            btnaddtodo.setOnClickListener {
-                insertTodo()
-            }
             btnTodoTimestart.setOnClickListener {
                 timePicker("start")
             }
@@ -72,9 +69,12 @@ class InsertTodoFragment : Fragment(){
             btnTodoDatestart.setOnClickListener {
                 datePicker()
             }
+            //TODO 12
+            btnaddtodo.setOnClickListener {
+                insertTodo()
+            }
         }
     }
-
 
     private fun readChipReminder(){
         val chipAdapter = ChipAdapter()

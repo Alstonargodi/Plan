@@ -81,7 +81,11 @@ class LocalDataSource(val context: Context) : ILocalDataSource {
     }
 
     override fun deleteTodoList(name: String) {
-        todoDao.deleteTodoTask(name)
+        executorService.execute { todoDao.deleteTodoTask(name) }
+    }
+
+    override fun updateTaskStatus(id: Int, status: Boolean) {
+       executorService.execute { todoDao.updateTaskStatus(id, status) }
     }
 
     override fun getHabits(query: SupportSQLiteQuery): DataSource.Factory<Int, HabitsLocal> {

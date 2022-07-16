@@ -75,6 +75,10 @@ class LocalRepository(
         dataSource.deleteTodoList(name)
     }
 
+    override fun updateTaskStatus(id: Int, status: Boolean) {
+        dataSource.updateTaskStatus(id, status)
+    }
+
     override fun getHabits(query: SupportSQLiteQuery): DataSource.Factory<Int, HabitsLocal> {
         return dataSource.getHabits(query)
     }

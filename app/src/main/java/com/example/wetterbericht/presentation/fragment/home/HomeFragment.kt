@@ -1,13 +1,13 @@
 package com.example.wetterbericht.presentation.fragment.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,8 +20,8 @@ import com.example.wetterbericht.presentation.fragment.home.adapter.TodoRecycler
 import com.example.wetterbericht.presentation.fragment.home.detail.DetailTodoDialog
 import com.example.wetterbericht.viewmodel.localviewmodel.LocalViewModel
 import com.example.wetterbericht.viewmodel.viewmodelfactory.ViewModelFactory
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
-import java.util.concurrent.Executors
 
 class HomeFragment : Fragment() {
     private lateinit var binding : FragmentHomeBinding
@@ -30,11 +30,21 @@ class HomeFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentHomeBinding.inflate(layoutInflater)
         showCurrentWeather()
-
         ItemTouchHelper(Callback()).attachToRecyclerView(binding.rectodo)
-
         binding.tabLayout.getTabAt(1)?.select()
+
         showTodayTaskList()
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.btnHometomenu.setOnClickListener {
+            findNavController().navigate(
+                HomeFragmentDirections.actionFragmentHomeToMenuFragment()
+            )
+        }
 
         binding.tabLayout.setOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
             override fun onTabSelected(tab: TabLayout.Tab?) {
@@ -48,21 +58,6 @@ class HomeFragment : Fragment() {
             override fun onTabReselected(tab: TabLayout.Tab?) {}
         })
 
-        roomViewModel.readTodoLocalUse().observe(viewLifecycleOwner){
-            Log.d("todousecase",it.toString())
-        }
-
-
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding.btnHometomenu.setOnClickListener {
-            findNavController().navigate(
-                HomeFragmentDirections.actionFragmentHomeToMenuFragment()
-            )
-        }
     }
 
     private fun showCurrentWeather(){
@@ -94,10 +89,17 @@ class HomeFragment : Fragment() {
         }
     }
 
+    //TODO 6
     private fun showTaskList(data : List<TodoLocal>){
+
+        //TODO 7
         val adapter = TodoRecyclerViewAdapter(data) { value, condition ->
-            roomViewModel.updateTask(value, condition)
+            roomViewModel.updateTask(
+                value.taskID.toInt(),
+                condition
+            )
         }
+
         val taskRecyclerView = binding.rectodo
         taskRecyclerView.adapter = adapter
         taskRecyclerView.layoutManager = LinearLayoutManager(requireContext())
@@ -122,13 +124,14 @@ class HomeFragment : Fragment() {
         weatherRvAdapter.setData(data)
     }
 
+    //TODO 11
     private fun showDetailTaskDialog(data : TodoLocal){
-            val dialog = DetailTodoDialog()
-            val supportFragment = requireActivity().supportFragmentManager
-            val args = Bundle()
-            args.putParcelable(homepage_key,data)
-            dialog.arguments = args
-            dialog.show(supportFragment, dialog_key)
+        val detailDialog = DetailTodoDialog()
+        val supportFragment = requireActivity().supportFragmentManager
+        val arguments = Bundle()
+        arguments.putParcelable(homepage_key,data)
+        detailDialog.arguments = arguments
+        detailDialog.show(supportFragment, dialog_key)
     }
 
 
@@ -136,26 +139,27 @@ class HomeFragment : Fragment() {
         override fun getMovementFlags(
             recyclerView: RecyclerView,
             viewHolder: RecyclerView.ViewHolder
-        ): Int {
-           return makeMovementFlags(0,ItemTouchHelper.RIGHT)
-        }
+        ): Int { return makeMovementFlags(0,ItemTouchHelper.RIGHT) }
 
         override fun onMove(
             recyclerView: RecyclerView,
             viewHolder: RecyclerView.ViewHolder,
             target: RecyclerView.ViewHolder
-        ): Boolean {
-            return false
-        }
+        ): Boolean { return false }
 
         override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
             val task = (viewHolder as TodoRecyclerViewAdapter.ViewHolder).getData()
-            Toast.makeText(requireContext(),"Delete ${task.title}",Toast.LENGTH_SHORT).show()
-            Executors.newSingleThreadExecutor().execute {
-                roomViewModel.deleteTodoLocal(task.title)
+            roomViewModel.deleteTodoLocal(task.title)
+
+            //TODO 15
+            roomViewModel.snackbarEvent.observe(viewLifecycleOwner){
+                showSnackBar(it)
             }
         }
+    }
 
+    private fun showSnackBar(title : String){
+        Snackbar.make(binding.root,"Delete $title",Snackbar.LENGTH_SHORT).show()
     }
     companion object{
         const val homepage_key = "detailpage"

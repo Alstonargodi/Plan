@@ -40,6 +40,8 @@ class LocalInteractor(private val repository: ILocalRepository): LocalUseCase {
         return repository.readNearestActiveTask()
     }
 
+    //TODO 4
+    //TODO 5
     override fun readTodoTaskFilter(query: TodoSortType): LiveData<PagedList<TodoLocal>> {
         val todoQuery = SortUtils.getFilterQueryTodo(query)
         val habits = repository.readTodoTaskFilter(todoQuery)
@@ -86,6 +88,10 @@ class LocalInteractor(private val repository: ILocalRepository): LocalUseCase {
 
     override fun deleteTodoList(name: String) {
         repository.deleteTodoList(name)
+    }
+
+    override fun updateTaskStatus(id: Int, status: Boolean) {
+        repository.updateTaskStatus(id, status)
     }
 
     override fun getHabits(filter : HabitSortType): LiveData<PagedList<HabitsLocal>> {
