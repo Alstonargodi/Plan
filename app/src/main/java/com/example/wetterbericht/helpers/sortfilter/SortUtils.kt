@@ -5,6 +5,7 @@ import com.example.wetterbericht.data.local.entity.todolist.TodoLocal
 import java.lang.StringBuilder
 
 object SortUtils {
+    //TODO 4 sort type
     fun getSortedQueryHabits(filter : HabitSortType): SimpleSQLiteQuery{
         val simpleQuery = StringBuilder().append("SELECT * FROM habitstable ")
         when(filter){

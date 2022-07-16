@@ -9,7 +9,6 @@ import com.example.wetterbericht.databinding.ItemcvTodoBinding
 import com.example.wetterbericht.data.local.entity.todolist.TodoLocal
 import com.example.wetterbericht.presentation.componen.TaskTitleView
 
-
 class TodoRecyclerViewAdapter(
         private val data: List<TodoLocal>,
         val onChecked: (TodoLocal,Boolean) -> Unit

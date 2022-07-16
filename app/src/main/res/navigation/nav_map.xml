@@ -135,7 +135,7 @@
     </fragment>
     <fragment
         android:id="@+id/habitsListFragment"
-        android:name="com.example.wetterbericht.presentation.fragment.habits.HabitsListFragment"
+        android:name="com.example.wetterbericht.presentation.fragment.habits.listview.HabitsListFragment"
         android:label="fragment_habits_list"
         tools:layout="@layout/fragment_habits_list" >
         <action
@@ -147,6 +147,9 @@
         <action
             android:id="@+id/action_habitsListFragment_to_countdownFragment"
             app:destination="@id/countdownFragment" />
+        <action
+            android:id="@+id/action_habitsListFragment_to_habitsCardViewFragment"
+            app:destination="@id/habitsCardViewFragment" />
     </fragment>
     <fragment
         android:id="@+id/countdownFragment"
@@ -161,6 +164,15 @@
             app:argType="string" />
         <action
             android:id="@+id/action_countdownFragment_to_habitsListFragment"
+            app:destination="@id/habitsListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/habitsCardViewFragment"
+        android:name="com.example.wetterbericht.presentation.fragment.habits.cardview.HabitsCardViewFragment"
+        android:label="fragment_habits_card_view"
+        tools:layout="@layout/fragment_habits_card_view" >
+        <action
+            android:id="@+id/action_habitsCardViewFragment_to_habitsListFragment"
             app:destination="@id/habitsListFragment" />
     </fragment>
 </navigation>

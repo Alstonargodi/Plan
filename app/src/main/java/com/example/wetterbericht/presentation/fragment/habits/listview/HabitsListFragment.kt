@@ -1,6 +1,5 @@
-package com.example.wetterbericht.presentation.fragment.habits
+package com.example.wetterbericht.presentation.fragment.habits.listview
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.widget.PopupMenu
@@ -47,6 +46,11 @@ class HabitsListFragment : Fragment() {
                 showFilteringMenu()
                 true
             }
+            R.id.action_cardview->{
+                findNavController().navigate(
+                    HabitsListFragmentDirections.actionHabitsListFragmentToHabitsCardViewFragment())
+                true
+            }
             else -> { true }
         }
     }
@@ -79,7 +83,7 @@ class HabitsListFragment : Fragment() {
                 override fun detailHabitsCallback(data: HabitsLocal) {
                     findNavController().navigate(
                         HabitsListFragmentDirections.actionHabitsListFragmentToCountdownFragment(
-                            data.minuteFocus,data.title
+                            data.minuteFocus, data.title
                         )
                     )
                 }

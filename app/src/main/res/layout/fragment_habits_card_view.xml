@@ -5,11 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.fragment.habits.listview.HabitsListFragment">
+    tools:context=".presentation.fragment.habits.cardview.HabitsCardViewFragment">
 
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/habitstoolbar"
+        android:id="@+id/habits_toolbar_random"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:background="@drawable/bg_headercorner"
@@ -56,7 +56,7 @@
                 android:layout_marginBottom="10dp"
                 android:fontFamily="@font/abezeeregular"
                 android:gravity="center|left"
-                android:text="Habits"
+                android:text="Random Habits"
                 android:textColor="#2196F3"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -68,29 +68,20 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.appcompat.widget.Toolbar>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_habits_list"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tablayout_habits_random"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/habits_toolbar_random" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewpager_habits"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/habitstoolbar"
-        tools:listitem="@layout/itemcv_habits" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_add_habits"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:src="@drawable/ic_baseline_add_24"
-        app:layout_constraintBottom_toBottomOf="@+id/rv_habits_list"
-        app:layout_constraintEnd_toEndOf="@+id/rv_habits_list"
-        app:layout_constraintHorizontal_bias="0.952"
-        app:layout_constraintStart_toStartOf="@+id/rv_habits_list"
-        app:layout_constraintTop_toBottomOf="@+id/habitstoolbar"
-        app:layout_constraintVertical_bias="0.936" />
+        app:layout_constraintTop_toBottomOf="@+id/tablayout_habits_random" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -71,7 +71,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
     private fun setIntervalTime(intervalTime : Long, activated : Boolean){
         val workManager = WorkManager.getInstance(requireContext())
         val notificationBuilder = Data.Builder()
-            .putString(NOTIFICATION_Channel_ID,"TaskReminder")
+            .putString(NOTIFICATION_Channel_ID,"TaskReminderBroadcast")
             .build()
         val periodicAlarm = PeriodicWorkRequest.Builder(
             TaskReminderWorkManager::class.java,

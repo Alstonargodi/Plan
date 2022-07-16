@@ -69,7 +69,7 @@
         android:theme="@style/Theme.Wetterbericht">
 
         <receiver
-            android:name="com.example.wetterbericht.helpers.taskreminder.TaskReminder"
+            android:name="com.example.wetterbericht.helpers.taskreminder.TaskReminderBroadcast"
             android:enabled="true"
             android:exported="true">
         </receiver>
