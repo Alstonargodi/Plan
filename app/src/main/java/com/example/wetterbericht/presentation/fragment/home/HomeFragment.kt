@@ -92,21 +92,18 @@ class HomeFragment : Fragment() {
     }
 
     private fun showTodayTaskList(){
-        binding.mainDrawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
         homeViewModel.readTodoTaskFilter().observe(viewLifecycleOwner){ respon ->
             showTaskList(respon)
         }
     }
 
     private fun showUpComingTaskList(){
-        binding.mainDrawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED, GravityCompat.END)
         homeViewModel.getUpcomingTask().observe(viewLifecycleOwner) { data ->
             showTaskList(data)
         }
     }
 
     private fun showPreviousTask(){
-        binding.mainDrawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED,GravityCompat.END)
         homeViewModel.getPreviousTask().observe(viewLifecycleOwner) { data ->
             showTaskList(data)
         }
