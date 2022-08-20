@@ -66,7 +66,7 @@ class WeatherViewModel(private val remoteUseCase: RemoteUseCase) : ViewModel() {
     }
 
     companion object{
-        val tag = "weatherviewmodel"
+        const val tag = "weatherviewmodel"
     }
 
 }

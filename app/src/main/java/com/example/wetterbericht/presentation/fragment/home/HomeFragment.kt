@@ -1,18 +1,23 @@
 package com.example.wetterbericht.presentation.fragment.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.wetterbericht.data.local.entity.todolist.TodoLocal
+import com.example.wetterbericht.R
+import com.example.wetterbericht.data.local.entity.dailytask.TodoLocal
 import com.example.wetterbericht.data.local.entity.weather.WeatherLocal
 import com.example.wetterbericht.databinding.FragmentHomeBinding
+import com.example.wetterbericht.helpers.sortfilter.TodoSortType
 import com.example.wetterbericht.presentation.fragment.home.adapter.TodoRecyclerViewAdapter
 import com.example.wetterbericht.presentation.fragment.home.detail.DetailTodoDialog
 import com.example.wetterbericht.presentation.fragment.weather.adapter.WeatherHomeRecyclerViewAdapter
@@ -23,7 +28,7 @@ import com.google.android.material.tabs.TabLayout
 
 class HomeFragment : Fragment() {
     private lateinit var binding : FragmentHomeBinding
-    private val roomViewModel : LocalViewModel by viewModels{ ViewModelFactory.getInstance(requireContext())}
+    private val homeViewModel : LocalViewModel by viewModels{ ViewModelFactory.getInstance(requireContext())}
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentHomeBinding.inflate(layoutInflater)
@@ -33,6 +38,17 @@ class HomeFragment : Fragment() {
 
         showTodayTaskList()
 
+        binding.FilterMenu.setNavigationItemSelectedListener {
+            homeViewModel.taskFilter(
+                when(it.itemId){
+                    R.id.all_task-> TodoSortType.ALL_TASKS
+                    R.id.active_task->TodoSortType.ACTIVE_TASKS
+                    R.id.completed_task->TodoSortType.COMPLETED_TASKS
+                    else -> TodoSortType.ALL_TASKS
+                }
+            )
+            true
+        }
         return binding.root
     }
 
@@ -47,9 +63,15 @@ class HomeFragment : Fragment() {
         binding.tabLayout.setOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 when(tab?.position){
-                    0->{showPreviousTask()}
-                    1->{showTodayTaskList()}
-                    2->{showUpComingTaskList()}
+                    0->{
+                        showPreviousTask()
+                    }
+                    1->{
+                        showTodayTaskList()
+                    }
+                    2->{
+                        showUpComingTaskList()
+                    }
                 }
             }
             override fun onTabUnselected(tab: TabLayout.Tab?) {}
@@ -59,7 +81,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun showCurrentWeather(){
-        roomViewModel.readWeatherLocal().observe(viewLifecycleOwner){
+        homeViewModel.readWeatherLocal().observe(viewLifecycleOwner){
             if (it.isEmpty()){
                 binding.recviewweather.visibility = View.GONE
             }else{
@@ -70,28 +92,30 @@ class HomeFragment : Fragment() {
     }
 
     private fun showTodayTaskList(){
-        roomViewModel.readTodoTaskFilter().observe(viewLifecycleOwner){ respon ->
+        binding.mainDrawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+        homeViewModel.readTodoTaskFilter().observe(viewLifecycleOwner){ respon ->
             showTaskList(respon)
         }
     }
 
     private fun showUpComingTaskList(){
-        roomViewModel.getUpcomingTask().observe(viewLifecycleOwner) { data ->
+        binding.mainDrawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED, GravityCompat.END)
+        homeViewModel.getUpcomingTask().observe(viewLifecycleOwner) { data ->
             showTaskList(data)
         }
     }
 
     private fun showPreviousTask(){
-        roomViewModel.getPreviousTask().observe(viewLifecycleOwner) { data ->
+        binding.mainDrawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED,GravityCompat.END)
+        homeViewModel.getPreviousTask().observe(viewLifecycleOwner) { data ->
             showTaskList(data)
         }
     }
 
-    //TODO 6
+
     private fun showTaskList(data : List<TodoLocal>){
-        //TODO 7
         val adapter = TodoRecyclerViewAdapter(data) { value, condition ->
-            roomViewModel.updateTask(
+            homeViewModel.updateTask(
                 value.taskID.toInt(),
                 condition
             )
@@ -121,7 +145,7 @@ class HomeFragment : Fragment() {
         weatherRvAdapter.setData(data)
     }
 
-    //TODO 11
+
     private fun showDetailTaskDialog(data : TodoLocal){
         val detailDialog = DetailTodoDialog()
         val supportFragment = requireActivity().supportFragmentManager
@@ -146,10 +170,9 @@ class HomeFragment : Fragment() {
 
         override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
             val task = (viewHolder as TodoRecyclerViewAdapter.ViewHolder).getData()
-            roomViewModel.deleteTodoLocal(task.title)
+            homeViewModel.deleteTodoLocal(task.title)
 
-            //TODO 15
-            roomViewModel.snackbarEvent.observe(viewLifecycleOwner){
+            homeViewModel.snackbarEvent.observe(viewLifecycleOwner){
                 showSnackBar(it)
             }
         }

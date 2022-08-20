@@ -1,19 +1,16 @@
-package com.example.wetterbericht.data.local.dao.todolist
+package com.example.wetterbericht.data.local.dao.dailytask
 
 import androidx.lifecycle.LiveData
 import androidx.paging.DataSource
 import androidx.room.*
 import androidx.sqlite.db.SupportSQLiteQuery
 import com.example.wetterbericht.data.local.*
-import com.example.wetterbericht.data.local.entity.todolist.TodoLocal
-import com.example.wetterbericht.data.local.entity.todolist.TodoSubTask
-import com.example.wetterbericht.data.local.entity.todolist.TodoandSubTask
-import com.google.android.gms.tasks.Task
-
+import com.example.wetterbericht.data.local.entity.dailytask.TodoLocal
+import com.example.wetterbericht.data.local.entity.dailytask.TodoSubTask
+import com.example.wetterbericht.data.local.entity.dailytask.TodoandSubTask
 
 @Dao
-abstract class TodoDao {
-
+abstract class DailyTaskDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract fun insertTodoList(data : TodoLocal)
@@ -21,8 +18,6 @@ abstract class TodoDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract fun insertSubTask(sub : TodoSubTask)
 
-
-    //TODO 2
     @RawQuery(observedEntities = [TodoLocal::class])
     abstract fun readTodoTaskFilter(query: SupportSQLiteQuery): DataSource.Factory<Int,TodoLocal>
 
@@ -45,19 +40,17 @@ abstract class TodoDao {
     @Query("delete from TodoTable where title like :name ")
     abstract fun deleteTodoTask(name : String)
 
-
     @Query("select * from todotable where dateDay =:date and completed =0 order by dateDueMillis asc")
     abstract fun readTodayTaskReminder(date: Int): List<TodoLocal>
 
     @Query("select * from todotable where dateDay = :date")
     abstract fun readTodayTask(date: Int):LiveData<List<TodoLocal>>
 
-    @Query("select * from todotable where dateDay > :date")
+    @Query("select * from todotable where dateDay >= :date")
     abstract fun readUpcomingTask(date: Int):LiveData<List<TodoLocal>>
 
-    @Query("select * from todotable where dateDay < :date")
+    @Query("select * from todotable where dateDay <= :date")
     abstract fun readPreviousTask(date: Int):LiveData<List<TodoLocal>>
-
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract fun insertTimeChip(alarm : ChipAlarm)

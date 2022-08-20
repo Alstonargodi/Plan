@@ -1,9 +1,8 @@
-package com.example.wetterbericht.data.local.entity.todolist
+package com.example.wetterbericht.data.local.entity.dailytask
 
 import android.os.Parcelable
 import androidx.room.*
 import kotlinx.android.parcel.Parcelize
-
 
 @Parcelize
 @Entity(tableName = "TodoTable")

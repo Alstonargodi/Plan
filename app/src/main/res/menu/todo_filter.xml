@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view"
+    >
+
     <item
-        android:title="All" />
-    <item
-        android:id="@+id/active_task"
-        android:title="Active" />
-    <item
-        android:id="@+id/completed_task"
-        android:title="Completed" />
+        android:title="Filter task">
+        <menu >
+            <item
+                android:id="@+id/all_task"
+                android:title="All Task" />
+            <item
+                android:id="@+id/active_task"
+                android:title="Active Task" />
+            <item
+                android:id="@+id/completed_task"
+                android:title="Completed Task" />
+        </menu>
+    </item>
 
 </menu>

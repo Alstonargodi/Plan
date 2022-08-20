@@ -7,12 +7,12 @@ import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.wetterbericht.R
 import com.example.wetterbericht.data.local.ChipAlarm
-import com.example.wetterbericht.data.local.entity.todolist.TodoLocal
-import com.example.wetterbericht.data.local.entity.todolist.TodoSubTask
-import com.example.wetterbericht.data.local.dao.habits.HabitsDao
-import com.example.wetterbericht.data.local.dao.todolist.TodoDao
+import com.example.wetterbericht.data.local.entity.dailytask.TodoLocal
+import com.example.wetterbericht.data.local.entity.dailytask.TodoSubTask
+import com.example.wetterbericht.data.local.dao.dailyhabits.DailyHabitsDao
+import com.example.wetterbericht.data.local.dao.dailytask.DailyTaskDao
 import com.example.wetterbericht.data.local.dao.weather.WeatherDao
-import com.example.wetterbericht.data.local.entity.habits.HabitsLocal
+import com.example.wetterbericht.data.local.entity.dailyhabits.DailyHabits
 import com.example.wetterbericht.data.local.entity.weather.WeatherLocal
 import org.json.JSONArray
 import org.json.JSONException
@@ -27,15 +27,15 @@ import java.util.concurrent.Executors
         TodoLocal::class,
         TodoSubTask::class,
         ChipAlarm::class,
-        HabitsLocal::class
+        DailyHabits::class
     ]
     ,version = 1
     ,exportSchema = false
 )
 abstract class LocalDatabase: RoomDatabase() {
-   abstract fun todoDao() : TodoDao
+   abstract fun todoDao() : DailyTaskDao
    abstract fun weatherDao(): WeatherDao
-   abstract fun habitsDao(): HabitsDao
+   abstract fun habitsDao(): DailyHabitsDao
 
    companion object{
        @Volatile
@@ -67,7 +67,7 @@ abstract class LocalDatabase: RoomDatabase() {
 
 
        private fun fillWithStartingData(
-           context: Context, habitsDao: HabitsDao, todoDao: TodoDao
+           context: Context, dailyHabitsDao: DailyHabitsDao, dailyTaskDao: DailyTaskDao
        ){
            val habitsJsonArray = loadHabitsJson(context)
            val todoJsonArray = loadTodoJson(context)
@@ -75,7 +75,7 @@ abstract class LocalDatabase: RoomDatabase() {
                if (habitsJsonArray != null){
                    for (i in 0 until habitsJsonArray.length()){
                        val item = habitsJsonArray.getJSONObject(i)
-                       habitsDao.insertHabits(HabitsLocal(
+                       dailyHabitsDao.insertHabits(DailyHabits(
                            habitsId = item.getInt("id"),
                            title = item.getString("title"),
                            minuteFocus = item.getLong("focusTime"),
@@ -87,7 +87,7 @@ abstract class LocalDatabase: RoomDatabase() {
                if (todoJsonArray != null){
                    for (i in 0 until todoJsonArray.length()){
                        val item = todoJsonArray.getJSONObject(i)
-                       todoDao.insertTodoList(TodoLocal(
+                       dailyTaskDao.insertTodoList(TodoLocal(
                            taskID = item.getInt("id").toString(),
                            title = item.getString("title"),
                            description = item.getString("description"),

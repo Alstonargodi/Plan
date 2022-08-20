@@ -1,14 +1,14 @@
 package com.example.wetterbericht.domain.localusecase
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
-import androidx.sqlite.db.SupportSQLiteQuery
 import com.example.wetterbericht.data.local.ChipAlarm
-import com.example.wetterbericht.data.local.entity.habits.HabitsLocal
-import com.example.wetterbericht.data.local.entity.todolist.TodoLocal
-import com.example.wetterbericht.data.local.entity.todolist.TodoSubTask
-import com.example.wetterbericht.data.local.entity.todolist.TodoandSubTask
+import com.example.wetterbericht.data.local.entity.dailyhabits.DailyHabits
+import com.example.wetterbericht.data.local.entity.dailytask.TodoLocal
+import com.example.wetterbericht.data.local.entity.dailytask.TodoSubTask
+import com.example.wetterbericht.data.local.entity.dailytask.TodoandSubTask
 import com.example.wetterbericht.data.local.entity.weather.WeatherLocal
 import com.example.wetterbericht.data.repository.local.ILocalRepository
 import com.example.wetterbericht.helpers.sortfilter.HabitSortType
@@ -40,12 +40,11 @@ class LocalInteractor(private val repository: ILocalRepository): LocalUseCase {
         return repository.readNearestActiveTask()
     }
 
-    //TODO 4
-    //TODO 5
     override fun readTodoTaskFilter(query: TodoSortType): LiveData<PagedList<TodoLocal>> {
         val todoQuery = SortUtils.getFilterQueryTodo(query)
         val habits = repository.readTodoTaskFilter(todoQuery)
 
+        Log.d("today",todoQuery.sql.toString())
         val pagedConfig = PagedList.Config.Builder()
             .setEnablePlaceholders(true)
             .setPageSize(5)
@@ -94,7 +93,7 @@ class LocalInteractor(private val repository: ILocalRepository): LocalUseCase {
         repository.updateTaskStatus(id, status)
     }
 
-    override fun getHabits(filter : HabitSortType): LiveData<PagedList<HabitsLocal>> {
+    override fun getHabits(filter : HabitSortType): LiveData<PagedList<DailyHabits>> {
         val query = SortUtils.getSortedQueryHabits(filter)
         val habits = repository.getHabits(query)
 
@@ -106,11 +105,11 @@ class LocalInteractor(private val repository: ILocalRepository): LocalUseCase {
         return LivePagedListBuilder(habits,pagedConfig).build()
     }
 
-    override fun readHabitsLocal(): LiveData<List<HabitsLocal>> {
+    override fun readHabitsLocal(): LiveData<List<DailyHabits>> {
         return repository.readHabitsLocal()
     }
 
-    override fun insertHabitsLocal(data: HabitsLocal) {
+    override fun insertHabitsLocal(data: DailyHabits) {
         repository.insertHabitsLocal(data)
     }
 

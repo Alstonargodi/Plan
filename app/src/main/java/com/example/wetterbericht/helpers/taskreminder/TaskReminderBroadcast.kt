@@ -13,7 +13,7 @@ import androidx.core.content.ContextCompat
 import com.example.wetterbericht.presentation.activity.mainactivity.MainActivity
 import com.example.wetterbericht.R
 import com.example.wetterbericht.injection.Injection
-import com.example.wetterbericht.data.local.entity.todolist.TodoLocal
+import com.example.wetterbericht.data.local.entity.dailytask.TodoLocal
 import java.util.*
 import java.util.concurrent.Executors
 

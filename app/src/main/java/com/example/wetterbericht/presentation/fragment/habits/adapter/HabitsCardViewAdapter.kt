@@ -1,28 +1,25 @@
 package com.example.wetterbericht.presentation.fragment.habits.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.wetterbericht.R
-import com.example.wetterbericht.data.local.entity.habits.HabitsLocal
-import com.example.wetterbericht.databinding.ItemcvHabitsBinding
+import com.example.wetterbericht.data.local.entity.dailyhabits.DailyHabits
 import com.example.wetterbericht.databinding.PageritemHabitsBinding
 
 class HabitsCardViewAdapter(
-    private val onClick: (HabitsLocal) -> Unit
+    private val onClick: (DailyHabits) -> Unit
 ): RecyclerView.Adapter<HabitsCardViewAdapter.PagerViewHolder>() {
 
-    private val habitMap = LinkedHashMap<PageType, HabitsLocal>()
+    private val habitMap = LinkedHashMap<PageType, DailyHabits>()
 
-    fun submitData(key: PageType, habit: HabitsLocal) {
+    fun submitData(key: PageType, habit: DailyHabits) {
         habitMap[key] = habit
         notifyDataSetChanged()
     }
 
     inner class PagerViewHolder internal constructor(var binding : PageritemHabitsBinding):
         RecyclerView.ViewHolder(binding.root) {
-            fun bind(pageType : PageType,data : HabitsLocal){
+            fun bind(pageType : PageType,data : DailyHabits){
                 binding.pagerTvTitle.text = data.title
                 binding.pagerTvStartTime.text = data.startTime
                 binding.pagerTvMinutes.text = data.minuteFocus.toString()

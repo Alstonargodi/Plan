@@ -12,8 +12,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.wetterbericht.data.local.entity.todolist.TodoLocal
-import com.example.wetterbericht.data.local.entity.todolist.TodoSubTask
+import com.example.wetterbericht.data.local.entity.dailytask.TodoLocal
+import com.example.wetterbericht.data.local.entity.dailytask.TodoSubTask
 import com.example.wetterbericht.databinding.FragmentInsertTodoBinding
 import com.example.wetterbericht.helpers.ConstantTask.formatDate
 import com.example.wetterbericht.helpers.ConstantTask.formatDay

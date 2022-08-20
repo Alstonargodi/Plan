@@ -4,9 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wetterbericht.databinding.ItemcvHabitsBinding
-import com.example.wetterbericht.data.local.entity.habits.HabitsLocal
+import com.example.wetterbericht.data.local.entity.dailyhabits.DailyHabits
 
-class HabitsRecyclerViewAdapter(private val data : List<HabitsLocal>)
+class HabitsRecyclerViewAdapter(private val data : List<DailyHabits>)
     : RecyclerView.Adapter<HabitsRecyclerViewAdapter.ViewHolder>(){
 
     private lateinit var detailHabitsCallback : DetailHabitsCallback
@@ -16,7 +16,7 @@ class HabitsRecyclerViewAdapter(private val data : List<HabitsLocal>)
     }
 
     class ViewHolder(val binding : ItemcvHabitsBinding): RecyclerView.ViewHolder(binding.root) {
-        fun bind(item : HabitsLocal){
+        fun bind(item : DailyHabits){
             binding.tvHabitsName.text = item.title
             binding.tvHabitsDuration.text = item.minuteFocus.toString()
 
@@ -38,7 +38,7 @@ class HabitsRecyclerViewAdapter(private val data : List<HabitsLocal>)
     override fun getItemCount(): Int = data.size
 
     interface DetailHabitsCallback{
-        fun detailHabitsCallback(data : HabitsLocal)
+        fun detailHabitsCallback(data : DailyHabits)
     }
 
 

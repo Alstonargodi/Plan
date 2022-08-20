@@ -4,10 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.paging.DataSource
 import androidx.sqlite.db.SupportSQLiteQuery
 import com.example.wetterbericht.data.local.ChipAlarm
-import com.example.wetterbericht.data.local.entity.habits.HabitsLocal
-import com.example.wetterbericht.data.local.entity.todolist.TodoLocal
-import com.example.wetterbericht.data.local.entity.todolist.TodoSubTask
-import com.example.wetterbericht.data.local.entity.todolist.TodoandSubTask
+import com.example.wetterbericht.data.local.entity.dailyhabits.DailyHabits
+import com.example.wetterbericht.data.local.entity.dailytask.TodoLocal
+import com.example.wetterbericht.data.local.entity.dailytask.TodoSubTask
+import com.example.wetterbericht.data.local.entity.dailytask.TodoandSubTask
 import com.example.wetterbericht.data.local.entity.weather.WeatherLocal
 
 interface ILocalDataSource {
@@ -31,9 +31,9 @@ interface ILocalDataSource {
     fun deleteTodoList(name : String)
     fun updateTaskStatus(id : Int,status : Boolean)
     //habits
-    fun getHabits(query: SupportSQLiteQuery): DataSource.Factory<Int,HabitsLocal>
-    fun readHabitsLocal(): LiveData<List<HabitsLocal>>
-    fun insertHabitsLocal(data: HabitsLocal)
+    fun getHabits(query: SupportSQLiteQuery): DataSource.Factory<Int,DailyHabits>
+    fun readHabitsLocal(): LiveData<List<DailyHabits>>
+    fun insertHabitsLocal(data: DailyHabits)
     fun deleteHabitsLocal(name: String)
     //weather
     fun readWeatherLocal(): LiveData<List<WeatherLocal>>

@@ -1,4 +1,4 @@
-package com.example.wetterbericht.data.local.entity.habits
+package com.example.wetterbericht.data.local.entity.dailyhabits
 
 import android.os.Parcelable
 import androidx.annotation.NonNull
@@ -6,10 +6,9 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 
-//TODO 1
 @Parcelize
 @Entity(tableName = "HabitsTable")
-data class HabitsLocal(
+data class DailyHabits(
     @PrimaryKey(autoGenerate = true)
     @NonNull
     val habitsId : Int,

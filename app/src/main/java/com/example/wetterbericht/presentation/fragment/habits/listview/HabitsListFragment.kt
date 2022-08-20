@@ -10,7 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wetterbericht.R
 import com.example.wetterbericht.databinding.FragmentHabitsListBinding
-import com.example.wetterbericht.data.local.entity.habits.HabitsLocal
+import com.example.wetterbericht.data.local.entity.dailyhabits.DailyHabits
 import com.example.wetterbericht.helpers.sortfilter.HabitSortType
 import com.example.wetterbericht.presentation.fragment.habits.adapter.HabitsRecyclerViewAdapter
 import com.example.wetterbericht.viewmodel.localviewmodel.LocalViewModel
@@ -80,7 +80,7 @@ class HabitsListFragment : Fragment() {
             recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
             adapter.detailHabitsCallback(object : HabitsRecyclerViewAdapter.DetailHabitsCallback{
-                override fun detailHabitsCallback(data: HabitsLocal) {
+                override fun detailHabitsCallback(data: DailyHabits) {
                     findNavController().navigate(
                         HabitsListFragmentDirections.actionHabitsListFragmentToCountdownFragment(
                             data.minuteFocus, data.title

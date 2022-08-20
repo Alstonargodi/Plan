@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 import android.annotation.SuppressLint
 import com.example.wetterbericht.databinding.ItemcvTodoBinding
-import com.example.wetterbericht.data.local.entity.todolist.TodoLocal
+import com.example.wetterbericht.data.local.entity.dailytask.TodoLocal
 import com.example.wetterbericht.presentation.componen.TaskTitleView
 
 class TodoRecyclerViewAdapter(

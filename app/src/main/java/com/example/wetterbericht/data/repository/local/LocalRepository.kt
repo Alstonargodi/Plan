@@ -5,10 +5,10 @@ import androidx.paging.DataSource
 import androidx.sqlite.db.SupportSQLiteQuery
 import com.example.wetterbericht.data.local.source.ILocalDataSource
 import com.example.wetterbericht.data.local.ChipAlarm
-import com.example.wetterbericht.data.local.entity.habits.HabitsLocal
-import com.example.wetterbericht.data.local.entity.todolist.TodoLocal
-import com.example.wetterbericht.data.local.entity.todolist.TodoSubTask
-import com.example.wetterbericht.data.local.entity.todolist.TodoandSubTask
+import com.example.wetterbericht.data.local.entity.dailyhabits.DailyHabits
+import com.example.wetterbericht.data.local.entity.dailytask.TodoLocal
+import com.example.wetterbericht.data.local.entity.dailytask.TodoSubTask
+import com.example.wetterbericht.data.local.entity.dailytask.TodoandSubTask
 import com.example.wetterbericht.data.local.entity.weather.WeatherLocal
 
 class LocalRepository(
@@ -79,15 +79,15 @@ class LocalRepository(
         dataSource.updateTaskStatus(id, status)
     }
 
-    override fun getHabits(query: SupportSQLiteQuery): DataSource.Factory<Int, HabitsLocal> {
+    override fun getHabits(query: SupportSQLiteQuery): DataSource.Factory<Int, DailyHabits> {
         return dataSource.getHabits(query)
     }
 
-    override fun readHabitsLocal(): LiveData<List<HabitsLocal>> {
+    override fun readHabitsLocal(): LiveData<List<DailyHabits>> {
         return dataSource.readHabitsLocal()
     }
 
-    override fun insertHabitsLocal(data: HabitsLocal) {
+    override fun insertHabitsLocal(data: DailyHabits) {
         dataSource.insertHabitsLocal(data)
     }
 

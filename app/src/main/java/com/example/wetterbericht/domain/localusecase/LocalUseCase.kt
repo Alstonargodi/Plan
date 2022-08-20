@@ -1,14 +1,12 @@
 package com.example.wetterbericht.domain.localusecase
 
 import androidx.lifecycle.LiveData
-import androidx.paging.DataSource
 import androidx.paging.PagedList
-import androidx.sqlite.db.SupportSQLiteQuery
 import com.example.wetterbericht.data.local.ChipAlarm
-import com.example.wetterbericht.data.local.entity.habits.HabitsLocal
-import com.example.wetterbericht.data.local.entity.todolist.TodoLocal
-import com.example.wetterbericht.data.local.entity.todolist.TodoSubTask
-import com.example.wetterbericht.data.local.entity.todolist.TodoandSubTask
+import com.example.wetterbericht.data.local.entity.dailyhabits.DailyHabits
+import com.example.wetterbericht.data.local.entity.dailytask.TodoLocal
+import com.example.wetterbericht.data.local.entity.dailytask.TodoSubTask
+import com.example.wetterbericht.data.local.entity.dailytask.TodoandSubTask
 import com.example.wetterbericht.data.local.entity.weather.WeatherLocal
 import com.example.wetterbericht.helpers.sortfilter.HabitSortType
 import com.example.wetterbericht.helpers.sortfilter.TodoSortType
@@ -34,9 +32,9 @@ interface LocalUseCase{
     fun deleteTodoList(name : String)
     fun updateTaskStatus(id : Int,status : Boolean)
     //habits
-    fun getHabits(filter : HabitSortType): LiveData<PagedList<HabitsLocal>>
-    fun readHabitsLocal(): LiveData<List<HabitsLocal>>
-    fun insertHabitsLocal(data: HabitsLocal)
+    fun getHabits(filter : HabitSortType): LiveData<PagedList<DailyHabits>>
+    fun readHabitsLocal(): LiveData<List<DailyHabits>>
+    fun insertHabitsLocal(data: DailyHabits)
     fun deleteHabitsLocal(name: String)
     //weather
     fun readWeatherLocal(): LiveData<List<WeatherLocal>>

@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.wetterbericht.databinding.FragmentInsertDetailHabitsBinding
-import com.example.wetterbericht.data.local.entity.habits.HabitsLocal
+import com.example.wetterbericht.data.local.entity.dailyhabits.DailyHabits
 import com.example.wetterbericht.viewmodel.localviewmodel.LocalViewModel
 import com.example.wetterbericht.viewmodel.viewmodelfactory.ViewModelFactory
 
@@ -47,7 +47,7 @@ class InsertDetailHabitsFragment : Fragment() {
         val name  = binding.etInserthabitsName.text.toString()
         val duration = binding.etInserthabitsDuration.text.toString().toInt()
 
-        val insertData = HabitsLocal(
+        val insertData = DailyHabits(
             0,
             name,
             duration.toLong(),

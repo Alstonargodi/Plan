@@ -1,13 +1,14 @@
 package com.example.wetterbericht.viewmodel.localviewmodel
 
+import android.util.Log
 import androidx.lifecycle.*
 import androidx.paging.PagedList
 import com.example.wetterbericht.domain.localusecase.LocalUseCase
 import com.example.wetterbericht.data.local.*
-import com.example.wetterbericht.data.local.entity.habits.HabitsLocal
-import com.example.wetterbericht.data.local.entity.todolist.TodoLocal
-import com.example.wetterbericht.data.local.entity.todolist.TodoSubTask
-import com.example.wetterbericht.data.local.entity.todolist.TodoandSubTask
+import com.example.wetterbericht.data.local.entity.dailyhabits.DailyHabits
+import com.example.wetterbericht.data.local.entity.dailytask.TodoLocal
+import com.example.wetterbericht.data.local.entity.dailytask.TodoSubTask
+import com.example.wetterbericht.data.local.entity.dailytask.TodoandSubTask
 import com.example.wetterbericht.data.local.entity.weather.WeatherLocal
 import com.example.wetterbericht.helpers.sortfilter.HabitSortType
 import com.example.wetterbericht.helpers.sortfilter.TodoSortType
@@ -32,9 +33,17 @@ class LocalViewModel(
         todoUseCase.saveOnBoardingStatus(onBoard)
     }
 
+    fun taskFilter(filter :TodoSortType){
+        todoFilter.value = filter
+    }
+
     //todolist
     fun readTodoTaskFilter(): LiveData<PagedList<TodoLocal>> =
-        todoFilter.switchMap { todoUseCase.readTodoTaskFilter(it) }
+        todoFilter.switchMap {
+
+            Log.d("today", todoUseCase.readTodoTaskFilter(it).value.toString())
+            todoUseCase.readTodoTaskFilter(it)
+        }
 
     fun readTodoLocalUse(): LiveData<List<TodoLocal>> =
         todoUseCase.readTodoLocal()
@@ -75,13 +84,13 @@ class LocalViewModel(
 
 
     //habits
-    fun getHabits(): LiveData<PagedList<HabitsLocal>> =
+    fun getHabits(): LiveData<PagedList<DailyHabits>> =
         habitsFilter.switchMap { todoUseCase.getHabits(it) }
 
-    fun readHabits(): LiveData<List<HabitsLocal>> =
+    fun readHabits(): LiveData<List<DailyHabits>> =
         todoUseCase.readHabitsLocal()
 
-    fun insertHabits(data : HabitsLocal) =
+    fun insertHabits(data : DailyHabits) =
         todoUseCase.insertHabitsLocal(data)
 
     fun deleteHabits(name : String)=

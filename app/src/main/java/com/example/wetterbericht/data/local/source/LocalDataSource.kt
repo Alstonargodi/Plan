@@ -1,16 +1,18 @@
 package com.example.wetterbericht.data.local.source
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData
 import androidx.paging.DataSource
+import androidx.sqlite.db.SimpleSQLiteQuery
 import androidx.sqlite.db.SupportSQLiteQuery
 import com.example.wetterbericht.data.local.ChipAlarm
 import com.example.wetterbericht.data.local.database.LocalDatabase
-import com.example.wetterbericht.data.local.entity.habits.HabitsLocal
-import com.example.wetterbericht.data.local.entity.todolist.TodoLocal
-import com.example.wetterbericht.data.local.entity.todolist.TodoSubTask
-import com.example.wetterbericht.data.local.entity.todolist.TodoandSubTask
+import com.example.wetterbericht.data.local.entity.dailyhabits.DailyHabits
+import com.example.wetterbericht.data.local.entity.dailytask.TodoLocal
+import com.example.wetterbericht.data.local.entity.dailytask.TodoSubTask
+import com.example.wetterbericht.data.local.entity.dailytask.TodoandSubTask
 import com.example.wetterbericht.data.local.entity.weather.WeatherLocal
 import com.example.wetterbericht.data.local.preferences.OnboardingPreferences
 import com.example.wetterbericht.data.local.preferences.dataStore
@@ -88,15 +90,15 @@ class LocalDataSource(val context: Context) : ILocalDataSource {
        executorService.execute { todoDao.updateTaskStatus(id, status) }
     }
 
-    override fun getHabits(query: SupportSQLiteQuery): DataSource.Factory<Int, HabitsLocal> {
+    override fun getHabits(query: SupportSQLiteQuery): DataSource.Factory<Int, DailyHabits> {
         return habitsDao.getHabits(query)
     }
 
-    override fun readHabitsLocal(): LiveData<List<HabitsLocal>> {
+    override fun readHabitsLocal(): LiveData<List<DailyHabits>> {
        return habitsDao.readHabits()
     }
 
-    override fun insertHabitsLocal(data: HabitsLocal) {
+    override fun insertHabitsLocal(data: DailyHabits) {
        executorService.execute { habitsDao.insertHabits(data) }
     }
 

@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wetterbericht.databinding.ItemcvTodoSubtaskBinding
-import com.example.wetterbericht.data.local.entity.todolist.TodoSubTask
+import com.example.wetterbericht.data.local.entity.dailytask.TodoSubTask
 
 class SubtaskRecyclerViewAdapter: ListAdapter<TodoSubTask,SubtaskRecyclerViewAdapter.ViewHolder>(ItemComprator()){
 
