@@ -31,13 +31,11 @@ import kotlinx.coroutines.launch
 import java.util.*
 import kotlin.properties.Delegates
 
-
 class InsertTodoFragment : Fragment(){
     private var _binding : FragmentInsertTodoBinding? = null
     private val binding get()= _binding!!
 
     private val roomViewModel : LocalViewModel by viewModels{ ViewModelFactory.getInstance(requireContext())}
-
     private var numberDay = 0
     private var millisDay : Long = 0
     private var taskList = arrayListOf<TodoSubTask>()
