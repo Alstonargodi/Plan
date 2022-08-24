@@ -4,9 +4,12 @@ import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.graphics.Color
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -22,7 +25,6 @@ import com.example.wetterbericht.helpers.ConstantTask.userId
 import com.example.wetterbericht.presentation.fragment.home.adapter.SubtaskRecyclerViewAdapter
 import com.example.wetterbericht.presentation.fragment.insertnewtask.adapter.ChipAdapter
 import com.example.wetterbericht.presentation.fragment.insertnewtask.dialog.InsertAlarmChipFragment
-import com.example.wetterbericht.presentation.fragment.insertnewtask.dialog.InsertTagFragment
 import com.example.wetterbericht.viewmodel.localviewmodel.LocalViewModel
 import com.example.wetterbericht.viewmodel.viewmodelfactory.ViewModelFactory
 import kotlinx.coroutines.launch
@@ -31,20 +33,23 @@ import kotlin.properties.Delegates
 
 
 class InsertTodoFragment : Fragment(){
-    private lateinit var binding : FragmentInsertTodoBinding
+    private var _binding : FragmentInsertTodoBinding? = null
+    private val binding get()= _binding!!
+
     private val roomViewModel : LocalViewModel by viewModels{ ViewModelFactory.getInstance(requireContext())}
 
     private var numberDay = 0
     private var millisDay : Long = 0
     private var taskList = arrayListOf<TodoSubTask>()
-    private var leveColour by Delegates.notNull<Int>()
+    private var leveColour = Color.parseColor("#383636")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentInsertTodoBinding.inflate(layoutInflater)
+        _binding = FragmentInsertTodoBinding.inflate(layoutInflater)
         readChipReminder()
+        binding.etInsertName.setTextColor(leveColour)
         return binding.root
     }
 
@@ -54,9 +59,7 @@ class InsertTodoFragment : Fragment(){
             btnAddchipalarm.setOnClickListener {
                 insertNewStartTimeChip()
             }
-            addtag.setOnClickListener {
-                showAddNewTag()
-            }
+
             btnAddsubtask.setOnClickListener {
                 insertNewSubtask()
             }
@@ -69,7 +72,11 @@ class InsertTodoFragment : Fragment(){
             btnTodoDatestart.setOnClickListener {
                 datePicker()
             }
-            //TODO 12
+
+            binding.btnColorPicker.setOnClickListener {
+                colorPalette()
+            }
+
             btnaddtodo.setOnClickListener {
                 insertTodo()
             }
@@ -107,12 +114,11 @@ class InsertTodoFragment : Fragment(){
 
 
     private fun insertTodo(){
-        val taskName = binding.addtag.text.toString()
+        val taskName = binding.etInsertName.text.toString()
         val description = binding.inserttodoDescription.text.toString()
         val startTime = binding.tvTodoTimestart.text.toString()
         val endTime = binding.tvTodoTimeend.text.toString()
         val dateStart = binding.btnTodoDatestart.text.toString()
-
 
         val insertTask = TodoLocal(
             taskID = userId,
@@ -155,19 +161,6 @@ class InsertTodoFragment : Fragment(){
         })
     }
 
-    private fun showAddNewTag(){
-        val insertDialog = InsertTagFragment()
-        val supportFragment= requireActivity().supportFragmentManager
-        insertDialog.show(supportFragment,"dialog")
-        insertDialog.onTagCallBack(object : InsertTagFragment.onTagCallback{
-            override fun tagCallBack(name: String, color: Int) {
-                binding.addtag.text = name
-                binding.addtag.setTextColor(Color.WHITE)
-                binding.addtag.setBackgroundColor(color)
-                leveColour = color
-            }
-        })
-    }
 
     private fun insertNewSubtask(){
         val taskName = binding.inserttodoSubtask.text.toString()
@@ -223,5 +216,44 @@ class InsertTodoFragment : Fragment(){
             calenderInstance.get(Calendar.DAY_OF_MONTH)
         )
         datePicker.show()
+    }
+
+    private fun colorPalette(){
+        binding.apply {
+            colorNameBlack.apply {
+                visibility = View.VISIBLE
+                setOnClickListener {
+                    leveColour = Color.parseColor("#383636")
+                    changeTextColor()
+                }
+            }
+            colorNameBlue.apply {
+                visibility = View.VISIBLE
+                setOnClickListener {
+                    leveColour = Color.parseColor("#2196F3")
+                    changeTextColor()
+                }
+            }
+            colorNameOrange.apply {
+                visibility = View.VISIBLE
+                setOnClickListener {
+                    leveColour = Color.parseColor("#FF5722")
+                    changeTextColor()
+                }
+            }
+            colorNamePurple.apply {
+                visibility = View.VISIBLE
+                setOnClickListener {
+                    leveColour = Color.parseColor("#3F51B5")
+                    changeTextColor()
+                }
+            }
+        }
+    }
+
+    private fun changeTextColor(){
+        Handler(Looper.getMainLooper()).postDelayed({
+            binding.etInsertName.setTextColor(leveColour)
+        },200)
     }
 }

@@ -102,7 +102,6 @@
                 android:layout_height="33dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="10dp"
                 android:background="#E1E1E1"
                 android:fontFamily="@font/abezeeregular"
                 android:gravity="center|start|center_horizontal"
@@ -120,7 +119,7 @@
                 android:layout_width="0dp"
                 android:layout_height="32dp"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="100dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="15dp"
                 android:fontFamily="@font/robotoregular"
                 android:gravity="center|start"
@@ -132,7 +131,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/addtag" />
+                app:layout_constraintTop_toBottomOf="@+id/color_name_black" />
 
             <EditText
                 android:id="@+id/inserttodo_description"
@@ -163,20 +162,32 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="15dp"
                 android:src="@drawable/plusbg"
-                android:tint="#03A9F4"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/detailtoolbar2" />
+                app:layout_constraintTop_toBottomOf="@+id/detailtoolbar2"
+                app:tint="#03A9F4" />
+
+            <ImageView
+                android:id="@+id/btn_color_picker"
+                android:layout_width="40dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="15dp"
+                android:padding="2dp"
+                android:src="@drawable/ic_baseline_brush_24"
+                app:layout_constraintBottom_toBottomOf="@+id/et_insert_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/et_insert_name"
+                app:tint="#03A9F4" />
 
             <ImageView
                 android:id="@+id/btn_addsubtask"
-                android:layout_width="45dp"
+                android:layout_width="40dp"
                 android:layout_height="33dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="15dp"
                 android:src="@drawable/plusbg"
-                android:tint="#03A9F4"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/inserttitle4" />
+                app:layout_constraintTop_toBottomOf="@+id/inserttitle4"
+                app:tint="#03A9F4" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_chip"
@@ -190,19 +201,18 @@
                 app:layout_constraintTop_toBottomOf="@+id/detailtoolbar2"
                 tools:listitem="@layout/chip_card" />
 
-            <TextView
-                android:id="@+id/addtag"
+            <EditText
+                android:id="@+id/et_insert_name"
                 android:layout_width="0dp"
                 android:layout_height="32dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="15dp"
                 android:background="#E1E1E1"
                 android:fontFamily="@font/abezeeregular"
                 android:gravity="center"
                 android:textColor="#848383"
                 android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btn_color_picker"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/inserttitle" />
@@ -230,7 +240,7 @@
                 android:id="@+id/btn_todo_datestart"
                 android:layout_width="0dp"
                 android:layout_height="32dp"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="15dp"
                 android:drawableLeft="@drawable/ic_baseline_calendar_today_24"
@@ -306,9 +316,9 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="20dp"
                 android:src="@drawable/ic_baseline_timer_24"
-                android:tint="#4CAF50"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rv_chip" />
+                app:layout_constraintTop_toBottomOf="@+id/rv_chip"
+                app:tint="#4CAF50" />
 
             <ImageView
                 android:id="@+id/btn_todo_timeend"
@@ -316,10 +326,56 @@
                 android:layout_height="35dp"
                 android:layout_marginStart="40dp"
                 android:src="@drawable/ic_baseline_timer_24"
-                android:tint="#F44336"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_todo_timestart"
                 app:layout_constraintStart_toEndOf="@+id/tv_todo_timestart"
-                app:layout_constraintTop_toTopOf="@+id/tv_todo_timestart" />
+                app:layout_constraintTop_toTopOf="@+id/tv_todo_timestart"
+                app:tint="#F44336" />
+
+            <TextView
+                android:id="@+id/color_name_black"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:background="#383636"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_insert_name" />
+
+            <TextView
+                android:id="@+id/color_name_orange"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="10dp"
+                android:background="#FF5722"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/color_name_black"
+                app:layout_constraintStart_toEndOf="@+id/color_name_black"
+                app:layout_constraintTop_toTopOf="@+id/color_name_black" />
+
+            <TextView
+                android:id="@+id/color_name_blue"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="10dp"
+                android:background="#2196F3"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/color_name_orange"
+                app:layout_constraintStart_toEndOf="@+id/color_name_orange"
+                app:layout_constraintTop_toTopOf="@+id/color_name_orange"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/color_name_purple"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="10dp"
+                android:background="#3F51B5"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/color_name_blue"
+                app:layout_constraintStart_toEndOf="@+id/color_name_blue"
+                app:layout_constraintTop_toTopOf="@+id/color_name_blue"
+                app:layout_constraintVertical_bias="0.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>

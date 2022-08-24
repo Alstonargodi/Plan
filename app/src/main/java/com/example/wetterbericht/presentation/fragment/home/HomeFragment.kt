@@ -1,12 +1,9 @@
 package com.example.wetterbericht.presentation.fragment.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.GravityCompat
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -27,11 +24,13 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
 
 class HomeFragment : Fragment() {
-    private lateinit var binding : FragmentHomeBinding
+    private var _binding : FragmentHomeBinding? = null
+    private val binding get()= _binding!!
+
     private val homeViewModel : LocalViewModel by viewModels{ ViewModelFactory.getInstance(requireContext())}
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        binding = FragmentHomeBinding.inflate(layoutInflater)
+        _binding = FragmentHomeBinding.inflate(layoutInflater)
         showCurrentWeather()
         ItemTouchHelper(Callback()).attachToRecyclerView(binding.rectodo)
         binding.tabLayout.getTabAt(1)?.select()
@@ -178,6 +177,7 @@ class HomeFragment : Fragment() {
     private fun showSnackBar(title : String){
         Snackbar.make(binding.root,"Delete $title",Snackbar.LENGTH_SHORT).show()
     }
+
     companion object{
         const val homepage_key = "detailpage"
         const val dialog_key = "dialog"
