@@ -6,10 +6,13 @@ import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -48,6 +51,45 @@ class InsertTodoFragment : Fragment(){
         _binding = FragmentInsertTodoBinding.inflate(layoutInflater)
         readChipReminder()
         binding.etInsertName.setTextColor(leveColour)
+
+
+        binding.etInsertName.addTextChangedListener {
+
+        }
+
+        binding.etInsertName.addTextChangedListener ( object : TextWatcher{
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+            override fun afterTextChanged(p0: Editable?) {}
+            override fun onTextChanged(text: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                if (text != null) {
+                    if (text.isEmpty()){
+                        binding.btnColorPicker.visibility = View.GONE
+                        showColorPalette(false)
+                    }else{
+                        binding.btnColorPicker.visibility = View.VISIBLE
+                    }
+                }else{
+                    binding.btnColorPicker.visibility = View.GONE
+                }
+            }
+        })
+
+        binding.etInserttodoSubtask.addTextChangedListener (object : TextWatcher{
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+            override fun afterTextChanged(p0: Editable?) {}
+            override fun onTextChanged(text: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                if (text != null) {
+                    if (text.isEmpty()){
+                        binding.btnAddsubtask.visibility = View.GONE
+                    }else{
+                        binding.btnAddsubtask.visibility = View.VISIBLE
+                    }
+                }else{
+                    binding.btnAddsubtask.visibility = View.GONE
+                }
+            }
+
+        })
         return binding.root
     }
 
@@ -99,7 +141,7 @@ class InsertTodoFragment : Fragment(){
     }
 
     private fun timeStart(time : String){
-        binding.tvTodoTimestart.text = time
+        binding.btnTodoTimestart.text = time
     }
 
     private fun readSubtask(){
@@ -114,8 +156,8 @@ class InsertTodoFragment : Fragment(){
     private fun insertTodo(){
         val taskName = binding.etInsertName.text.toString()
         val description = binding.inserttodoDescription.text.toString()
-        val startTime = binding.tvTodoTimestart.text.toString()
-        val endTime = binding.tvTodoTimeend.text.toString()
+        val startTime = binding.btnTodoTimestart.text.toString()
+        val endTime = binding.btnTodoTimeend.text.toString()
         val dateStart = binding.btnTodoDatestart.text.toString()
 
         val insertTask = TodoLocal(
@@ -161,7 +203,7 @@ class InsertTodoFragment : Fragment(){
 
 
     private fun insertNewSubtask(){
-        val taskName = binding.inserttodoSubtask.text.toString()
+        val taskName = binding.etInserttodoSubtask.text.toString()
         val insertData = TodoSubTask(
             id = 0,
             title = taskName,
@@ -183,10 +225,10 @@ class InsertTodoFragment : Fragment(){
             val timeSet = formatTime.format(timeTemp.time)
             when(tag){
                 "start"->{
-                    binding.tvTodoTimestart.text = timeSet
+                    binding.btnTodoTimestart.text = timeSet
                 }
                 "end"->{
-                    binding.tvTodoTimeend.text = timeSet
+                    binding.btnTodoTimeend.text = timeSet
                 }
             }
         },
@@ -217,30 +259,27 @@ class InsertTodoFragment : Fragment(){
     }
 
     private fun colorPalette(){
+        showColorPalette(true)
         binding.apply {
             colorNameBlack.apply {
-                visibility = View.VISIBLE
                 setOnClickListener {
                     leveColour = Color.parseColor("#383636")
                     changeTextColor()
                 }
             }
             colorNameBlue.apply {
-                visibility = View.VISIBLE
                 setOnClickListener {
                     leveColour = Color.parseColor("#2196F3")
                     changeTextColor()
                 }
             }
             colorNameOrange.apply {
-                visibility = View.VISIBLE
                 setOnClickListener {
                     leveColour = Color.parseColor("#FF5722")
                     changeTextColor()
                 }
             }
             colorNamePurple.apply {
-                visibility = View.VISIBLE
                 setOnClickListener {
                     leveColour = Color.parseColor("#3F51B5")
                     changeTextColor()
@@ -253,5 +292,23 @@ class InsertTodoFragment : Fragment(){
         Handler(Looper.getMainLooper()).postDelayed({
             binding.etInsertName.setTextColor(leveColour)
         },200)
+    }
+
+    private fun showColorPalette(cond : Boolean){
+        if (cond){
+            binding.apply {
+                colorNameBlack.apply { visibility = View.VISIBLE }
+                colorNameBlue.apply { visibility = View.VISIBLE }
+                colorNameOrange.apply { visibility = View.VISIBLE }
+                colorNamePurple.apply { visibility = View.VISIBLE }
+            }
+        }else{
+            binding.apply {
+                colorNameBlack.apply { visibility = View.GONE }
+                colorNameBlue.apply { visibility = View.GONE }
+                colorNameOrange.apply { visibility = View.GONE }
+                colorNamePurple.apply { visibility = View.GONE }
+            }
+        }
     }
 }
