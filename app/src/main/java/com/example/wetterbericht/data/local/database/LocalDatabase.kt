@@ -88,7 +88,7 @@ abstract class LocalDatabase: RoomDatabase() {
                    for (i in 0 until todoJsonArray.length()){
                        val item = todoJsonArray.getJSONObject(i)
                        dailyTaskDao.insertTodoList(TodoLocal(
-                           taskID = item.getInt("id").toString(),
+                           taskID = item.getInt("id"),
                            title = item.getString("title"),
                            description = item.getString("description"),
                            levelColor = item.getInt("levelColor") ,

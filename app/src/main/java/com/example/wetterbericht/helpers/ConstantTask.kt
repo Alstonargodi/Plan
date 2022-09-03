@@ -14,4 +14,6 @@ object ConstantTask {
         .asSequence()
         .map(idSources::get)
         .joinToString("")
+
+    var todoId = (0..100000).random()
 }

@@ -8,7 +8,7 @@ import kotlinx.android.parcel.Parcelize
 @Entity(tableName = "TodoTable")
 data class TodoLocal(
     @PrimaryKey
-    val taskID : String,
+    val taskID : Int,
     val title: String,
     val description: String,
     val levelColor : Int,

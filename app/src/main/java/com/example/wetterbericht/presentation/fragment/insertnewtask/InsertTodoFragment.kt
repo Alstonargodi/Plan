@@ -24,6 +24,7 @@ import com.example.wetterbericht.databinding.FragmentInsertTodoBinding
 import com.example.wetterbericht.helpers.ConstantTask.formatDate
 import com.example.wetterbericht.helpers.ConstantTask.formatDay
 import com.example.wetterbericht.helpers.ConstantTask.formatTime
+import com.example.wetterbericht.helpers.ConstantTask.todoId
 import com.example.wetterbericht.helpers.ConstantTask.userId
 import com.example.wetterbericht.presentation.fragment.home.adapter.SubtaskRecyclerViewAdapter
 import com.example.wetterbericht.presentation.fragment.insertnewtask.adapter.ChipAdapter
@@ -52,10 +53,6 @@ class InsertTodoFragment : Fragment(){
         readChipReminder()
         binding.etInsertName.setTextColor(leveColour)
 
-
-        binding.etInsertName.addTextChangedListener {
-
-        }
 
         binding.etInsertName.addTextChangedListener ( object : TextWatcher{
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
@@ -161,7 +158,7 @@ class InsertTodoFragment : Fragment(){
         val dateStart = binding.btnTodoDatestart.text.toString()
 
         val insertTask = TodoLocal(
-            taskID = userId,
+            taskID = todoId,
             title = taskName,
             description = description,
             levelColor = leveColour,
