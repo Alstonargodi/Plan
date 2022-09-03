@@ -11,8 +11,6 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -33,7 +31,6 @@ import com.example.wetterbericht.viewmodel.localviewmodel.LocalViewModel
 import com.example.wetterbericht.viewmodel.viewmodelfactory.ViewModelFactory
 import kotlinx.coroutines.launch
 import java.util.*
-import kotlin.properties.Delegates
 
 class InsertTodoFragment : Fragment(){
     private var _binding : FragmentInsertTodoBinding? = null
@@ -124,7 +121,9 @@ class InsertTodoFragment : Fragment(){
         val chipAdapter = ChipAdapter()
         val sideRecyclerView = binding.rvChip
         sideRecyclerView.adapter = chipAdapter
-        sideRecyclerView.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+        sideRecyclerView.layoutManager = LinearLayoutManager(
+            requireContext(),LinearLayoutManager.HORIZONTAL,false
+        )
 
         roomViewModel.readAlarmChip().observe(viewLifecycleOwner){
             chipAdapter.setData(it)

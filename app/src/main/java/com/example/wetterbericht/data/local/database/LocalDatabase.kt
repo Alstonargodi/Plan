@@ -20,6 +20,7 @@ import org.json.JSONObject
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
+import java.time.LocalDateTime
 import java.util.concurrent.Executors
 
 @Database(entities = [
@@ -66,11 +67,17 @@ abstract class LocalDatabase: RoomDatabase() {
            }
 
 
+
+       /*
+            populate task database for testing purpose
+        */
        private fun fillWithStartingData(
            context: Context, dailyHabitsDao: DailyHabitsDao, dailyTaskDao: DailyTaskDao
        ){
            val habitsJsonArray = loadHabitsJson(context)
            val todoJsonArray = loadTodoJson(context)
+           val currentDate = LocalDateTime.now().dayOfMonth
+
            try {
                if (habitsJsonArray != null){
                    for (i in 0 until habitsJsonArray.length()){
@@ -93,7 +100,7 @@ abstract class LocalDatabase: RoomDatabase() {
                            description = item.getString("description"),
                            levelColor = item.getInt("levelColor") ,
                            dateStart = item.getString("dateStart"),
-                           dateDay = item.getInt("dateDay"),
+                           dateDay = currentDate,
                            dateDueMillis = item.getLong("dueDate") ,
                            notificationInterval = item.getInt("notificationInterval"),
                            startTime = item.getString("startTime"),

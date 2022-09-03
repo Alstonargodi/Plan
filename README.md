@@ -1,3 +1,15 @@
+
+
+Dump for development :
+- [ ] onCheckBox complete
+      app crash when check complete task
+- [ ] Recycler View
+     App crash when scroll down list up to 20 data
+     java.lang.NullPointerException: Parameter specified as non-null is null:
+     method kotlin.jvm.internal.Intrinsics.checkNotNullParameter, parameter item
+
+
+   
 <h1>Wetterdo</h1>
 
 when I'm going to plan something sometimes I have to look at the weather outside and then open the weather app, then I have an idea why not combine the two?. so I made this project,this app mixed beween todolist and weather app.
@@ -66,4 +78,3 @@ Main user interface
 Detailed weather background change by condition
 
 <img src="https://github.com/Alstonargodi/Wetterdo/blob/master/weather.png" width="100%">
-

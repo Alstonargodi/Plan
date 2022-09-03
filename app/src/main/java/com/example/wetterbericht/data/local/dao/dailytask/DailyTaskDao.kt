@@ -46,10 +46,10 @@ abstract class DailyTaskDao {
     @Query("select * from todotable where dateDay = :date")
     abstract fun readTodayTask(date: Int):LiveData<List<TodoLocal>>
 
-    @Query("select * from todotable where dateDay >= :date")
+    @Query("select * from todotable where dateDay > :date")
     abstract fun readUpcomingTask(date: Int):LiveData<List<TodoLocal>>
 
-    @Query("select * from todotable where dateDay <= :date")
+    @Query("select * from todotable where dateDay < :date")
     abstract fun readPreviousTask(date: Int):LiveData<List<TodoLocal>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

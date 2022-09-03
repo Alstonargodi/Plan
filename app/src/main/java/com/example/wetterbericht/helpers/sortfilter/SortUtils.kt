@@ -25,8 +25,6 @@ object SortUtils {
     fun getFilterQueryTodo(filter : TodoSortType): SimpleSQLiteQuery{
         val currentDate = LocalDateTime.now().dayOfMonth
         var simpleQuery = ""
-
-//      select * from todotable where dateDay =:20 and completed =1
         when(filter){
             TodoSortType.ALL_TASKS->{
                 simpleQuery =
