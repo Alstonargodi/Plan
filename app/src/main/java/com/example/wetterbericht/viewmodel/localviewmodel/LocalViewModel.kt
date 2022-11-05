@@ -1,74 +1,114 @@
 package com.example.wetterbericht.viewmodel.localviewmodel
 
+import android.util.Log
 import androidx.lifecycle.*
-import com.example.wetterbericht.model.local.*
-import com.example.wetterbericht.model.local.entity.habits.HabitsLocal
-import com.example.wetterbericht.model.local.entity.todolist.TodoLocal
-import com.example.wetterbericht.model.local.entity.todolist.TodoSubTask
-import com.example.wetterbericht.model.local.entity.todolist.TodoandSubTask
-import com.example.wetterbericht.model.local.entity.weather.WeatherLocal
-import com.example.wetterbericht.model.repository.localrepository.LocalRepository
+import androidx.paging.PagedList
+import com.example.wetterbericht.domain.localusecase.LocalUseCase
+import com.example.wetterbericht.data.local.*
+import com.example.wetterbericht.data.local.entity.dailyhabits.DailyHabits
+import com.example.wetterbericht.data.local.entity.dailytask.TodoLocal
+import com.example.wetterbericht.data.local.entity.dailytask.TodoSubTask
+import com.example.wetterbericht.data.local.entity.dailytask.TodoandSubTask
+import com.example.wetterbericht.data.local.entity.weather.WeatherLocal
+import com.example.wetterbericht.helpers.sortfilter.HabitSortType
+import com.example.wetterbericht.helpers.sortfilter.TodoSortType
 
-class LocalViewModel(private val repository: LocalRepository): ViewModel() {
+class LocalViewModel(
+    private val todoUseCase: LocalUseCase
+): ViewModel() {
+    private val habitsFilter = MutableLiveData<HabitSortType>()
+    private val todoFilter = MutableLiveData<TodoSortType>()
+    val snackbarEvent = MutableLiveData<String>()
 
-    fun getOnboardingStatus(): LiveData<Boolean> = repository.getOnboardingStatus()
-
-    suspend fun savePreferences(onBoard : Boolean){
-        repository.savePreferences(onBoard)
+    init {
+        habitsFilter.value = HabitSortType.START_TIME
+        todoFilter.value = TodoSortType.ALL_TASKS
     }
 
-    fun readTodoLocal(): LiveData<List<TodoLocal>> =
-        repository.readTodo()
+    //onboarding
+    fun getOnBoardingStatus(): LiveData<Boolean> =
+        todoUseCase.getOnBoardingStatus()
 
-    fun readWeatherLocal(): LiveData<List<WeatherLocal>> =
-        repository.readWeather()
+    suspend fun saveOnBoardingStatus(onBoard : Boolean){
+        todoUseCase.saveOnBoardingStatus(onBoard)
+    }
 
-    fun readAlarmChip(): LiveData<List<ChipAlarm>> =
-        repository.readChipAlarm()
+    fun taskFilter(filter :TodoSortType){
+        todoFilter.value = filter
+    }
 
+    //todolist
+    fun readTodoTaskFilter(): LiveData<PagedList<TodoLocal>> =
+        todoFilter.switchMap {
 
-    fun readTodo(name: String): LiveData<List<TodoLocal>> =
-        repository.readSearchTodo(name)
+            Log.d("today", todoUseCase.readTodoTaskFilter(it).value.toString())
+            todoUseCase.readTodoTaskFilter(it)
+        }
 
+    fun readTodoLocalUse(): LiveData<List<TodoLocal>> =
+        todoUseCase.readTodoLocal()
 
     fun readTodoSubtask(name : String): LiveData<List<TodoandSubTask>> =
-        repository.readTodoSubtask(name)
-
+        todoUseCase.readTodoSubtask(name)
 
     fun getTodayTask(): LiveData<List<TodoLocal>> =
-        repository.getTodayTask()
+        todoUseCase.getTodayTask()
 
     fun getUpcomingTask(): LiveData<List<TodoLocal>> =
-        repository.getUpcomingTask()
+        todoUseCase.getUpComingTask()
 
     fun getPreviousTask(): LiveData<List<TodoLocal>> =
-        repository.getPreviousTask()
+        todoUseCase.getPreviousTask()
 
-    fun insertTodoLocal(data : TodoLocal) = repository.insertTodo(data)
+    fun readAlarmChip(): LiveData<List<ChipAlarm>> =
+        todoUseCase.readChipTime()
+
+    fun insertTodoLocal(data : TodoLocal) =
+        todoUseCase.insertTodoList(data)
+
+    fun insertAlarmChip(alarm : ChipAlarm) =
+        todoUseCase.insertChipTime(alarm)
+
+    fun insertSubtask(data : TodoSubTask) =
+        todoUseCase.insertSubtask(data)
+
+    fun updateTask(taskId : Int,completed : Boolean){
+        todoUseCase.updateTaskStatus(taskId,completed)
+    }
+
+    fun deleteTodoLocal(name : String){
+        todoUseCase.deleteTodoList(name)
+        snackbarEvent.value = name
+    }
 
 
-    fun insertSubtask(data : TodoSubTask) = repository.insertSubtask(data)
 
+    //habits
+    fun getHabits(): LiveData<PagedList<DailyHabits>> =
+        habitsFilter.switchMap { todoUseCase.getHabits(it) }
 
-    fun insertWeatherLocal(data : WeatherLocal) = repository.insertWeather(data)
+    fun readHabits(): LiveData<List<DailyHabits>> =
+        todoUseCase.readHabitsLocal()
 
-
-    fun insertAlarmChip(alarm : ChipAlarm) = repository.insertAlarmChip(alarm)
-
-
-    fun searchLocation(name: String): LiveData<List<WeatherLocal>> =
-        repository.searchLocation(name)
-
-
-    fun deleteTodoLocal(name : String) = repository.deleteTodo(name)
-
-    fun readHabits(): LiveData<List<HabitsLocal>> =
-        repository.readHabits()
-
-    fun insertHabits(data : HabitsLocal) =
-        repository.insertHabits(data)
+    fun insertHabits(data : DailyHabits) =
+        todoUseCase.insertHabitsLocal(data)
 
     fun deleteHabits(name : String)=
-        repository.deleteHabits(name)
+        todoUseCase.deleteHabitsLocal(name)
+
+    fun filter(filter : HabitSortType){
+        habitsFilter.value = filter
+    }
+
+    //weather
+    fun readWeatherLocal(): LiveData<List<WeatherLocal>> =
+        todoUseCase.readWeatherLocal()
+
+    fun insertWeatherLocal(data : WeatherLocal) =
+        todoUseCase.insertWeatherLocal(data)
+
+    fun searchLocation(name: String): LiveData<List<WeatherLocal>> =
+        todoUseCase.searchWeatherLocal(name)
+
 
 }

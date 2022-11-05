@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    tools:context=".view.fragment.insertnewtask.InsertTodoFragment"
+    tools:context=".presentation.fragment.insertnewtask.InsertTodoFragment"
     android:layout_height="match_parent">
 
     <LinearLayout
@@ -82,14 +82,14 @@
                 android:layout_width="0dp"
                 android:layout_height="32dp"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="15dp"
                 android:fontFamily="@font/robotoregular"
                 android:gravity="center|start"
                 android:text="Subtask"
-                android:textColor="#000000"
-                android:textSize="18sp"
-                android:textStyle="bold"
+                android:textColor="#777474"
+                android:textSize="15sp"
+                android:textStyle="bold|italic"
                 android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -97,12 +97,11 @@
                 app:layout_constraintTop_toBottomOf="@+id/inserttodo_description" />
 
             <EditText
-                android:id="@+id/inserttodo_subtask"
+                android:id="@+id/et_inserttodo_subtask"
                 android:layout_width="0dp"
                 android:layout_height="33dp"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="10dp"
+                android:layout_marginEnd="15dp"
                 android:background="#E1E1E1"
                 android:fontFamily="@font/abezeeregular"
                 android:gravity="center|start|center_horizontal"
@@ -120,26 +119,25 @@
                 android:layout_width="0dp"
                 android:layout_height="32dp"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="15dp"
                 android:fontFamily="@font/robotoregular"
                 android:gravity="center|start"
                 android:text="Description"
-                android:textColor="#000000"
-                android:textSize="18sp"
-                android:textStyle="bold"
+                android:textColor="#777474"
+                android:textSize="15sp"
+                android:textStyle="bold|italic"
                 android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/addtag" />
+                app:layout_constraintTop_toBottomOf="@+id/color_name_black" />
 
             <EditText
                 android:id="@+id/inserttodo_description"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginEnd="15dp"
                 android:background="#E1E1E1"
                 android:fontFamily="@font/abezeeregular"
@@ -163,20 +161,34 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="15dp"
                 android:src="@drawable/plusbg"
-                android:tint="#03A9F4"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/detailtoolbar2" />
+                app:layout_constraintTop_toBottomOf="@+id/detailtoolbar2"
+                app:tint="#03A9F4" />
+
+            <ImageView
+                android:id="@+id/btn_color_picker"
+                android:layout_width="40dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="15dp"
+                android:padding="2dp"
+                android:src="@drawable/ic_baseline_brush_24"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/et_insert_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/et_insert_name"
+                app:tint="#03A9F4" />
 
             <ImageView
                 android:id="@+id/btn_addsubtask"
-                android:layout_width="45dp"
+                android:layout_width="40dp"
                 android:layout_height="33dp"
-                android:layout_marginTop="8dp"
                 android:layout_marginEnd="15dp"
                 android:src="@drawable/plusbg"
-                android:tint="#03A9F4"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/et_inserttodo_subtask"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/inserttitle4" />
+                app:layout_constraintTop_toTopOf="@+id/et_inserttodo_subtask"
+                app:tint="#03A9F4" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_chip"
@@ -190,19 +202,18 @@
                 app:layout_constraintTop_toBottomOf="@+id/detailtoolbar2"
                 tools:listitem="@layout/chip_card" />
 
-            <TextView
-                android:id="@+id/addtag"
+            <EditText
+                android:id="@+id/et_insert_name"
                 android:layout_width="0dp"
                 android:layout_height="32dp"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginEnd="15dp"
                 android:background="#E1E1E1"
                 android:fontFamily="@font/abezeeregular"
                 android:gravity="center"
                 android:textColor="#848383"
                 android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btn_color_picker"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/inserttitle" />
@@ -210,16 +221,16 @@
             <TextView
                 android:id="@+id/inserttitle"
                 android:layout_width="0dp"
-                android:layout_height="32dp"
+                android:layout_height="30dp"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="15dp"
                 android:fontFamily="@font/robotoregular"
                 android:gravity="center|start"
                 android:text="Name"
-                android:textColor="#000000"
-                android:textSize="18sp"
-                android:textStyle="bold"
+                android:textColor="#777474"
+                android:textSize="15sp"
+                android:textStyle="bold|italic"
                 android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -227,64 +238,80 @@
                 app:layout_constraintTop_toBottomOf="@+id/btn_todo_datestart" />
 
             <TextView
+                android:id="@+id/inserttitle7"
+                android:layout_width="0dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="15dp"
+                android:fontFamily="@font/robotoregular"
+                android:gravity="center|start"
+                android:text="Date Start"
+                android:textColor="#777474"
+                android:textSize="15sp"
+                android:textStyle="bold|italic"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_todo_timestart" />
+
+            <TextView
                 android:id="@+id/btn_todo_datestart"
                 android:layout_width="0dp"
                 android:layout_height="32dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
-                android:drawableLeft="@drawable/ic_baseline_calendar_today_24"
-                android:drawablePadding="15dp"
-                android:drawableTint="#4CAF50"
                 android:fontFamily="@font/robotoregular"
-                android:gravity="center|start"
+                android:gravity="center"
                 android:text="Date start"
                 android:textColor="#000000"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:visibility="visible"
+                app:drawableTint="#4CAF50"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_todo_timestart" />
+                app:layout_constraintTop_toBottomOf="@+id/inserttitle7" />
 
             <TextView
-                android:id="@+id/tv_todo_timestart"
-                android:layout_width="108dp"
+                android:id="@+id/btn_todo_timestart"
+                android:layout_width="180dp"
                 android:layout_height="35dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="20dp"
+                android:drawableStart="@drawable/ic_baseline_timer_24"
+                android:drawableTint="#4CAF50"
                 android:fontFamily="@font/robotoregular"
-                android:gravity="center|start"
+                android:gravity="center"
                 android:text="start time"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rv_chip" />
+
+            <TextView
+                android:id="@+id/btn_todo_timeend"
+                android:layout_width="180dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="100dp"
+                android:layout_marginEnd="15dp"
+                android:drawableRight="@drawable/ic_baseline_timer_24"
+                android:drawableTint="#F44336"
+                android:fontFamily="@font/robotoregular"
+                android:gravity="center"
+                android:text="end time"
                 android:textColor="#000000"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="@+id/btn_todo_timestart"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.984"
                 app:layout_constraintStart_toEndOf="@+id/btn_todo_timestart"
-                app:layout_constraintTop_toTopOf="@+id/btn_todo_timestart" />
-
-            <TextView
-                android:id="@+id/tv_todo_timeend"
-                android:layout_width="0dp"
-                android:layout_height="35dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="15dp"
-                android:fontFamily="@font/robotoregular"
-                android:gravity="center|start"
-                android:text="end time"
-                android:textColor="#000000"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:visibility="visible"
-                app:layout_constraintBottom_toBottomOf="@+id/btn_todo_timeend"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/btn_todo_timeend"
-                app:layout_constraintTop_toTopOf="@+id/btn_todo_timeend"
+                app:layout_constraintTop_toTopOf="@+id/btn_todo_timestart"
                 app:layout_constraintVertical_bias="0.0" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -297,29 +324,53 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/inserttodo_subtask" />
+                app:layout_constraintTop_toBottomOf="@+id/et_inserttodo_subtask" />
 
-            <ImageView
-                android:id="@+id/btn_todo_timestart"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="20dp"
-                android:src="@drawable/ic_baseline_timer_24"
-                android:tint="#4CAF50"
+            <TextView
+                android:id="@+id/color_name_black"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:background="#383636"
+                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rv_chip" />
+                app:layout_constraintTop_toBottomOf="@+id/et_insert_name" />
 
-            <ImageView
-                android:id="@+id/btn_todo_timeend"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_marginStart="40dp"
-                android:src="@drawable/ic_baseline_timer_24"
-                android:tint="#F44336"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_todo_timestart"
-                app:layout_constraintStart_toEndOf="@+id/tv_todo_timestart"
-                app:layout_constraintTop_toTopOf="@+id/tv_todo_timestart" />
+            <TextView
+                android:id="@+id/color_name_orange"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="10dp"
+                android:background="#FF5722"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/color_name_black"
+                app:layout_constraintStart_toEndOf="@+id/color_name_black"
+                app:layout_constraintTop_toTopOf="@+id/color_name_black" />
+
+            <TextView
+                android:id="@+id/color_name_blue"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="10dp"
+                android:background="#2196F3"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/color_name_orange"
+                app:layout_constraintStart_toEndOf="@+id/color_name_orange"
+                app:layout_constraintTop_toTopOf="@+id/color_name_orange"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/color_name_purple"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="10dp"
+                android:background="#3F51B5"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/color_name_blue"
+                app:layout_constraintStart_toEndOf="@+id/color_name_blue"
+                app:layout_constraintTop_toTopOf="@+id/color_name_blue"
+                app:layout_constraintVertical_bias="0.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>

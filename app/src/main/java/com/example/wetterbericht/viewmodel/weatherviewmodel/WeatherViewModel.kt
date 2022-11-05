@@ -3,24 +3,24 @@ package com.example.wetterbericht.viewmodel.weatherviewmodel
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.wetterbericht.model.remote.openweather.forecast.ForecastResponse
-import com.example.wetterbericht.model.remote.openweather.weather.WeatherResponse
-import com.example.wetterbericht.model.repository.weatherrepository.WeatherRepository
+import com.example.wetterbericht.data.remote.openweather.forecast.ForecastResponse
+import com.example.wetterbericht.data.remote.openweather.weather.WeatherResponse
+import com.example.wetterbericht.domain.remoteusecase.RemoteUseCase
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class WeatherViewModel : ViewModel() {
-    private val weatherRepository = WeatherRepository()
+class WeatherViewModel(private val remoteUseCase: RemoteUseCase) : ViewModel() {
+
     val weatherSearchResponse : MutableLiveData<WeatherResponse> = MutableLiveData()
     val forecastResponse : MutableLiveData<ForecastResponse> = MutableLiveData()
 
     val isLoading : MutableLiveData<Boolean> = MutableLiveData()
     val status : MutableLiveData<String> = MutableLiveData()
 
-    fun getWeatherSearch(loc : Any){
+    fun getWeatherSearch(loc : String){
         isLoading.value = true
-        weatherRepository.getWeatherBySearch(loc).enqueue(object : Callback<WeatherResponse>{
+        remoteUseCase.getWeatherBySearch(loc).enqueue(object : Callback<WeatherResponse>{
             override fun onResponse(
                 call: Call<WeatherResponse>,
                 response: Response<WeatherResponse>
@@ -45,7 +45,7 @@ class WeatherViewModel : ViewModel() {
 
     fun getWeatherForecast(loc: Any){
         isLoading.value = true
-        weatherRepository.getWeatherForecast(loc).enqueue(object : Callback<ForecastResponse>{
+        remoteUseCase.getWeatherForecast(loc).enqueue(object : Callback<ForecastResponse>{
             override fun onResponse(
                 call: Call<ForecastResponse>,
                 response: Response<ForecastResponse>
@@ -66,7 +66,7 @@ class WeatherViewModel : ViewModel() {
     }
 
     companion object{
-        val tag = "weatherviewmodel"
+        const val tag = "weatherviewmodel"
     }
 
 }

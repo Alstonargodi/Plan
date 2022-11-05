@@ -10,15 +10,11 @@ import android.content.Intent
 import android.os.Build
 import android.util.Log
 import androidx.core.app.NotificationCompat
-import com.example.wetterbericht.view.activity.mainactivity.MainActivity
+import com.example.wetterbericht.presentation.activity.mainactivity.MainActivity
 import com.example.wetterbericht.R
-import com.example.wetterbericht.model.local.database.LocalDatabase
-import com.example.wetterbericht.model.local.entity.weather.WeatherLocal
-import com.example.wetterbericht.model.local.preferences.OnboardingPreferences
-import com.example.wetterbericht.model.local.preferences.dataStore
-import com.example.wetterbericht.model.remote.openweather.weather.WeatherResponse
-import com.example.wetterbericht.model.repository.localrepository.LocalRepository
-import com.example.wetterbericht.model.repository.weatherrepository.WeatherRepository
+import com.example.wetterbericht.injection.Injection
+import com.example.wetterbericht.data.local.entity.weather.WeatherLocal
+import com.example.wetterbericht.data.remote.openweather.weather.WeatherResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -29,15 +25,11 @@ import kotlin.math.round
 class WeatherUpdate : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         Executors.newSingleThreadExecutor().execute {
-            val cityName = LocalRepository(
-                LocalDatabase.setDatabase(context),
-                OnboardingPreferences.getInstance(context.dataStore)
-            ).getWeatherCityName()
-
+            val weatherDao = Injection.providedUseCase(context)
+            val cityName = weatherDao.getWeatherCityName()
             if (cityName.loc.isNotEmpty()){
                 updateWeatherData(context,cityName.loc)
             }
-
         }
     }
 
@@ -67,7 +59,7 @@ class WeatherUpdate : BroadcastReceiver() {
     }
 
     private fun updateWeatherData(context: Context,cityName: String){
-        val getWeather = WeatherRepository().getWeatherBySearch(cityName)
+        val getWeather = Injection.provideWeatherUseCase().getWeatherBySearch(cityName)
         getWeather.enqueue(object : Callback<WeatherResponse>{
             override fun onResponse(call: Call<WeatherResponse>, response: Response<WeatherResponse>) {
                 if (response.isSuccessful){
@@ -96,10 +88,8 @@ class WeatherUpdate : BroadcastReceiver() {
             data.wind.speed.toString(),
             data.weather[0].description
         )
-        LocalRepository(
-            LocalDatabase.setDatabase(context),
-            OnboardingPreferences.getInstance(context.dataStore)
-        ).insertWeather(insertData)
+
+        Injection.providedUseCase(context).insertWeatherLocal(insertData)
 
 
         val pendingIntent = PendingIntent.getActivity(

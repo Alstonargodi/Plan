@@ -44,11 +44,10 @@ class CountDownViewModel: ViewModel() {
         countDownTimer?.start()
     }
 
-    fun resetTimer(): Boolean{
+    fun resetTimer(){
         countDownTimer?.cancel()
         durationTime.value = initialTime.value
         eventFinish.value = true
-        return true
     }
 
     override fun onCleared() {

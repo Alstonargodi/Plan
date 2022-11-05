@@ -17,48 +17,6 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
 
-    <compatible-screens>
-
-        <!-- all small size screens -->
-        <screen
-            android:screenDensity="ldpi"
-            android:screenSize="small" />
-        <screen
-            android:screenDensity="mdpi"
-            android:screenSize="small" />
-        <screen
-            android:screenDensity="hdpi"
-            android:screenSize="small" />
-        <screen
-            android:screenDensity="xhdpi"
-            android:screenSize="small" />
-        <screen
-            android:screenDensity="xxhdpi"
-            android:screenSize="small" />
-        <screen
-            android:screenDensity="xxxhdpi"
-            android:screenSize="small" />
-        <!-- all normal size screens -->
-        <screen
-            android:screenDensity="ldpi"
-            android:screenSize="normal" />
-        <screen
-            android:screenDensity="mdpi"
-            android:screenSize="normal" />
-        <screen
-            android:screenDensity="hdpi"
-            android:screenSize="normal" />
-        <screen
-            android:screenDensity="xhdpi"
-            android:screenSize="normal" />
-        <screen
-            android:screenDensity="xxhdpi"
-            android:screenSize="normal" />
-        <screen
-            android:screenDensity="xxxhdpi"
-            android:screenSize="normal" />
-    </compatible-screens>
-
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_logo"
@@ -69,7 +27,7 @@
         android:theme="@style/Theme.Wetterbericht">
 
         <receiver
-            android:name="com.example.wetterbericht.helpers.taskreminder.TaskReminder"
+            android:name="com.example.wetterbericht.helpers.taskreminder.TaskReminderBroadcast"
             android:enabled="true"
             android:exported="true">
         </receiver>
@@ -81,42 +39,21 @@
         </receiver>
 
         <activity
-            android:name="com.example.wetterbericht.view.fragment.weather.DetailWeatherActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:exported="false" />
+            android:name="com.example.wetterbericht.presentation.activity.onboarding.OnBoardingActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
         <activity
-            android:name=".Detail_activity"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity
-            android:name="com.example.wetterbericht.view.activity.onboarding.OnBoardingActivity"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity
-            android:name="com.example.wetterbericht.view.fragment.insertnewtask.InsertTodoActivity"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity
-            android:name=".Signup"
-            android:exported="true"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity
-            android:name=".view.Login.Signupactivity"
-            android:exported="true"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity
-            android:name=".view.Login.Loginactivity"
-            android:exported="true"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity
-            android:name=".view.activity.mainactivity.MainActivity"
+            android:name=".presentation.activity.mainactivity.MainActivity"
             android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name="com.example.wetterbericht.view.activity.splashscreen.SplashScreen"
+            android:name="com.example.wetterbericht.presentation.activity.splashscreen.SplashScreen"
             android:exported="true"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

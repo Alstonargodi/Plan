@@ -5,11 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.fragment.habits.HabitsListFragment">
+    tools:context=".presentation.fragment.habits.listview.HabitsListFragment">
 
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/detailtoolbar4"
+        android:id="@+id/habitstoolbar"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:background="@drawable/bg_headercorner"
@@ -38,12 +38,12 @@
             <ImageView
                 android:id="@+id/btnback_habits"
                 android:layout_width="40dp"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_marginStart="10dp"
                 android:src="@drawable/back"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/textView6"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textView6"
                 app:tint="#2196F3" />
 
             <TextView
@@ -51,7 +51,9 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginStart="10dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="100dp"
+                android:layout_marginBottom="10dp"
                 android:fontFamily="@font/abezeeregular"
                 android:gravity="center|left"
                 android:text="Habits"
@@ -76,7 +78,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailtoolbar4"
+        app:layout_constraintTop_toBottomOf="@+id/habitstoolbar"
         tools:listitem="@layout/itemcv_habits" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -89,6 +91,6 @@
         app:layout_constraintEnd_toEndOf="@+id/rv_habits_list"
         app:layout_constraintHorizontal_bias="0.952"
         app:layout_constraintStart_toStartOf="@+id/rv_habits_list"
-        app:layout_constraintTop_toBottomOf="@+id/detailtoolbar4"
+        app:layout_constraintTop_toBottomOf="@+id/habitstoolbar"
         app:layout_constraintVertical_bias="0.936" />
 </androidx.constraintlayout.widget.ConstraintLayout>

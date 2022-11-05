@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="Start Time" />
+    <item
+        android:id="@+id/minutes_focus"
+        android:title="Minute Focus" />
+    <item
+        android:id="@+id/title_name"
+        android:title="Title Name" />
+</menu>
