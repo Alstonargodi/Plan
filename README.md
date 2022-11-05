@@ -1,80 +1,143 @@
+<div id="top"></div>
+
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  
+ ![](https://cdn.discordapp.com/attachments/989692317172641832/994157062479163463/banner.png)
+
+  <h1 align="center">Plan</h1>
+  <p align="center">Personal daily note for planning activities and provide with reminder</p>
 
 
-Dump for development :
-- [ ] onCheckBox complete
-      app crash when check complete task
-- [ ] Recycler View
-     App crash when scroll down list up to 20 data
-     java.lang.NullPointerException: Parameter specified as non-null is null:
-     method kotlin.jvm.internal.Intrinsics.checkNotNullParameter, parameter item
+</div>
 
 
-   
-<h1>Wetterdo</h1>
 
-when I'm going to plan something sometimes I have to look at the weather outside and then open the weather app, then I have an idea why not combine the two?. so I made this project,this app mixed beween todolist and weather app.
-
-<h2>:pencil2: Features</h2>
-
-1. Weather view
-
-   >Give about current weather information 
-   
-2. planning view
-
-   >Below weatherview there is some list about today activity
-   
-3. planning detail
-   
-   >Give detail about your planning and also u can add more activity or maybe update
-   
-4. weather detail
-
-   >Provide more detail about the weather
-   
-5. Location
-   
-   >Provide the latest weather based on your location position
-
-6. forecast weather
-   
-   >provide information about the weather forecast
-   
-<h2>:wrench: Implementation</h2>
-
-1. Kotlin, main programming language for build this project
-2. Weather api provide by [Openweatherapi](https://weatherstack.com/) it's free 
-3. Retrofit, to handle call and consume REST api webservice
-4. Glide, Retrive image from url
-5. GMS location service, provide information about location throughh gps
-6. MVVM, an architecture in android separating view/fragment, business logic ,and model
-7. Room, Keeping data after retrieving from retrofit or adding data in local storage
-8. Graph, using library from [philjay](https://github.com/PhilJay/MPAndroidChart)
-9. AlarmManager , For reminderactivity
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Build With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
 
 
-<h2>:book: what I've been learning through this project</h2>
+<!-- ABOUT THE PROJECT -->
+## About The Project
+Everyday we need activities to fill our days and sometimes we forgot about what activities today, it can make you regret when you forget about activities and become a burden in the future. Activities not only happens the inside building but also outside, Planning outside activities can be hard because we need to make sure our weather is perfectly for doing that activities. With Plan, we can be planning our today and future activities. have a reminder feature about today's activities it can help as reminders and weather information so we can know about today's forecasting. also Plan provide podomoro timer that help to timing our activites since start time.
 
-1. current location by gps
-2. dialog fragment
-3. Retrofit
-4. MVVM
-5. Argument
-6. Room
-7. bottom navigation
-8. nested json
-9. Graph
+### Built With
 
-
-<h2>Documentation</h2>
-
-apps diagram : [wetterdo](https://github.com/Alstonargodi/Wetterdo/blob/master/diagram%20weeterdo.png)
-
-Main user interface 
-
-<img src="https://github.com/Alstonargodi/Wetterdo/blob/master/wetterdo.png" width="100%">
+ 1. Kotlin
+ 2. Android Jetpack
+ 3. Navigation Component
+ 4. MVVM
+ 5. Material Components
+ 6. Room Database
 
 
-Detailed weather background change by condition
+Third-part libaries
 
-<img src="https://github.com/Alstonargodi/Wetterdo/blob/master/weather.png" width="100%">
+ 1. Glide
+	Glide is a fast and efficient open source media management and image loading framework for Android that wraps media decoding, memory and disk caching, and resource pooling into a simple and easy to use interface. [Repo](https://github.com/bumptech/glide)
+2. Retrofit
+A type-safe HTTP client for Android and Java
+ [Repo](https://github.com/square/retrofit)
+3. Okhttp-Logging Interceptor
+For logs HTTP request and response data
+ [Repo](https://github.com/square/okhttp/tree/master/okhttp-logging-interceptor)
+ 4. Colour Picker
+A library that provides colour picker dialog easily
+ [Repo](https://github.com/QuadFlask/colorpicker)
+ 
+ 
+
+<!-- GETTING STARTED -->
+## Getting Started
+
+### Main Application
+V 1.0
+[Download Here](https://drive.google.com/file/d/1gUaEzrxyfspLQWzGZnr4QARUQ1krIH0G/view?usp=sharing)
+
+### Prerequisites
+
+Mobile phone with android os
+
+### Installation
+Install on phone
+1. Go to realease 
+2. Choose the lastest
+3. Click on apk
+4. The apps will be downloaded
+5. Install on your phone
+
+Android Studio
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/Capstone-Bangkit/Rifsa-Mobile
+   ```
+2. Build the apps
+   ```sh
+   Run app or Shift + F10
+   ```
+
+<!-- USAGE EXAMPLES -->
+## Usage
+
+Apps Demo
+
+[![apps demo](https://cdn.discordapp.com/attachments/989692317172641832/994157062479163463/banner.png)](https://youtu.be/S27Q9hLeQTY "Plan demo")
+
+<!-- ROADMAP -->
+## Roadmap
+
+Current
+ - [x] Designing User interface
+ - [x] OnBoard page
+ - [x] Todolist page
+ - [x] Insert Todo List page
+ - [x] Weather page
+ - [x] Podomoro Page
+ - [x] Local Database
+ - [x] Repository
+ - [x] ViewModel
+ - [x] Local Usecase
+ - [ ] Remote Usecase
+ 
+
+Next Plan
+
+ - [ ] Remote Storage
+ - [ ] Offline handler
+
+<!-- LICENSE -->
+## License
+
+*coming soon*
+
+<!-- CONTACT -->
+## Contact
+
+| Member |  |
+|--|--|
+| I Wayan Alston Argodi |[Github](https://github.com/Alstonargodi)  |
