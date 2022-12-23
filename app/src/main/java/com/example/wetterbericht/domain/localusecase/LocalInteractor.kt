@@ -44,10 +44,9 @@ class LocalInteractor(private val repository: ILocalRepository): LocalUseCase {
         val todoQuery = SortUtils.getFilterQueryTodo(query)
         val habits = repository.readTodoTaskFilter(todoQuery)
 
-        Log.d("today",todoQuery.sql.toString())
         val pagedConfig = PagedList.Config.Builder()
             .setEnablePlaceholders(true)
-            .setPageSize(5)
+            .setPageSize(20)
             .build()
 
         return LivePagedListBuilder(habits,pagedConfig).build()

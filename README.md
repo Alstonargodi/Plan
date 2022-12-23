@@ -1,12 +1,11 @@
 
 
 Dump for development :
-- [ ] onCheckBox complete
+- [x] onCheckBox complete -
       app crash when check complete task
-- [ ] Recycler View
-     App crash when scroll down list up to 20 data
-     java.lang.NullPointerException: Parameter specified as non-null is null:
-     method kotlin.jvm.internal.Intrinsics.checkNotNullParameter, parameter item
+- [x] Recycler View - 
+     App crash when scroll down list up to 20 data |
+     Recyclerview show first data after item 15
 
 
    

@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
 import android.annotation.SuppressLint
+import android.util.Log
 import com.example.wetterbericht.databinding.ItemcvTodoBinding
 import com.example.wetterbericht.data.local.entity.dailytask.TodoLocal
 import com.example.wetterbericht.presentation.componen.TaskTitleView
@@ -54,16 +55,21 @@ class TodoRecyclerViewAdapter(
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = data[position]
-        holder.bind(item)
+        try {
+            val item = data[position]
+            holder.bind(item)
 
-        holder.binding.layTodo.setOnClickListener {
-            detailCallback.detailCallBack(item)
+            holder.binding.layTodo.setOnClickListener {
+                detailCallback.detailCallBack(item)
+            }
+
+            holder.binding.checkboxtask.setOnClickListener {
+                onChecked(item,!item.isComplete)
+            }
+        }catch (e : Exception){
+            Log.d("task",e.toString())
         }
 
-        holder.binding.checkboxtask.setOnClickListener {
-            onChecked(item,!item.isComplete)
-        }
     }
 
     override fun getItemCount(): Int = data.size

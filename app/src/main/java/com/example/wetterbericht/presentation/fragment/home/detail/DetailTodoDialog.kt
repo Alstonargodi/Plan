@@ -10,6 +10,7 @@ import android.view.WindowManager
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.wetterbericht.R
 import com.example.wetterbericht.databinding.FragmentDetailTodoListDialogBinding
 import com.example.wetterbericht.data.local.entity.dailytask.TodoLocal
 import com.example.wetterbericht.presentation.fragment.home.HomeFragment.Companion.homepage_key
@@ -42,7 +43,7 @@ class DetailTodoDialog : BottomSheetDialogFragment() {
         try {
             binding.apply {
                 showDetailTask(detailTodo)
-                showSubtask(detailTodo.title)
+                showSubtask(detailTodo.taskID.toString())
             }
         }catch (e : Exception){
             Log.d("detailActivity",e.message.toString())
@@ -90,14 +91,13 @@ class DetailTodoDialog : BottomSheetDialogFragment() {
         return abs(result)
     }
 
-
     //full dialog config
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = BottomSheetDialog(requireContext(), theme)
         dialog.setOnShowListener {
             val bottomSheetDialog = it as BottomSheetDialog
             val parentLayout =
-                bottomSheetDialog.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet)
+                bottomSheetDialog.findViewById<View>(R.id.design_bottom_sheet)
             parentLayout?.let { it ->
                 val behaviour = BottomSheetBehavior.from(it)
                 setupFullHeight(it)

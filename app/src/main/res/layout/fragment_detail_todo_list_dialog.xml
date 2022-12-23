@@ -121,15 +121,14 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_subtask"
         android:layout_width="0dp"
-        android:layout_height="170dp"
+        android:layout_height="200dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView14"
-        app:layout_constraintVertical_bias="0.028"
         tools:listitem="@layout/itemcv_todo_subtask" />
 
     <TextView

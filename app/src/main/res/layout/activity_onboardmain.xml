@@ -26,21 +26,23 @@
         android:layout_height="88dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.92">
+        app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab_onboard"
             android:layout_width="0dp"
             android:layout_height="33dp"
-            android:layout_marginStart="25dp"
-            android:layout_marginEnd="25dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tabIndicatorColor="#03A9F4"
-            app:tabIndicatorFullWidth="false">
+            app:tabIndicator="@drawable/drawble_tabcorner"
+            app:tabIndicatorColor="#2196F3"
+            app:tabIndicatorFullWidth="true"
+            app:tabIndicatorHeight="20dp"
+            app:tabMaxWidth="20dp"
+            app:tabRippleColor="#DEDDDD">
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
@@ -57,7 +59,7 @@
         <Button
             android:id="@+id/btn_onboard_next"
             android:layout_width="91dp"
-            android:layout_height="25dp"
+            android:layout_height="30dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
             android:background="@drawable/borderblue"
