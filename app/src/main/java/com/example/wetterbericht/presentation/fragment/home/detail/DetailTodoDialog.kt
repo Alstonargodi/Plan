@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wetterbericht.R
 import com.example.wetterbericht.databinding.FragmentDetailTodoListDialogBinding
 import com.example.wetterbericht.data.local.entity.dailytask.TodoLocal
+import com.example.wetterbericht.data.local.entity.dailytask.TodoSubTask
 import com.example.wetterbericht.presentation.fragment.home.HomeFragment.Companion.homepage_key
 import com.example.wetterbericht.presentation.fragment.home.HomeFragmentDirections
 import com.example.wetterbericht.presentation.fragment.home.adapter.SubtaskRecyclerViewAdapter
@@ -73,13 +74,16 @@ class DetailTodoDialog : BottomSheetDialogFragment() {
     }
 
     private fun showSubtask(title : String){
-        val adapter = SubtaskRecyclerViewAdapter()
-        val recView = binding.rvSubtask
-        recView.adapter = adapter
-        recView.layoutManager = LinearLayoutManager(requireActivity())
-        roomViewModel.readTodoSubtask(title).observe(viewLifecycleOwner){
-            it.forEach {
-                adapter.submitList(it.subtask)
+        val dataArray = ArrayList<TodoSubTask>()
+        roomViewModel.readTodoSubtask(title).observe(viewLifecycleOwner){ parent ->
+            parent.forEach { child ->
+                child.subtask.forEach { data->
+                    dataArray.add(data)
+                    val adapter = SubtaskRecyclerViewAdapter(dataArray)
+                    val recView = binding.rvSubtask
+                    recView.adapter = adapter
+                    recView.layoutManager = LinearLayoutManager(requireActivity())
+                }
             }
         }
     }

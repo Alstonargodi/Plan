@@ -334,14 +334,15 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_subtask"
                 android:layout_width="0dp"
-                android:layout_height="200dp"
-                android:layout_marginStart="15dp"
+                android:layout_height="212dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="15dp"
+                android:layout_marginEnd="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et_inserttodo_subtask" />
+                app:layout_constraintTop_toBottomOf="@+id/et_inserttodo_subtask"
+                tools:listitem="@layout/itemcv_todo_subtask" />
 
             <TextView
                 android:id="@+id/color_name_black"

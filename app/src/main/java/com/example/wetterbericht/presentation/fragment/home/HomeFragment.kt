@@ -27,9 +27,17 @@ class HomeFragment : Fragment() {
     private var _binding : FragmentHomeBinding? = null
     private val binding get()= _binding!!
 
-    private val homeViewModel : LocalViewModel by viewModels{ ViewModelFactory.getInstance(requireContext())}
+    private lateinit var taskRecyclewViewAdapter : TodoRecyclerViewAdapter
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    private val homeViewModel : LocalViewModel by viewModels{
+        ViewModelFactory.getInstance(requireContext())
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?)
+    : View {
         _binding = FragmentHomeBinding.inflate(layoutInflater)
         showCurrentWeather()
         ItemTouchHelper(Callback()).attachToRecyclerView(binding.rectodo)
@@ -110,7 +118,7 @@ class HomeFragment : Fragment() {
 
 
     private fun showTaskList(data : List<TodoLocal>){
-        val adapter = TodoRecyclerViewAdapter(data) { value, condition ->
+        taskRecyclewViewAdapter = TodoRecyclerViewAdapter(data) { value, condition ->
             homeViewModel.updateTask(
                 value.taskID.toInt(),
                 condition
@@ -118,9 +126,10 @@ class HomeFragment : Fragment() {
         }
 
         val taskRecyclerView = binding.rectodo
-        taskRecyclerView.adapter = adapter
+        taskRecyclerView.adapter = taskRecyclewViewAdapter
         taskRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        adapter.detailOnItemCallback(object : TodoRecyclerViewAdapter.DetailCallback{
+        taskRecyclewViewAdapter.detailOnItemCallback(
+            object : TodoRecyclerViewAdapter.DetailCallback{
             override fun detailCallBack(data: TodoLocal) {
                 showDetailTaskDialog(data)
             }
@@ -137,7 +146,11 @@ class HomeFragment : Fragment() {
         val weatherRvAdapter = WeatherHomeRecyclerViewAdapter()
         val weatherRecyclerView = binding.recviewweather
         weatherRecyclerView.adapter = weatherRvAdapter
-        weatherRecyclerView.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,true)
+        weatherRecyclerView.layoutManager = LinearLayoutManager(
+            requireContext(),
+            LinearLayoutManager.HORIZONTAL,
+            true
+        )
         weatherRvAdapter.setData(data)
     }
 
@@ -175,7 +188,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun showSnackBar(title : String){
-        Snackbar.make(binding.root,"Delete $title",Snackbar.LENGTH_SHORT).show()
+        Snackbar.make(binding.root,"$title has been deleted",Snackbar.LENGTH_SHORT).show()
     }
 
     companion object{

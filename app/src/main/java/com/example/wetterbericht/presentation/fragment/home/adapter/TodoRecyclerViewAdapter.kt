@@ -21,6 +21,7 @@ class TodoRecyclerViewAdapter(
         this.detailCallback = callback
     }
 
+
     class ViewHolder(var binding : ItemcvTodoBinding): RecyclerView.ViewHolder(binding.root){
         private lateinit var detailTodo : TodoLocal
         //TODO 9
@@ -50,7 +51,13 @@ class TodoRecyclerViewAdapter(
 
     //TODO 8
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(ItemcvTodoBinding.inflate(LayoutInflater.from(parent.context),parent,false))
+        return ViewHolder(
+            ItemcvTodoBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
     @SuppressLint("ClickableViewAccessibility")
