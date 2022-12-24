@@ -89,7 +89,9 @@ abstract class LocalDatabase: RoomDatabase() {
                            title = item.getString("title"),
                            minuteFocus = item.getLong("focusTime"),
                            startTime = item.getString("startTime"),
-                           priorityLevel = item.getString("priorityLevel")
+                           priorityLevel = item.getString("priorityLevel"),
+                        "",
+                           -1
                        ))
                    }
                }

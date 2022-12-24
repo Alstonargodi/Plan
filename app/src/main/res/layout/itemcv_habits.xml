@@ -9,9 +9,9 @@
     app:cardCornerRadius="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_habits"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
 
         <TextView
             android:id="@+id/tv_habits_name"

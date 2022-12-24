@@ -1,5 +1,6 @@
 package com.example.wetterbericht.presentation.fragment.habits.insert
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,18 +14,17 @@ import com.example.wetterbericht.viewmodel.localviewmodel.LocalViewModel
 import com.example.wetterbericht.viewmodel.viewmodelfactory.ViewModelFactory
 
 class InsertDetailHabitsFragment : Fragment() {
-
     private lateinit var binding : FragmentInsertDetailHabitsBinding
     private val localViewModel : LocalViewModel by viewModels{
         ViewModelFactory.getInstance(requireContext())
     }
+    private var typeColor = Color.parseColor("#FFFFFF")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentInsertDetailHabitsBinding.inflate(layoutInflater)
-
         return binding.root
     }
 
@@ -45,13 +45,14 @@ class InsertDetailHabitsFragment : Fragment() {
     private fun insertNewHabits(){
         val name  = binding.etInserthabitsName.text.toString()
         val duration = binding.etInserthabitsDuration.text.toString().toInt()
-
         val insertData = DailyHabits(
             0,
             name,
             duration.toLong(),
             "0",
-            ""
+            "",
+            "ic_baseline_brunch_dining_24",
+            typeColor
         )
 
         localViewModel.insertHabits(insertData)

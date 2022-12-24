@@ -1,6 +1,8 @@
 package com.example.wetterbericht.presentation.fragment.habits.adapter
 
 import android.annotation.SuppressLint
+import android.graphics.Color
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -17,17 +19,23 @@ class HabitsRecyclerViewAdapter(private val data : List<DailyHabits>)
     class ViewHolder(val binding : ItemcvHabitsBinding): RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("ResourceAsColor")
         fun bind(item : DailyHabits){
+
+            val iconHabits = itemView.context.resources.getIdentifier(
+                item.iconHabits,
+                "drawable",
+                itemView.context.packageName
+            )
             binding.tvHabitsName.text = item.title
             binding.tvHabitsDuration.text = item.minuteFocus.toString()
             binding.tvHabitsName.apply {
                 setCompoundDrawablesWithIntrinsicBounds(
-                    R.drawable.ic_baseline_brunch_dining_24,
+                    iconHabits,
                     0,
                     0,
                     0
                 )
             }
-            binding.cvlayoutHabits.setCardBackgroundColor(R.color.teal_200)
+            binding.cvlayoutHabits.setCardBackgroundColor(item.colorHabits)
         }
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
