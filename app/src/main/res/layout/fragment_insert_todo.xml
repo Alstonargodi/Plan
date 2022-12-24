@@ -17,7 +17,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="1000dp">
+            android:layout_height="800dp">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/detailtoolbar2"
@@ -110,7 +110,6 @@
                 android:fontFamily="@font/robotoregular"
                 android:gravity="start"
                 android:padding="10dp"
-                android:text="lorem ipsum dulur amet"
                 android:textAlignment="textStart"
                 android:textColor="#3E3C3C"
                 android:textSize="18sp"
@@ -149,7 +148,6 @@
                 android:fontFamily="@font/robotoregular"
                 android:gravity="start|center_horizontal"
                 android:padding="10dp"
-                android:text="lorem ipsum dulur amet"
                 android:textAlignment="textStart"
                 android:textColor="#3E3C3C"
                 android:textSize="18sp"
@@ -218,7 +216,6 @@
                 android:fontFamily="@font/robotoregular"
                 android:gravity="center|start"
                 android:padding="10dp"
-                android:text="lorem ipsum dulur amet"
                 android:textColor="#3E3C3C"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toStartOf="@+id/btn_color_picker"
@@ -266,7 +263,7 @@
 
             <TextView
                 android:id="@+id/btn_todo_datestart"
-                android:layout_width="130dp"
+                android:layout_width="128dp"
                 android:layout_height="35dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="5dp"
@@ -286,7 +283,7 @@
 
             <TextView
                 android:id="@+id/btn_todo_timestart"
-                android:layout_width="115dp"
+                android:layout_width="108dp"
                 android:layout_height="35dp"
                 android:layout_marginStart="2dp"
                 android:background="@drawable/corner05"
@@ -332,10 +329,12 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_subtask"
                 android:layout_width="0dp"
-                android:layout_height="212dp"
+                android:layout_height="0dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
