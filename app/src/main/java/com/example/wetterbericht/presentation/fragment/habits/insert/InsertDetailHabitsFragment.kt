@@ -12,7 +12,6 @@ import com.example.wetterbericht.data.local.entity.dailyhabits.DailyHabits
 import com.example.wetterbericht.viewmodel.localviewmodel.LocalViewModel
 import com.example.wetterbericht.viewmodel.viewmodelfactory.ViewModelFactory
 
-
 class InsertDetailHabitsFragment : Fragment() {
 
     private lateinit var binding : FragmentInsertDetailHabitsBinding
@@ -60,7 +59,5 @@ class InsertDetailHabitsFragment : Fragment() {
         findNavController().navigate(
             InsertDetailHabitsFragmentDirections.actionInsertDetailHabitsFragmentToHabitsListFragment()
         )
-
     }
-
 }
