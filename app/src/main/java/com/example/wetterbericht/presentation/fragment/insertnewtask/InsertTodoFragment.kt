@@ -8,6 +8,7 @@ import android.os.Handler
 import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +16,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.wetterbericht.data.local.entity.dailytask.TodoLocal
 import com.example.wetterbericht.data.local.entity.dailytask.TodoSubTask
 import com.example.wetterbericht.databinding.FragmentInsertTodoBinding
@@ -36,10 +39,11 @@ class InsertTodoFragment : Fragment(){
     private var _binding : FragmentInsertTodoBinding? = null
     private val binding get()= _binding!!
 
+    private lateinit var subTaskAdapter : SubtaskRecyclerViewAdapter
     private val roomViewModel : LocalViewModel by viewModels{ ViewModelFactory.getInstance(requireContext())}
     private var numberDay = 0
     private var millisDay : Long = 0
-    private var taskList = arrayListOf<TodoSubTask>()
+    private var subTaskList = arrayListOf<TodoSubTask>()
     private var leveColour = Color.parseColor("#383636")
 
     override fun onCreateView(
@@ -49,8 +53,8 @@ class InsertTodoFragment : Fragment(){
         _binding = FragmentInsertTodoBinding.inflate(layoutInflater)
         readChipReminder()
         binding.etInsertName.setTextColor(leveColour)
-
-
+        subTaskAdapter = SubtaskRecyclerViewAdapter(subTaskList)
+        ItemTouchHelper(CallBack()).attachToRecyclerView(binding.rvSubtask)
         binding.etInsertName.addTextChangedListener ( object : TextWatcher{
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun afterTextChanged(p0: Editable?) {}
@@ -141,11 +145,9 @@ class InsertTodoFragment : Fragment(){
     }
 
     private fun readSubtask(){
-        val subTaskAdapter = SubtaskRecyclerViewAdapter()
-        val taskRecyclerView = binding.rvSubtask
-        taskRecyclerView.adapter = subTaskAdapter
-        taskRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        subTaskAdapter.submitList(taskList)
+        val subTaskRecyclerView = binding.rvSubtask
+        subTaskRecyclerView.adapter = subTaskAdapter
+        subTaskRecyclerView.layoutManager = LinearLayoutManager(requireContext())
     }
 
 
@@ -157,7 +159,7 @@ class InsertTodoFragment : Fragment(){
         val dateStart = binding.btnTodoDatestart.text.toString()
 
         val insertTask = TodoLocal(
-            taskID = todoId,
+            taskID = 0,
             title = taskName,
             description = description,
             levelColor = leveColour,
@@ -167,10 +169,11 @@ class InsertTodoFragment : Fragment(){
             notificationInterval = 20,
             startTime = startTime,
             endTime = endTime,
+            subTaskId = userId,
             isComplete = false
         )
 
-        taskList.forEach {
+        subTaskList.forEach {
             val insertSubtask = TodoSubTask(
                 id = it.id,
                 title = it.title,
@@ -206,11 +209,37 @@ class InsertTodoFragment : Fragment(){
             isComplete = false,
             todoId = userId
         )
-        taskList.add(insertData)
+        subTaskList.add(insertData)
         lifecycleScope.launch {
             readSubtask()
         }
     }
+
+    inner class CallBack : ItemTouchHelper.Callback(){
+        override fun getMovementFlags(
+            recyclerView: RecyclerView,
+            viewHolder: RecyclerView.ViewHolder
+        ): Int {
+            return makeMovementFlags(
+                0, ItemTouchHelper.RIGHT
+            )
+        }
+
+        override fun onMove(
+            recyclerView: RecyclerView,
+            viewHolder: RecyclerView.ViewHolder,
+            target: RecyclerView.ViewHolder
+        ): Boolean {
+            return false
+        }
+
+        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+           val position = (viewHolder as SubtaskRecyclerViewAdapter.ViewHolder).adapterPosition
+            subTaskAdapter.removeItem(position)
+        }
+
+    }
+
 
     private fun timePicker(tag : String){
         val calendar = Calendar.getInstance()

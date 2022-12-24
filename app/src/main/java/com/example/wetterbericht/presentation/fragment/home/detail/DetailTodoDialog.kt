@@ -10,8 +10,10 @@ import android.view.WindowManager
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.wetterbericht.R
 import com.example.wetterbericht.databinding.FragmentDetailTodoListDialogBinding
 import com.example.wetterbericht.data.local.entity.dailytask.TodoLocal
+import com.example.wetterbericht.data.local.entity.dailytask.TodoSubTask
 import com.example.wetterbericht.presentation.fragment.home.HomeFragment.Companion.homepage_key
 import com.example.wetterbericht.presentation.fragment.home.HomeFragmentDirections
 import com.example.wetterbericht.presentation.fragment.home.adapter.SubtaskRecyclerViewAdapter
@@ -42,7 +44,7 @@ class DetailTodoDialog : BottomSheetDialogFragment() {
         try {
             binding.apply {
                 showDetailTask(detailTodo)
-                showSubtask(detailTodo.title)
+                showSubtask(detailTodo.taskID.toString())
             }
         }catch (e : Exception){
             Log.d("detailActivity",e.message.toString())
@@ -68,17 +70,19 @@ class DetailTodoDialog : BottomSheetDialogFragment() {
         binding.tvbottomTodoTitle.text = detailTodo.title
         binding.tvbottomTodoDesc.text = detailTodo.description
         binding.tvbottomTodoDate.text = detailTodo.dateStart
-
     }
 
     private fun showSubtask(title : String){
-        val adapter = SubtaskRecyclerViewAdapter()
-        val recView = binding.rvSubtask
-        recView.adapter = adapter
-        recView.layoutManager = LinearLayoutManager(requireActivity())
-        roomViewModel.readTodoSubtask(title).observe(viewLifecycleOwner){
-            it.forEach {
-                adapter.submitList(it.subtask)
+        val dataArray = ArrayList<TodoSubTask>()
+        roomViewModel.readTodoSubtask(title).observe(viewLifecycleOwner){ parent ->
+            parent.forEach { child ->
+                child.subtask.forEach { data->
+                    dataArray.add(data)
+                    val adapter = SubtaskRecyclerViewAdapter(dataArray)
+                    val recView = binding.rvSubtask
+                    recView.adapter = adapter
+                    recView.layoutManager = LinearLayoutManager(requireActivity())
+                }
             }
         }
     }
@@ -90,20 +94,18 @@ class DetailTodoDialog : BottomSheetDialogFragment() {
         return abs(result)
     }
 
-
     //full dialog config
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = BottomSheetDialog(requireContext(), theme)
         dialog.setOnShowListener {
             val bottomSheetDialog = it as BottomSheetDialog
             val parentLayout =
-                bottomSheetDialog.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet)
+                bottomSheetDialog.findViewById<View>(R.id.design_bottom_sheet)
             parentLayout?.let { it ->
                 val behaviour = BottomSheetBehavior.from(it)
                 setupFullHeight(it)
-                behaviour.state = BottomSheetBehavior.STATE_HALF_EXPANDED
+                behaviour.state = BottomSheetBehavior.STATE_EXPANDED
             }
-
         }
         return dialog
     }

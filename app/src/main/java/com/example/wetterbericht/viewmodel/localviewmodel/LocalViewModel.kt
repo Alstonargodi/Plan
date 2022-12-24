@@ -40,16 +40,16 @@ class LocalViewModel(
     //todolist
     fun readTodoTaskFilter(): LiveData<PagedList<TodoLocal>> =
         todoFilter.switchMap {
-
-            Log.d("today", todoUseCase.readTodoTaskFilter(it).value.toString())
             todoUseCase.readTodoTaskFilter(it)
         }
 
     fun readTodoLocalUse(): LiveData<List<TodoLocal>> =
         todoUseCase.readTodoLocal()
 
-    fun readTodoSubtask(name : String): LiveData<List<TodoandSubTask>> =
-        todoUseCase.readTodoSubtask(name)
+    fun readTodoSubtask(name : String): LiveData<List<TodoandSubTask>> {
+        Log.d("today $name", todoUseCase.readTodoSubtask(name).value.toString())
+        return todoUseCase.readTodoSubtask(name)
+    }
 
     fun getTodayTask(): LiveData<List<TodoLocal>> =
         todoUseCase.getTodayTask()

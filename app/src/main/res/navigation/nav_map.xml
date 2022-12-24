@@ -42,7 +42,7 @@
         android:id="@+id/introsatu"
         android:name="com.example.wetterbericht.presentation.activity.onboarding.page.IntroTwo"
         android:label="fragment_introsatu"
-        tools:layout="@layout/fragment_introsatu" >
+        tools:layout="@layout/fragment_intro_one" >
         <action
             android:id="@+id/action_introsatu_to_onboardmain"
             app:destination="@id/onboardmain" />
@@ -51,7 +51,7 @@
         android:id="@+id/introdua"
         android:name="com.example.wetterbericht.presentation.activity.onboarding.page.IntroOne"
         android:label="fragment_introdua"
-        tools:layout="@layout/fragment_introdua" >
+        tools:layout="@layout/fragment_intro_two" >
         <action
             android:id="@+id/action_introdua_to_onboardmain"
             app:destination="@id/onboardmain" />
@@ -70,7 +70,7 @@
         android:id="@+id/introtiga"
         android:name="com.example.wetterbericht.presentation.activity.onboarding.page.IntroThree"
         android:label="fragment_introtiga"
-        tools:layout="@layout/fragment_introtiga" >
+        tools:layout="@layout/fragment_intro_three" >
         <action
             android:id="@+id/action_introtiga_to_onboardmain"
             app:destination="@id/onboardmain" />

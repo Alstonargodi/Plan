@@ -15,7 +15,7 @@ class IntroOne : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_introdua, container, false)
+        return inflater.inflate(R.layout.fragment_intro_two, container, false)
     }
 
 

@@ -66,18 +66,20 @@ abstract class LocalDatabase: RoomDatabase() {
                }
            }
 
-
-
        /*
             populate task database for testing purpose
         */
        private fun fillWithStartingData(
-           context: Context, dailyHabitsDao: DailyHabitsDao, dailyTaskDao: DailyTaskDao
+           context: Context,
+           dailyHabitsDao: DailyHabitsDao,
+           dailyTaskDao: DailyTaskDao,
        ){
            val habitsJsonArray = loadHabitsJson(context)
            val todoJsonArray = loadTodoJson(context)
+           val subtaskJsonArray = loadSubTaskJson(context)
            val currentDate = LocalDateTime.now().dayOfMonth
 
+           //pre popualte data
            try {
                if (habitsJsonArray != null){
                    for (i in 0 until habitsJsonArray.length()){
@@ -91,6 +93,7 @@ abstract class LocalDatabase: RoomDatabase() {
                        ))
                    }
                }
+
                if (todoJsonArray != null){
                    for (i in 0 until todoJsonArray.length()){
                        val item = todoJsonArray.getJSONObject(i)
@@ -105,10 +108,26 @@ abstract class LocalDatabase: RoomDatabase() {
                            notificationInterval = item.getInt("notificationInterval"),
                            startTime = item.getString("startTime"),
                            endTime = item.getString("endTime") ,
-                           isComplete = item.getBoolean("completed")
+                           isComplete = item.getBoolean("completed"),
+                           subTaskId = "a"
                        ))
                    }
                }
+
+               if(subtaskJsonArray != null){
+                   for (i in 0 until subtaskJsonArray.length()){
+                       val item = subtaskJsonArray.getJSONObject(i)
+                       dailyTaskDao.insertSubTask(
+                           TodoSubTask(
+                               id = 0,
+                               title = item.getString("title"),
+                               isComplete = item.getBoolean("isComplete"),
+                               todoId = item.getInt("todoId").toString()
+                           )
+                       )
+                   }
+               }
+
            }catch (e : JSONException){
                e.printStackTrace()
            }
@@ -144,6 +163,25 @@ abstract class LocalDatabase: RoomDatabase() {
                }
                val json = JSONObject(builder.toString())
                return json.getJSONArray("tasks")
+           }catch (e : IOException){
+               e.printStackTrace()
+           }catch (e : JSONException){
+               e.printStackTrace()
+           }
+           return null
+       }
+
+       private fun loadSubTaskJson(context: Context): JSONArray?{
+           val builder = StringBuilder()
+           val resources = context.resources.openRawResource(R.raw.task)
+           val reader = BufferedReader(InputStreamReader(resources))
+           var line : String?
+           try {
+               while (reader.readLine().also { line = it } != null){
+                   builder.append(line)
+               }
+               val json = JSONObject(builder.toString())
+               return json.getJSONArray("subtask")
            }catch (e : IOException){
                e.printStackTrace()
            }catch (e : JSONException){

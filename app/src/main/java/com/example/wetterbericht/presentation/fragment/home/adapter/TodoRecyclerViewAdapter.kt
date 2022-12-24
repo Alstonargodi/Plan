@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
 import android.annotation.SuppressLint
+import android.util.Log
 import com.example.wetterbericht.databinding.ItemcvTodoBinding
 import com.example.wetterbericht.data.local.entity.dailytask.TodoLocal
 import com.example.wetterbericht.presentation.componen.TaskTitleView
@@ -19,6 +20,7 @@ class TodoRecyclerViewAdapter(
     fun detailOnItemCallback(callback : DetailCallback){
         this.detailCallback = callback
     }
+
 
     class ViewHolder(var binding : ItemcvTodoBinding): RecyclerView.ViewHolder(binding.root){
         private lateinit var detailTodo : TodoLocal
@@ -49,21 +51,32 @@ class TodoRecyclerViewAdapter(
 
     //TODO 8
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(ItemcvTodoBinding.inflate(LayoutInflater.from(parent.context),parent,false))
+        return ViewHolder(
+            ItemcvTodoBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = data[position]
-        holder.bind(item)
+        try {
+            val item = data[position]
+            holder.bind(item)
 
-        holder.binding.layTodo.setOnClickListener {
-            detailCallback.detailCallBack(item)
+            holder.binding.layTodo.setOnClickListener {
+                detailCallback.detailCallBack(item)
+            }
+
+            holder.binding.checkboxtask.setOnClickListener {
+                onChecked(item,!item.isComplete)
+            }
+        }catch (e : Exception){
+            Log.d("task",e.toString())
         }
 
-        holder.binding.checkboxtask.setOnClickListener {
-            onChecked(item,!item.isComplete)
-        }
     }
 
     override fun getItemCount(): Int = data.size

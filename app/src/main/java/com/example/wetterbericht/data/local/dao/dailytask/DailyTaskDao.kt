@@ -12,7 +12,7 @@ import com.example.wetterbericht.data.local.entity.dailytask.TodoandSubTask
 @Dao
 abstract class DailyTaskDao {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     abstract fun insertTodoList(data : TodoLocal)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -31,7 +31,7 @@ abstract class DailyTaskDao {
     abstract fun readSearchTodo(name: String): LiveData<List<TodoLocal>>
 
     @Transaction
-    @Query("select * from TodoTable where title = :name")
+    @Query("select * from todotable where taskID = :name")
     abstract fun readSubTaskTodoList(name : String): LiveData<List<TodoandSubTask>>
 
     @Query("update TodoTable set completed=:status where taskID=:id")
