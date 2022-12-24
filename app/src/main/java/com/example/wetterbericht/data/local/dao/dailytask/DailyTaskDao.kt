@@ -12,7 +12,7 @@ import com.example.wetterbericht.data.local.entity.dailytask.TodoandSubTask
 @Dao
 abstract class DailyTaskDao {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     abstract fun insertTodoList(data : TodoLocal)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

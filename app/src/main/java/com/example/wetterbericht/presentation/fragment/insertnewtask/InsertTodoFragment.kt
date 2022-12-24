@@ -159,7 +159,7 @@ class InsertTodoFragment : Fragment(){
         val dateStart = binding.btnTodoDatestart.text.toString()
 
         val insertTask = TodoLocal(
-            taskID = todoId,
+            taskID = 0,
             title = taskName,
             description = description,
             levelColor = leveColour,
@@ -169,6 +169,7 @@ class InsertTodoFragment : Fragment(){
             notificationInterval = 20,
             startTime = startTime,
             endTime = endTime,
+            subTaskId = userId,
             isComplete = false
         )
 

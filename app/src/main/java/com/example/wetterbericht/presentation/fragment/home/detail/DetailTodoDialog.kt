@@ -70,12 +70,12 @@ class DetailTodoDialog : BottomSheetDialogFragment() {
         binding.tvbottomTodoTitle.text = detailTodo.title
         binding.tvbottomTodoDesc.text = detailTodo.description
         binding.tvbottomTodoDate.text = detailTodo.dateStart
-
     }
 
     private fun showSubtask(title : String){
         val dataArray = ArrayList<TodoSubTask>()
         roomViewModel.readTodoSubtask(title).observe(viewLifecycleOwner){ parent ->
+            Log.d("subtask",parent.toString())
             parent.forEach { child ->
                 child.subtask.forEach { data->
                     dataArray.add(data)
@@ -105,9 +105,8 @@ class DetailTodoDialog : BottomSheetDialogFragment() {
             parentLayout?.let { it ->
                 val behaviour = BottomSheetBehavior.from(it)
                 setupFullHeight(it)
-                behaviour.state = BottomSheetBehavior.STATE_HALF_EXPANDED
+                behaviour.state = BottomSheetBehavior.STATE_EXPANDED
             }
-
         }
         return dialog
     }

@@ -7,7 +7,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 @Entity(tableName = "TodoTable")
 data class TodoLocal(
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     val taskID : Int,
     val title: String,
     val description: String,
@@ -18,7 +18,7 @@ data class TodoLocal(
     val notificationInterval : Int,
     val startTime : String,
     val endTime : String,
-
+    val subTaskId: String,
     @ColumnInfo(name = "completed")
     val isComplete: Boolean,
 ):Parcelable
@@ -36,7 +36,7 @@ data class TodoandSubTask(
     @Embedded
     val todo : TodoLocal,
     @Relation(
-        parentColumn = "taskID",
+        parentColumn = "subTaskId",
         entityColumn = "todoId"
     )
     val subtask : List<TodoSubTask>

@@ -79,8 +79,8 @@ abstract class LocalDatabase: RoomDatabase() {
            val subtaskJsonArray = loadSubTaskJson(context)
            val currentDate = LocalDateTime.now().dayOfMonth
 
+           //pre popualte data
            try {
-
                if (habitsJsonArray != null){
                    for (i in 0 until habitsJsonArray.length()){
                        val item = habitsJsonArray.getJSONObject(i)
@@ -108,7 +108,8 @@ abstract class LocalDatabase: RoomDatabase() {
                            notificationInterval = item.getInt("notificationInterval"),
                            startTime = item.getString("startTime"),
                            endTime = item.getString("endTime") ,
-                           isComplete = item.getBoolean("completed")
+                           isComplete = item.getBoolean("completed"),
+                           subTaskId = "a"
                        ))
                    }
                }
