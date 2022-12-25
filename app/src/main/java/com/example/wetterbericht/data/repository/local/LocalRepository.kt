@@ -79,22 +79,6 @@ class LocalRepository(
         dataSource.updateTaskStatus(id, status)
     }
 
-    override fun getHabits(query: SupportSQLiteQuery): DataSource.Factory<Int, DailyHabits> {
-        return dataSource.getHabits(query)
-    }
-
-    override fun readHabitsLocal(): LiveData<List<DailyHabits>> {
-        return dataSource.readHabitsLocal()
-    }
-
-    override fun insertHabitsLocal(data: DailyHabits) {
-        dataSource.insertHabitsLocal(data)
-    }
-
-    override fun deleteHabitsLocal(name: String) {
-        dataSource.deleteHabitsLocal(name)
-    }
-
     override fun readWeatherLocal(): LiveData<List<WeatherLocal>> {
        return dataSource.readWeatherLocal()
     }

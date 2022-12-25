@@ -8,14 +8,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wetterbericht.databinding.FragmentInsertDetailHabitsBinding
 import com.example.wetterbericht.data.local.entity.dailyhabits.DailyHabits
-import com.example.wetterbericht.viewmodel.localviewmodel.LocalViewModel
+import com.example.wetterbericht.data.local.entity.dailyhabits.IconHabits
+import com.example.wetterbericht.presentation.fragment.habits.viewmodel.HabitsViewModel
 import com.example.wetterbericht.viewmodel.viewmodelfactory.ViewModelFactory
 
 class InsertDetailHabitsFragment : Fragment() {
     private lateinit var binding : FragmentInsertDetailHabitsBinding
-    private val localViewModel : LocalViewModel by viewModels{
+    private val viewModel : HabitsViewModel by viewModels{
         ViewModelFactory.getInstance(requireContext())
     }
     private var typeColor = Color.parseColor("#FFFFFF")
@@ -25,6 +27,9 @@ class InsertDetailHabitsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentInsertDetailHabitsBinding.inflate(layoutInflater)
+        viewModel.readHabitsIcon().observe(viewLifecycleOwner){ icon->
+            showHabitsIcon(icon)
+        }
         return binding.root
     }
 
@@ -54,11 +59,21 @@ class InsertDetailHabitsFragment : Fragment() {
             "ic_baseline_brunch_dining_24",
             typeColor
         )
-
-        localViewModel.insertHabits(insertData)
-
+        viewModel.insertHabits(insertData)
         findNavController().navigate(
             InsertDetailHabitsFragmentDirections.actionInsertDetailHabitsFragmentToHabitsListFragment()
         )
     }
+
+    private fun showHabitsIcon(icon : List<IconHabits>){
+        val adapter = IconHabitsRecylerViewAdapter(icon)
+        val recyclerView = binding.recviewIcon
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(
+            requireContext(),
+            LinearLayoutManager.HORIZONTAL,
+            false
+        )
+    }
+
 }

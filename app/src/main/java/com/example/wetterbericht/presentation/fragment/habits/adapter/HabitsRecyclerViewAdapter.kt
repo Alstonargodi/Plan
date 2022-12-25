@@ -19,7 +19,6 @@ class HabitsRecyclerViewAdapter(private val data : List<DailyHabits>)
     class ViewHolder(val binding : ItemcvHabitsBinding): RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("ResourceAsColor")
         fun bind(item : DailyHabits){
-
             val iconHabits = itemView.context.resources.getIdentifier(
                 item.iconHabits,
                 "drawable",

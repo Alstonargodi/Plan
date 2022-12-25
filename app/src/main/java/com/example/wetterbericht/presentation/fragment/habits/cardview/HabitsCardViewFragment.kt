@@ -6,17 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import com.example.wetterbericht.R
 import com.example.wetterbericht.databinding.FragmentHabitsCardViewBinding
 import com.example.wetterbericht.presentation.fragment.habits.adapter.HabitsCardViewAdapter
-import com.example.wetterbericht.viewmodel.localviewmodel.LocalViewModel
+import com.example.wetterbericht.presentation.fragment.habits.viewmodel.HabitsViewModel
 import com.example.wetterbericht.viewmodel.viewmodelfactory.ViewModelFactory
 import com.google.android.material.tabs.TabLayoutMediator
 
 
 class HabitsCardViewFragment : Fragment() {
     private lateinit var binding : FragmentHabitsCardViewBinding
-    private val viewModel : LocalViewModel by viewModels{  ViewModelFactory.getInstance(requireContext()) }
+    private val viewModel : HabitsViewModel by viewModels{
+        ViewModelFactory.getInstance(requireContext())
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

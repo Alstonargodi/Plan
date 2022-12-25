@@ -6,11 +6,17 @@ import com.example.wetterbericht.domain.localusecase.LocalInteractor
 import com.example.wetterbericht.domain.localusecase.LocalUseCase
 import com.example.wetterbericht.data.local.source.ILocalDataSource
 import com.example.wetterbericht.data.local.source.LocalDataSource
+import com.example.wetterbericht.data.local.source.habits.HabitsLocalDataSource
+import com.example.wetterbericht.data.local.source.habits.IHabitsLocalDataSource
 import com.example.wetterbericht.data.remote.config.ApiConfig
 import com.example.wetterbericht.data.remote.source.WeatherDataSource
 import com.example.wetterbericht.data.repository.local.LocalRepository
+import com.example.wetterbericht.data.repository.local.habits.HabitsLocalRepository
+import com.example.wetterbericht.data.repository.local.habits.IHabitsLocalRepository
 import com.example.wetterbericht.data.repository.remote.IRemoteRepository
 import com.example.wetterbericht.data.repository.remote.RemoteRepository
+import com.example.wetterbericht.domain.localusecase.habits.HabitsLocalInteractor
+import com.example.wetterbericht.domain.localusecase.habits.HabitsLocalUseCase
 import com.example.wetterbericht.domain.remoteusecase.RemoteInteractor
 import com.example.wetterbericht.domain.remoteusecase.RemoteUseCase
 
@@ -29,6 +35,7 @@ object Injection {
     private fun provideDataSource(context: Context): ILocalDataSource {
         return LocalDataSource(context)
     }
+
 
     fun provideWeatherUseCase(): RemoteUseCase{
         return RemoteInteractor(provideWeatherRepository())

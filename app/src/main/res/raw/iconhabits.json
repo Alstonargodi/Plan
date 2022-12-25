@@ -1,0 +1,29 @@
+{
+  "icons": [
+    {
+      "id": 1,
+      "nameIcon": "Reading book",
+      "iconPath" : "ic_baseline_cloud_24"
+    },
+    {
+      "id": 2,
+      "nameIcon": "Reading book",
+      "iconPath" : "ic_baseline_cloud_24"
+    },
+    {
+      "id": 3,
+      "nameIcon": "Reading book",
+      "iconPath" : "ic_baseline_cloud_24"
+    },
+    {
+      "id": 4,
+      "nameIcon": "Reading book",
+      "iconPath" : "ic_baseline_cloud_24"
+    },
+    {
+      "id": 5,
+      "nameIcon": "Reading book",
+      "iconPath" : "ic_baseline_cloud_24"
+    }
+  ]
+}

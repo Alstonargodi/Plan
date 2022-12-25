@@ -92,29 +92,7 @@ class LocalInteractor(private val repository: ILocalRepository): LocalUseCase {
         repository.updateTaskStatus(id, status)
     }
 
-    override fun getHabits(filter : HabitSortType): LiveData<PagedList<DailyHabits>> {
-        val query = SortUtils.getSortedQueryHabits(filter)
-        val habits = repository.getHabits(query)
 
-        val pagedConfig = PagedList.Config.Builder()
-            .setEnablePlaceholders(true)
-            .setPageSize(5)
-            .build()
-
-        return LivePagedListBuilder(habits,pagedConfig).build()
-    }
-
-    override fun readHabitsLocal(): LiveData<List<DailyHabits>> {
-        return repository.readHabitsLocal()
-    }
-
-    override fun insertHabitsLocal(data: DailyHabits) {
-        repository.insertHabitsLocal(data)
-    }
-
-    override fun deleteHabitsLocal(name: String) {
-        repository.readHabitsLocal()
-    }
 
     override fun readWeatherLocal(): LiveData<List<WeatherLocal>> {
         return repository.readWeatherLocal()

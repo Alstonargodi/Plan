@@ -13,6 +13,7 @@ import com.example.wetterbericht.data.local.dao.dailyhabits.DailyHabitsDao
 import com.example.wetterbericht.data.local.dao.dailytask.DailyTaskDao
 import com.example.wetterbericht.data.local.dao.weather.WeatherDao
 import com.example.wetterbericht.data.local.entity.dailyhabits.DailyHabits
+import com.example.wetterbericht.data.local.entity.dailyhabits.IconHabits
 import com.example.wetterbericht.data.local.entity.weather.WeatherLocal
 import org.json.JSONArray
 import org.json.JSONException
@@ -28,7 +29,8 @@ import java.util.concurrent.Executors
         TodoLocal::class,
         TodoSubTask::class,
         ChipAlarm::class,
-        DailyHabits::class
+        DailyHabits::class,
+        IconHabits::class
     ]
     ,version = 1
     ,exportSchema = false
@@ -37,6 +39,7 @@ abstract class LocalDatabase: RoomDatabase() {
    abstract fun todoDao() : DailyTaskDao
    abstract fun weatherDao(): WeatherDao
    abstract fun habitsDao(): DailyHabitsDao
+
 
    companion object{
        @Volatile
@@ -77,6 +80,7 @@ abstract class LocalDatabase: RoomDatabase() {
            val habitsJsonArray = loadHabitsJson(context)
            val todoJsonArray = loadTodoJson(context)
            val subtaskJsonArray = loadSubTaskJson(context)
+           val iconHabitsArray = loadIconHabits(context)
            val currentDate = LocalDateTime.now().dayOfMonth
 
            //pre popualte data
@@ -90,7 +94,7 @@ abstract class LocalDatabase: RoomDatabase() {
                            minuteFocus = item.getLong("focusTime"),
                            startTime = item.getString("startTime"),
                            priorityLevel = item.getString("priorityLevel"),
-                        "",
+                            "",
                            -1
                        ))
                    }
@@ -130,6 +134,19 @@ abstract class LocalDatabase: RoomDatabase() {
                    }
                }
 
+               if (iconHabitsArray != null){
+                   for (i in 0 until iconHabitsArray.length()){
+                       val item = iconHabitsArray.getJSONObject(i)
+                       dailyHabitsDao.insertHabitsIcon(
+                           IconHabits(
+                               id = 0,
+                               nameIcon = item.getString("nameIcon"),
+                               iconPath = item.getString("iconPath"),
+                           )
+                       )
+                   }
+               }
+
            }catch (e : JSONException){
                e.printStackTrace()
            }
@@ -154,6 +171,27 @@ abstract class LocalDatabase: RoomDatabase() {
            return null
        }
 
+       private fun loadIconHabits(context: Context): JSONArray?{
+           val builder = StringBuilder()
+           val resources = context.resources.openRawResource(R.raw.iconhabits)
+           val reader = BufferedReader(InputStreamReader(resources))
+           var line : String?
+           try {
+               while (reader.readLine().also { line = it } != null){
+                   builder.append(line)
+               }
+               val json = JSONObject(builder.toString())
+               return json.getJSONArray("icons")
+           }catch (e : IOException){
+               e.printStackTrace()
+           }catch (e : JSONException){
+               e.printStackTrace()
+           }
+           return null
+       }
+
+
+       //get data dummy
        private fun loadTodoJson(context: Context): JSONArray?{
            val builder = StringBuilder()
            val resources = context.resources.openRawResource(R.raw.task)

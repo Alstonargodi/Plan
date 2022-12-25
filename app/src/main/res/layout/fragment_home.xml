@@ -21,7 +21,6 @@
             android:id="@+id/detailtoolbar"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:background="@drawable/bg_headercorner"
             android:contentInsetStart="0dp"
             android:contentInsetLeft="0dp"
             android:contentInsetEnd="0dp"

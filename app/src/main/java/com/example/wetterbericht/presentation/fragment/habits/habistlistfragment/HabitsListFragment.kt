@@ -1,4 +1,4 @@
-package com.example.wetterbericht.presentation.fragment.habits.listview
+package com.example.wetterbericht.presentation.fragment.habits.habistlistfragment
 
 import android.os.Bundle
 import android.view.*
@@ -8,20 +8,18 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wetterbericht.R
 import com.example.wetterbericht.databinding.FragmentHabitsListBinding
 import com.example.wetterbericht.data.local.entity.dailyhabits.DailyHabits
 import com.example.wetterbericht.helpers.sortfilter.HabitSortType
 import com.example.wetterbericht.presentation.fragment.habits.adapter.HabitsRecyclerViewAdapter
-import com.example.wetterbericht.viewmodel.localviewmodel.LocalViewModel
+import com.example.wetterbericht.presentation.fragment.habits.viewmodel.HabitsViewModel
 import com.example.wetterbericht.viewmodel.viewmodelfactory.ViewModelFactory
-
 
 class HabitsListFragment : Fragment() {
     private lateinit var binding : FragmentHabitsListBinding
 
-    private val localViewModel : LocalViewModel by viewModels{
+    private val localViewModel : HabitsViewModel by viewModels{
         ViewModelFactory.getInstance(requireContext())
     }
 

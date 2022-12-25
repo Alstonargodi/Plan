@@ -135,7 +135,7 @@
     </fragment>
     <fragment
         android:id="@+id/habitsListFragment"
-        android:name="com.example.wetterbericht.presentation.fragment.habits.listview.HabitsListFragment"
+        android:name="com.example.wetterbericht.presentation.fragment.habits.habistlistfragment.HabitsListFragment"
         android:label="fragment_habits_list"
         tools:layout="@layout/fragment_habits_list" >
         <action

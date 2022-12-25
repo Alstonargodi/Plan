@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         localViewModel = obtainViewModel(this)
 
-        window.statusBarColor = getColor(R.color.main)
+        window.statusBarColor = getColor(R.color.white)
 
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
 

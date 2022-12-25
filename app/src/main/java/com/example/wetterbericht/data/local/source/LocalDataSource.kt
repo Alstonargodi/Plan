@@ -20,7 +20,6 @@ import java.util.concurrent.Executors
 
 class LocalDataSource(val context: Context) : ILocalDataSource {
     private val todoDao = LocalDatabase.setInstance(context).todoDao()
-    private val habitsDao = LocalDatabase.setInstance(context).habitsDao()
     private val weatherDao = LocalDatabase.setInstance(context).weatherDao()
 
     private val executorService = Executors.newSingleThreadExecutor()
@@ -88,22 +87,6 @@ class LocalDataSource(val context: Context) : ILocalDataSource {
 
     override fun updateTaskStatus(id: Int, status: Boolean) {
        executorService.execute { todoDao.updateTaskStatus(id, status) }
-    }
-
-    override fun getHabits(query: SupportSQLiteQuery): DataSource.Factory<Int, DailyHabits> {
-        return habitsDao.getHabits(query)
-    }
-
-    override fun readHabitsLocal(): LiveData<List<DailyHabits>> {
-       return habitsDao.readHabits()
-    }
-
-    override fun insertHabitsLocal(data: DailyHabits) {
-       executorService.execute { habitsDao.insertHabits(data) }
-    }
-
-    override fun deleteHabitsLocal(name: String) {
-        habitsDao.deleteHabits(name)
     }
 
     override fun readWeatherLocal(): LiveData<List<WeatherLocal>> {

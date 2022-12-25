@@ -83,23 +83,6 @@ class LocalViewModel(
 
 
 
-    //habits
-    fun getHabits(): LiveData<PagedList<DailyHabits>> =
-        habitsFilter.switchMap { todoUseCase.getHabits(it) }
-
-    fun readHabits(): LiveData<List<DailyHabits>> =
-        todoUseCase.readHabitsLocal()
-
-    fun insertHabits(data : DailyHabits) =
-        todoUseCase.insertHabitsLocal(data)
-
-    fun deleteHabits(name : String)=
-        todoUseCase.deleteHabitsLocal(name)
-
-    fun filter(filter : HabitSortType){
-        habitsFilter.value = filter
-    }
-
     //weather
     fun readWeatherLocal(): LiveData<List<WeatherLocal>> =
         todoUseCase.readWeatherLocal()
