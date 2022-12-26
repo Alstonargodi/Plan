@@ -1,51 +1,28 @@
-package com.example.wetterbericht.data.local.source
+package com.example.wetterbericht.data.local.source.todotask
 
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.asLiveData
 import androidx.paging.DataSource
-import androidx.sqlite.db.SimpleSQLiteQuery
 import androidx.sqlite.db.SupportSQLiteQuery
 import com.example.wetterbericht.data.local.ChipAlarm
 import com.example.wetterbericht.data.local.database.LocalDatabase
-import com.example.wetterbericht.data.local.entity.dailyhabits.DailyHabits
 import com.example.wetterbericht.data.local.entity.dailytask.TodoLocal
 import com.example.wetterbericht.data.local.entity.dailytask.TodoSubTask
 import com.example.wetterbericht.data.local.entity.dailytask.TodoandSubTask
-import com.example.wetterbericht.data.local.entity.weather.WeatherLocal
-import com.example.wetterbericht.data.local.preferences.OnboardingPreferences
-import com.example.wetterbericht.data.local.preferences.dataStore
 import java.util.concurrent.Executors
 
-class LocalDataSource(val context: Context) : ILocalDataSource {
+class TodoLocalDataSource(
+    val context : Context
+): ITodoLocalDataSource {
     private val todoDao = LocalDatabase.setInstance(context).todoDao()
-    private val weatherDao = LocalDatabase.setInstance(context).weatherDao()
-
     private val executorService = Executors.newSingleThreadExecutor()
-    private val onBoardingPreferences = OnboardingPreferences.getInstance(context.dataStore)
-
-    override fun getOnBoardingStatus(): LiveData<Boolean> {
-        return onBoardingPreferences.getOnboardingStatus().asLiveData()
-    }
-
-    override suspend fun saveOnBoardingStatus(onBoard: Boolean) {
-        onBoardingPreferences.savePreferences(onBoard)
-    }
-
-    override fun readChipTime(): LiveData<List<ChipAlarm>> {
-       return todoDao.readTimeChip()
-    }
-
-    override fun insertChipTime(alarm: ChipAlarm) {
-        executorService.execute { todoDao.insertTimeChip(alarm) }
-    }
 
     override fun readNearestActiveTask(): TodoLocal {
         return todoDao.readNearestActiveTask()
     }
 
-    override fun readTodoTaskFilter(query: SupportSQLiteQuery): DataSource.Factory<Int, TodoLocal> {
+    override fun readTodoTaskFilter(query: SupportSQLiteQuery)
+    : DataSource.Factory<Int, TodoLocal> {
         return todoDao.readTodoTaskFilter(query)
     }
 
@@ -58,7 +35,7 @@ class LocalDataSource(val context: Context) : ILocalDataSource {
     }
 
     override fun getTodayTask(date : Int): LiveData<List<TodoLocal>> {
-       return todoDao.readTodayTask(date)
+        return todoDao.readTodayTask(date)
     }
 
     override fun getUpComingTask(date: Int): LiveData<List<TodoLocal>> {
@@ -86,24 +63,14 @@ class LocalDataSource(val context: Context) : ILocalDataSource {
     }
 
     override fun updateTaskStatus(id: Int, status: Boolean) {
-       executorService.execute { todoDao.updateTaskStatus(id, status) }
+        executorService.execute { todoDao.updateTaskStatus(id, status) }
     }
 
-    override fun readWeatherLocal(): LiveData<List<WeatherLocal>> {
-        return weatherDao.readWeather()
+    override fun readChipTime(): LiveData<List<ChipAlarm>> {
+        return todoDao.readTimeChip()
     }
 
-    override fun getWeatherByCityName(): WeatherLocal {
-        return weatherDao.getWeatherLocationName()
+    override fun insertChipTime(alarm: ChipAlarm) {
+        executorService.execute { todoDao.insertTimeChip(alarm) }
     }
-
-    override fun insertWeatherLocal(data: WeatherLocal) {
-        executorService.execute { weatherDao.insertWeather(data) }
-    }
-
-    override fun searchWeatherLocal(name: String): LiveData<List<WeatherLocal>> {
-        return weatherDao.searchLocation(name)
-    }
-
-
 }

@@ -16,8 +16,8 @@ import com.example.wetterbericht.data.local.entity.dailytask.TodoLocal
 import com.example.wetterbericht.data.local.entity.dailytask.TodoSubTask
 import com.example.wetterbericht.presentation.fragment.home.HomeFragment.Companion.homepage_key
 import com.example.wetterbericht.presentation.fragment.home.HomeFragmentDirections
+import com.example.wetterbericht.presentation.fragment.home.HomeViewModel
 import com.example.wetterbericht.presentation.fragment.home.adapter.SubtaskRecyclerViewAdapter
-import com.example.wetterbericht.viewmodel.localviewmodel.LocalViewModel
 import com.example.wetterbericht.viewmodel.viewmodelfactory.ViewModelFactory
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -31,7 +31,9 @@ class DetailTodoDialog : BottomSheetDialogFragment() {
 
     private lateinit var detailTodo : TodoLocal
     private var durationTime = 0
-    private val roomViewModel : LocalViewModel by viewModels{ ViewModelFactory.getInstance(requireContext())}
+    private val roomViewModel : HomeViewModel by viewModels{
+        ViewModelFactory.getInstance(requireContext())
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentDetailTodoListDialogBinding.inflate(inflater, container, false)

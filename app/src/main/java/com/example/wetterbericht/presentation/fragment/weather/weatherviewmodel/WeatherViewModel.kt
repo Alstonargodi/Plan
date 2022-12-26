@@ -1,16 +1,22 @@
-package com.example.wetterbericht.viewmodel.weatherviewmodel
+package com.example.wetterbericht.presentation.fragment.weather.weatherviewmodel
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.wetterbericht.data.local.entity.weather.WeatherLocal
 import com.example.wetterbericht.data.remote.openweather.forecast.ForecastResponse
 import com.example.wetterbericht.data.remote.openweather.weather.WeatherResponse
+import com.example.wetterbericht.domain.localusecase.weather.WeatherUseCase
 import com.example.wetterbericht.domain.remoteusecase.RemoteUseCase
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class WeatherViewModel(private val remoteUseCase: RemoteUseCase) : ViewModel() {
+class WeatherViewModel(
+    private val remoteUseCase: RemoteUseCase,
+    private val weatherUseCase: WeatherUseCase
+) : ViewModel() {
 
     val weatherSearchResponse : MutableLiveData<WeatherResponse> = MutableLiveData()
     val forecastResponse : MutableLiveData<ForecastResponse> = MutableLiveData()
@@ -64,6 +70,16 @@ class WeatherViewModel(private val remoteUseCase: RemoteUseCase) : ViewModel() {
             }
         })
     }
+
+    //weather
+    fun readWeatherLocal(): LiveData<List<WeatherLocal>> =
+        weatherUseCase.readWeatherLocal()
+
+    fun insertWeatherLocal(data : WeatherLocal) =
+        weatherUseCase.insertWeatherLocal(data)
+
+    fun searchLocation(name: String): LiveData<List<WeatherLocal>> =
+        weatherUseCase.searchWeatherLocal(name)
 
     companion object{
         const val tag = "weatherviewmodel"

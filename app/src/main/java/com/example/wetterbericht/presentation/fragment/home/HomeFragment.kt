@@ -18,7 +18,6 @@ import com.example.wetterbericht.helpers.sortfilter.TodoSortType
 import com.example.wetterbericht.presentation.fragment.home.adapter.TodoRecyclerViewAdapter
 import com.example.wetterbericht.presentation.fragment.home.detail.DetailTodoDialog
 import com.example.wetterbericht.presentation.fragment.weather.adapter.WeatherHomeRecyclerViewAdapter
-import com.example.wetterbericht.viewmodel.localviewmodel.LocalViewModel
 import com.example.wetterbericht.viewmodel.viewmodelfactory.ViewModelFactory
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
@@ -29,7 +28,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var taskRecyclewViewAdapter : TodoRecyclerViewAdapter
 
-    private val homeViewModel : LocalViewModel by viewModels{
+    private val homeViewModel : HomeViewModel by viewModels{
         ViewModelFactory.getInstance(requireContext())
     }
 

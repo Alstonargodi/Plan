@@ -1,43 +1,31 @@
-package com.example.wetterbericht.viewmodel.localviewmodel
+package com.example.wetterbericht.presentation.fragment.home
 
 import android.util.Log
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.switchMap
 import androidx.paging.PagedList
-import com.example.wetterbericht.domain.localusecase.LocalUseCase
-import com.example.wetterbericht.data.local.*
-import com.example.wetterbericht.data.local.entity.dailyhabits.DailyHabits
+import com.example.wetterbericht.data.local.ChipAlarm
 import com.example.wetterbericht.data.local.entity.dailytask.TodoLocal
 import com.example.wetterbericht.data.local.entity.dailytask.TodoSubTask
 import com.example.wetterbericht.data.local.entity.dailytask.TodoandSubTask
 import com.example.wetterbericht.data.local.entity.weather.WeatherLocal
-import com.example.wetterbericht.helpers.sortfilter.HabitSortType
+import com.example.wetterbericht.domain.localusecase.weather.WeatherUseCase
+import com.example.wetterbericht.domain.localusecase.todotask.TodoLocalUseCase
 import com.example.wetterbericht.helpers.sortfilter.TodoSortType
 
-class LocalViewModel(
-    private val todoUseCase: LocalUseCase
-): ViewModel() {
-    private val habitsFilter = MutableLiveData<HabitSortType>()
-    private val todoFilter = MutableLiveData<TodoSortType>()
+class HomeViewModel(
+    private val todoUseCase: TodoLocalUseCase,
+    private val weatherUseCase : WeatherUseCase
+):ViewModel() {
     val snackbarEvent = MutableLiveData<String>()
+    private val todoFilter = MutableLiveData<TodoSortType>()
 
     init {
-        habitsFilter.value = HabitSortType.START_TIME
         todoFilter.value = TodoSortType.ALL_TASKS
     }
 
-    //onboarding
-    fun getOnBoardingStatus(): LiveData<Boolean> =
-        todoUseCase.getOnBoardingStatus()
-
-    suspend fun saveOnBoardingStatus(onBoard : Boolean){
-        todoUseCase.saveOnBoardingStatus(onBoard)
-    }
-
-    fun taskFilter(filter :TodoSortType){
-        todoFilter.value = filter
-    }
-
-    //todolist
     fun readTodoTaskFilter(): LiveData<PagedList<TodoLocal>> =
         todoFilter.switchMap {
             todoUseCase.readTodoTaskFilter(it)
@@ -81,17 +69,18 @@ class LocalViewModel(
         snackbarEvent.value = name
     }
 
-
+    fun taskFilter(filter : TodoSortType){
+        todoFilter.value = filter
+    }
 
     //weather
     fun readWeatherLocal(): LiveData<List<WeatherLocal>> =
-        todoUseCase.readWeatherLocal()
+        weatherUseCase.readWeatherLocal()
 
     fun insertWeatherLocal(data : WeatherLocal) =
-        todoUseCase.insertWeatherLocal(data)
+        weatherUseCase.insertWeatherLocal(data)
 
     fun searchLocation(name: String): LiveData<List<WeatherLocal>> =
-        todoUseCase.searchWeatherLocal(name)
-
+        weatherUseCase.searchWeatherLocal(name)
 
 }

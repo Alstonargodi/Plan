@@ -1,27 +1,17 @@
-package com.example.wetterbericht.data.repository.local
+package com.example.wetterbericht.data.repository.local.todo
 
 import androidx.lifecycle.LiveData
 import androidx.paging.DataSource
 import androidx.sqlite.db.SupportSQLiteQuery
-import com.example.wetterbericht.data.local.source.ILocalDataSource
 import com.example.wetterbericht.data.local.ChipAlarm
-import com.example.wetterbericht.data.local.entity.dailyhabits.DailyHabits
 import com.example.wetterbericht.data.local.entity.dailytask.TodoLocal
 import com.example.wetterbericht.data.local.entity.dailytask.TodoSubTask
 import com.example.wetterbericht.data.local.entity.dailytask.TodoandSubTask
-import com.example.wetterbericht.data.local.entity.weather.WeatherLocal
+import com.example.wetterbericht.data.local.source.todotask.ITodoLocalDataSource
 
-class LocalRepository(
-    private val dataSource: ILocalDataSource
-): ILocalRepository {
-
-    override fun getOnBoardingStatus(): LiveData<Boolean> {
-        return dataSource.getOnBoardingStatus()
-    }
-
-    override suspend fun saveOnBoardingStatus(onBoard: Boolean) {
-       dataSource.saveOnBoardingStatus(onBoard)
-    }
+class TodoLocalRepository(
+    private val dataSource: ITodoLocalDataSource
+):ITodoLocalRepository {
 
     override fun readChipTime(): LiveData<List<ChipAlarm>> {
         return dataSource.readChipTime()
@@ -35,8 +25,9 @@ class LocalRepository(
         return dataSource.readNearestActiveTask()
     }
 
-    override fun readTodoTaskFilter(query: SupportSQLiteQuery): DataSource.Factory<Int, TodoLocal> {
-       return dataSource.readTodoTaskFilter(query)
+    override fun readTodoTaskFilter(query: SupportSQLiteQuery)
+    : DataSource.Factory<Int, TodoLocal> {
+        return dataSource.readTodoTaskFilter(query)
     }
 
     override fun readTodoLocal(): LiveData<List<TodoLocal>> {
@@ -78,21 +69,4 @@ class LocalRepository(
     override fun updateTaskStatus(id: Int, status: Boolean) {
         dataSource.updateTaskStatus(id, status)
     }
-
-    override fun readWeatherLocal(): LiveData<List<WeatherLocal>> {
-       return dataSource.readWeatherLocal()
-    }
-
-    override fun getWeatherCityName(): WeatherLocal {
-        return dataSource.getWeatherByCityName()
-    }
-
-    override fun insertWeatherLocal(data: WeatherLocal) {
-        dataSource.insertWeatherLocal(data)
-    }
-
-    override fun searchWeatherLocal(name: String): LiveData<List<WeatherLocal>> {
-        return dataSource.searchWeatherLocal(name)
-    }
-
 }

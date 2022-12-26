@@ -9,7 +9,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import com.example.wetterbericht.databinding.FragmentInsertAlarmChipBinding
 import com.example.wetterbericht.data.local.ChipAlarm
-import com.example.wetterbericht.viewmodel.localviewmodel.LocalViewModel
+import com.example.wetterbericht.presentation.fragment.insertnewtask.InsertTodoViewModel
 import com.example.wetterbericht.viewmodel.viewmodelfactory.ViewModelFactory
 import java.text.SimpleDateFormat
 import java.util.*
@@ -18,7 +18,9 @@ import java.util.*
 class InsertAlarmChipFragment : DialogFragment() {
     private lateinit var binding : FragmentInsertAlarmChipBinding
 
-    private val roomViewModel : LocalViewModel by viewModels{ ViewModelFactory.getInstance(requireContext())}
+    private val roomViewModel : InsertTodoViewModel by viewModels{
+        ViewModelFactory.getInstance(requireContext())
+    }
 
     private var formatTime = SimpleDateFormat("HH:mm", Locale.ENGLISH)
 

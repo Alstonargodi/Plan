@@ -81,6 +81,7 @@ abstract class LocalDatabase: RoomDatabase() {
            val todoJsonArray = loadTodoJson(context)
            val subtaskJsonArray = loadSubTaskJson(context)
            val iconHabitsArray = loadIconHabits(context)
+           val chipAlarmArray = loadAlarmChip(context)
            val currentDate = LocalDateTime.now().dayOfMonth
 
            //pre popualte data
@@ -147,6 +148,19 @@ abstract class LocalDatabase: RoomDatabase() {
                    }
                }
 
+               if(chipAlarmArray != null){
+                   for (i in 0 until chipAlarmArray.length()){
+                       val item = chipAlarmArray.getJSONObject(i)
+                       dailyTaskDao.insertTimeChip(
+                           ChipAlarm(
+                               name = item.getString("name"),
+                               time = item.getString("time"),
+                               sumDay = item.getInt("sumday")
+                           )
+                       )
+                   }
+               }
+
            }catch (e : JSONException){
                e.printStackTrace()
            }
@@ -190,7 +204,24 @@ abstract class LocalDatabase: RoomDatabase() {
            return null
        }
 
-
+       private fun loadAlarmChip(context: Context): JSONArray?{
+           val builder = StringBuilder()
+           val resources = context.resources.openRawResource(R.raw.chipalarm)
+           val reader = BufferedReader(InputStreamReader(resources))
+           var line : String?
+           try {
+               while (reader.readLine().also { line = it } != null){
+                   builder.append(line)
+               }
+               val json = JSONObject(builder.toString())
+               return json.getJSONArray("alarm")
+           }catch (e : IOException){
+               e.printStackTrace()
+           }catch (e : JSONException){
+               e.printStackTrace()
+           }
+           return null
+       }
        //get data dummy
        private fun loadTodoJson(context: Context): JSONArray?{
            val builder = StringBuilder()

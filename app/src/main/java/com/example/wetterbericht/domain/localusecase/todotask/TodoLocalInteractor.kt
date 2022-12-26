@@ -1,35 +1,25 @@
-package com.example.wetterbericht.domain.localusecase
+package com.example.wetterbericht.domain.localusecase.todotask
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.example.wetterbericht.data.local.ChipAlarm
-import com.example.wetterbericht.data.local.entity.dailyhabits.DailyHabits
 import com.example.wetterbericht.data.local.entity.dailytask.TodoLocal
 import com.example.wetterbericht.data.local.entity.dailytask.TodoSubTask
 import com.example.wetterbericht.data.local.entity.dailytask.TodoandSubTask
-import com.example.wetterbericht.data.local.entity.weather.WeatherLocal
-import com.example.wetterbericht.data.repository.local.ILocalRepository
-import com.example.wetterbericht.helpers.sortfilter.HabitSortType
+import com.example.wetterbericht.data.repository.local.todo.ITodoLocalRepository
+import com.example.wetterbericht.data.repository.local.todo.TodoLocalRepository
 import com.example.wetterbericht.helpers.sortfilter.SortUtils
 import com.example.wetterbericht.helpers.sortfilter.TodoSortType
 import java.time.LocalDateTime
 
-//where business logic
-class LocalInteractor(private val repository: ILocalRepository): LocalUseCase {
+class TodoLocalInteractor(
+    private val repository : ITodoLocalRepository
+): TodoLocalUseCase {
     private val currentDate = LocalDateTime.now().dayOfMonth
 
-    override fun getOnBoardingStatus(): LiveData<Boolean> {
-        return repository.getOnBoardingStatus()
-    }
-
-    override suspend fun saveOnBoardingStatus(onBoard: Boolean) {
-        return repository.saveOnBoardingStatus(onBoard)
-    }
-
     override fun readChipTime(): LiveData<List<ChipAlarm>> {
-       return repository.readChipTime()
+        return repository.readChipTime()
     }
 
     override fun insertChipTime(alarm: ChipAlarm) {
@@ -73,7 +63,7 @@ class LocalInteractor(private val repository: ILocalRepository): LocalUseCase {
     }
 
     override fun getTodayTaskReminder(): List<TodoLocal> {
-       return repository.getTodayTaskReminder(currentDate)
+        return repository.getTodayTaskReminder(currentDate)
     }
 
     override fun insertTodoList(data: TodoLocal) {
@@ -90,23 +80,5 @@ class LocalInteractor(private val repository: ILocalRepository): LocalUseCase {
 
     override fun updateTaskStatus(id: Int, status: Boolean) {
         repository.updateTaskStatus(id, status)
-    }
-
-
-
-    override fun readWeatherLocal(): LiveData<List<WeatherLocal>> {
-        return repository.readWeatherLocal()
-    }
-
-    override fun getWeatherCityName(): WeatherLocal {
-        return repository.getWeatherCityName()
-    }
-
-    override fun insertWeatherLocal(data: WeatherLocal) {
-        repository.insertWeatherLocal(data)
-    }
-
-    override fun searchWeatherLocal(name: String): LiveData<List<WeatherLocal>> {
-       return repository.searchWeatherLocal(name)
     }
 }

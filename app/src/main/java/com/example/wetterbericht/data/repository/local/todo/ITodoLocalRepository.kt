@@ -1,25 +1,17 @@
-package com.example.wetterbericht.data.repository.local
+package com.example.wetterbericht.data.repository.local.todo
 
 import androidx.lifecycle.LiveData
 import androidx.paging.DataSource
 import androidx.sqlite.db.SupportSQLiteQuery
 import com.example.wetterbericht.data.local.ChipAlarm
-import com.example.wetterbericht.data.local.entity.dailyhabits.DailyHabits
 import com.example.wetterbericht.data.local.entity.dailytask.TodoLocal
 import com.example.wetterbericht.data.local.entity.dailytask.TodoSubTask
 import com.example.wetterbericht.data.local.entity.dailytask.TodoandSubTask
-import com.example.wetterbericht.data.local.entity.weather.WeatherLocal
 
-interface ILocalRepository {
-    //onboarding
-    fun getOnBoardingStatus(): LiveData<Boolean>
-    suspend fun saveOnBoardingStatus(onBoard : Boolean)
-    //chipTime
-    fun readChipTime():LiveData<List<ChipAlarm>>
-    fun insertChipTime(alarm: ChipAlarm)
+interface ITodoLocalRepository {
     //todolist
     fun readNearestActiveTask(): TodoLocal
-    fun readTodoTaskFilter(query: SupportSQLiteQuery): DataSource.Factory<Int,TodoLocal>
+    fun readTodoTaskFilter(query: SupportSQLiteQuery): DataSource.Factory<Int, TodoLocal>
     fun readTodoLocal(): LiveData<List<TodoLocal>>
     fun readTodoSubtask(name : String): LiveData<List<TodoandSubTask>>
     fun getTodayTaskReminder(date : Int): List<TodoLocal>
@@ -30,9 +22,8 @@ interface ILocalRepository {
     fun insertSubtask(data : TodoSubTask)
     fun deleteTodoList(name : String)
     fun updateTaskStatus(id : Int,status : Boolean)
-    //weather
-    fun readWeatherLocal(): LiveData<List<WeatherLocal>>
-    fun getWeatherCityName(): WeatherLocal
-    fun insertWeatherLocal(data : WeatherLocal)
-    fun searchWeatherLocal(name: String): LiveData<List<WeatherLocal>>
+    //chipTime
+    fun readChipTime():LiveData<List<ChipAlarm>>
+    fun insertChipTime(alarm: ChipAlarm)
+
 }

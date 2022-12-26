@@ -9,12 +9,12 @@ import androidx.activity.viewModels
 import com.example.wetterbericht.presentation.activity.mainactivity.MainActivity
 import com.example.wetterbericht.R
 import com.example.wetterbericht.presentation.activity.onboarding.OnBoardingActivity
-import com.example.wetterbericht.viewmodel.localviewmodel.LocalViewModel
+import com.example.wetterbericht.presentation.activity.onboarding.OnBoardingViewModel
 import com.example.wetterbericht.viewmodel.viewmodelfactory.ViewModelFactory
 
 class SplashScreen : AppCompatActivity() {
 
-    private val localViewModel : LocalViewModel by viewModels{
+    private val localViewModel : OnBoardingViewModel by viewModels{
         ViewModelFactory.getInstance(this)
     }
 
