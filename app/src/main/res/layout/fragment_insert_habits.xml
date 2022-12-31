@@ -196,7 +196,6 @@
                     android:fontFamily="@font/robotoregular"
                     android:gravity="start"
                     android:padding="10dp"
-                    android:text="lorem ipsum dolor amet"
                     android:textColor="#100F0F"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -206,7 +205,7 @@
 
                 <EditText
                     android:id="@+id/et_inserthabits_duration"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="0dp"
                     android:layout_marginStart="20dp"
                     android:background="@drawable/corner05"

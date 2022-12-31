@@ -1,16 +1,23 @@
 package com.example.wetterbericht.presentation.fragment.habits.insert
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.wetterbericht.data.local.entity.dailyhabits.IconHabits
-import com.example.wetterbericht.databinding.ItemcvHabitsBinding
 import com.example.wetterbericht.databinding.ItemcvIconHabitsBinding
 
 class IconHabitsRecylerViewAdapter(
     private val iconList : List<IconHabits>
 ) : RecyclerView.Adapter<IconHabitsRecylerViewAdapter.ViewHolder>(){
+
+    private lateinit var getNameIcon : NameItemCallback
+
+    fun getIconName(name : NameItemCallback){
+        this.getNameIcon = name
+    }
 
     class ViewHolder(val binding : ItemcvIconHabitsBinding)
         : RecyclerView.ViewHolder(binding.root)
@@ -35,7 +42,18 @@ class IconHabitsRecylerViewAdapter(
             .asBitmap()
             .load(icon)
             .into(holder.binding.imgIconHabits)
+
+        holder.binding.imgIconHabits.setOnClickListener {
+            getNameIcon.iconCallback(data.iconPath)
+        }
     }
 
     override fun getItemCount(): Int = iconList.size
+
+
+
+    interface NameItemCallback{
+        fun iconCallback(name : String)
+    }
+
 }

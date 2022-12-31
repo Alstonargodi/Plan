@@ -128,7 +128,7 @@
         android:id="@+id/insertDetailHabitsFragment"
         android:name="com.example.wetterbericht.presentation.fragment.habits.insert.InsertDetailHabitsFragment"
         android:label="fragment_insert_detail_habits"
-        tools:layout="@layout/fragment_insert_detail_habits" >
+        tools:layout="@layout/fragment_insert_habits" >
         <action
             android:id="@+id/action_insertDetailHabitsFragment_to_habitsListFragment"
             app:destination="@id/habitsListFragment" />
