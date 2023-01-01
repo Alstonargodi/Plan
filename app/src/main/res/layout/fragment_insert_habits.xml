@@ -90,7 +90,7 @@
 
 
                 <TextView
-                    android:id="@+id/btn_todo_timestart2"
+                    android:id="@+id/btn_habits_timestart"
                     android:layout_width="150dp"
                     android:layout_height="35dp"
                     android:layout_marginStart="20dp"
@@ -101,7 +101,7 @@
                     android:fontFamily="@font/robotoregular"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:text="start"
+                    android:text="00 : 00"
                     android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -167,8 +167,8 @@
                     app:layout_constraintTop_toBottomOf="@+id/et_inserthabits_name" />
 
                 <TextView
-                    android:id="@+id/inserttitle8"
-                    android:layout_width="0dp"
+                    android:id="@+id/title_icon_picker"
+                    android:layout_width="80dp"
                     android:layout_height="32dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
@@ -183,10 +183,10 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/btn_todo_timestart2" />
+                    app:layout_constraintTop_toBottomOf="@+id/btn_habits_timestart" />
 
                 <TextView
-                    android:id="@+id/inserttitle9"
+                    android:id="@+id/title_color_picker"
                     android:layout_width="0dp"
                     android:layout_height="32dp"
                     android:layout_marginStart="20dp"
@@ -232,37 +232,36 @@
                     android:fontFamily="@font/robotoregular"
                     android:gravity="center"
                     android:inputType="phone"
-                    android:text="50"
                     android:textColor="#040404"
                     android:textSize="20sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/btn_todo_timestart2"
-                    app:layout_constraintStart_toEndOf="@+id/btn_todo_timestart2"
-                    app:layout_constraintTop_toTopOf="@+id/btn_todo_timestart2"
+                    app:layout_constraintBottom_toBottomOf="@+id/btn_habits_timestart"
+                    app:layout_constraintStart_toEndOf="@+id/btn_habits_timestart"
+                    app:layout_constraintTop_toTopOf="@+id/btn_habits_timestart"
                     app:layout_constraintVertical_bias="0.0" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recview_icon"
                     android:layout_width="0dp"
-                    android:layout_height="70dp"
+                    android:layout_height="40dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="20dp"
                     android:scrollbars="horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/inserttitle8"
+                    app:layout_constraintTop_toBottomOf="@+id/title_icon_picker"
                     tools:listitem="@layout/itemcv_icon_habits" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recview_color"
                     android:layout_width="0dp"
-                    android:layout_height="40dp"
+                    android:layout_height="80dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="20dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/inserttitle9" />
+                    app:layout_constraintTop_toBottomOf="@+id/title_color_picker" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>

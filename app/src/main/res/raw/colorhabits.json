@@ -31,6 +31,21 @@
     {
       "id": 8,
       "colorHex": "#FFBABA"
+    },    {
+      "id": 9,
+      "colorHex": "#7B2869"
+    },
+    {
+      "id": 10,
+      "colorHex": "#9D3C72"
+    },
+    {
+      "id": 11,
+      "colorHex": "#C85C8E"
+    },
+    {
+      "id": 12,
+      "colorHex": "#FFBABA"
     }
   ]
 }
