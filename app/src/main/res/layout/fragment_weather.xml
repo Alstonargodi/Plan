@@ -15,12 +15,10 @@
         style="Theme.Wetterbericht"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:background="@drawable/bg_headercorner"
         android:paddingStart="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:subtitleTextColor="#EAE3E3"
         app:titleTextAppearance="@style/ToolBarStyleLight">
 
         <androidx.constraintlayout.widget.ConstraintLayout

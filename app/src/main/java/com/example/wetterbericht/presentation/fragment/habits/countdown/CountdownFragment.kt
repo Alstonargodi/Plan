@@ -1,5 +1,7 @@
-package com.example.wetterbericht.presentation.fragment.habits
+package com.example.wetterbericht.presentation.fragment.habits.countdown
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -20,8 +22,15 @@ class CountdownFragment : Fragment() {
     ): View {
         binding = FragmentCountdownBinding.inflate(layoutInflater)
 
-        val name = CountdownFragmentArgs.fromBundle(requireArguments()).name
-        val duration = CountdownFragmentArgs.fromBundle(requireArguments()).time
+        val name = CountdownFragmentArgs.fromBundle(
+            requireArguments()
+        ).name
+        val duration = CountdownFragmentArgs.fromBundle(
+            requireArguments()
+        ).time
+        val color = CountdownFragmentArgs.fromBundle(
+            requireArguments()
+        ).color
 
         binding.tvCountdownName.text = name
 
@@ -33,6 +42,9 @@ class CountdownFragment : Fragment() {
 
         countViewModel.progressBar.observe(viewLifecycleOwner){
             binding.pgcircleCountdown.setProgress(it,true)
+            binding.pgcircleCountdown.indeterminateDrawable.setColorFilter(
+                Color.parseColor("#2a4c6b"), android.graphics.PorterDuff.Mode.SRC_ATOP
+            )
         }
 
         countViewModel.eventFinish.observe(viewLifecycleOwner){
@@ -49,7 +61,6 @@ class CountdownFragment : Fragment() {
             countViewModel.startTimer()
             statusButton(true)
         }
-
 
         binding.btnCountdownStop.setOnClickListener {
             countViewModel.resetTimer()

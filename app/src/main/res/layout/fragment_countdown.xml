@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.fragment.habits.CountdownFragment">
+    tools:context=".presentation.fragment.habits.countdown.CountdownFragment">
 
 
     <androidx.appcompat.widget.Toolbar
@@ -74,10 +74,11 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:gravity="center"
-        android:text="activity name"
+        android:text="name"
         android:textColor="#3F3E3E"
         android:textSize="30sp"
         android:textStyle="bold"
+        app:fontFamily="@font/robotoregular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -91,11 +92,30 @@
         android:text="Time"
         android:textColor="#343333"
         android:textSize="25sp"
+        app:fontFamily="@font/robotoregular"
         app:layout_constraintBottom_toBottomOf="@+id/pgcircle_countdown"
         app:layout_constraintEnd_toEndOf="@+id/pgcircle_countdown"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/pgcircle_countdown"
-        app:layout_constraintTop_toTopOf="@+id/pgcircle_countdown" />
+        app:layout_constraintTop_toTopOf="@+id/pgcircle_countdown"
+        app:layout_constraintVertical_bias="0.421" />
+
+    <TextView
+        android:id="@+id/tv_countdown_timer2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:text="Minutes"
+        android:textColor="#343333"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/pgcircle_countdown"
+        app:layout_constraintEnd_toEndOf="@+id/pgcircle_countdown"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/pgcircle_countdown"
+        app:layout_constraintTop_toBottomOf="@+id/tv_countdown_timer"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/btn_countdown_start"
@@ -131,6 +151,7 @@
         android:max="100"
         android:progressDrawable="@drawable/pgbar_circle_drawble"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_countdown_name" />
 

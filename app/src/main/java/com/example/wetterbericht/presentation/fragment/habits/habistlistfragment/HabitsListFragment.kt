@@ -83,7 +83,9 @@ class HabitsListFragment : Fragment() {
                 override fun detailHabitsCallback(data: DailyHabits) {
                     findNavController().navigate(
                         HabitsListFragmentDirections.actionHabitsListFragmentToCountdownFragment(
-                            data.minuteFocus, data.title
+                            data.minuteFocus,
+                            data.title,
+                            data.colorHabits
                         )
                     )
                 }

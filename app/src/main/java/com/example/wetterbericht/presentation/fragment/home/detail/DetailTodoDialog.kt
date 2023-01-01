@@ -59,7 +59,9 @@ class DetailTodoDialog : BottomSheetDialogFragment() {
 
         binding.btnHabitsTodoDialog.setOnClickListener {
             findNavController().navigate(HomeFragmentDirections.actionFragmentHomeToCountdownFragment(
-                    durationTime.toLong(),detailTodo.title
+                    durationTime.toLong(),
+                    detailTodo.title,
+                    0
                 )
             )
         }
