@@ -3,6 +3,7 @@ package com.example.wetterbericht.data.repository.local.habits
 import androidx.lifecycle.LiveData
 import androidx.paging.DataSource
 import androidx.sqlite.db.SupportSQLiteQuery
+import com.example.wetterbericht.data.local.entity.dailyhabits.ColorHabits
 import com.example.wetterbericht.data.local.entity.dailyhabits.DailyHabits
 import com.example.wetterbericht.data.local.entity.dailyhabits.IconHabits
 import com.example.wetterbericht.data.local.source.habits.HabitsLocalDataSource
@@ -29,6 +30,10 @@ class HabitsLocalRepository(
 
     override fun getHabitsIcons(): LiveData<List<IconHabits>> {
        return dataSource.getHabitsIcon()
+    }
+
+    override fun getHabitsColors(): LiveData<List<ColorHabits>> {
+        return dataSource.getHabitsColors()
     }
 
 }

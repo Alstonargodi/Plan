@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.paging.DataSource
 import androidx.sqlite.db.SupportSQLiteQuery
 import com.example.wetterbericht.data.local.database.LocalDatabase
+import com.example.wetterbericht.data.local.entity.dailyhabits.ColorHabits
 import com.example.wetterbericht.data.local.entity.dailyhabits.DailyHabits
 import com.example.wetterbericht.data.local.entity.dailyhabits.IconHabits
 import java.util.concurrent.Executors
@@ -31,6 +32,10 @@ class HabitsLocalDataSource(val context: Context): IHabitsLocalDataSource {
 
     override fun getHabitsIcon(): LiveData<List<IconHabits>> {
         return habitsDao.readHabitsIcon()
+    }
+
+    override fun getHabitsColors(): LiveData<List<ColorHabits>> {
+        return habitsDao.readHabitsColor()
     }
 
 }

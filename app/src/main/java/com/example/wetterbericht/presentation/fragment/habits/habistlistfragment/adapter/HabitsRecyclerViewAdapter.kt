@@ -1,12 +1,10 @@
-package com.example.wetterbericht.presentation.fragment.habits.adapter
+package com.example.wetterbericht.presentation.fragment.habits.habistlistfragment.adapter
 
 import android.annotation.SuppressLint
 import android.graphics.Color
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.wetterbericht.R
 import com.example.wetterbericht.databinding.ItemcvHabitsBinding
 import com.example.wetterbericht.data.local.entity.dailyhabits.DailyHabits
 
@@ -35,6 +33,10 @@ class HabitsRecyclerViewAdapter(private val data : List<DailyHabits>)
                 )
             }
             binding.cvlayoutHabits.setCardBackgroundColor(item.colorHabits)
+            if (item.colorHabits != Color.parseColor("#FFFFFF")){
+                binding.tvHabitsName.setTextColor(Color.parseColor("#FFFFFF"))
+                binding.tvHabitsDuration.setTextColor(Color.parseColor("#FFFFFF"))
+            }
         }
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

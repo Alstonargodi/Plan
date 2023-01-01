@@ -2,7 +2,6 @@ package com.example.wetterbericht.presentation.fragment.habits.insert
 
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,9 +9,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.wetterbericht.data.local.entity.dailyhabits.ColorHabits
 import com.example.wetterbericht.data.local.entity.dailyhabits.DailyHabits
 import com.example.wetterbericht.data.local.entity.dailyhabits.IconHabits
 import com.example.wetterbericht.databinding.FragmentInsertHabitsBinding
+import com.example.wetterbericht.presentation.fragment.habits.insert.adapter.ColorHabitsRecyclerviewAdapter
+import com.example.wetterbericht.presentation.fragment.habits.insert.adapter.IconHabitsRecylerViewAdapter
 import com.example.wetterbericht.presentation.fragment.habits.viewmodel.HabitsViewModel
 import com.example.wetterbericht.viewmodel.viewmodelfactory.ViewModelFactory
 
@@ -30,6 +32,9 @@ class InsertDetailHabitsFragment : Fragment() {
         binding = FragmentInsertHabitsBinding.inflate(layoutInflater)
         viewModel.readHabitsIcon().observe(viewLifecycleOwner){ icon->
             showHabitsIcon(icon)
+        }
+        viewModel.readHabitsColors().observe(viewLifecycleOwner){color->
+            showColorHabits(color)
         }
         return binding.root
     }
@@ -80,6 +85,24 @@ class InsertDetailHabitsFragment : Fragment() {
                 typeIcon = name
             }
         })
+    }
+
+    private fun showColorHabits(colors : List<ColorHabits>){
+        val adapter = ColorHabitsRecyclerviewAdapter(colors)
+        val recview = binding.recviewColor
+        recview.adapter = adapter
+        recview.layoutManager = LinearLayoutManager(
+            requireContext(),
+            LinearLayoutManager.HORIZONTAL,
+            false
+        )
+        adapter.getColorHabits(object : ColorHabitsRecyclerviewAdapter.ColorCallback{
+            override fun colorCallback(name: String) {
+                typeColor = Color.parseColor(name)
+            }
+        }
+
+        )
     }
 
 }

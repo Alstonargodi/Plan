@@ -1,9 +1,7 @@
-package com.example.wetterbericht.presentation.fragment.habits.insert
+package com.example.wetterbericht.presentation.fragment.habits.insert.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.wetterbericht.data.local.entity.dailyhabits.IconHabits
@@ -49,8 +47,6 @@ class IconHabitsRecylerViewAdapter(
     }
 
     override fun getItemCount(): Int = iconList.size
-
-
 
     interface NameItemCallback{
         fun iconCallback(name : String)

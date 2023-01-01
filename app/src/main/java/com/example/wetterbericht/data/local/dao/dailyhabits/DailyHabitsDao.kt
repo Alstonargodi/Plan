@@ -5,6 +5,7 @@ import androidx.sqlite.db.SupportSQLiteQuery
 import com.example.wetterbericht.data.local.entity.dailyhabits.DailyHabits
 import androidx.paging.DataSource
 import androidx.room.*
+import com.example.wetterbericht.data.local.entity.dailyhabits.ColorHabits
 import com.example.wetterbericht.data.local.entity.dailyhabits.IconHabits
 
 @Dao
@@ -26,5 +27,12 @@ abstract class DailyHabitsDao {
 
     @Query("select * from habitsicon")
     abstract fun readHabitsIcon(): LiveData<List<IconHabits>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    abstract fun insertColorHabits(data : ColorHabits)
+
+    @Query("select * from habitscolor")
+    abstract fun readHabitsColor(): LiveData<List<ColorHabits>>
+
 
 }

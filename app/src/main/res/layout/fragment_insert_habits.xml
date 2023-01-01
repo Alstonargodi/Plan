@@ -185,6 +185,25 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/btn_todo_timestart2" />
 
+                <TextView
+                    android:id="@+id/inserttitle9"
+                    android:layout_width="0dp"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:fontFamily="@font/robotoregular"
+                    android:gravity="center|start"
+                    android:text="Colour"
+                    android:textColor="#000000"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/recview_icon" />
+
                 <EditText
                     android:id="@+id/et_inserthabits_name"
                     android:layout_width="0dp"
@@ -226,12 +245,24 @@
                     android:layout_width="0dp"
                     android:layout_height="70dp"
                     android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="20dp"
                     android:scrollbars="horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/inserttitle8"
                     tools:listitem="@layout/itemcv_icon_habits" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recview_color"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/inserttitle9" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>

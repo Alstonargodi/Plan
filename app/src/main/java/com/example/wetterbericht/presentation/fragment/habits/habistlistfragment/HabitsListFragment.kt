@@ -12,7 +12,7 @@ import com.example.wetterbericht.R
 import com.example.wetterbericht.databinding.FragmentHabitsListBinding
 import com.example.wetterbericht.data.local.entity.dailyhabits.DailyHabits
 import com.example.wetterbericht.helpers.sortfilter.HabitSortType
-import com.example.wetterbericht.presentation.fragment.habits.adapter.HabitsRecyclerViewAdapter
+import com.example.wetterbericht.presentation.fragment.habits.habistlistfragment.adapter.HabitsRecyclerViewAdapter
 import com.example.wetterbericht.presentation.fragment.habits.viewmodel.HabitsViewModel
 import com.example.wetterbericht.viewmodel.viewmodelfactory.ViewModelFactory
 

@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.switchMap
 import androidx.paging.PagedList
+import com.example.wetterbericht.data.local.entity.dailyhabits.ColorHabits
 import com.example.wetterbericht.data.local.entity.dailyhabits.DailyHabits
 import com.example.wetterbericht.data.local.entity.dailyhabits.IconHabits
 import com.example.wetterbericht.domain.localusecase.habits.HabitsLocalUseCase
@@ -40,4 +41,6 @@ class HabitsViewModel(
     fun readHabitsIcon(): LiveData<List<IconHabits>> =
         useCase.getHabitsIcon()
 
+    fun readHabitsColors(): LiveData<List<ColorHabits>> =
+        useCase.getHabitsColor()
 }

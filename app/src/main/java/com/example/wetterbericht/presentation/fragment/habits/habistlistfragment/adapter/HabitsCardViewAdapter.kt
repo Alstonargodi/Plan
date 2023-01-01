@@ -1,4 +1,4 @@
-package com.example.wetterbericht.presentation.fragment.habits.adapter
+package com.example.wetterbericht.presentation.fragment.habits.habistlistfragment.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
