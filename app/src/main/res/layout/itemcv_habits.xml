@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cvlayout_habits"
-    android:layout_width="170dp"
-    android:layout_height="170dp"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
     android:layout_margin="10dp"
     app:cardCornerRadius="10dp">
 
@@ -16,34 +16,31 @@
         <TextView
             android:id="@+id/tv_habits_name"
             android:layout_width="0dp"
-            android:layout_height="36dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="5dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:fontFamily="@font/abezeeregular"
             android:gravity="center"
             android:includeFontPadding="false"
             android:text="Habits name"
             android:textColor="#222222"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_habits_duration"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.506"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toEndOf="@+id/tv_habits_duration"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_habits_duration"
-            android:layout_width="0dp"
+            android:layout_width="74dp"
             android:layout_height="0dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
             android:fontFamily="@font/abezeeregular"
             android:gravity="center"
             android:includeFontPadding="false"
-            android:text="00m"
+            android:text="00"
             android:textColor="#3C3C3C"
             android:textSize="45sp"
-            app:layout_constraintBottom_toTopOf="@+id/tv_habits_name"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>

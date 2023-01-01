@@ -26,9 +26,9 @@ class HabitsRecyclerViewAdapter(private val data : List<DailyHabits>)
             binding.tvHabitsDuration.text = item.minuteFocus.toString()
             binding.tvHabitsName.apply {
                 setCompoundDrawablesWithIntrinsicBounds(
+                    0,
+                    0,
                     iconHabits,
-                    0,
-                    0,
                     0
                 )
             }

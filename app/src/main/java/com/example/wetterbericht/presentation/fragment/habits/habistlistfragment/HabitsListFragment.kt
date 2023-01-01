@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wetterbericht.R
 import com.example.wetterbericht.databinding.FragmentHabitsListBinding
 import com.example.wetterbericht.data.local.entity.dailyhabits.DailyHabits
@@ -76,7 +77,7 @@ class HabitsListFragment : Fragment() {
             val adapter = HabitsRecyclerViewAdapter(it)
             val recyclerView = binding.rvHabitsList
             recyclerView.adapter = adapter
-            recyclerView.layoutManager = GridLayoutManager(requireContext(),2)
+            recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
             adapter.detailHabitsCallback(object : HabitsRecyclerViewAdapter.DetailHabitsCallback{
                 override fun detailHabitsCallback(data: DailyHabits) {
