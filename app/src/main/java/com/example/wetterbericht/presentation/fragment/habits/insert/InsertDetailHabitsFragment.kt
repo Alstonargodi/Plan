@@ -1,5 +1,8 @@
 package com.example.wetterbericht.presentation.fragment.habits.insert
 
+import android.app.TimePickerDialog
+import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,24 +10,41 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.example.wetterbericht.databinding.FragmentInsertDetailHabitsBinding
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.wetterbericht.data.local.entity.dailyhabits.ColorHabits
 import com.example.wetterbericht.data.local.entity.dailyhabits.DailyHabits
-import com.example.wetterbericht.viewmodel.localviewmodel.LocalViewModel
+import com.example.wetterbericht.data.local.entity.dailyhabits.IconHabits
+import com.example.wetterbericht.databinding.FragmentInsertHabitsBinding
+import com.example.wetterbericht.helpers.ConstantTask
+import com.example.wetterbericht.presentation.fragment.habits.insert.adapter.ColorHabitsRecyclerviewAdapter
+import com.example.wetterbericht.presentation.fragment.habits.insert.adapter.IconHabitsRecylerViewAdapter
+import com.example.wetterbericht.presentation.fragment.habits.viewmodel.HabitsViewModel
 import com.example.wetterbericht.viewmodel.viewmodelfactory.ViewModelFactory
+import java.util.*
 
 class InsertDetailHabitsFragment : Fragment() {
-
-    private lateinit var binding : FragmentInsertDetailHabitsBinding
-    private val localViewModel : LocalViewModel by viewModels{
+    private lateinit var binding : FragmentInsertHabitsBinding
+    private val viewModel : HabitsViewModel by viewModels{
         ViewModelFactory.getInstance(requireContext())
     }
+    private var typeColor = Color.parseColor("#FFFFFF")
+    private var typeIcon = ""
+    private var startTime = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentInsertDetailHabitsBinding.inflate(layoutInflater)
-
+    ): View {
+        binding = FragmentInsertHabitsBinding.inflate(layoutInflater)
+        viewModel.apply {
+            readHabitsColors().observe(viewLifecycleOwner){color->
+                showColorHabits(color)
+            }
+            readHabitsIcon().observe(viewLifecycleOwner){ icon->
+                showHabitsIcon(icon)
+            }
+        }
         return binding.root
     }
 
@@ -37,27 +57,90 @@ class InsertDetailHabitsFragment : Fragment() {
 
         binding.btnbackInsertHabits.setOnClickListener {
             findNavController().navigate(
-                InsertDetailHabitsFragmentDirections.actionInsertDetailHabitsFragmentToHabitsListFragment()
+                InsertDetailHabitsFragmentDirections
+                .actionInsertDetailHabitsFragmentToHabitsListFragment()
             )
+        }
+        binding.btnHabitsTimestart.setOnClickListener {
+            timePicker(requireContext())
         }
     }
 
     private fun insertNewHabits(){
         val name  = binding.etInserthabitsName.text.toString()
         val duration = binding.etInserthabitsDuration.text.toString().toInt()
-
         val insertData = DailyHabits(
             0,
             name,
             duration.toLong(),
-            "0",
-            ""
+            startTime,
+            typeIcon,
+            typeColor
         )
-
-        localViewModel.insertHabits(insertData)
-
+        viewModel.insertHabits(insertData)
         findNavController().navigate(
-            InsertDetailHabitsFragmentDirections.actionInsertDetailHabitsFragmentToHabitsListFragment()
+            InsertDetailHabitsFragmentDirections
+                .actionInsertDetailHabitsFragmentToHabitsListFragment()
         )
     }
+
+    private fun showHabitsIcon(icon : List<IconHabits>){
+        val adapter = IconHabitsRecylerViewAdapter(icon)
+        val recyclerView = binding.recviewIcon
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(
+            requireContext(),
+            LinearLayoutManager.HORIZONTAL,
+            false
+        )
+        adapter.getIconName(object : IconHabitsRecylerViewAdapter.NameItemCallback{
+            override fun iconCallback(name: String) {
+                typeIcon = name
+                val icon = requireContext().resources.getIdentifier(
+                    name,
+                    "drawable",
+                    requireContext().packageName
+                )
+                binding.titleIconPicker.setCompoundDrawablesWithIntrinsicBounds(
+                    0,0,icon,0,
+                )
+            }
+        })
+    }
+
+    private fun showColorHabits(colors : List<ColorHabits>){
+        val adapter = ColorHabitsRecyclerviewAdapter(colors)
+        val recyclerView = binding.recviewColor
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = GridLayoutManager(
+            requireContext(),
+            2,
+            LinearLayoutManager.HORIZONTAL,
+            false
+        )
+        adapter.getColorHabits(object : ColorHabitsRecyclerviewAdapter.ColorCallback{
+            override fun colorCallback(name: String) {
+                typeColor = Color.parseColor(name)
+                binding.titleColorPicker.setTextColor(typeColor)
+            }
+        }
+        )
+    }
+
+    private fun timePicker(context: Context){
+        val calendar = Calendar.getInstance()
+        val timePick = TimePickerDialog(context, { _, hourOfDay, minute ->
+            val timeTemp = Calendar.getInstance()
+            timeTemp.set(Calendar.HOUR_OF_DAY,hourOfDay)
+            timeTemp.set(Calendar.MINUTE,minute)
+            binding.btnHabitsTimestart.text = ConstantTask.formatTime.format(timeTemp.time)
+            startTime = timeTemp.time.toString()
+        },
+            calendar.get(Calendar.HOUR_OF_DAY),
+            calendar.get(Calendar.MINUTE),
+            false
+        )
+        timePick.show()
+    }
+
 }

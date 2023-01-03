@@ -128,14 +128,14 @@
         android:id="@+id/insertDetailHabitsFragment"
         android:name="com.example.wetterbericht.presentation.fragment.habits.insert.InsertDetailHabitsFragment"
         android:label="fragment_insert_detail_habits"
-        tools:layout="@layout/fragment_insert_detail_habits" >
+        tools:layout="@layout/fragment_insert_habits" >
         <action
             android:id="@+id/action_insertDetailHabitsFragment_to_habitsListFragment"
             app:destination="@id/habitsListFragment" />
     </fragment>
     <fragment
         android:id="@+id/habitsListFragment"
-        android:name="com.example.wetterbericht.presentation.fragment.habits.listview.HabitsListFragment"
+        android:name="com.example.wetterbericht.presentation.fragment.habits.habistlistfragment.HabitsListFragment"
         android:label="fragment_habits_list"
         tools:layout="@layout/fragment_habits_list" >
         <action
@@ -153,7 +153,7 @@
     </fragment>
     <fragment
         android:id="@+id/countdownFragment"
-        android:name="com.example.wetterbericht.presentation.fragment.habits.CountdownFragment"
+        android:name="com.example.wetterbericht.presentation.fragment.habits.countdown.CountdownFragment"
         android:label="fragment_countdown"
         tools:layout="@layout/fragment_countdown" >
         <argument
@@ -165,6 +165,9 @@
         <action
             android:id="@+id/action_countdownFragment_to_habitsListFragment"
             app:destination="@id/habitsListFragment" />
+        <argument
+            android:name="color"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/habitsCardViewFragment"

@@ -19,5 +19,7 @@ data class DailyHabits(
     @NonNull
     val startTime : String,
     @NonNull
-    val priorityLevel : String
+    val iconHabits : String,
+    @NonNull
+    val colorHabits : Int
 ): Parcelable

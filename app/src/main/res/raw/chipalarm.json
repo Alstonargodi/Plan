@@ -1,0 +1,28 @@
+{
+  "alarm": [
+    {
+      "id": 1,
+      "name" : "noon",
+      "time" : "12:00",
+      "sumday" : 1
+    },
+    {
+      "id": 2,
+      "name" : "middle day",
+      "time" : "19:00",
+      "sumday" : 1
+    },
+    {
+      "id": 3,
+      "name" : "noon",
+      "time" : "12:00",
+      "sumday" : 1
+    },
+    {
+      "id": 4,
+      "name" : "afternoon",
+      "time" : "15:00",
+      "sumday" : 1
+    }
+  ]
+}

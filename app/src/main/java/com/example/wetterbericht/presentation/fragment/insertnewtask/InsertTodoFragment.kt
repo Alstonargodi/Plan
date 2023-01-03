@@ -8,7 +8,6 @@ import android.os.Handler
 import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,12 +24,10 @@ import com.example.wetterbericht.databinding.FragmentInsertTodoBinding
 import com.example.wetterbericht.helpers.ConstantTask.formatDate
 import com.example.wetterbericht.helpers.ConstantTask.formatDay
 import com.example.wetterbericht.helpers.ConstantTask.formatTime
-import com.example.wetterbericht.helpers.ConstantTask.todoId
 import com.example.wetterbericht.helpers.ConstantTask.userId
 import com.example.wetterbericht.presentation.fragment.home.adapter.SubtaskRecyclerViewAdapter
 import com.example.wetterbericht.presentation.fragment.insertnewtask.adapter.ChipAdapter
 import com.example.wetterbericht.presentation.fragment.insertnewtask.dialog.InsertAlarmChipFragment
-import com.example.wetterbericht.viewmodel.localviewmodel.LocalViewModel
 import com.example.wetterbericht.viewmodel.viewmodelfactory.ViewModelFactory
 import kotlinx.coroutines.launch
 import java.util.*
@@ -40,11 +37,13 @@ class InsertTodoFragment : Fragment(){
     private val binding get()= _binding!!
 
     private lateinit var subTaskAdapter : SubtaskRecyclerViewAdapter
-    private val roomViewModel : LocalViewModel by viewModels{ ViewModelFactory.getInstance(requireContext())}
+    private val roomViewModel : InsertTodoViewModel by viewModels{
+        ViewModelFactory.getInstance(requireContext())
+    }
     private var numberDay = 0
     private var millisDay : Long = 0
     private var subTaskList = arrayListOf<TodoSubTask>()
-    private var leveColour = Color.parseColor("#383636")
+    private var typeColor = Color.parseColor("#383636")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,7 +51,7 @@ class InsertTodoFragment : Fragment(){
     ): View {
         _binding = FragmentInsertTodoBinding.inflate(layoutInflater)
         readChipReminder()
-        binding.etInsertName.setTextColor(leveColour)
+        binding.etInsertName.setTextColor(typeColor)
         subTaskAdapter = SubtaskRecyclerViewAdapter(subTaskList)
         ItemTouchHelper(CallBack()).attachToRecyclerView(binding.rvSubtask)
         binding.etInsertName.addTextChangedListener ( object : TextWatcher{
@@ -162,7 +161,7 @@ class InsertTodoFragment : Fragment(){
             taskID = 0,
             title = taskName,
             description = description,
-            levelColor = leveColour,
+            levelColor = typeColor,
             dateStart = dateStart,
             dateDay = numberDay,
             dateDueMillis = millisDay,
@@ -288,25 +287,25 @@ class InsertTodoFragment : Fragment(){
         binding.apply {
             colorNameBlack.apply {
                 setOnClickListener {
-                    leveColour = Color.parseColor("#383636")
+                    typeColor = Color.parseColor("#383636")
                     changeTextColor()
                 }
             }
             colorNameBlue.apply {
                 setOnClickListener {
-                    leveColour = Color.parseColor("#2196F3")
+                    typeColor = Color.parseColor("#2196F3")
                     changeTextColor()
                 }
             }
             colorNameOrange.apply {
                 setOnClickListener {
-                    leveColour = Color.parseColor("#FF5722")
+                    typeColor = Color.parseColor("#FF5722")
                     changeTextColor()
                 }
             }
             colorNamePurple.apply {
                 setOnClickListener {
-                    leveColour = Color.parseColor("#3F51B5")
+                    typeColor = Color.parseColor("#3F51B5")
                     changeTextColor()
                 }
             }
@@ -315,7 +314,7 @@ class InsertTodoFragment : Fragment(){
 
     private fun changeTextColor(){
         Handler(Looper.getMainLooper()).postDelayed({
-            binding.etInsertName.setTextColor(leveColour)
+            binding.etInsertName.setTextColor(typeColor)
         },200)
     }
 

@@ -12,7 +12,15 @@ import com.example.wetterbericht.data.local.entity.dailytask.TodoSubTask
 import com.example.wetterbericht.data.local.dao.dailyhabits.DailyHabitsDao
 import com.example.wetterbericht.data.local.dao.dailytask.DailyTaskDao
 import com.example.wetterbericht.data.local.dao.weather.WeatherDao
+import com.example.wetterbericht.data.local.database.LoadDataFromJson.loadAlarmChip
+import com.example.wetterbericht.data.local.database.LoadDataFromJson.loadColoHabitsJson
+import com.example.wetterbericht.data.local.database.LoadDataFromJson.loadHabitsJson
+import com.example.wetterbericht.data.local.database.LoadDataFromJson.loadIconHabits
+import com.example.wetterbericht.data.local.database.LoadDataFromJson.loadSubTaskJson
+import com.example.wetterbericht.data.local.database.LoadDataFromJson.loadTodoJson
+import com.example.wetterbericht.data.local.entity.dailyhabits.ColorHabits
 import com.example.wetterbericht.data.local.entity.dailyhabits.DailyHabits
+import com.example.wetterbericht.data.local.entity.dailyhabits.IconHabits
 import com.example.wetterbericht.data.local.entity.weather.WeatherLocal
 import org.json.JSONArray
 import org.json.JSONException
@@ -28,7 +36,9 @@ import java.util.concurrent.Executors
         TodoLocal::class,
         TodoSubTask::class,
         ChipAlarm::class,
-        DailyHabits::class
+        DailyHabits::class,
+        IconHabits::class,
+        ColorHabits::class
     ]
     ,version = 1
     ,exportSchema = false
@@ -37,6 +47,7 @@ abstract class LocalDatabase: RoomDatabase() {
    abstract fun todoDao() : DailyTaskDao
    abstract fun weatherDao(): WeatherDao
    abstract fun habitsDao(): DailyHabitsDao
+
 
    companion object{
        @Volatile
@@ -77,6 +88,9 @@ abstract class LocalDatabase: RoomDatabase() {
            val habitsJsonArray = loadHabitsJson(context)
            val todoJsonArray = loadTodoJson(context)
            val subtaskJsonArray = loadSubTaskJson(context)
+           val iconHabitsArray = loadIconHabits(context)
+           val chipAlarmArray = loadAlarmChip(context)
+           val colorHabitsArray = loadColoHabitsJson(context)
            val currentDate = LocalDateTime.now().dayOfMonth
 
            //pre popualte data
@@ -89,7 +103,8 @@ abstract class LocalDatabase: RoomDatabase() {
                            title = item.getString("title"),
                            minuteFocus = item.getLong("focusTime"),
                            startTime = item.getString("startTime"),
-                           priorityLevel = item.getString("priorityLevel")
+                            "",
+                           -1
                        ))
                    }
                }
@@ -128,66 +143,47 @@ abstract class LocalDatabase: RoomDatabase() {
                    }
                }
 
-           }catch (e : JSONException){
-               e.printStackTrace()
-           }
-       }
-
-       private fun loadHabitsJson(context: Context): JSONArray?{
-           val builder = StringBuilder()
-           val resources = context.resources.openRawResource(R.raw.habit)
-           val reader = BufferedReader(InputStreamReader(resources))
-           var line : String?
-           try {
-                while (reader.readLine().also { line = it } != null){
-                    builder.append(line)
-                }
-               val json = JSONObject(builder.toString())
-               return json.getJSONArray("habits")
-           }catch (exception: IOException) {
-               exception.printStackTrace()
-           } catch (exception: JSONException) {
-               exception.printStackTrace()
-           }
-           return null
-       }
-
-       private fun loadTodoJson(context: Context): JSONArray?{
-           val builder = StringBuilder()
-           val resources = context.resources.openRawResource(R.raw.task)
-           val reader = BufferedReader(InputStreamReader(resources))
-           var line : String?
-           try {
-               while (reader.readLine().also { line = it } != null){
-                   builder.append(line)
+               if (iconHabitsArray != null){
+                   for (i in 0 until iconHabitsArray.length()){
+                       val item = iconHabitsArray.getJSONObject(i)
+                       dailyHabitsDao.insertHabitsIcon(
+                           IconHabits(
+                               id = 0,
+                               nameIcon = item.getString("nameIcon"),
+                               iconPath = item.getString("iconPath"),
+                           )
+                       )
+                   }
                }
-               val json = JSONObject(builder.toString())
-               return json.getJSONArray("tasks")
-           }catch (e : IOException){
-               e.printStackTrace()
-           }catch (e : JSONException){
-               e.printStackTrace()
-           }
-           return null
-       }
 
-       private fun loadSubTaskJson(context: Context): JSONArray?{
-           val builder = StringBuilder()
-           val resources = context.resources.openRawResource(R.raw.task)
-           val reader = BufferedReader(InputStreamReader(resources))
-           var line : String?
-           try {
-               while (reader.readLine().also { line = it } != null){
-                   builder.append(line)
+               if(chipAlarmArray != null){
+                   for (i in 0 until chipAlarmArray.length()){
+                       val item = chipAlarmArray.getJSONObject(i)
+                       dailyTaskDao.insertTimeChip(
+                           ChipAlarm(
+                               name = item.getString("name"),
+                               time = item.getString("time"),
+                               sumDay = item.getInt("sumday")
+                           )
+                       )
+                   }
                }
-               val json = JSONObject(builder.toString())
-               return json.getJSONArray("subtask")
-           }catch (e : IOException){
-               e.printStackTrace()
+
+               if (colorHabitsArray != null){
+                   for (i in 0 until colorHabitsArray.length()){
+                       val items = colorHabitsArray.getJSONObject(i)
+                       dailyHabitsDao.insertColorHabits(
+                           ColorHabits(
+                               id = 0,
+                               colorHex = items.getString("colorHex")
+                           )
+                       )
+                   }
+               }
+
            }catch (e : JSONException){
                e.printStackTrace()
            }
-           return null
        }
    }
 }

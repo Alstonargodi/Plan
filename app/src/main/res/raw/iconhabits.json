@@ -1,0 +1,29 @@
+{
+  "icons": [
+    {
+      "id": 1,
+      "nameIcon": "Party",
+      "iconPath" : "ic_baseline_celebration_24"
+    },
+    {
+      "id": 2,
+      "nameIcon": "Cut",
+      "iconPath" : "ic_baseline_content_cut_24"
+    },
+    {
+      "id": 3,
+      "nameIcon": "Write",
+      "iconPath" : "ic_baseline_create_24"
+    },
+    {
+      "id": 4,
+      "nameIcon": "Chat",
+      "iconPath" : "ic_baseline_comment_24"
+    },
+    {
+      "id": 5,
+      "nameIcon": "Reading book",
+      "iconPath" : "ic_baseline_chrome_reader_mode_24"
+    }
+  ]
+}

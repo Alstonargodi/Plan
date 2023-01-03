@@ -14,13 +14,14 @@ import com.example.wetterbericht.presentation.activity.mainactivity.MainActivity
 import com.example.wetterbericht.R
 import com.example.wetterbericht.injection.Injection
 import com.example.wetterbericht.data.local.entity.dailytask.TodoLocal
+import com.example.wetterbericht.injection.todo.InjectionTodo
 import java.util.*
 import java.util.concurrent.Executors
 
 class TaskReminderBroadcast : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         Executors.newSingleThreadExecutor().execute {
-            val todoUseCase = Injection.providedUseCase(context)
+            val todoUseCase = InjectionTodo.provideTodoUseCase(context)
             val task = todoUseCase.getTodayTaskReminder()
             if (task.isNotEmpty()){
                 showAlarmNotification(context,task)

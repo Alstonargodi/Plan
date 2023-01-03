@@ -1,6 +1,5 @@
 package com.example.wetterbericht.presentation.fragment.weather
 
-
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
@@ -11,22 +10,19 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.wetterbericht.R
-import com.example.wetterbericht.databinding.FragmentWeatherBinding
 import com.example.wetterbericht.data.local.entity.weather.WeatherLocal
-import com.example.wetterbericht.data.remote.openweather.forecast.ForecastResponse
 import com.example.wetterbericht.data.remote.openweather.forecast.ForecastItem
+import com.example.wetterbericht.data.remote.openweather.forecast.ForecastResponse
 import com.example.wetterbericht.data.remote.openweather.weather.WeatherResponse
+import com.example.wetterbericht.databinding.FragmentWeatherBinding
 import com.example.wetterbericht.presentation.fragment.weather.adapter.ForecastRecyclerViewAdapter
-import com.example.wetterbericht.viewmodel.localviewmodel.LocalViewModel
-import com.example.wetterbericht.viewmodel.weatherviewmodel.WeatherViewModel
 import com.example.wetterbericht.viewmodel.viewmodelfactory.ViewModelFactory
+import com.example.wetterbericht.presentation.fragment.weather.weatherviewmodel.WeatherViewModel
 import kotlin.math.round
-
 
 class WeatherFragment : Fragment(){
     private lateinit var binding : FragmentWeatherBinding
     private val weatherViewModel : WeatherViewModel by viewModels{ ViewModelFactory.getInstance(requireContext())}
-    private val roomViewModel : LocalViewModel by viewModels{ ViewModelFactory.getInstance(requireContext())}
 
     private lateinit var forecastRecyclerViewAdapter: ForecastRecyclerViewAdapter
     private var forecastList = ArrayList<ForecastItem>()
@@ -61,7 +57,7 @@ class WeatherFragment : Fragment(){
     }
 
     private fun favoriteCity(){
-        roomViewModel.readWeatherLocal().observe(viewLifecycleOwner) { response ->
+        weatherViewModel.readWeatherLocal().observe(viewLifecycleOwner) { response ->
             if (response.isNotEmpty()) {
                 searchCurrentWeather(response[0].loc)
                 binding.tvWeatherNodata.visibility = View.GONE
@@ -88,7 +84,7 @@ class WeatherFragment : Fragment(){
 
 
     private fun locationChecker(location : String){
-        roomViewModel.searchLocation(location).observe(viewLifecycleOwner){
+        weatherViewModel.searchLocation(location).observe(viewLifecycleOwner){
             if (it.isNullOrEmpty()){
                 binding.btnSetLocation.visibility = View.VISIBLE
             }else{
@@ -160,7 +156,7 @@ class WeatherFragment : Fragment(){
             data.wind.speed.toString(),
             data.weather[0].description
         )
-        roomViewModel.insertWeatherLocal(temp)
+        weatherViewModel.insertWeatherLocal(temp)
         Toast.makeText(requireContext(),"Set as current location", Toast.LENGTH_SHORT).show()
     }
 

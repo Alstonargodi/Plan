@@ -1,0 +1,51 @@
+{
+  "colors" : [
+    {
+      "id": 1,
+      "colorHex": "#6C00FF"
+    },
+    {
+      "id": 2,
+      "colorHex": "#2DCDDF"
+    },
+    {
+      "id": 3,
+      "colorHex": "#2DCDDF"
+    },
+    {
+      "id": 4,
+      "colorHex": "#F2DEBA"
+    },
+    {
+      "id": 5,
+      "colorHex": "#7B2869"
+    },
+    {
+      "id": 6,
+      "colorHex": "#9D3C72"
+    },
+    {
+      "id": 7,
+      "colorHex": "#C85C8E"
+    },
+    {
+      "id": 8,
+      "colorHex": "#FFBABA"
+    },    {
+      "id": 9,
+      "colorHex": "#7B2869"
+    },
+    {
+      "id": 10,
+      "colorHex": "#9D3C72"
+    },
+    {
+      "id": 11,
+      "colorHex": "#C85C8E"
+    },
+    {
+      "id": 12,
+      "colorHex": "#FFBABA"
+    }
+  ]
+}

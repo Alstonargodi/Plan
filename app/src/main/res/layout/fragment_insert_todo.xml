@@ -1,393 +1,398 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fadeScrollbars="false"
-    android:isScrollContainer="false"
-    android:scrollIndicators="none"
-    android:scrollbars="none"
-    tools:context=".presentation.fragment.insertnewtask.InsertTodoFragment">
+    tools:context=".presentation.fragment.insertnewtask.InsertTodoFragment"
+    >
 
-    <LinearLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/detailtoolbar2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="48dp"
+        android:contentInsetStart="0dp"
+        android:contentInsetLeft="0dp"
+        android:contentInsetEnd="0dp"
+        android:contentInsetRight="0dp"
+        android:minHeight="?attr/actionBarSize"
+        app:contentInsetEnd="0dp"
+        app:contentInsetLeft="0dp"
+        app:contentInsetRight="0dp"
+        app:contentInsetStart="0dp"
+        app:titleMargin="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="800dp">
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/detailtoolbar2"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:background="@drawable/bg_headercorner"
-                android:contentInsetStart="0dp"
-                android:contentInsetLeft="0dp"
-                android:contentInsetEnd="0dp"
-                android:contentInsetRight="0dp"
-                android:minHeight="?attr/actionBarSize"
-                app:contentInsetEnd="0dp"
-                app:contentInsetLeft="0dp"
-                app:contentInsetRight="0dp"
-                app:contentInsetStart="0dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:titleMargin="0dp">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    tools:layout_editor_absoluteX="0dp"
-                    tools:layout_editor_absoluteY="86dp">
-
-                    <TextView
-                        android:id="@+id/textView6"
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_marginStart="15dp"
-                        android:fontFamily="@font/abezeeregular"
-                        android:gravity="center|left"
-                        android:text="New Task"
-                        android:textColor="#2196F3"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/btnaddtodo"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <Button
-                        android:id="@+id/btnaddtodo"
-                        android:layout_width="70dp"
-                        android:layout_height="0dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginBottom="2dp"
-                        android:backgroundTint="#2196F3"
-                        android:text="add"
-                        android:textColor="#FFFFFF"
-                        android:textSize="12sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView6"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/textView6" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.appcompat.widget.Toolbar>
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="86dp">
 
             <TextView
-                android:id="@+id/inserttitle4"
-                android:layout_width="0dp"
-                android:layout_height="32dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="15dp"
-                android:fontFamily="@font/robotoregular"
-                android:gravity="center|start"
-                android:text="Subtask"
-                android:textColor="#6B6B6B"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                android:visibility="visible"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/inserttodo_description" />
-
-            <EditText
-                android:id="@+id/et_inserttodo_subtask"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
-                android:background="@drawable/corner05"
-                android:backgroundTint="#E1E1E1"
-                android:fontFamily="@font/robotoregular"
-                android:gravity="start"
-                android:padding="10dp"
-                android:textAlignment="textStart"
-                android:textColor="#3E3C3C"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toStartOf="@+id/btn_addsubtask"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/inserttitle4" />
-
-            <TextView
-                android:id="@+id/inserttitle3"
-                android:layout_width="0dp"
-                android:layout_height="32dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="15dp"
-                android:fontFamily="@font/robotoregular"
-                android:gravity="center|start"
-                android:text="Description"
-                android:textColor="#6B6B6B"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                android:visibility="visible"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/color_name_black" />
-
-            <EditText
-                android:id="@+id/inserttodo_description"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
-                android:background="@drawable/corner05"
-                android:backgroundTint="#E1E1E1"
-                android:fontFamily="@font/robotoregular"
-                android:gravity="start|center_horizontal"
-                android:padding="10dp"
-                android:textAlignment="textStart"
-                android:textColor="#3E3C3C"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/inserttitle3" />
-
-            <ImageView
-                android:id="@+id/btn_addchipalarm"
-                android:layout_width="40dp"
-                android:layout_height="0dp"
-                android:layout_marginEnd="15dp"
-                android:src="@drawable/plusbg"
-                app:layout_constraintBottom_toBottomOf="@+id/rv_chip"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/rv_chip"
-                app:tint="#03A9F4" />
-
-            <ImageView
-                android:id="@+id/btn_color_picker"
-                android:layout_width="40dp"
-                android:layout_height="0dp"
-                android:layout_marginEnd="15dp"
-                android:padding="2dp"
-                android:src="@drawable/ic_baseline_brush_24"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="@+id/et_insert_name"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/et_insert_name"
-                app:tint="#03A9F4" />
-
-            <ImageView
-                android:id="@+id/btn_addsubtask"
-                android:layout_width="40dp"
-                android:layout_height="33dp"
-                android:layout_marginEnd="15dp"
-                android:src="@drawable/plusbg"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="@+id/et_inserttodo_subtask"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/et_inserttodo_subtask"
-                app:tint="#03A9F4" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_chip"
-                android:layout_width="0dp"
-                android:layout_height="32dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="10dp"
-                app:layout_constraintEnd_toStartOf="@+id/btn_addchipalarm"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/inserttitle7"
-                tools:listitem="@layout/chip_card" />
-
-            <EditText
-                android:id="@+id/et_insert_name"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
-                android:background="@drawable/corner05"
-                android:backgroundTint="#E1E1E1"
-                android:fontFamily="@font/robotoregular"
-                android:gravity="center|start"
-                android:padding="10dp"
-                android:textColor="#3E3C3C"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toStartOf="@+id/btn_color_picker"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/inserttitle" />
-
-            <TextView
-                android:id="@+id/inserttitle"
-                android:layout_width="0dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="15dp"
-                android:fontFamily="@font/robotoregular"
-                android:gravity="center|start"
-                android:text="Name"
-                android:textColor="#6B6B6B"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                android:visibility="visible"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_todo_timestart" />
-
-            <TextView
-                android:id="@+id/inserttitle7"
-                android:layout_width="0dp"
-                android:layout_height="32dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="15dp"
-                android:fontFamily="@font/robotoregular"
-                android:gravity="center|start"
-                android:text="Start Time"
-                android:textColor="#6B6B6B"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                android:visibility="visible"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/detailtoolbar2" />
-
-            <TextView
-                android:id="@+id/btn_todo_datestart"
-                android:layout_width="128dp"
-                android:layout_height="35dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/corner05"
-                android:backgroundTint="#F5F4F4"
-                android:drawableStart="@drawable/ic_baseline_calendar_month_24"
-                android:fontFamily="@font/robotoregular"
-                android:gravity="center"
-                android:padding="5dp"
-                android:text="date"
-                android:textColor="#000000"
-                android:textSize="16sp"
-                android:visibility="visible"
-                app:layout_constraintEnd_toStartOf="@+id/btn_todo_timestart"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rv_chip" />
-
-            <TextView
-                android:id="@+id/btn_todo_timestart"
-                android:layout_width="108dp"
-                android:layout_height="35dp"
-                android:layout_marginStart="2dp"
-                android:background="@drawable/corner05"
-                android:backgroundTint="#F5F4F4"
-                android:drawableStart="@drawable/ic_baseline_timer_24"
-                android:drawableTint="#4CAF50"
-                android:fontFamily="@font/robotoregular"
-                android:gravity="center"
-                android:padding="5dp"
-                android:text="start"
-                android:textColor="#000000"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:visibility="visible"
-                app:layout_constraintBottom_toBottomOf="@+id/btn_todo_datestart"
-                app:layout_constraintStart_toEndOf="@+id/btn_todo_datestart"
-                app:layout_constraintTop_toTopOf="@+id/btn_todo_datestart"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <TextView
-                android:id="@+id/btn_todo_timeend"
+                android:id="@+id/textView6"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginStart="2dp"
-                android:layout_marginEnd="15dp"
-                android:background="@drawable/corner05"
-                android:backgroundTint="#F5F4F4"
-                android:drawableRight="@drawable/ic_baseline_timer_24"
-                android:drawableTint="#F44336"
-                android:fontFamily="@font/robotoregular"
-                android:gravity="center"
-                android:padding="5dp"
-                android:text="end"
-                android:textColor="#000000"
-                android:textSize="18sp"
+                android:layout_marginStart="15dp"
+                android:fontFamily="@font/abezeeregular"
+                android:gravity="center|left"
+                android:text="New Task"
+                android:textColor="#2196F3"
+                android:textSize="20sp"
                 android:textStyle="bold"
-                android:visibility="visible"
-                app:layout_constraintBottom_toBottomOf="@+id/btn_todo_timestart"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/btn_todo_timestart"
-                app:layout_constraintTop_toTopOf="@+id/btn_todo_timestart" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_subtask"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btnaddtodo"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btnaddtodo"
+                android:layout_width="70dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="2dp"
+                android:backgroundTint="#2196F3"
+                android:text="add"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView6"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et_inserttodo_subtask"
-                tools:listitem="@layout/itemcv_todo_subtask" />
-
-            <TextView
-                android:id="@+id/color_name_black"
-                android:layout_width="50dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:background="#383636"
-                android:visibility="gone"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et_insert_name" />
-
-            <TextView
-                android:id="@+id/color_name_orange"
-                android:layout_width="50dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="10dp"
-                android:background="#FF5722"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="@+id/color_name_black"
-                app:layout_constraintStart_toEndOf="@+id/color_name_black"
-                app:layout_constraintTop_toTopOf="@+id/color_name_black" />
-
-            <TextView
-                android:id="@+id/color_name_blue"
-                android:layout_width="50dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="10dp"
-                android:background="#2196F3"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="@+id/color_name_orange"
-                app:layout_constraintStart_toEndOf="@+id/color_name_orange"
-                app:layout_constraintTop_toTopOf="@+id/color_name_orange"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <TextView
-                android:id="@+id/color_name_purple"
-                android:layout_width="50dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="10dp"
-                android:background="#3F51B5"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="@+id/color_name_blue"
-                app:layout_constraintStart_toEndOf="@+id/color_name_blue"
-                app:layout_constraintTop_toTopOf="@+id/color_name_blue"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintTop_toTopOf="@+id/textView6" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </LinearLayout>
-</ScrollView>
+    </androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fadeScrollbars="false"
+        android:isScrollContainer="false"
+        android:scrollIndicators="none"
+        android:scrollbars="none"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="800dp">
+
+                <TextView
+                    android:id="@+id/inserttitle4"
+                    android:layout_width="0dp"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="15dp"
+                    android:fontFamily="@font/robotoregular"
+                    android:gravity="center|start"
+                    android:text="Subtask"
+                    android:textColor="#6B6B6B"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/inserttodo_description" />
+
+                <EditText
+                    android:id="@+id/et_inserttodo_subtask"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/corner05"
+                    android:backgroundTint="#E1E1E1"
+                    android:fontFamily="@font/robotoregular"
+                    android:gravity="start"
+                    android:padding="10dp"
+                    android:textAlignment="textStart"
+                    android:textColor="#3E3C3C"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toStartOf="@+id/btn_addsubtask"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/inserttitle4" />
+
+                <TextView
+                    android:id="@+id/inserttitle3"
+                    android:layout_width="0dp"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="15dp"
+                    android:fontFamily="@font/robotoregular"
+                    android:gravity="center|start"
+                    android:text="Description"
+                    android:textColor="#6B6B6B"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/color_name_black" />
+
+                <EditText
+                    android:id="@+id/inserttodo_description"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/corner05"
+                    android:backgroundTint="#E1E1E1"
+                    android:fontFamily="@font/robotoregular"
+                    android:gravity="start|center_horizontal"
+                    android:padding="10dp"
+                    android:textAlignment="textStart"
+                    android:textColor="#3E3C3C"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/inserttitle3" />
+
+                <ImageView
+                    android:id="@+id/btn_addchipalarm"
+                    android:layout_width="40dp"
+                    android:layout_height="0dp"
+                    android:layout_marginEnd="15dp"
+                    android:src="@drawable/plusbg"
+                    app:layout_constraintBottom_toBottomOf="@+id/rv_chip"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/rv_chip"
+                    app:tint="#03A9F4" />
+
+                <ImageView
+                    android:id="@+id/btn_color_picker"
+                    android:layout_width="40dp"
+                    android:layout_height="0dp"
+                    android:layout_marginEnd="15dp"
+                    android:padding="2dp"
+                    android:src="@drawable/ic_baseline_brush_24"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@+id/et_insert_name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/et_insert_name"
+                    app:tint="#03A9F4" />
+
+                <ImageView
+                    android:id="@+id/btn_addsubtask"
+                    android:layout_width="40dp"
+                    android:layout_height="33dp"
+                    android:layout_marginEnd="15dp"
+                    android:src="@drawable/plusbg"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@+id/et_inserttodo_subtask"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/et_inserttodo_subtask"
+                    app:tint="#03A9F4" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_chip"
+                    android:layout_width="0dp"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="10dp"
+                    app:layout_constraintEnd_toStartOf="@+id/btn_addchipalarm"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/inserttitle7"
+                    tools:listitem="@layout/chip_card" />
+
+                <EditText
+                    android:id="@+id/et_insert_name"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/corner05"
+                    android:backgroundTint="#E1E1E1"
+                    android:fontFamily="@font/robotoregular"
+                    android:gravity="center|start"
+                    android:padding="10dp"
+                    android:textColor="#3E3C3C"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toStartOf="@+id/btn_color_picker"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/inserttitle" />
+
+                <TextView
+                    android:id="@+id/inserttitle"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="15dp"
+                    android:fontFamily="@font/robotoregular"
+                    android:gravity="center|start"
+                    android:text="Name"
+                    android:textColor="#6B6B6B"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_todo_timestart" />
+
+                <TextView
+                    android:id="@+id/inserttitle7"
+                    android:layout_width="0dp"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:fontFamily="@font/robotoregular"
+                    android:gravity="center|start"
+                    android:text="Start Time"
+                    android:textColor="#6B6B6B"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/detailtoolbar2" />
+
+                <TextView
+                    android:id="@+id/btn_todo_datestart"
+                    android:layout_width="128dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/corner05"
+                    android:backgroundTint="#F5F4F4"
+                    android:drawableStart="@drawable/ic_baseline_calendar_month_24"
+                    android:fontFamily="@font/robotoregular"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="date"
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toStartOf="@+id/btn_todo_timestart"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rv_chip" />
+
+                <TextView
+                    android:id="@+id/btn_todo_timestart"
+                    android:layout_width="108dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="2dp"
+                    android:background="@drawable/corner05"
+                    android:backgroundTint="#F5F4F4"
+                    android:drawableStart="@drawable/ic_baseline_timer_24"
+                    android:drawableTint="#4CAF50"
+                    android:fontFamily="@font/robotoregular"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="start"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="@+id/btn_todo_datestart"
+                    app:layout_constraintStart_toEndOf="@+id/btn_todo_datestart"
+                    app:layout_constraintTop_toTopOf="@+id/btn_todo_datestart"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:id="@+id/btn_todo_timeend"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/corner05"
+                    android:backgroundTint="#F5F4F4"
+                    android:drawableRight="@drawable/ic_baseline_timer_24"
+                    android:drawableTint="#F44336"
+                    android:fontFamily="@font/robotoregular"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="end"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="@+id/btn_todo_timestart"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/btn_todo_timestart"
+                    app:layout_constraintTop_toTopOf="@+id/btn_todo_timestart" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_subtask"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/et_inserttodo_subtask"
+                    tools:listitem="@layout/itemcv_todo_subtask" />
+
+                <TextView
+                    android:id="@+id/color_name_black"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:background="#383636"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/et_insert_name" />
+
+                <TextView
+                    android:id="@+id/color_name_orange"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="10dp"
+                    android:background="#FF5722"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@+id/color_name_black"
+                    app:layout_constraintStart_toEndOf="@+id/color_name_black"
+                    app:layout_constraintTop_toTopOf="@+id/color_name_black" />
+
+                <TextView
+                    android:id="@+id/color_name_blue"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="10dp"
+                    android:background="#2196F3"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@+id/color_name_orange"
+                    app:layout_constraintStart_toEndOf="@+id/color_name_orange"
+                    app:layout_constraintTop_toTopOf="@+id/color_name_orange"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:id="@+id/color_name_purple"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="10dp"
+                    android:background="#3F51B5"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@+id/color_name_blue"
+                    app:layout_constraintStart_toEndOf="@+id/color_name_blue"
+                    app:layout_constraintTop_toTopOf="@+id/color_name_blue"
+                    app:layout_constraintVertical_bias="0.0" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
 
