@@ -10,7 +10,7 @@ import com.example.wetterbericht.databinding.ItemcvTodoSubtaskBinding
 import com.example.wetterbericht.data.local.entity.dailytask.TodoSubTask
 
 class SubtaskRecyclerViewAdapter(
-    private val subTask : ArrayList<TodoSubTask>
+    private val subTask : MutableList<TodoSubTask>
 ) : RecyclerView.Adapter<SubtaskRecyclerViewAdapter.ViewHolder>(){
 
     class ViewHolder(val binding: ItemcvTodoSubtaskBinding)

@@ -7,6 +7,55 @@
     android:layout_height="match_parent"
     tools:context=".presentation.fragment.menu.MenuFragment">
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/menu_card_stats"
+        android:layout_width="150dp"
+        android:layout_height="140dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="25dp"
+        app:cardCornerRadius="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/menu_card_habits"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/menu_card_habits"
+        app:layout_constraintTop_toTopOf="@+id/menu_card_habits">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#F3F3F3">
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="28dp"
+                android:layout_marginEnd="10dp"
+                android:fontFamily="@font/robotoregular"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:text="Stats"
+                android:textColor="#1E1D1D"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_menu_stats"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <ImageView
+                android:id="@+id/btn_menu_stats"
+                android:layout_width="0dp"
+                android:layout_height="58dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/ic_baseline_stacked_bar_chart_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.506"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/detailtoolbar3"
         android:layout_width="match_parent"
@@ -70,7 +119,7 @@
         android:layout_width="150dp"
         android:layout_height="140dp"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="50dp"
         android:background="#F3F3F3"
         app:cardCornerRadius="5dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -168,7 +217,7 @@
         android:layout_width="150dp"
         android:layout_height="140dp"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="40dp"
         app:cardCornerRadius="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -216,13 +265,11 @@
         android:id="@+id/menu_card_setting"
         android:layout_width="150dp"
         android:layout_height="140dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="25dp"
         app:cardCornerRadius="5dp"
-        app:layout_constraintBottom_toBottomOf="@+id/menu_card_habits"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/menu_card_habits"
-        app:layout_constraintTop_toTopOf="@+id/menu_card_habits">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/menu_card_habits">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

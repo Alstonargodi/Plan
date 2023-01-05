@@ -14,6 +14,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -40,9 +41,10 @@ class InsertTodoFragment : Fragment(){
     private val roomViewModel : InsertTodoViewModel by viewModels{
         ViewModelFactory.getInstance(requireContext())
     }
+
     private var numberDay = 0
     private var millisDay : Long = 0
-    private var subTaskList = arrayListOf<TodoSubTask>()
+    private var subTaskList = mutableListOf<TodoSubTask>()
     private var typeColor = Color.parseColor("#383636")
 
     override fun onCreateView(
@@ -183,8 +185,10 @@ class InsertTodoFragment : Fragment(){
         }
         roomViewModel.insertTodoLocal(insertTask)
         findNavController().navigate(
-            InsertTodoFragmentDirections.actionInsertTodoFragmentToFragmentHome()
+            InsertTodoFragmentDirections.actionInsertTodoFragmentToFragmentHome(),
+            null,
         )
+        subTaskList.clear()
     }
 
 
@@ -335,4 +339,5 @@ class InsertTodoFragment : Fragment(){
             }
         }
     }
+
 }
