@@ -119,6 +119,9 @@
         <action
             android:id="@+id/action_menuFragment_to_insertDetailHabitsFragment"
             app:destination="@id/insertDetailHabitsFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_statisticFragment"
+            app:destination="@id/statisticFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
@@ -177,5 +180,14 @@
         <action
             android:id="@+id/action_habitsCardViewFragment_to_habitsListFragment"
             app:destination="@id/habitsListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/statisticFragment"
+        android:name="com.example.wetterbericht.presentation.fragment.stats.StatisticFragment"
+        android:label="fragment_statistic"
+        tools:layout="@layout/fragment_statistic" >
+        <action
+            android:id="@+id/action_statisticFragment_to_menuFragment"
+            app:destination="@id/menuFragment" />
     </fragment>
 </navigation>

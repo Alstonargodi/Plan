@@ -16,6 +16,7 @@ import com.example.wetterbericht.presentation.activity.onboarding.OnBoardingView
 import com.example.wetterbericht.presentation.fragment.habits.viewmodel.HabitsViewModel
 import com.example.wetterbericht.presentation.fragment.home.HomeViewModel
 import com.example.wetterbericht.presentation.fragment.insertnewtask.InsertTodoViewModel
+import com.example.wetterbericht.presentation.fragment.stats.StatisticFragmentViewModel
 import com.example.wetterbericht.presentation.fragment.weather.weatherviewmodel.WeatherViewModel
 
 @Suppress("UNCHECKED_CAST")
@@ -66,6 +67,9 @@ class ViewModelFactory private constructor(
         }
         else if (modelClass.isAssignableFrom(InsertTodoViewModel::class.java)){
             return InsertTodoViewModel(todoUseCase) as T
+        }
+        else if (modelClass.isAssignableFrom(StatisticFragmentViewModel::class.java)){
+            return StatisticFragmentViewModel(todoUseCase) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
     }
