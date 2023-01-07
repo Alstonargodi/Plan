@@ -4,7 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".presentation.fragment.habits.insert.InsertDetailHabitsFragment"
+    tools:context=".presentation.fragment.habits.insert.InsertHabitsFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -86,7 +86,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="900dp"
-                tools:context=".presentation.fragment.habits.insert.InsertDetailHabitsFragment">
+                tools:context=".presentation.fragment.habits.insert.InsertHabitsFragment">
 
 
                 <TextView

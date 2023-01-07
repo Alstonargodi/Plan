@@ -14,8 +14,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -26,6 +26,7 @@ import com.example.wetterbericht.helpers.ConstantTask.formatDate
 import com.example.wetterbericht.helpers.ConstantTask.formatDay
 import com.example.wetterbericht.helpers.ConstantTask.formatTime
 import com.example.wetterbericht.helpers.ConstantTask.userId
+import com.example.wetterbericht.presentation.fragment.habits.insert.adapter.ColorRecyclerviewAdapter
 import com.example.wetterbericht.presentation.fragment.home.adapter.SubtaskRecyclerViewAdapter
 import com.example.wetterbericht.presentation.fragment.insertnewtask.adapter.ChipAdapter
 import com.example.wetterbericht.presentation.fragment.insertnewtask.dialog.InsertAlarmChipFragment
@@ -38,7 +39,7 @@ class InsertTodoFragment : Fragment(){
     private val binding get()= _binding!!
 
     private lateinit var subTaskAdapter : SubtaskRecyclerViewAdapter
-    private val roomViewModel : InsertTodoViewModel by viewModels{
+    private val viewModel : InsertTodoViewModel by viewModels{
         ViewModelFactory.getInstance(requireContext())
     }
 
@@ -130,7 +131,7 @@ class InsertTodoFragment : Fragment(){
             requireContext(),LinearLayoutManager.HORIZONTAL,false
         )
 
-        roomViewModel.readAlarmChip().observe(viewLifecycleOwner){
+        viewModel.readAlarmChip().observe(viewLifecycleOwner){
             chipAdapter.setData(it)
         }
 
@@ -181,9 +182,9 @@ class InsertTodoFragment : Fragment(){
                 isComplete = it.isComplete,
                 todoId = it.todoId
             )
-            roomViewModel.insertSubtask(insertSubtask)
+            viewModel.insertSubtask(insertSubtask)
         }
-        roomViewModel.insertTodoLocal(insertTask)
+        viewModel.insertTodoLocal(insertTask)
         findNavController().navigate(
             InsertTodoFragmentDirections.actionInsertTodoFragmentToFragmentHome(),
             null,
@@ -288,31 +289,22 @@ class InsertTodoFragment : Fragment(){
 
     private fun colorPalette(){
         showColorPalette(true)
-        binding.apply {
-            colorNameBlack.apply {
-                setOnClickListener {
-                    typeColor = Color.parseColor("#383636")
+        viewModel.readColorList().observe(viewLifecycleOwner){
+            val adapter = ColorRecyclerviewAdapter(it)
+            val recyclerview = binding.rvTodoColor
+            recyclerview.adapter = adapter
+            recyclerview.layoutManager = GridLayoutManager(
+                requireContext(),
+                2,
+                LinearLayoutManager.HORIZONTAL,
+                false
+            )
+            adapter.getColorHabits(object : ColorRecyclerviewAdapter.ColorCallback{
+                override fun colorCallback(name: String) {
+                    typeColor = Color.parseColor(name)
                     changeTextColor()
                 }
-            }
-            colorNameBlue.apply {
-                setOnClickListener {
-                    typeColor = Color.parseColor("#2196F3")
-                    changeTextColor()
-                }
-            }
-            colorNameOrange.apply {
-                setOnClickListener {
-                    typeColor = Color.parseColor("#FF5722")
-                    changeTextColor()
-                }
-            }
-            colorNamePurple.apply {
-                setOnClickListener {
-                    typeColor = Color.parseColor("#3F51B5")
-                    changeTextColor()
-                }
-            }
+            })
         }
     }
 
@@ -324,19 +316,9 @@ class InsertTodoFragment : Fragment(){
 
     private fun showColorPalette(cond : Boolean){
         if (cond){
-            binding.apply {
-                colorNameBlack.apply { visibility = View.VISIBLE }
-                colorNameBlue.apply { visibility = View.VISIBLE }
-                colorNameOrange.apply { visibility = View.VISIBLE }
-                colorNamePurple.apply { visibility = View.VISIBLE }
-            }
+            binding.rvTodoColor.visibility = View.VISIBLE
         }else{
-            binding.apply {
-                colorNameBlack.apply { visibility = View.GONE }
-                colorNameBlue.apply { visibility = View.GONE }
-                colorNameOrange.apply { visibility = View.GONE }
-                colorNamePurple.apply { visibility = View.GONE }
-            }
+            binding.rvTodoColor.visibility = View.GONE
         }
     }
 

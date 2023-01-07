@@ -43,7 +43,7 @@
                     android:id="@+id/img_weather_icon_home2"
                     android:layout_width="50dp"
                     android:layout_height="0dp"
-                    android:layout_marginStart="224dp"
+                    android:layout_marginStart="200dp"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_homew_temp2"
                     app:layout_constraintStart_toEndOf="@+id/btn_hometomenu"
                     app:layout_constraintTop_toTopOf="@+id/tv_homew_temp2"

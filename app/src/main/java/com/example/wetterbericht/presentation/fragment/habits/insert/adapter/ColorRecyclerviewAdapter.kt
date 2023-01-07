@@ -2,15 +2,14 @@ package com.example.wetterbericht.presentation.fragment.habits.insert.adapter
 
 import android.graphics.Color
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wetterbericht.data.local.entity.dailyhabits.ColorHabits
 import com.example.wetterbericht.databinding.ItemcvColorHabitsBinding
 
-class ColorHabitsRecyclerviewAdapter(
+class ColorRecyclerviewAdapter(
     private var colorList : List<ColorHabits>
-): RecyclerView.Adapter<ColorHabitsRecyclerviewAdapter.ViewHolder>() {
+): RecyclerView.Adapter<ColorRecyclerviewAdapter.ViewHolder>() {
 
     private lateinit var getColorHabits: ColorCallback
 

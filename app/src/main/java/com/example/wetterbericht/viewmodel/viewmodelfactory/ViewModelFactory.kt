@@ -66,7 +66,7 @@ class ViewModelFactory private constructor(
             ) as T
         }
         else if (modelClass.isAssignableFrom(InsertTodoViewModel::class.java)){
-            return InsertTodoViewModel(todoUseCase) as T
+            return InsertTodoViewModel(todoUseCase,habitsLocalUseCase) as T
         }
         else if (modelClass.isAssignableFrom(StatisticFragmentViewModel::class.java)){
             return StatisticFragmentViewModel(todoUseCase) as T

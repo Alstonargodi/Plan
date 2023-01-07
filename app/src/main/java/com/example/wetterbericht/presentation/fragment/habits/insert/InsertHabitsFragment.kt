@@ -17,13 +17,13 @@ import com.example.wetterbericht.data.local.entity.dailyhabits.DailyHabits
 import com.example.wetterbericht.data.local.entity.dailyhabits.IconHabits
 import com.example.wetterbericht.databinding.FragmentInsertHabitsBinding
 import com.example.wetterbericht.helpers.ConstantTask
-import com.example.wetterbericht.presentation.fragment.habits.insert.adapter.ColorHabitsRecyclerviewAdapter
+import com.example.wetterbericht.presentation.fragment.habits.insert.adapter.ColorRecyclerviewAdapter
 import com.example.wetterbericht.presentation.fragment.habits.insert.adapter.IconHabitsRecylerViewAdapter
 import com.example.wetterbericht.presentation.fragment.habits.viewmodel.HabitsViewModel
 import com.example.wetterbericht.viewmodel.viewmodelfactory.ViewModelFactory
 import java.util.*
 
-class InsertDetailHabitsFragment : Fragment() {
+class InsertHabitsFragment : Fragment() {
     private lateinit var binding : FragmentInsertHabitsBinding
     private val viewModel : HabitsViewModel by viewModels{
         ViewModelFactory.getInstance(requireContext())
@@ -57,7 +57,7 @@ class InsertDetailHabitsFragment : Fragment() {
 
         binding.btnbackInsertHabits.setOnClickListener {
             findNavController().navigate(
-                InsertDetailHabitsFragmentDirections
+                InsertHabitsFragmentDirections
                 .actionInsertDetailHabitsFragmentToHabitsListFragment()
             )
         }
@@ -79,7 +79,7 @@ class InsertDetailHabitsFragment : Fragment() {
         )
         viewModel.insertHabits(insertData)
         findNavController().navigate(
-            InsertDetailHabitsFragmentDirections
+            InsertHabitsFragmentDirections
                 .actionInsertDetailHabitsFragmentToHabitsListFragment()
         )
     }
@@ -109,7 +109,7 @@ class InsertDetailHabitsFragment : Fragment() {
     }
 
     private fun showColorHabits(colors : List<ColorHabits>){
-        val adapter = ColorHabitsRecyclerviewAdapter(colors)
+        val adapter = ColorRecyclerviewAdapter(colors)
         val recyclerView = binding.recviewColor
         recyclerView.adapter = adapter
         recyclerView.layoutManager = GridLayoutManager(
@@ -118,7 +118,7 @@ class InsertDetailHabitsFragment : Fragment() {
             LinearLayoutManager.HORIZONTAL,
             false
         )
-        adapter.getColorHabits(object : ColorHabitsRecyclerviewAdapter.ColorCallback{
+        adapter.getColorHabits(object : ColorRecyclerviewAdapter.ColorCallback{
             override fun colorCallback(name: String) {
                 typeColor = Color.parseColor(name)
                 binding.titleColorPicker.setTextColor(typeColor)
