@@ -13,8 +13,7 @@ class SubtaskRecyclerViewAdapter(
     private val subTask : MutableList<TodoSubTask>
 ) : RecyclerView.Adapter<SubtaskRecyclerViewAdapter.ViewHolder>(){
 
-    class ViewHolder(val binding: ItemcvTodoSubtaskBinding)
-        : RecyclerView.ViewHolder(binding.root){
+    class ViewHolder(val binding: ItemcvTodoSubtaskBinding) : RecyclerView.ViewHolder(binding.root){
 
         }
 

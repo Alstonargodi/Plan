@@ -22,6 +22,7 @@ interface ITodoLocalRepository {
     fun insertSubtask(data : TodoSubTask)
     fun deleteTodoList(name : String)
     fun updateTaskStatus(id : Int,status : Boolean)
+    fun updateSubtask(id : Int,status : Boolean)
     //chipTime
     fun readChipTime():LiveData<List<ChipAlarm>>
     fun insertChipTime(alarm: ChipAlarm)
