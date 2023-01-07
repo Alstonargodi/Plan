@@ -66,6 +66,10 @@ class TodoLocalDataSource(
         executorService.execute { todoDao.updateTaskStatus(id, status) }
     }
 
+    override fun updateSubtask(id: Int, status: Boolean) {
+        executorService.execute { todoDao.updateSubTaskStatus(id,status) }
+    }
+
     override fun readChipTime(): LiveData<List<ChipAlarm>> {
         return todoDao.readTimeChip()
     }

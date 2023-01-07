@@ -25,4 +25,5 @@ interface TodoLocalUseCase {
     fun insertSubtask(data : TodoSubTask)
     fun deleteTodoList(name : String)
     fun updateTaskStatus(id : Int,status : Boolean)
+    fun updateSubtask(id : Int,status : Boolean)
 }

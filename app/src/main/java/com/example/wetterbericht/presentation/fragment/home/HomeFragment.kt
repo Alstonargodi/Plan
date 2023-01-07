@@ -176,7 +176,6 @@ class HomeFragment : Fragment() {
         override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
             val task = (viewHolder as TodoRecyclerViewAdapter.ViewHolder).getData()
             homeViewModel.deleteTodoLocal(task.title)
-
             homeViewModel.snackbarEvent.observe(viewLifecycleOwner){
                 showSnackBar(it)
             }
