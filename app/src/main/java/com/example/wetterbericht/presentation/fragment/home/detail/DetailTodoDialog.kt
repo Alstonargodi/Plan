@@ -77,7 +77,7 @@ class DetailTodoDialog : BottomSheetDialogFragment() {
     }
 
     private fun showSubtask(title : String){
-        val dataArray = ArrayList<TodoSubTask>()
+        val dataArray = mutableListOf<TodoSubTask>()
         roomViewModel.readTodoSubtask(title).observe(viewLifecycleOwner){ parent ->
             parent.forEach { child ->
                 child.subtask.forEach { data->

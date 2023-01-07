@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 import android.annotation.SuppressLint
 import android.util.Log
+import androidx.core.content.ContextCompat
 import com.example.wetterbericht.databinding.ItemcvTodoBinding
 import com.example.wetterbericht.data.local.entity.dailytask.TodoLocal
 import com.example.wetterbericht.presentation.componen.TaskTitleView
@@ -30,19 +31,20 @@ class TodoRecyclerViewAdapter(
             binding.tvtoxoCardName.text = item.title
             binding.tvtoxoCardName.setTextColor(item.levelColor)
 
+
             //TODO 10
             when{
                 item.isComplete->{
                     binding.tvtoxoCardName.state = TaskTitleView.DONE
-                    binding.checkboxtask.isChecked = true
+                    binding.radioButton2.isChecked = true
                 }
                 item.dateDueMillis < System.currentTimeMillis()->{
-                    binding.tvtoxoCardName.state = TaskTitleView.OVERDUE
-                    binding.checkboxtask.isChecked = false
+                    binding.cardViewTodo.setCardBackgroundColor(ContextCompat.getColor(binding.root.context, android.R.color.holo_red_dark))
+                    binding.radioButton2.isChecked = false
                 }
                 else->{
                     binding.tvtoxoCardName.state = TaskTitleView.NORMAL
-                    binding.checkboxtask.isChecked = false
+                    binding.radioButton2.isChecked = false
                 }
             }
         }
@@ -70,7 +72,7 @@ class TodoRecyclerViewAdapter(
                 detailCallback.detailCallBack(item)
             }
 
-            holder.binding.checkboxtask.setOnClickListener {
+            holder.binding.radioButton2.setOnClickListener {
                 onChecked(item,!item.isComplete)
             }
         }catch (e : Exception){

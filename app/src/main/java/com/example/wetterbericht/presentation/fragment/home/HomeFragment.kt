@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.wetterbericht.R
 import com.example.wetterbericht.data.local.entity.dailytask.TodoLocal
 import com.example.wetterbericht.data.local.entity.weather.WeatherLocal
@@ -17,10 +18,10 @@ import com.example.wetterbericht.databinding.FragmentHomeBinding
 import com.example.wetterbericht.helpers.sortfilter.TodoSortType
 import com.example.wetterbericht.presentation.fragment.home.adapter.TodoRecyclerViewAdapter
 import com.example.wetterbericht.presentation.fragment.home.detail.DetailTodoDialog
-import com.example.wetterbericht.presentation.fragment.weather.adapter.WeatherHomeRecyclerViewAdapter
 import com.example.wetterbericht.viewmodel.viewmodelfactory.ViewModelFactory
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
+import kotlin.math.round
 
 class HomeFragment : Fragment() {
     private var _binding : FragmentHomeBinding? = null
@@ -88,12 +89,7 @@ class HomeFragment : Fragment() {
 
     private fun showCurrentWeather(){
         homeViewModel.readWeatherLocal().observe(viewLifecycleOwner){
-            if (it.isEmpty()){
-                binding.recviewweather.visibility = View.GONE
-            }else{
-                binding.recviewweather.visibility = View.VISIBLE
-                setCurrentWeather(it)
-            }
+            setCurrentWeather(it[0])
         }
     }
 
@@ -141,16 +137,17 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun setCurrentWeather(data : List<WeatherLocal>){
-        val weatherRvAdapter = WeatherHomeRecyclerViewAdapter()
-        val weatherRecyclerView = binding.recviewweather
-        weatherRecyclerView.adapter = weatherRvAdapter
-        weatherRecyclerView.layoutManager = LinearLayoutManager(
-            requireContext(),
-            LinearLayoutManager.HORIZONTAL,
-            true
-        )
-        weatherRvAdapter.setData(data)
+    private fun setCurrentWeather(data : WeatherLocal){
+        val temp = data.temp.toDouble()
+        val temperature = round(temp).toInt().toString()
+        binding.tvHomewTemp2.apply {
+            text = temperature + "c"
+        }
+
+        Glide.with(requireContext())
+            .asDrawable()
+            .load(data.image)
+            .into(binding.imgWeatherIconHome2)
     }
 
 

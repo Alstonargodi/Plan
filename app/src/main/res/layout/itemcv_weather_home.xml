@@ -6,55 +6,35 @@
     android:layout_height="30dp"
 
 
-    android:layout_marginStart="110dp"
     android:layout_marginTop="10dp"
-    android:layout_marginEnd="110dp"
     android:layout_marginBottom="50dp">
 
     <TextView
         android:id="@+id/tv_homew_temp"
-        android:layout_width="0dp"
+        android:layout_width="55dp"
         android:layout_height="0dp"
         android:fontFamily="@font/robotoregular"
         android:foregroundGravity="center_vertical"
-        android:gravity="center"
+        android:gravity="center|end"
         android:includeFontPadding="false"
-        android:text="00"
+        android:text="00c"
         android:textColor="#282828"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/tv_homew_temp2"
-        app:layout_constraintHorizontal_bias="0.051"
-        app:layout_constraintStart_toEndOf="@+id/img_home_icon"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/tv_homew_temp2"
-        android:layout_width="31dp"
-        android:layout_height="0dp"
-        android:fontFamily="@font/robotoregular"
-        android:foregroundGravity="center_vertical"
-        android:gravity="center|start"
-        android:text="c"
-        android:textColor="#777777"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/img_weather_icon_home"
+        app:layout_constraintTop_toTopOf="@+id/img_weather_icon_home"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
-        android:id="@+id/img_home_icon"
-        android:layout_width="30dp"
+        android:id="@+id/img_weather_icon_home"
+        android:layout_width="35dp"
         android:layout_height="0dp"
-        android:foregroundGravity="center_vertical"
+        android:layout_marginStart="248dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        tools:srcCompat="@drawable/awan" />
+        tools:srcCompat="@tools:sample/avatars" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

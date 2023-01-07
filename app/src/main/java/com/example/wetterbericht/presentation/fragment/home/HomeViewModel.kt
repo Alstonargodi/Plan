@@ -48,14 +48,6 @@ class HomeViewModel(
     fun getPreviousTask(): LiveData<List<TodoLocal>> =
         todoUseCase.getPreviousTask()
 
-    fun readAlarmChip(): LiveData<List<ChipAlarm>> =
-        todoUseCase.readChipTime()
-
-    fun insertTodoLocal(data : TodoLocal) =
-        todoUseCase.insertTodoList(data)
-
-    fun insertAlarmChip(alarm : ChipAlarm) =
-        todoUseCase.insertChipTime(alarm)
 
     fun insertSubtask(data : TodoSubTask) =
         todoUseCase.insertSubtask(data)
