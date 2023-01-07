@@ -22,6 +22,7 @@ interface ITodoLocalDataSource {
     fun getPreviousTask(date: Int): LiveData<List<TodoLocal>>
     fun deleteTodoList(name : String)
     fun updateTaskStatus(id : Int,status : Boolean)
+    fun updateSubtask(id : Int,status : Boolean)
     //chiptime
     fun readChipTime():LiveData<List<ChipAlarm>>
     fun insertChipTime(alarm: ChipAlarm)

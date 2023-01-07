@@ -81,4 +81,8 @@ class TodoLocalInteractor(
     override fun updateTaskStatus(id: Int, status: Boolean) {
         repository.updateTaskStatus(id, status)
     }
+
+    override fun updateSubtask(id: Int, status: Boolean) {
+        repository.updateSubtask(id, status)
+    }
 }

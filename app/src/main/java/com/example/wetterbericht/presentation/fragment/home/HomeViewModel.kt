@@ -31,16 +31,10 @@ class HomeViewModel(
             todoUseCase.readTodoTaskFilter(it)
         }
 
-    fun readTodoLocalUse(): LiveData<List<TodoLocal>> =
-        todoUseCase.readTodoLocal()
-
     fun readTodoSubtask(name : String): LiveData<List<TodoandSubTask>> {
         Log.d("today $name", todoUseCase.readTodoSubtask(name).value.toString())
         return todoUseCase.readTodoSubtask(name)
     }
-
-    fun getTodayTask(): LiveData<List<TodoLocal>> =
-        todoUseCase.getTodayTask()
 
     fun getUpcomingTask(): LiveData<List<TodoLocal>> =
         todoUseCase.getUpComingTask()
@@ -54,6 +48,10 @@ class HomeViewModel(
 
     fun updateTask(taskId : Int,completed : Boolean){
         todoUseCase.updateTaskStatus(taskId,completed)
+    }
+
+    fun updateSubtask(id : Int,status: Boolean){
+        todoUseCase.updateSubtask(id, status)
     }
 
     fun deleteTodoLocal(name : String){
@@ -72,7 +70,5 @@ class HomeViewModel(
     fun insertWeatherLocal(data : WeatherLocal) =
         weatherUseCase.insertWeatherLocal(data)
 
-    fun searchLocation(name: String): LiveData<List<WeatherLocal>> =
-        weatherUseCase.searchWeatherLocal(name)
 
 }

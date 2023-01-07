@@ -17,6 +17,7 @@ import com.example.wetterbericht.data.local.entity.dailytask.TodoSubTask
 import com.example.wetterbericht.presentation.fragment.home.HomeFragment.Companion.homepage_key
 import com.example.wetterbericht.presentation.fragment.home.HomeFragmentDirections
 import com.example.wetterbericht.presentation.fragment.home.HomeViewModel
+import com.example.wetterbericht.presentation.fragment.home.adapter.SubDetailRecyclerViewAdapter
 import com.example.wetterbericht.presentation.fragment.home.adapter.SubtaskRecyclerViewAdapter
 import com.example.wetterbericht.viewmodel.viewmodelfactory.ViewModelFactory
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -31,7 +32,7 @@ class DetailTodoDialog : BottomSheetDialogFragment() {
 
     private lateinit var detailTodo : TodoLocal
     private var durationTime = 0
-    private val roomViewModel : HomeViewModel by viewModels{
+    private val viewModel : HomeViewModel by viewModels{
         ViewModelFactory.getInstance(requireContext())
     }
 
@@ -78,11 +79,16 @@ class DetailTodoDialog : BottomSheetDialogFragment() {
 
     private fun showSubtask(title : String){
         val dataArray = mutableListOf<TodoSubTask>()
-        roomViewModel.readTodoSubtask(title).observe(viewLifecycleOwner){ parent ->
+        viewModel.readTodoSubtask(title).observe(viewLifecycleOwner){ parent ->
             parent.forEach { child ->
                 child.subtask.forEach { data->
                     dataArray.add(data)
-                    val adapter = SubtaskRecyclerViewAdapter(dataArray)
+                    val adapter = SubDetailRecyclerViewAdapter(dataArray){ value, status ->
+                        viewModel.updateSubtask(
+                            value.id,
+                            status
+                        )
+                    }
                     val recView = binding.rvSubtask
                     recView.adapter = adapter
                     recView.layoutManager = LinearLayoutManager(requireActivity())

@@ -69,4 +69,8 @@ class TodoLocalRepository(
     override fun updateTaskStatus(id: Int, status: Boolean) {
         dataSource.updateTaskStatus(id, status)
     }
+
+    override fun updateSubtask(id: Int, status: Boolean) {
+        dataSource.updateSubtask(id, status)
+    }
 }

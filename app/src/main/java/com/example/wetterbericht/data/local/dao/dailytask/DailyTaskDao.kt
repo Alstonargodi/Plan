@@ -34,6 +34,9 @@ abstract class DailyTaskDao {
     @Query("select * from todotable where taskID = :name")
     abstract fun readSubTaskTodoList(name : String): LiveData<List<TodoandSubTask>>
 
+    @Query("update todosubtask set isComplete=:status where id=:taskid")
+    abstract fun updateSubTaskStatus(taskid: Int,status : Boolean)
+
     @Query("update TodoTable set completed=:status where taskID=:id")
     abstract fun updateTaskStatus(id : Int,status : Boolean)
 
@@ -52,6 +55,7 @@ abstract class DailyTaskDao {
     @Query("select * from todotable where dateDay < :date")
     abstract fun readPreviousTask(date: Int):LiveData<List<TodoLocal>>
 
+    //time chip
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract fun insertTimeChip(alarm : ChipAlarm)
 
