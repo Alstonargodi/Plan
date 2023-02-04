@@ -57,7 +57,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="25dp"
                     android:layout_marginBottom="10dp"
-                    android:fontFamily="@font/robotoregular"
+                    android:fontFamily="@font/poppinsregular"
                     android:foregroundGravity="center_vertical"
                     android:gravity="center"
                     android:includeFontPadding="false"
@@ -89,7 +89,8 @@
             android:id="@+id/tabLayout"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-
+            android:textStyle="bold"
+            android:fontFamily="@font/poppinsregular"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -106,16 +107,22 @@
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:fontFamily="@font/poppinsregular"
                 android:text="Previous" />
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:fontFamily="@font/poppinsregular"
                 android:text="Today" />
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:fontFamily="@font/poppinsregular"
                 android:text="Upcoming" />
 
         </com.google.android.material.tabs.TabLayout>

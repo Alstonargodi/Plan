@@ -39,9 +39,7 @@ class DetailTodoDialog : BottomSheetDialogFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentDetailTodoListDialogBinding.inflate(inflater, container, false)
         detailTodo = requireArguments().getParcelable(homepage_key)!!
-
         durationTime = countDownDuration()
-
         countDownDuration()
 
         try {

@@ -45,6 +45,9 @@ class InsertTodoFragment : Fragment(){
 
     private var numberDay = 0
     private var millisDay : Long = 0
+    private var timeStart = "start"
+    private var timeEnd = "end"
+
     private var subTaskList = mutableListOf<TodoSubTask>()
     private var typeColor = Color.parseColor("#383636")
 
@@ -53,7 +56,7 @@ class InsertTodoFragment : Fragment(){
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentInsertTodoBinding.inflate(layoutInflater)
-        readChipReminder()
+        timesSelection()
         binding.etInsertName.setTextColor(typeColor)
         subTaskAdapter = SubtaskRecyclerViewAdapter(subTaskList)
         ItemTouchHelper(CallBack()).attachToRecyclerView(binding.rvSubtask)
@@ -88,7 +91,6 @@ class InsertTodoFragment : Fragment(){
                     binding.btnAddsubtask.visibility = View.GONE
                 }
             }
-
         })
         return binding.root
     }
@@ -104,11 +106,10 @@ class InsertTodoFragment : Fragment(){
                 insertNewSubtask()
             }
             btnTodoTimestart.setOnClickListener {
+                timePicker("end")
                 timePicker("start")
             }
-            btnTodoTimeend.setOnClickListener {
-                timePicker("end")
-            }
+
             btnTodoDatestart.setOnClickListener {
                 datePicker()
             }
@@ -123,7 +124,7 @@ class InsertTodoFragment : Fragment(){
         }
     }
 
-    private fun readChipReminder(){
+    private fun timesSelection(){
         val chipAdapter = ChipAdapter()
         val sideRecyclerView = binding.rvChip
         sideRecyclerView.adapter = chipAdapter
@@ -137,7 +138,12 @@ class InsertTodoFragment : Fragment(){
 
         chipAdapter.onTimeCallback(object : ChipAdapter.timeCallBack{
             override fun timeCallBack(time: String) {
-               timeStart(time)
+                if (timeStart === "start"){
+                    timeStart = time
+                }else{
+                    timeEnd = time
+                }
+                binding.btnTodoTimestart.text = "$timeStart - $timeEnd"
             }
         })
     }
@@ -156,8 +162,6 @@ class InsertTodoFragment : Fragment(){
     private fun insertTodo(){
         val taskName = binding.etInsertName.text.toString()
         val description = binding.inserttodoDescription.text.toString()
-        val startTime = binding.btnTodoTimestart.text.toString()
-        val endTime = binding.btnTodoTimeend.text.toString()
         val dateStart = binding.btnTodoDatestart.text.toString()
 
         val insertTask = TodoLocal(
@@ -169,8 +173,8 @@ class InsertTodoFragment : Fragment(){
             dateDay = numberDay,
             dateDueMillis = millisDay,
             notificationInterval = 20,
-            startTime = startTime,
-            endTime = endTime,
+            startTime = timeStart,
+            endTime = timeEnd,
             subTaskId = userId,
             isComplete = false
         )
@@ -254,12 +258,13 @@ class InsertTodoFragment : Fragment(){
             val timeSet = formatTime.format(timeTemp.time)
             when(tag){
                 "start"->{
-                    binding.btnTodoTimestart.text = timeSet
+                    timeStart = timeSet
                 }
                 "end"->{
-                    binding.btnTodoTimeend.text = timeSet
+                    timeEnd = timeSet
                 }
             }
+            binding.btnTodoTimestart.text = "$timeStart - $timeEnd"
         },
             calendar.get(Calendar.HOUR_OF_DAY),
             calendar.get(Calendar.MINUTE),
