@@ -1,45 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cvlayout_habits"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
+    android:layout_height="wrap_content"
     android:layout_margin="10dp"
     app:cardCornerRadius="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_habits"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/tv_habits_name"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="10dp"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
-            android:fontFamily="@font/abezeeregular"
-            android:gravity="center"
+            android:fontFamily="@font/poppinsregular"
+            android:gravity="start"
             android:includeFontPadding="false"
+            android:padding="10dp"
             android:text="Habits name"
             android:textColor="#222222"
-            android:textSize="16sp"
+            android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/tv_habits_duration"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tv_habits_duration"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/tv_habits_duration" />
 
         <TextView
             android:id="@+id/tv_habits_duration"
             android:layout_width="74dp"
-            android:layout_height="0dp"
-            android:fontFamily="@font/abezeeregular"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppinsregular"
             android:gravity="center"
             android:includeFontPadding="false"
+            android:padding="5dp"
             android:text="00"
             android:textColor="#3C3C3C"
-            android:textSize="45sp"
+            android:textSize="35sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

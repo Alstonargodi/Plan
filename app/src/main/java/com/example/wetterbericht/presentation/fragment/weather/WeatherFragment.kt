@@ -102,12 +102,11 @@ class WeatherFragment : Fragment(){
                 val temp = round(main.temp).toInt()
                 val visibility = visibility / 1000
 
-                tvweatherTemp.text = "$temp c"
-
-                tvweatherClouds.text = "Clouds  ${clouds.all} %"
-                tvweatherFeels.text =  "Feels like ${main.feelsLike} c "
-                tvweatherWindspeed.text = "Wind Speed ${wind.speed} km/h"
-                tvweatherVisibilty.text = "Visibilty $visibility Km"
+                "$temp c".also { tvweatherTemp.text = it }
+                "Clouds  ${clouds.all} %".also { tvweatherClouds.text = it }
+                "Feels like ${main.feelsLike} c ".also { tvweatherFeels.text = it }
+                "Wind Speed ${wind.speed} km/h".also { tvweatherWindspeed.text = it }
+                "Visibilty $visibility Km".also { tvweatherVisibilty.text = it }
 
                 val url = weather[0].icon
                 val icon = "http://openweathermap.org/img/w/${url}.png"
@@ -125,14 +124,11 @@ class WeatherFragment : Fragment(){
     private fun setWeatherForecast(respon : ForecastResponse){
         val data = respon.list
         for (i in data.indices){
-            val date = data[i].dtTxt
-            val desc = data[i].weather[0].description
-            val temp = data[i].main.temp.toString()
-
             val tempForecast = ForecastItem(
-                date,
-                desc,
-                temp
+                date = data[i].dtTxt,
+                desc = data[i].weather[0].description,
+                temp = data[i].main.temp.toString(),
+                iconUrl = data[i].weather[0].icon
             )
 
             forecastList.add(tempForecast)

@@ -6,12 +6,12 @@
     >
     <item
         android:id="@+id/fragment_home"
-        android:icon="@drawable/ic_book_check"
+        android:icon="@drawable/ic_task"
         android:fontFamily="@font/righteous"
         />
     <item
         android:id="@+id/insertTodoFragment"
-        android:icon="@drawable/ic_add_rounf"
+        android:icon="@drawable/tulis"
         android:fontFamily="@font/righteous"
         />
     <item

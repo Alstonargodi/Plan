@@ -111,11 +111,10 @@ class HomeFragment : Fragment() {
         }
     }
 
-
     private fun showTaskList(data : List<TodoLocal>){
         taskRecyclewViewAdapter = TodoRecyclerViewAdapter(data) { value, condition ->
             homeViewModel.updateTask(
-                value.taskID.toInt(),
+                value.taskID,
                 condition
             )
         }
@@ -141,7 +140,7 @@ class HomeFragment : Fragment() {
         val temp = data.temp.toDouble()
         val temperature = round(temp).toInt().toString()
         binding.tvHomewTemp2.apply {
-            text = temperature + "c"
+            (temperature + "c").also { text = it }
         }
 
         Glide.with(requireContext())

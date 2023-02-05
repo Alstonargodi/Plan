@@ -48,7 +48,8 @@ class HabitsListFragment : Fragment() {
             }
             R.id.action_cardview->{
                 findNavController().navigate(
-                    HabitsListFragmentDirections.actionHabitsListFragmentToHabitsCardViewFragment())
+                    HabitsListFragmentDirections.actionHabitsListFragmentToInsertDetailHabitsFragment()
+                )
                 true
             }
             else -> { true }
@@ -58,11 +59,6 @@ class HabitsListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.fabAddHabits.setOnClickListener {
-            findNavController().navigate(
-                HabitsListFragmentDirections.actionHabitsListFragmentToInsertDetailHabitsFragment()
-            )
-        }
 
         binding.btnbackHabits.setOnClickListener {
             findNavController().navigate(

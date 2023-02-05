@@ -10,56 +10,65 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="68dp"
+        android:layout_height="wrap_content"
         android:background="#F3F3F3">
 
         <TextView
             android:id="@+id/tv_f_date"
-            android:layout_width="0dp"
-            android:layout_height="19dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/abezeeregular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppinsregular"
             android:includeFontPadding="false"
             android:text="wenesday , 9 : 00"
             android:textColor="#565353"
             android:textSize="12sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/tv_f_temp"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_f_desc"
-            android:layout_width="0dp"
-            android:layout_height="21dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/abezeeregular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/poppinsregular"
             android:includeFontPadding="false"
             android:text="TextView"
             android:textColor="#565353"
             android:textSize="16sp"
-            app:layout_constraintEnd_toStartOf="@+id/tv_f_temp"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_f_date"
             tools:text="@tools:sample/full_names" />
 
         <TextView
             android:id="@+id/tv_f_temp"
-            android:layout_width="99dp"
+            android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_marginEnd="40dp"
+            android:layout_marginEnd="15dp"
             android:gravity="center"
+            android:padding="6dp"
             android:text="30c"
             android:textColor="#434040"
-            android:textSize="34sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textSize="30sp"
+            app:fontFamily="@font/poppinsregular"
+            app:layout_constraintBottom_toBottomOf="@+id/img_icon_cond"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintTop_toTopOf="@+id/img_icon_cond" />
+
+        <ImageView
+            android:id="@+id/img_icon_cond"
+            android:layout_width="85dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_f_desc"
+            app:layout_constraintEnd_toStartOf="@+id/tv_f_temp"
+            app:layout_constraintTop_toTopOf="@+id/tv_f_date"
+            app:layout_constraintVertical_bias="0.0"
+            tools:srcCompat="@tools:sample/avatars" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

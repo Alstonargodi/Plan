@@ -23,5 +23,4 @@ class WeatherDataSource(private val weatherService: WeatherService){
     fun getWeatherForecast(loc: Any): Call<ForecastResponse>{
         return weatherService.getForecast(loc)
     }
-
 }

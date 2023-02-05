@@ -1,21 +1,17 @@
 package com.example.wetterbericht.presentation.fragment.home.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.wetterbericht.databinding.ItemcvTodoSubtaskBinding
 import com.example.wetterbericht.data.local.entity.dailytask.TodoSubTask
+import com.example.wetterbericht.databinding.ItemcvTodoSubtaskBinding
 
 class SubtaskRecyclerViewAdapter(
     private val subTask : MutableList<TodoSubTask>
 ) : RecyclerView.Adapter<SubtaskRecyclerViewAdapter.ViewHolder>(){
 
-    class ViewHolder(val binding: ItemcvTodoSubtaskBinding) : RecyclerView.ViewHolder(binding.root){
-
-        }
+    class ViewHolder(val binding: ItemcvTodoSubtaskBinding)
+        : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemcvTodoSubtaskBinding.inflate(

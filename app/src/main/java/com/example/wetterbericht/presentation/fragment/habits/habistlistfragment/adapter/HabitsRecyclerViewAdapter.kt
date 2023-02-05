@@ -22,20 +22,23 @@ class HabitsRecyclerViewAdapter(private val data : List<DailyHabits>)
                 "drawable",
                 itemView.context.packageName
             )
-            binding.tvHabitsName.text = item.title
-            binding.tvHabitsDuration.text = item.minuteFocus.toString()
-            binding.tvHabitsName.apply {
-                setCompoundDrawablesWithIntrinsicBounds(
-                    0,
-                    0,
-                    iconHabits,
-                    0
-                )
-            }
-            binding.cvlayoutHabits.setCardBackgroundColor(item.colorHabits)
-            if (item.colorHabits != Color.parseColor("#FFFFFF")){
-                binding.tvHabitsName.setTextColor(Color.parseColor("#FFFFFF"))
-                binding.tvHabitsDuration.setTextColor(Color.parseColor("#FFFFFF"))
+            binding.apply {
+                tvHabitsName.text = item.title
+                tvHabitsDuration.text = item.minuteFocus.toString()
+                tvHabitsName.apply {
+                    setCompoundDrawablesWithIntrinsicBounds(
+                        0,
+                        0,
+                        iconHabits,
+                        0
+                    )
+                }
+                tvHabitsDuration.setTextColor(item.colorHabits)
+                tvHabitsName.setTextColor(item.colorHabits)
+                if (item.colorHabits == Color.parseColor("#FFFFFF")){
+                    tvHabitsDuration.setTextColor(Color.BLACK)
+                    tvHabitsName.setTextColor(Color.BLACK)
+                }
             }
         }
     }

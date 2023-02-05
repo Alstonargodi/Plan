@@ -32,6 +32,7 @@
                 android:id="@+id/tvdetail_weather_loc"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:layout_marginEnd="15dp"
                 android:fontFamily="@font/abezeeregular"
                 android:gravity="center|left"
                 android:includeFontPadding="false"
@@ -47,79 +48,19 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.appcompat.widget.Toolbar>
 
-    <TextView
-        android:id="@+id/tvweather_clouds"
-        android:layout_width="0dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/img_iconweather"
-        app:layout_constraintTop_toTopOf="@+id/img_iconweather" />
-
-    <TextView
-        android:id="@+id/tvweather_feels"
-        android:layout_width="0dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/img_iconweather"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/img_iconweather"
-        app:layout_constraintTop_toBottomOf="@+id/tvweather_clouds" />
-
-    <TextView
-        android:id="@+id/tvweather_windspeed"
-        android:layout_width="0dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvweather_temp"
-        app:layout_constraintTop_toTopOf="@+id/tvweather_temp" />
-
-    <TextView
-        android:id="@+id/tvweather_visibilty"
-        android:layout_width="0dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/tvweather_temp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvweather_temp"
-        app:layout_constraintTop_toBottomOf="@+id/tvweather_windspeed" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/weather_forecast"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvweather_temp"
         tools:listitem="@layout/itemcv_forecast" />
-
-    <TextView
-        android:id="@+id/tvweather_loc"
-        android:layout_width="0dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="20dp"
-        android:fontFamily="@font/abezeeregular"
-        android:includeFontPadding="false"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/btn_set_location"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_weather_status" />
 
     <TextView
         android:id="@+id/tv_weather_status"
@@ -140,11 +81,11 @@
 
     <TextView
         android:id="@+id/tvweather_temp"
-        android:layout_width="150dp"
-        android:layout_height="61dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="5dp"
-        android:fontFamily="@font/robotoregular"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/poppinsregular"
         android:gravity="center"
         android:includeFontPadding="false"
         android:textColor="#4C4C4C"
@@ -152,25 +93,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_iconweather" />
 
-    <ImageView
-        android:id="@+id/img_iconweather"
-        android:layout_width="150dp"
-        android:layout_height="58dp"
-        android:layout_marginStart="20dp"
+    <TextView
+        android:id="@+id/tvweather_loc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="12dp"
+        android:layout_marginEnd="15dp"
+        android:fontFamily="@font/poppinsregular"
+        android:includeFontPadding="false"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/btn_set_location"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvweather_con"
-        tools:src="@tools:sample/avatars" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_weather_status" />
 
     <TextView
         android:id="@+id/tvweather_con"
         android:layout_width="0dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        android:fontFamily="@font/abezeeregular"
-        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="15dp"
+        android:fontFamily="@font/poppinsregular"
+        android:gravity="start"
         android:includeFontPadding="false"
         android:textColor="#2196F3"
         android:textSize="20sp"
@@ -179,6 +126,66 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvweather_loc" />
+
+    <TextView
+        android:id="@+id/tvweather_clouds"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/img_iconweather"
+        app:layout_constraintTop_toTopOf="@+id/img_iconweather" />
+
+    <TextView
+        android:id="@+id/tvweather_feels"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/img_iconweather"
+        app:layout_constraintTop_toBottomOf="@+id/tvweather_clouds" />
+
+    <TextView
+        android:id="@+id/tvweather_windspeed"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/tvweather_temp"
+        app:layout_constraintTop_toBottomOf="@+id/tvweather_feels" />
+
+    <TextView
+        android:id="@+id/tvweather_visibilty"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvweather_temp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/tvweather_temp"
+        app:layout_constraintTop_toBottomOf="@+id/tvweather_windspeed"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/img_iconweather"
+        android:layout_width="130dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvweather_con"
+        tools:src="@tools:sample/avatars" />
 
     <ImageView
         android:id="@+id/btn_set_location"

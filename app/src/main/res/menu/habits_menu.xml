@@ -5,18 +5,16 @@
     tools:context=".presentation.activity.mainactivity.MainActivity">
 
     <item
+        android:id="@+id/action_filter"
+        android:icon="@drawable/ic_baseline_filter_list_24"
+        android:orderInCategory="101"
+        android:title="Filterhabits"
+        app:showAsAction="ifRoom" />
+    <item
         android:id="@+id/action_cardview"
         android:orderInCategory="101"
         android:title="Pager Habits"
-        android:icon="@drawable/ic_baseline_filter_none_24"
-        app:showAsAction="ifRoom"
-        />
-
-    <item
-        android:id="@+id/action_filter"
-        android:orderInCategory="101"
-        android:title="Filterhabits"
-        android:icon="@drawable/ic_baseline_filter_list_24"
+        android:icon="@drawable/ic_baseline_brush_24"
         app:showAsAction="ifRoom"
         />
 

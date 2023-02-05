@@ -1,5 +1,6 @@
 package com.example.wetterbericht.domain.localusecase.todotask
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
@@ -33,12 +34,10 @@ class TodoLocalInteractor(
     override fun readTodoTaskFilter(query: TodoSortType): LiveData<PagedList<TodoLocal>> {
         val todoQuery = SortUtils.getFilterQueryTodo(query)
         val habits = repository.readTodoTaskFilter(todoQuery)
-
         val pagedConfig = PagedList.Config.Builder()
             .setEnablePlaceholders(true)
             .setPageSize(20)
             .build()
-
         return LivePagedListBuilder(habits,pagedConfig).build()
     }
 
@@ -51,6 +50,7 @@ class TodoLocalInteractor(
     }
 
     override fun getTodayTask(): LiveData<List<TodoLocal>> {
+        Log.d("todolocalinteractor",currentDate.toString())
         return repository.getTodayTask(currentDate)
     }
 
