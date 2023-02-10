@@ -1,5 +1,6 @@
 package com.example.wetterbericht.helpers.sortfilter
 
+import android.util.Log
 import androidx.sqlite.db.SimpleSQLiteQuery
 import java.lang.StringBuilder
 import java.time.LocalDateTime
@@ -23,20 +24,34 @@ object SortUtils {
     }
 
     fun getFilterQueryTodo(filter : TodoSortType): SimpleSQLiteQuery{
-        val currentDate = LocalDateTime.now().dayOfMonth
+        val date = LocalDateTime.now().dayOfMonth
+        val month = LocalDateTime.now().month.value
+        val year = LocalDateTime.now().year
+
         var simpleQuery = ""
         when(filter){
             TodoSortType.ALL_TASKS->{
                 simpleQuery =
-                    "select * from todotable where dateDay =$currentDate"
+                    "select * from todotable " +
+                            "where dateDay =$date " +
+                            "and dateMonth =$month " +
+                            "and dateYear =$year"
             }
             TodoSortType.COMPLETED_TASKS->{
                 simpleQuery =
-                    "select * from todotable where dateDay =$currentDate and completed =1"
+                    "select * from todotable " +
+                            "where dateDay =$date " +
+                            "and completed =1 " +
+                            "and dateMonth =$month " +
+                            "and dateYear =$year"
             }
             TodoSortType.ACTIVE_TASKS->{
                 simpleQuery =
-                    "select * from todotable where dateDay =$currentDate and completed =0"
+                    "select * from todotable " +
+                            "where dateDay =$date " +
+                            "and completed =0 " +
+                            "and dateMonth =$month " +
+                            "and dateYear =$year"
             }
         }
         return SimpleSQLiteQuery(simpleQuery.toString())

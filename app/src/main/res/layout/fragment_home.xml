@@ -41,12 +41,14 @@
 
                 <ImageView
                     android:id="@+id/img_weather_icon_home2"
-                    android:layout_width="50dp"
-                    android:layout_height="0dp"
-                    android:layout_marginStart="200dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/tv_homew_temp2"
+                    android:layout_width="38dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="256dp"
+                    android:layout_marginEnd="5dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/btn_hometomenu"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_homew_temp2"
                     app:layout_constraintStart_toEndOf="@+id/btn_hometomenu"
-                    app:layout_constraintTop_toTopOf="@+id/tv_homew_temp2"
+                    app:layout_constraintTop_toTopOf="@+id/btn_hometomenu"
                     app:layout_constraintVertical_bias="0.0"
                     tools:srcCompat="@tools:sample/avatars" />
 
@@ -54,10 +56,8 @@
                     android:id="@+id/tv_homew_temp2"
                     android:layout_width="50dp"
                     android:layout_height="0dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="25dp"
-                    android:layout_marginBottom="10dp"
-                    android:fontFamily="@font/robotoregular"
+                    android:layout_marginEnd="15dp"
+                    android:fontFamily="@font/poppinsregular"
                     android:foregroundGravity="center_vertical"
                     android:gravity="center"
                     android:includeFontPadding="false"
@@ -65,9 +65,9 @@
                     android:textColor="#282828"
                     android:textSize="20sp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintBottom_toBottomOf="@+id/img_weather_icon_home2"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/img_weather_icon_home2"
                     app:layout_constraintVertical_bias="0.0" />
 
                 <ImageView
@@ -88,35 +88,43 @@
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-
+            android:layout_height="40dp"
+            android:fontFamily="@font/poppinsregular"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/detailtoolbar"
             app:tabIndicatorAnimationDuration="300"
             app:tabIndicatorAnimationMode="elastic"
-            app:tabIndicatorColor="#949292"
-            app:tabIndicatorFullWidth="true"
+            app:tabIndicatorColor="#3C84AB"
+            app:tabIndicatorFullWidth="false"
             app:tabIndicatorGravity="bottom"
             app:tabIndicatorHeight="2dp"
+            app:tabSelectedTextColor="#3C84AB"
             app:tabTextAppearance="@style/MyCustomTextAppearance"
-            app:tabTextColor="#2D9CDB">
+            app:tabTextColor="#E3E3E3">
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Previous" />
+                android:fontFamily="@font/poppinsregular"
+                android:text="Previous"
+                android:textStyle="bold" />
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Today" />
+                android:fontFamily="@font/poppinsregular"
+                android:text="Today"
+                android:textStyle="bold" />
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Upcoming" />
+                android:fontFamily="@font/poppinsregular"
+                android:text="Upcoming"
+                android:textStyle="bold" />
 
         </com.google.android.material.tabs.TabLayout>
 

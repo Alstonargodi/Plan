@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wetterbericht.databinding.ItemcvHabitsBinding
-import com.example.wetterbericht.data.local.entity.dailyhabits.DailyHabits
+import com.example.wetterbericht.data.local.entities.dailyhabits.DailyHabits
 
 class HabitsRecyclerViewAdapter(private val data : List<DailyHabits>)
     : RecyclerView.Adapter<HabitsRecyclerViewAdapter.ViewHolder>(){
@@ -22,20 +22,23 @@ class HabitsRecyclerViewAdapter(private val data : List<DailyHabits>)
                 "drawable",
                 itemView.context.packageName
             )
-            binding.tvHabitsName.text = item.title
-            binding.tvHabitsDuration.text = item.minuteFocus.toString()
-            binding.tvHabitsName.apply {
-                setCompoundDrawablesWithIntrinsicBounds(
-                    0,
-                    0,
-                    iconHabits,
-                    0
-                )
-            }
-            binding.cvlayoutHabits.setCardBackgroundColor(item.colorHabits)
-            if (item.colorHabits != Color.parseColor("#FFFFFF")){
-                binding.tvHabitsName.setTextColor(Color.parseColor("#FFFFFF"))
-                binding.tvHabitsDuration.setTextColor(Color.parseColor("#FFFFFF"))
+            binding.apply {
+                tvHabitsName.text = item.title
+                tvHabitsDuration.text = item.minuteFocus.toString()
+                tvHabitsName.apply {
+                    setCompoundDrawablesWithIntrinsicBounds(
+                        0,
+                        0,
+                        iconHabits,
+                        0
+                    )
+                }
+                tvHabitsDuration.setTextColor(item.colorHabits)
+                tvHabitsName.setTextColor(item.colorHabits)
+                if (item.colorHabits == Color.parseColor("#FFFFFF")){
+                    tvHabitsDuration.setTextColor(Color.BLACK)
+                    tvHabitsName.setTextColor(Color.BLACK)
+                }
             }
         }
     }

@@ -38,6 +38,4 @@ class OnboardingPreferences(private val dataStore : DataStore<Preferences>) {
             }
         }
     }
-
-
 }

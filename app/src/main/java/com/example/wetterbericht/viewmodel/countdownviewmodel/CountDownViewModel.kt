@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 
-class CountDownViewModel: ViewModel() {
+class CountDownViewModel{
 
     private var countDownTimer: CountDownTimer? = null
 
@@ -49,15 +49,4 @@ class CountDownViewModel: ViewModel() {
         durationTime.value = initialTime.value
         eventFinish.value = true
     }
-
-    override fun onCleared() {
-        super.onCleared()
-        countDownTimer?.cancel()
-    }
-
-
-
-
-
-
 }

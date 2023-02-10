@@ -11,14 +11,13 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wetterbericht.R
+import com.example.wetterbericht.data.local.entities.dailytask.TodoLocal
+import com.example.wetterbericht.data.local.entities.dailytask.TodoSubTask
 import com.example.wetterbericht.databinding.FragmentDetailTodoListDialogBinding
-import com.example.wetterbericht.data.local.entity.dailytask.TodoLocal
-import com.example.wetterbericht.data.local.entity.dailytask.TodoSubTask
 import com.example.wetterbericht.presentation.fragment.home.HomeFragment.Companion.homepage_key
 import com.example.wetterbericht.presentation.fragment.home.HomeFragmentDirections
 import com.example.wetterbericht.presentation.fragment.home.HomeViewModel
 import com.example.wetterbericht.presentation.fragment.home.adapter.SubDetailRecyclerViewAdapter
-import com.example.wetterbericht.presentation.fragment.home.adapter.SubtaskRecyclerViewAdapter
 import com.example.wetterbericht.viewmodel.viewmodelfactory.ViewModelFactory
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -39,9 +38,7 @@ class DetailTodoDialog : BottomSheetDialogFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentDetailTodoListDialogBinding.inflate(inflater, container, false)
         detailTodo = requireArguments().getParcelable(homepage_key)!!
-
         durationTime = countDownDuration()
-
         countDownDuration()
 
         try {

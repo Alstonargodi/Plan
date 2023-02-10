@@ -1,6 +1,7 @@
 package com.example.wetterbericht.presentation.fragment.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,8 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.wetterbericht.R
-import com.example.wetterbericht.data.local.entity.dailytask.TodoLocal
-import com.example.wetterbericht.data.local.entity.weather.WeatherLocal
+import com.example.wetterbericht.data.local.entities.dailytask.TodoLocal
+import com.example.wetterbericht.data.local.entities.weather.WeatherLocal
 import com.example.wetterbericht.databinding.FragmentHomeBinding
 import com.example.wetterbericht.helpers.sortfilter.TodoSortType
 import com.example.wetterbericht.presentation.fragment.home.adapter.TodoRecyclerViewAdapter
@@ -21,6 +22,7 @@ import com.example.wetterbericht.presentation.fragment.home.detail.DetailTodoDia
 import com.example.wetterbericht.viewmodel.viewmodelfactory.ViewModelFactory
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
+import java.time.LocalDateTime
 import kotlin.math.round
 
 class HomeFragment : Fragment() {
@@ -44,6 +46,8 @@ class HomeFragment : Fragment() {
         binding.tabLayout.getTabAt(1)?.select()
 
         showTodayTaskList()
+        val testDate = LocalDateTime.now().toLocalDate().toString()
+        Log.d("todoInteractor",testDate)
 
         binding.FilterMenu.setNavigationItemSelectedListener {
             homeViewModel.taskFilter(
@@ -89,7 +93,9 @@ class HomeFragment : Fragment() {
 
     private fun showCurrentWeather(){
         homeViewModel.readWeatherLocal().observe(viewLifecycleOwner){
-            setCurrentWeather(it[0])
+            if (it.isNotEmpty()){
+                setCurrentWeather(it[0])
+            }
         }
     }
 
@@ -111,11 +117,10 @@ class HomeFragment : Fragment() {
         }
     }
 
-
     private fun showTaskList(data : List<TodoLocal>){
         taskRecyclewViewAdapter = TodoRecyclerViewAdapter(data) { value, condition ->
             homeViewModel.updateTask(
-                value.taskID.toInt(),
+                value.taskID,
                 condition
             )
         }
@@ -138,16 +143,21 @@ class HomeFragment : Fragment() {
     }
 
     private fun setCurrentWeather(data : WeatherLocal){
-        val temp = data.temp.toDouble()
-        val temperature = round(temp).toInt().toString()
-        binding.tvHomewTemp2.apply {
-            text = temperature + "c"
+        if(data != null){
+            val temp = data.temp.toDouble()
+            val temperature = round(temp).toInt().toString()
+            binding.tvHomewTemp2.apply {
+                (temperature + "c").also { text = it }
+            }
+            Glide.with(requireContext())
+                .asDrawable()
+                .load(data.image)
+                .into(binding.imgWeatherIconHome2)
+        }else{
+            binding.tvHomewTemp2.visibility = View.GONE
+            binding.imgWeatherIconHome2.visibility = View.GONE
         }
 
-        Glide.with(requireContext())
-            .asDrawable()
-            .load(data.image)
-            .into(binding.imgWeatherIconHome2)
     }
 
 

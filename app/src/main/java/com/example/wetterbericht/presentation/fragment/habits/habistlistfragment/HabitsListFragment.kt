@@ -7,11 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wetterbericht.R
 import com.example.wetterbericht.databinding.FragmentHabitsListBinding
-import com.example.wetterbericht.data.local.entity.dailyhabits.DailyHabits
+import com.example.wetterbericht.data.local.entities.dailyhabits.DailyHabits
 import com.example.wetterbericht.helpers.sortfilter.HabitSortType
 import com.example.wetterbericht.presentation.fragment.habits.habistlistfragment.adapter.HabitsRecyclerViewAdapter
 import com.example.wetterbericht.presentation.fragment.habits.viewmodel.HabitsViewModel
@@ -35,11 +34,13 @@ class HabitsListFragment : Fragment() {
         return binding.root
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.habits_menu,menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId){
             R.id.action_filter->{
@@ -48,7 +49,8 @@ class HabitsListFragment : Fragment() {
             }
             R.id.action_cardview->{
                 findNavController().navigate(
-                    HabitsListFragmentDirections.actionHabitsListFragmentToHabitsCardViewFragment())
+                    HabitsListFragmentDirections.actionHabitsListFragmentToInsertDetailHabitsFragment()
+                )
                 true
             }
             else -> { true }
@@ -58,11 +60,6 @@ class HabitsListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.fabAddHabits.setOnClickListener {
-            findNavController().navigate(
-                HabitsListFragmentDirections.actionHabitsListFragmentToInsertDetailHabitsFragment()
-            )
-        }
 
         binding.btnbackHabits.setOnClickListener {
             findNavController().navigate(

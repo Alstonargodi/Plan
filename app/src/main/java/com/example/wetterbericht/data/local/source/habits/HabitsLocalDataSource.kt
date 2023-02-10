@@ -4,14 +4,16 @@ import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.paging.DataSource
 import androidx.sqlite.db.SupportSQLiteQuery
-import com.example.wetterbericht.data.local.database.LocalDatabase
-import com.example.wetterbericht.data.local.entity.dailyhabits.ColorHabits
-import com.example.wetterbericht.data.local.entity.dailyhabits.DailyHabits
-import com.example.wetterbericht.data.local.entity.dailyhabits.IconHabits
+import com.example.wetterbericht.data.local.database.RoomDatabaseConfig
+import com.example.wetterbericht.data.local.entities.dailyhabits.ColorHabits
+import com.example.wetterbericht.data.local.entities.dailyhabits.DailyHabits
+import com.example.wetterbericht.data.local.entities.dailyhabits.IconHabits
 import java.util.concurrent.Executors
 
-class HabitsLocalDataSource(val context: Context): IHabitsLocalDataSource {
-    private val habitsDao = LocalDatabase.setInstance(context).habitsDao()
+class HabitsLocalDataSource(
+    val context: Context
+): IHabitsLocalDataSource {
+    private val habitsDao = RoomDatabaseConfig.setInstance(context).habitsDao()
     private val executorService = Executors.newSingleThreadExecutor()
 
     override fun getHabits(query: SupportSQLiteQuery): DataSource.Factory<Int, DailyHabits> {

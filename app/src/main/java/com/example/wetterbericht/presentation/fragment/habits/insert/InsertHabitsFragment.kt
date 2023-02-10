@@ -1,7 +1,6 @@
 package com.example.wetterbericht.presentation.fragment.habits.insert
 
 import android.app.TimePickerDialog
-import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,9 +11,9 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.wetterbericht.data.local.entity.dailyhabits.ColorHabits
-import com.example.wetterbericht.data.local.entity.dailyhabits.DailyHabits
-import com.example.wetterbericht.data.local.entity.dailyhabits.IconHabits
+import com.example.wetterbericht.data.local.entities.dailyhabits.ColorHabits
+import com.example.wetterbericht.data.local.entities.dailyhabits.DailyHabits
+import com.example.wetterbericht.data.local.entities.dailyhabits.IconHabits
 import com.example.wetterbericht.databinding.FragmentInsertHabitsBinding
 import com.example.wetterbericht.helpers.ConstantTask
 import com.example.wetterbericht.presentation.fragment.habits.insert.adapter.ColorRecyclerviewAdapter
@@ -30,7 +29,9 @@ class InsertHabitsFragment : Fragment() {
     }
     private var typeColor = Color.parseColor("#FFFFFF")
     private var typeIcon = ""
-    private var startTime = ""
+    private var startTime = "00:00"
+    private var timeEnd = "00:00"
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -62,7 +63,8 @@ class InsertHabitsFragment : Fragment() {
             )
         }
         binding.btnHabitsTimestart.setOnClickListener {
-            timePicker(requireContext())
+            timePicker("end")
+            timePicker("start")
         }
     }
 
@@ -127,14 +129,23 @@ class InsertHabitsFragment : Fragment() {
         )
     }
 
-    private fun timePicker(context: Context){
+    private fun timePicker(tag : String){
         val calendar = Calendar.getInstance()
-        val timePick = TimePickerDialog(context, { _, hourOfDay, minute ->
+        val timePick = TimePickerDialog(
+            requireContext(), { _, hourOfDay, minute ->
             val timeTemp = Calendar.getInstance()
             timeTemp.set(Calendar.HOUR_OF_DAY,hourOfDay)
             timeTemp.set(Calendar.MINUTE,minute)
-            binding.btnHabitsTimestart.text = ConstantTask.formatTime.format(timeTemp.time)
-            startTime = timeTemp.time.toString()
+            val timeSet = ConstantTask.formatTime.format(timeTemp.time)
+            when(tag){
+                "start"->{
+                    startTime = timeSet
+                }
+                "end" ->{
+                    timeEnd = timeSet
+                }
+            }
+            binding.btnHabitsTimestart.text = "$startTime - $timeEnd"
         },
             calendar.get(Calendar.HOUR_OF_DAY),
             calendar.get(Calendar.MINUTE),

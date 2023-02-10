@@ -13,7 +13,7 @@ import androidx.core.app.NotificationCompat
 import com.example.wetterbericht.presentation.activity.mainactivity.MainActivity
 import com.example.wetterbericht.R
 import com.example.wetterbericht.injection.Injection
-import com.example.wetterbericht.data.local.entity.weather.WeatherLocal
+import com.example.wetterbericht.data.local.entities.weather.WeatherLocal
 import com.example.wetterbericht.data.remote.openweather.weather.WeatherResponse
 import retrofit2.Call
 import retrofit2.Callback

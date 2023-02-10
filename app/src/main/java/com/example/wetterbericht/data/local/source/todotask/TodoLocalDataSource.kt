@@ -5,16 +5,16 @@ import androidx.lifecycle.LiveData
 import androidx.paging.DataSource
 import androidx.sqlite.db.SupportSQLiteQuery
 import com.example.wetterbericht.data.local.ChipAlarm
-import com.example.wetterbericht.data.local.database.LocalDatabase
-import com.example.wetterbericht.data.local.entity.dailytask.TodoLocal
-import com.example.wetterbericht.data.local.entity.dailytask.TodoSubTask
-import com.example.wetterbericht.data.local.entity.dailytask.TodoandSubTask
+import com.example.wetterbericht.data.local.database.RoomDatabaseConfig
+import com.example.wetterbericht.data.local.entities.dailytask.TodoLocal
+import com.example.wetterbericht.data.local.entities.dailytask.TodoSubTask
+import com.example.wetterbericht.data.local.entities.dailytask.TodoandSubTask
 import java.util.concurrent.Executors
 
 class TodoLocalDataSource(
     val context : Context
 ): ITodoLocalDataSource {
-    private val todoDao = LocalDatabase.setInstance(context).todoDao()
+    private val todoDao = RoomDatabaseConfig.setInstance(context).todoDao()
     private val executorService = Executors.newSingleThreadExecutor()
 
     override fun readNearestActiveTask(): TodoLocal {
@@ -34,16 +34,28 @@ class TodoLocalDataSource(
         return todoDao.readTodoList()
     }
 
-    override fun getTodayTask(date : Int): LiveData<List<TodoLocal>> {
-        return todoDao.readTodayTask(date)
+    override fun getTodayTask(
+        date: Int,
+        month : Int,
+        year : Int
+    ): LiveData<List<TodoLocal>> {
+        return todoDao.readTodayTask(date, month, year)
     }
 
-    override fun getUpComingTask(date: Int): LiveData<List<TodoLocal>> {
-        return todoDao.readUpcomingTask(date)
+    override fun getUpComingTask(
+        date: Int,
+        month : Int,
+        year : Int
+    ): LiveData<List<TodoLocal>> {
+        return todoDao.readUpcomingTask(date, month, year)
     }
 
-    override fun getPreviousTask(date: Int): LiveData<List<TodoLocal>> {
-        return todoDao.readPreviousTask(date)
+    override fun getPreviousTask(
+        date: Int,
+        month : Int,
+        year : Int
+    ): LiveData<List<TodoLocal>> {
+        return todoDao.readPreviousTask(date,year,month)
     }
 
     override fun getTodayTaskReminder(date : Int): List<TodoLocal> {

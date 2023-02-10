@@ -4,9 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.paging.DataSource
 import androidx.sqlite.db.SupportSQLiteQuery
 import com.example.wetterbericht.data.local.ChipAlarm
-import com.example.wetterbericht.data.local.entity.dailytask.TodoLocal
-import com.example.wetterbericht.data.local.entity.dailytask.TodoSubTask
-import com.example.wetterbericht.data.local.entity.dailytask.TodoandSubTask
+import com.example.wetterbericht.data.local.entities.dailytask.TodoLocal
+import com.example.wetterbericht.data.local.entities.dailytask.TodoSubTask
+import com.example.wetterbericht.data.local.entities.dailytask.TodoandSubTask
 
 interface ITodoLocalDataSource {
     //todolist
@@ -17,9 +17,9 @@ interface ITodoLocalDataSource {
     fun readTodoSubtask(name : String): LiveData<List<TodoandSubTask>>
     fun readTodoLocal(): LiveData<List<TodoLocal>>
     fun getTodayTaskReminder(date : Int): List<TodoLocal>
-    fun getTodayTask(date : Int): LiveData<List<TodoLocal>>
-    fun getUpComingTask(date : Int): LiveData<List<TodoLocal>>
-    fun getPreviousTask(date: Int): LiveData<List<TodoLocal>>
+    fun getTodayTask(date: Int,month : Int, year : Int): LiveData<List<TodoLocal>>
+    fun getUpComingTask(date: Int,month : Int, year : Int): LiveData<List<TodoLocal>>
+    fun getPreviousTask(date: Int,month : Int, year : Int): LiveData<List<TodoLocal>>
     fun deleteTodoList(name : String)
     fun updateTaskStatus(id : Int,status : Boolean)
     fun updateSubtask(id : Int,status : Boolean)

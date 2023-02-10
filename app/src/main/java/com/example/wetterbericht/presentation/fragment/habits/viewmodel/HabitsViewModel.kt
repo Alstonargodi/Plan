@@ -5,12 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.switchMap
 import androidx.paging.PagedList
-import com.example.wetterbericht.data.local.entity.dailyhabits.ColorHabits
-import com.example.wetterbericht.data.local.entity.dailyhabits.DailyHabits
-import com.example.wetterbericht.data.local.entity.dailyhabits.IconHabits
+import com.example.wetterbericht.data.local.entities.dailyhabits.ColorHabits
+import com.example.wetterbericht.data.local.entities.dailyhabits.DailyHabits
+import com.example.wetterbericht.data.local.entities.dailyhabits.IconHabits
 import com.example.wetterbericht.domain.localusecase.habits.HabitsLocalUseCase
 import com.example.wetterbericht.helpers.sortfilter.HabitSortType
-import com.example.wetterbericht.helpers.sortfilter.TodoSortType
 
 class HabitsViewModel(
     private val useCase: HabitsLocalUseCase

@@ -66,25 +66,6 @@ object LoadDataFromJson {
         }
         return null
     }
-    //get data dummy
-    fun loadTodoJson(context: Context): JSONArray?{
-        val builder = StringBuilder()
-        val resources = context.resources.openRawResource(R.raw.task)
-        val reader = BufferedReader(InputStreamReader(resources))
-        var line : String?
-        try {
-            while (reader.readLine().also { line = it } != null){
-                builder.append(line)
-            }
-            val json = JSONObject(builder.toString())
-            return json.getJSONArray("tasks")
-        }catch (e : IOException){
-            e.printStackTrace()
-        }catch (e : JSONException){
-            e.printStackTrace()
-        }
-        return null
-    }
 
     fun loadSubTaskJson(context: Context): JSONArray?{
         val builder = StringBuilder()

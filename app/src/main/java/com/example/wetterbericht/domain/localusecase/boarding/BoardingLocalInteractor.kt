@@ -1,8 +1,7 @@
 package com.example.wetterbericht.domain.localusecase.boarding
 
 import androidx.lifecycle.LiveData
-import com.example.wetterbericht.data.local.source.onboarding.BoardingLocalSource
-import com.example.wetterbericht.data.repository.local.boarding.IBoardingLocalRepository
+import com.example.wetterbericht.data.repository.local.onboarding.IBoardingLocalRepository
 
 class BoardingLocalInteractor(
     private val repository: IBoardingLocalRepository

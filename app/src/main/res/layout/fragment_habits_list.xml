@@ -43,7 +43,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/textView6"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/textView6"
-                app:tint="#2196F3" />
+                app:tint="@color/main" />
 
             <TextView
                 android:id="@+id/textView6"
@@ -56,7 +56,7 @@
                 android:fontFamily="@font/abezeeregular"
                 android:gravity="center|left"
                 android:text="Habits"
-                android:textColor="#2196F3"
+                android:textColor="@color/main"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -80,16 +80,4 @@
         tools:itemCount="2"
         tools:listitem="@layout/itemcv_habits" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_add_habits"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:src="@drawable/ic_baseline_add_24"
-        app:layout_constraintBottom_toBottomOf="@+id/rv_habits_list"
-        app:layout_constraintEnd_toEndOf="@+id/rv_habits_list"
-        app:layout_constraintHorizontal_bias="0.952"
-        app:layout_constraintStart_toStartOf="@+id/rv_habits_list"
-        app:layout_constraintTop_toBottomOf="@+id/habitstoolbar"
-        app:layout_constraintVertical_bias="0.936" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,9 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.paging.DataSource
 import androidx.sqlite.db.SupportSQLiteQuery
 import com.example.wetterbericht.data.local.ChipAlarm
-import com.example.wetterbericht.data.local.entity.dailytask.TodoLocal
-import com.example.wetterbericht.data.local.entity.dailytask.TodoSubTask
-import com.example.wetterbericht.data.local.entity.dailytask.TodoandSubTask
+import com.example.wetterbericht.data.local.entities.dailytask.TodoLocal
+import com.example.wetterbericht.data.local.entities.dailytask.TodoSubTask
+import com.example.wetterbericht.data.local.entities.dailytask.TodoandSubTask
 import com.example.wetterbericht.data.local.source.todotask.ITodoLocalDataSource
 
 class TodoLocalRepository(
@@ -38,16 +38,28 @@ class TodoLocalRepository(
         return dataSource.readTodoSubtask(name)
     }
 
-    override fun getTodayTask(date : Int): LiveData<List<TodoLocal>> {
-        return dataSource.getTodayTask(date)
+    override fun getTodayTask(
+        date: Int,
+        month : Int,
+        year : Int
+    ): LiveData<List<TodoLocal>> {
+        return dataSource.getTodayTask(date, month, year)
     }
 
-    override fun getUpComingTask(date: Int): LiveData<List<TodoLocal>> {
-        return dataSource.getUpComingTask(date)
+    override fun getUpComingTask(
+        date: Int,
+        month : Int,
+        year : Int
+    ): LiveData<List<TodoLocal>> {
+        return dataSource.getUpComingTask(date,month,year)
     }
 
-    override fun getPreviousTask(date: Int): LiveData<List<TodoLocal>> {
-        return dataSource.getPreviousTask(date)
+    override fun getPreviousTask(
+        date: Int,
+        month : Int,
+        year : Int
+    ): LiveData<List<TodoLocal>> {
+        return dataSource.getPreviousTask(date,month, year)
     }
 
     override fun getTodayTaskReminder(date: Int): List<TodoLocal> {

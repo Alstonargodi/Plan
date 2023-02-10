@@ -2,7 +2,7 @@ package com.example.wetterbericht.data.repository.local.weather
 
 import androidx.lifecycle.LiveData
 import com.example.wetterbericht.data.local.source.weather.IWeatherLocalDataSource
-import com.example.wetterbericht.data.local.entity.weather.WeatherLocal
+import com.example.wetterbericht.data.local.entities.weather.WeatherLocal
 
 class WeatherLocalRepository(
     private val dataSource: IWeatherLocalDataSource

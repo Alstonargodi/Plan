@@ -3,9 +3,9 @@ package com.example.wetterbericht.domain.localusecase.todotask
 import androidx.lifecycle.LiveData
 import androidx.paging.PagedList
 import com.example.wetterbericht.data.local.ChipAlarm
-import com.example.wetterbericht.data.local.entity.dailytask.TodoLocal
-import com.example.wetterbericht.data.local.entity.dailytask.TodoSubTask
-import com.example.wetterbericht.data.local.entity.dailytask.TodoandSubTask
+import com.example.wetterbericht.data.local.entities.dailytask.TodoLocal
+import com.example.wetterbericht.data.local.entities.dailytask.TodoSubTask
+import com.example.wetterbericht.data.local.entities.dailytask.TodoandSubTask
 import com.example.wetterbericht.helpers.sortfilter.TodoSortType
 
 interface TodoLocalUseCase {

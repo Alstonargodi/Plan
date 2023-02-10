@@ -2,7 +2,7 @@ package com.example.wetterbericht.presentation.fragment.stats
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.example.wetterbericht.data.local.entity.dailytask.TodoLocal
+import com.example.wetterbericht.data.local.entities.dailytask.TodoLocal
 import com.example.wetterbericht.domain.localusecase.todotask.TodoLocalUseCase
 
 class StatisticFragmentViewModel(

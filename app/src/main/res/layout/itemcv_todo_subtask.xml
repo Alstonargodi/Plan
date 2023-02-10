@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="35dp"
+    android:layout_height="wrap_content"
     android:layout_marginStart="5dp"
     android:layout_marginTop="5dp"
     android:layout_marginEnd="5dp"
@@ -12,7 +12,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="35dp">
+        android:layout_height="wrap_content">
 
         <RadioButton
             android:id="@+id/btn_check_subtodo"
@@ -28,13 +28,13 @@
         <com.example.wetterbericht.presentation.componen.TaskTitleView
             android:id="@+id/tv_title_subtask"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="5dp"
-            android:fontFamily="@font/robotoregular"
-            android:gravity="center|start"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppinsregular"
+            android:gravity="start"
             android:letterSpacing="0.08"
-            android:text="activity"
-            android:textColor="#373737"
+            android:padding="5dp"
+            android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            android:textColor="#242323"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

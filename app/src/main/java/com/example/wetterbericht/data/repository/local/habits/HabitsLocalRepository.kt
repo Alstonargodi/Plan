@@ -3,10 +3,9 @@ package com.example.wetterbericht.data.repository.local.habits
 import androidx.lifecycle.LiveData
 import androidx.paging.DataSource
 import androidx.sqlite.db.SupportSQLiteQuery
-import com.example.wetterbericht.data.local.entity.dailyhabits.ColorHabits
-import com.example.wetterbericht.data.local.entity.dailyhabits.DailyHabits
-import com.example.wetterbericht.data.local.entity.dailyhabits.IconHabits
-import com.example.wetterbericht.data.local.source.habits.HabitsLocalDataSource
+import com.example.wetterbericht.data.local.entities.dailyhabits.ColorHabits
+import com.example.wetterbericht.data.local.entities.dailyhabits.DailyHabits
+import com.example.wetterbericht.data.local.entities.dailyhabits.IconHabits
 import com.example.wetterbericht.data.local.source.habits.IHabitsLocalDataSource
 
 class HabitsLocalRepository(

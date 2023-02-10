@@ -36,7 +36,7 @@
             android:id="@+id/tvtoxo_card_name"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:fontFamily="@font/robotoregular"
+            android:fontFamily="@font/poppinsregular"
             android:gravity="center|start"
             android:letterSpacing="0.08"
             android:text="activity"
