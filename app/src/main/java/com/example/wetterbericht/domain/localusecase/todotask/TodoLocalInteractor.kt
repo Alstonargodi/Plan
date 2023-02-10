@@ -1,6 +1,5 @@
 package com.example.wetterbericht.domain.localusecase.todotask
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
@@ -9,7 +8,6 @@ import com.example.wetterbericht.data.local.entity.dailytask.TodoLocal
 import com.example.wetterbericht.data.local.entity.dailytask.TodoSubTask
 import com.example.wetterbericht.data.local.entity.dailytask.TodoandSubTask
 import com.example.wetterbericht.data.repository.local.todo.ITodoLocalRepository
-import com.example.wetterbericht.data.repository.local.todo.TodoLocalRepository
 import com.example.wetterbericht.helpers.sortfilter.SortUtils
 import com.example.wetterbericht.helpers.sortfilter.TodoSortType
 import java.time.LocalDateTime
@@ -17,7 +15,9 @@ import java.time.LocalDateTime
 class TodoLocalInteractor(
     private val repository : ITodoLocalRepository
 ): TodoLocalUseCase {
-    private val currentDate = LocalDateTime.now().dayOfMonth
+    val date = LocalDateTime.now().dayOfMonth
+    private val month = LocalDateTime.now().month.value
+    private val year = LocalDateTime.now().year
 
     override fun readChipTime(): LiveData<List<ChipAlarm>> {
         return repository.readChipTime()
@@ -50,19 +50,19 @@ class TodoLocalInteractor(
     }
 
     override fun getTodayTask(): LiveData<List<TodoLocal>> {
-        return repository.getTodayTask(currentDate)
+        return repository.getTodayTask(date, month, year)
     }
 
     override fun getUpComingTask(): LiveData<List<TodoLocal>> {
-        return repository.getUpComingTask(currentDate)
+        return repository.getUpComingTask(date, month, year)
     }
 
     override fun getPreviousTask(): LiveData<List<TodoLocal>> {
-        return repository.getPreviousTask(currentDate)
+        return repository.getPreviousTask(date,month,year)
     }
 
     override fun getTodayTaskReminder(): List<TodoLocal> {
-        return repository.getTodayTaskReminder(currentDate)
+        return repository.getTodayTaskReminder(date)
     }
 
     override fun insertTodoList(data: TodoLocal) {

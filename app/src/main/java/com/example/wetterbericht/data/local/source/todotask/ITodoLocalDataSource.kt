@@ -17,9 +17,9 @@ interface ITodoLocalDataSource {
     fun readTodoSubtask(name : String): LiveData<List<TodoandSubTask>>
     fun readTodoLocal(): LiveData<List<TodoLocal>>
     fun getTodayTaskReminder(date : Int): List<TodoLocal>
-    fun getTodayTask(date : Int): LiveData<List<TodoLocal>>
-    fun getUpComingTask(date : Int): LiveData<List<TodoLocal>>
-    fun getPreviousTask(date: Int): LiveData<List<TodoLocal>>
+    fun getTodayTask(date: Int,month : Int, year : Int): LiveData<List<TodoLocal>>
+    fun getUpComingTask(date: Int,month : Int, year : Int): LiveData<List<TodoLocal>>
+    fun getPreviousTask(date: Int,month : Int, year : Int): LiveData<List<TodoLocal>>
     fun deleteTodoList(name : String)
     fun updateTaskStatus(id : Int,status : Boolean)
     fun updateSubtask(id : Int,status : Boolean)

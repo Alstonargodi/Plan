@@ -34,16 +34,28 @@ class TodoLocalDataSource(
         return todoDao.readTodoList()
     }
 
-    override fun getTodayTask(date : Int): LiveData<List<TodoLocal>> {
-        return todoDao.readTodayTask(date)
+    override fun getTodayTask(
+        date: Int,
+        month : Int,
+        year : Int
+    ): LiveData<List<TodoLocal>> {
+        return todoDao.readTodayTask(date, month, year)
     }
 
-    override fun getUpComingTask(date: Int): LiveData<List<TodoLocal>> {
-        return todoDao.readUpcomingTask(date)
+    override fun getUpComingTask(
+        date: Int,
+        month : Int,
+        year : Int
+    ): LiveData<List<TodoLocal>> {
+        return todoDao.readUpcomingTask(date, month, year)
     }
 
-    override fun getPreviousTask(date: Int): LiveData<List<TodoLocal>> {
-        return todoDao.readPreviousTask(date)
+    override fun getPreviousTask(
+        date: Int,
+        month : Int,
+        year : Int
+    ): LiveData<List<TodoLocal>> {
+        return todoDao.readPreviousTask(date,year,month)
     }
 
     override fun getTodayTaskReminder(date : Int): List<TodoLocal> {

@@ -27,8 +27,6 @@ object SortUtils {
         val date = LocalDateTime.now().dayOfMonth
         val month = LocalDateTime.now().month.value
         val year = LocalDateTime.now().year
-        val testDate = LocalDateTime.now().toLocalDate().toString()
-        Log.d("todoInteractor",year.toString())
 
         var simpleQuery = ""
         when(filter){

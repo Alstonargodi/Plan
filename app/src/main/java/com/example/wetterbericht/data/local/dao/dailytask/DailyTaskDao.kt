@@ -47,14 +47,27 @@ abstract class DailyTaskDao {
     @Query("select * from todotable where dateDay =:date and completed =0 order by dateDueMillis asc")
     abstract fun readTodayTaskReminder(date: Int): List<TodoLocal>
 
-    @Query("select * from todotable where dateDay = :date")
-    abstract fun readTodayTask(date: Int):LiveData<List<TodoLocal>>
 
-    @Query("select * from todotable where dateDay > :date")
-    abstract fun readUpcomingTask(date: Int):LiveData<List<TodoLocal>>
+    @Query("select * from todotable where dateDay = :date and dateMonth = :month and dateYear = :year")
+    abstract fun readTodayTask(
+        date: Int,
+        month : Int,
+        year : Int
+    ):LiveData<List<TodoLocal>>
 
-    @Query("select * from todotable where dateDay < :date")
-    abstract fun readPreviousTask(date: Int):LiveData<List<TodoLocal>>
+    @Query("select * from todotable where dateDay > :date and dateMonth >= :month and dateYear >= :year")
+    abstract fun readUpcomingTask(
+        date: Int,
+        month : Int,
+        year : Int
+    ):LiveData<List<TodoLocal>>
+
+    @Query("select * from todotable where dateDay < :date or dateMonth < :month or dateYear < :year")
+    abstract fun readPreviousTask(
+        date: Int,
+        year : Int,
+        month : Int
+    ):LiveData<List<TodoLocal>>
 
     //time chip
     @Insert(onConflict = OnConflictStrategy.REPLACE)
