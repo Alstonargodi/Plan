@@ -28,6 +28,7 @@
         android:background="@drawable/bg_bottomneu"
         android:visibility="visible"
         app:itemIconSize="30dp"
+        app:itemTextColor="#FFFFFF"
         app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

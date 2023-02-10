@@ -30,7 +30,9 @@ class InsertHabitsFragment : Fragment() {
     }
     private var typeColor = Color.parseColor("#FFFFFF")
     private var typeIcon = ""
-    private var startTime = ""
+    private var startTime = "00:00"
+    private var timeEnd = "00:00"
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -62,7 +64,8 @@ class InsertHabitsFragment : Fragment() {
             )
         }
         binding.btnHabitsTimestart.setOnClickListener {
-            timePicker(requireContext())
+            timePicker("end")
+            timePicker("start")
         }
     }
 
@@ -127,14 +130,23 @@ class InsertHabitsFragment : Fragment() {
         )
     }
 
-    private fun timePicker(context: Context){
+    private fun timePicker(tag : String){
         val calendar = Calendar.getInstance()
-        val timePick = TimePickerDialog(context, { _, hourOfDay, minute ->
+        val timePick = TimePickerDialog(
+            requireContext(), { _, hourOfDay, minute ->
             val timeTemp = Calendar.getInstance()
             timeTemp.set(Calendar.HOUR_OF_DAY,hourOfDay)
             timeTemp.set(Calendar.MINUTE,minute)
-            binding.btnHabitsTimestart.text = ConstantTask.formatTime.format(timeTemp.time)
-            startTime = timeTemp.time.toString()
+            val timeSet = ConstantTask.formatTime.format(timeTemp.time)
+            when(tag){
+                "start"->{
+                    startTime = timeSet
+                }
+                "end" ->{
+                    timeEnd = timeSet
+                }
+            }
+            binding.btnHabitsTimestart.text = "$startTime - $timeEnd"
         },
             calendar.get(Calendar.HOUR_OF_DAY),
             calendar.get(Calendar.MINUTE),

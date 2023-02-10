@@ -43,7 +43,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/textView6"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/textView6"
-                app:tint="#2196F3" />
+                app:tint="@color/main" />
 
             <TextView
                 android:id="@+id/textView6"
@@ -56,7 +56,7 @@
                 android:fontFamily="@font/abezeeregular"
                 android:gravity="center|left"
                 android:text="Habits"
-                android:textColor="#2196F3"
+                android:textColor="@color/main"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"

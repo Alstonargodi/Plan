@@ -52,7 +52,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.506"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/main" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
@@ -91,7 +92,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/titlemenu"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/titlemenu"
-                app:tint="#2196F3" />
+                app:tint="@color/main" />
 
             <TextView
                 android:id="@+id/titlemenu"
@@ -103,7 +104,7 @@
                 android:fontFamily="@font/abezeeregular"
                 android:gravity="center|left"
                 android:text="Others"
-                android:textColor="#2196F3"
+                android:textColor="@color/main"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -140,7 +141,7 @@
                 app:layout_constraintHorizontal_bias="0.506"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:tint="#03A9F4" />
+                app:tint="@color/main" />
 
             <TextView
                 android:id="@+id/textView4"
@@ -208,7 +209,7 @@
                 app:layout_constraintHorizontal_bias="0.506"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:tint="#03A9F4" />
+                app:tint="@color/main" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
@@ -257,7 +258,7 @@
                 app:layout_constraintHorizontal_bias="0.506"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:tint="#03A9F4" />
+                app:tint="@color/main" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
@@ -305,7 +306,7 @@
                 app:layout_constraintHorizontal_bias="0.506"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:tint="#03A9F4" />
+                app:tint="@color/main" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 

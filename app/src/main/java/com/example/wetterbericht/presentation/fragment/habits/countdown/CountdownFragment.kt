@@ -1,8 +1,8 @@
 package com.example.wetterbericht.presentation.fragment.habits.countdown
 
-import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,10 +11,9 @@ import androidx.fragment.app.viewModels
 import com.example.wetterbericht.databinding.FragmentCountdownBinding
 import com.example.wetterbericht.viewmodel.countdownviewmodel.CountDownViewModel
 
-
 class CountdownFragment : Fragment() {
     private lateinit var binding : FragmentCountdownBinding
-    private val countViewModel : CountDownViewModel by viewModels()
+    private val countViewModel = CountDownViewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,8 +47,12 @@ class CountdownFragment : Fragment() {
         }
 
         countViewModel.eventFinish.observe(viewLifecycleOwner){
-            countViewModel.resetTimer()
-            binding.pgcircleCountdown.setProgress(0,false)
+            try {
+                countViewModel.resetTimer()
+                binding.pgcircleCountdown.setProgress(0,false)
+            }catch (e : Exception){
+                Log.d("countDownFragmetn",e.toString())
+            }
         }
         return binding.root
     }
