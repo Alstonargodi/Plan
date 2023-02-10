@@ -10,7 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.wetterbericht.R
-import com.example.wetterbericht.data.local.entity.weather.WeatherLocal
+import com.example.wetterbericht.data.local.entities.weather.WeatherLocal
 import com.example.wetterbericht.data.remote.openweather.forecast.ForecastItem
 import com.example.wetterbericht.data.remote.openweather.forecast.ForecastResponse
 import com.example.wetterbericht.data.remote.openweather.weather.WeatherResponse

@@ -4,18 +4,18 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.wetterbericht.data.local.entity.weather.WeatherLocal
+import com.example.wetterbericht.data.local.entities.weather.WeatherLocal
 import com.example.wetterbericht.data.remote.openweather.forecast.ForecastResponse
 import com.example.wetterbericht.data.remote.openweather.weather.WeatherResponse
-import com.example.wetterbericht.domain.localusecase.weather.WeatherUseCase
-import com.example.wetterbericht.domain.remoteusecase.RemoteUseCase
+import com.example.wetterbericht.domain.localusecase.weather.IWeatherLocalUseCase
+import com.example.wetterbericht.domain.remoteusecase.IOpenWeatherUseCase
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class WeatherViewModel(
-    private val remoteUseCase: RemoteUseCase,
-    private val weatherUseCase: WeatherUseCase
+    private val IOpenWeatherUseCase: IOpenWeatherUseCase,
+    private val IWeatherLocalUseCase: IWeatherLocalUseCase
 ) : ViewModel() {
 
     val weatherSearchResponse : MutableLiveData<WeatherResponse> = MutableLiveData()
@@ -26,7 +26,7 @@ class WeatherViewModel(
 
     fun getWeatherSearch(loc : String){
         isLoading.value = true
-        remoteUseCase.getWeatherBySearch(loc).enqueue(object : Callback<WeatherResponse>{
+        IOpenWeatherUseCase.getWeatherBySearch(loc).enqueue(object : Callback<WeatherResponse>{
             override fun onResponse(
                 call: Call<WeatherResponse>,
                 response: Response<WeatherResponse>
@@ -51,7 +51,7 @@ class WeatherViewModel(
 
     fun getWeatherForecast(loc: Any){
         isLoading.value = true
-        remoteUseCase.getWeatherForecast(loc).enqueue(object : Callback<ForecastResponse>{
+        IOpenWeatherUseCase.getWeatherForecast(loc).enqueue(object : Callback<ForecastResponse>{
             override fun onResponse(
                 call: Call<ForecastResponse>,
                 response: Response<ForecastResponse>
@@ -73,13 +73,13 @@ class WeatherViewModel(
 
     //weather
     fun readWeatherLocal(): LiveData<List<WeatherLocal>> =
-        weatherUseCase.readWeatherLocal()
+        IWeatherLocalUseCase.readWeatherLocal()
 
     fun insertWeatherLocal(data : WeatherLocal) =
-        weatherUseCase.insertWeatherLocal(data)
+        IWeatherLocalUseCase.insertWeatherLocal(data)
 
     fun searchLocation(name: String): LiveData<List<WeatherLocal>> =
-        weatherUseCase.searchWeatherLocal(name)
+        IWeatherLocalUseCase.searchWeatherLocal(name)
 
     companion object{
         const val tag = "weatherviewmodel"

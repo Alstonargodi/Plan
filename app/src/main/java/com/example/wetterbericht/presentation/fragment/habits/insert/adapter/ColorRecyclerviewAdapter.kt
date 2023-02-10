@@ -4,7 +4,7 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.wetterbericht.data.local.entity.dailyhabits.ColorHabits
+import com.example.wetterbericht.data.local.entities.dailyhabits.ColorHabits
 import com.example.wetterbericht.databinding.ItemcvColorHabitsBinding
 
 class ColorRecyclerviewAdapter(

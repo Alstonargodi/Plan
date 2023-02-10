@@ -1,4 +1,4 @@
-package com.example.wetterbericht.data.local.entity.dailyhabits
+package com.example.wetterbericht.data.local.entities.dailyhabits
 
 import android.os.Parcelable
 import androidx.annotation.NonNull

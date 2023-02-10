@@ -2,11 +2,11 @@ package com.example.wetterbericht.data.local.dao.dailyhabits
 
 import androidx.lifecycle.LiveData
 import androidx.sqlite.db.SupportSQLiteQuery
-import com.example.wetterbericht.data.local.entity.dailyhabits.DailyHabits
+import com.example.wetterbericht.data.local.entities.dailyhabits.DailyHabits
 import androidx.paging.DataSource
 import androidx.room.*
-import com.example.wetterbericht.data.local.entity.dailyhabits.ColorHabits
-import com.example.wetterbericht.data.local.entity.dailyhabits.IconHabits
+import com.example.wetterbericht.data.local.entities.dailyhabits.ColorHabits
+import com.example.wetterbericht.data.local.entities.dailyhabits.IconHabits
 
 @Dao
 abstract class DailyHabitsDao {

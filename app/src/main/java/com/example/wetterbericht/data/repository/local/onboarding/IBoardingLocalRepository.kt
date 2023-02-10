@@ -1,4 +1,4 @@
-package com.example.wetterbericht.data.repository.local.boarding
+package com.example.wetterbericht.data.repository.local.onboarding
 
 import androidx.lifecycle.LiveData
 

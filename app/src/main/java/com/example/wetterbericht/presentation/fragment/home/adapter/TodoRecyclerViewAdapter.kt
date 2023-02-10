@@ -8,7 +8,7 @@ import android.annotation.SuppressLint
 import android.util.Log
 import androidx.core.content.ContextCompat
 import com.example.wetterbericht.databinding.ItemcvTodoBinding
-import com.example.wetterbericht.data.local.entity.dailytask.TodoLocal
+import com.example.wetterbericht.data.local.entities.dailytask.TodoLocal
 import com.example.wetterbericht.presentation.componen.TaskTitleView
 
 class TodoRecyclerViewAdapter(

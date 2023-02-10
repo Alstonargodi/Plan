@@ -5,16 +5,16 @@ import androidx.lifecycle.LiveData
 import androidx.paging.DataSource
 import androidx.sqlite.db.SupportSQLiteQuery
 import com.example.wetterbericht.data.local.ChipAlarm
-import com.example.wetterbericht.data.local.database.LocalDatabase
-import com.example.wetterbericht.data.local.entity.dailytask.TodoLocal
-import com.example.wetterbericht.data.local.entity.dailytask.TodoSubTask
-import com.example.wetterbericht.data.local.entity.dailytask.TodoandSubTask
+import com.example.wetterbericht.data.local.database.RoomDatabaseConfig
+import com.example.wetterbericht.data.local.entities.dailytask.TodoLocal
+import com.example.wetterbericht.data.local.entities.dailytask.TodoSubTask
+import com.example.wetterbericht.data.local.entities.dailytask.TodoandSubTask
 import java.util.concurrent.Executors
 
 class TodoLocalDataSource(
     val context : Context
 ): ITodoLocalDataSource {
-    private val todoDao = LocalDatabase.setInstance(context).todoDao()
+    private val todoDao = RoomDatabaseConfig.setInstance(context).todoDao()
     private val executorService = Executors.newSingleThreadExecutor()
 
     override fun readNearestActiveTask(): TodoLocal {

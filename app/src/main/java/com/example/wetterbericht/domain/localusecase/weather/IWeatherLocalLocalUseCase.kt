@@ -1,11 +1,11 @@
 package com.example.wetterbericht.domain.localusecase.weather
 
 import androidx.lifecycle.LiveData
-import com.example.wetterbericht.data.local.entity.weather.WeatherLocal
+import com.example.wetterbericht.data.local.entities.weather.WeatherLocal
 import com.example.wetterbericht.data.repository.local.weather.IWeatherLocalRepository
 
 //where business logic
-class WeatherInteractor(private val repository: IWeatherLocalRepository): WeatherUseCase {
+class IWeatherLocalLocalUseCase(private val repository: IWeatherLocalRepository): IWeatherLocalUseCase {
     override fun readWeatherLocal(): LiveData<List<WeatherLocal>> {
         return repository.readWeatherLocal()
     }

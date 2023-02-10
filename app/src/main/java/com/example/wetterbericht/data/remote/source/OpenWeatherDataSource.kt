@@ -2,25 +2,27 @@ package com.example.wetterbericht.data.remote.source
 
 import com.example.wetterbericht.data.remote.openweather.forecast.ForecastResponse
 import com.example.wetterbericht.data.remote.openweather.weather.WeatherResponse
-import com.example.wetterbericht.data.remote.service.WeatherService
+import com.example.wetterbericht.data.remote.service.OpenWeatherService
 import retrofit2.Call
 
-class WeatherDataSource(private val weatherService: WeatherService){
+class OpenWeatherDataSource(
+    private val openWeatherService: OpenWeatherService
+ ){
     companion object{
         @Volatile
-        private var instance : WeatherDataSource? = null
+        private var instance : OpenWeatherDataSource? = null
 
-        fun getInstance(service : WeatherService): WeatherDataSource =
+        fun getInstance(service : OpenWeatherService): OpenWeatherDataSource =
             instance ?: synchronized(this){
-                instance ?: WeatherDataSource(service)
+                instance ?: OpenWeatherDataSource(service)
             }
     }
 
     fun getWeatherBySearch(loc : String): Call<WeatherResponse>{
-        return weatherService.getDataBySearch(loc)
+        return openWeatherService.getDataBySearch(loc)
     }
 
     fun getWeatherForecast(loc: Any): Call<ForecastResponse>{
-        return weatherService.getForecast(loc)
+        return openWeatherService.getForecast(loc)
     }
 }

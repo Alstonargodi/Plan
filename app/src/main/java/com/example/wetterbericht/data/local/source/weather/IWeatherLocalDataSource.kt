@@ -1,14 +1,7 @@
 package com.example.wetterbericht.data.local.source.weather
 
 import androidx.lifecycle.LiveData
-import androidx.paging.DataSource
-import androidx.sqlite.db.SupportSQLiteQuery
-import com.example.wetterbericht.data.local.ChipAlarm
-import com.example.wetterbericht.data.local.entity.dailyhabits.DailyHabits
-import com.example.wetterbericht.data.local.entity.dailytask.TodoLocal
-import com.example.wetterbericht.data.local.entity.dailytask.TodoSubTask
-import com.example.wetterbericht.data.local.entity.dailytask.TodoandSubTask
-import com.example.wetterbericht.data.local.entity.weather.WeatherLocal
+import com.example.wetterbericht.data.local.entities.weather.WeatherLocal
 
 interface IWeatherLocalDataSource {
     //weather

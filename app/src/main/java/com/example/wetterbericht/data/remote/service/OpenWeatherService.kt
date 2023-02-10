@@ -2,13 +2,13 @@ package com.example.wetterbericht.data.remote.service
 
 import com.example.wetterbericht.data.remote.openweather.forecast.ForecastResponse
 import com.example.wetterbericht.data.remote.openweather.weather.WeatherResponse
-import com.example.wetterbericht.data.remote.utils.Constant.weatherApiKey
-import com.example.wetterbericht.data.remote.utils.Constant.weatherUnit
+import com.example.wetterbericht.data.remote.utils.ApiUtils.weatherApiKey
+import com.example.wetterbericht.data.remote.utils.ApiUtils.weatherUnit
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface WeatherService {
+interface OpenWeatherService {
     @GET("weather")
     fun getDataBySearch(
         @Query("q") Location : Any,

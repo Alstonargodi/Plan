@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.wetterbericht.R
-import com.example.wetterbericht.data.local.entity.dailytask.TodoLocal
-import com.example.wetterbericht.data.local.entity.weather.WeatherLocal
+import com.example.wetterbericht.data.local.entities.dailytask.TodoLocal
+import com.example.wetterbericht.data.local.entities.weather.WeatherLocal
 import com.example.wetterbericht.databinding.FragmentHomeBinding
 import com.example.wetterbericht.helpers.sortfilter.TodoSortType
 import com.example.wetterbericht.presentation.fragment.home.adapter.TodoRecyclerViewAdapter
@@ -143,16 +143,21 @@ class HomeFragment : Fragment() {
     }
 
     private fun setCurrentWeather(data : WeatherLocal){
-        val temp = data.temp.toDouble()
-        val temperature = round(temp).toInt().toString()
-        binding.tvHomewTemp2.apply {
-            (temperature + "c").also { text = it }
+        if(data != null){
+            val temp = data.temp.toDouble()
+            val temperature = round(temp).toInt().toString()
+            binding.tvHomewTemp2.apply {
+                (temperature + "c").also { text = it }
+            }
+            Glide.with(requireContext())
+                .asDrawable()
+                .load(data.image)
+                .into(binding.imgWeatherIconHome2)
+        }else{
+            binding.tvHomewTemp2.visibility = View.GONE
+            binding.imgWeatherIconHome2.visibility = View.GONE
         }
 
-        Glide.with(requireContext())
-            .asDrawable()
-            .load(data.image)
-            .into(binding.imgWeatherIconHome2)
     }
 
 

@@ -3,7 +3,7 @@ package com.example.wetterbericht.presentation.fragment.habits.habistlistfragmen
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.wetterbericht.data.local.entity.dailyhabits.DailyHabits
+import com.example.wetterbericht.data.local.entities.dailyhabits.DailyHabits
 import com.example.wetterbericht.databinding.PageritemHabitsBinding
 
 class HabitsCardViewAdapter(

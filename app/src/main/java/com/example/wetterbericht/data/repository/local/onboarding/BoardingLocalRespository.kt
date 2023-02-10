@@ -1,7 +1,6 @@
-package com.example.wetterbericht.data.repository.local.boarding
+package com.example.wetterbericht.data.repository.local.onboarding
 
 import androidx.lifecycle.LiveData
-import com.example.wetterbericht.data.local.source.onboarding.BoardingLocalSource
 import com.example.wetterbericht.data.local.source.onboarding.IBoardingLocalSource
 
 class BoardingLocalRespository(

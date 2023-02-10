@@ -6,18 +6,17 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.switchMap
 import androidx.paging.PagedList
-import com.example.wetterbericht.data.local.ChipAlarm
-import com.example.wetterbericht.data.local.entity.dailytask.TodoLocal
-import com.example.wetterbericht.data.local.entity.dailytask.TodoSubTask
-import com.example.wetterbericht.data.local.entity.dailytask.TodoandSubTask
-import com.example.wetterbericht.data.local.entity.weather.WeatherLocal
-import com.example.wetterbericht.domain.localusecase.weather.WeatherUseCase
+import com.example.wetterbericht.data.local.entities.dailytask.TodoLocal
+import com.example.wetterbericht.data.local.entities.dailytask.TodoSubTask
+import com.example.wetterbericht.data.local.entities.dailytask.TodoandSubTask
+import com.example.wetterbericht.data.local.entities.weather.WeatherLocal
+import com.example.wetterbericht.domain.localusecase.weather.IWeatherLocalUseCase
 import com.example.wetterbericht.domain.localusecase.todotask.TodoLocalUseCase
 import com.example.wetterbericht.helpers.sortfilter.TodoSortType
 
 class HomeViewModel(
     private val todoUseCase: TodoLocalUseCase,
-    private val weatherUseCase : WeatherUseCase
+    private val IWeatherLocalUseCase : IWeatherLocalUseCase
 ):ViewModel() {
     val snackbarEvent = MutableLiveData<String>()
     private val todoFilter = MutableLiveData<TodoSortType>()
@@ -65,10 +64,10 @@ class HomeViewModel(
 
     //weather
     fun readWeatherLocal(): LiveData<List<WeatherLocal>> =
-        weatherUseCase.readWeatherLocal()
+        IWeatherLocalUseCase.readWeatherLocal()
 
     fun insertWeatherLocal(data : WeatherLocal) =
-        weatherUseCase.insertWeatherLocal(data)
+        IWeatherLocalUseCase.insertWeatherLocal(data)
 
 
 }

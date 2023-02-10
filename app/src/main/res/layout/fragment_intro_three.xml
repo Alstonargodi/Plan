@@ -9,31 +9,47 @@
     android:background="@color/white"
     tools:context=".presentation.activity.onboarding.page.IntroOne">
 
-
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:padding="8dp"
-        android:src="@drawable/cekweather"
+        android:padding="120dp"
+        android:src="@drawable/ic_weather_application"
         app:layout_constraintBottom_toTopOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.173" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
-        android:layout_height="91dp"
-        android:fontFamily="@font/robotoregular"
+        android:layout_height="50dp"
+        android:fontFamily="@font/poppinsregular"
         android:gravity="center"
-        android:text="Check the weather before going"
+        android:text="Weather Forecaster"
         android:textColor="#1D1C1C"
-        android:textSize="20sp"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textView20"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="180dp"
+        android:fontFamily="@font/poppinsregular"
+        android:gravity="center"
+        android:text="we provide 24h weather forecast to make sure your activity planning"
+        android:textColor="#827F7F"
+        android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

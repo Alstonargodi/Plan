@@ -1,4 +1,4 @@
-package com.example.wetterbericht.data.local.entity.weather
+package com.example.wetterbericht.data.local.entities.weather
 
 import android.os.Parcelable
 import androidx.room.Entity

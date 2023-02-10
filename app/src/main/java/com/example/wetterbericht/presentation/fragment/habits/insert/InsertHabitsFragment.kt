@@ -1,7 +1,6 @@
 package com.example.wetterbericht.presentation.fragment.habits.insert
 
 import android.app.TimePickerDialog
-import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,9 +11,9 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.wetterbericht.data.local.entity.dailyhabits.ColorHabits
-import com.example.wetterbericht.data.local.entity.dailyhabits.DailyHabits
-import com.example.wetterbericht.data.local.entity.dailyhabits.IconHabits
+import com.example.wetterbericht.data.local.entities.dailyhabits.ColorHabits
+import com.example.wetterbericht.data.local.entities.dailyhabits.DailyHabits
+import com.example.wetterbericht.data.local.entities.dailyhabits.IconHabits
 import com.example.wetterbericht.databinding.FragmentInsertHabitsBinding
 import com.example.wetterbericht.helpers.ConstantTask
 import com.example.wetterbericht.presentation.fragment.habits.insert.adapter.ColorRecyclerviewAdapter

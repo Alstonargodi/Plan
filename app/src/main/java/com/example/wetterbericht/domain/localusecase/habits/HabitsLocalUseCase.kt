@@ -2,9 +2,9 @@ package com.example.wetterbericht.domain.localusecase.habits
 
 import androidx.lifecycle.LiveData
 import androidx.paging.PagedList
-import com.example.wetterbericht.data.local.entity.dailyhabits.ColorHabits
-import com.example.wetterbericht.data.local.entity.dailyhabits.DailyHabits
-import com.example.wetterbericht.data.local.entity.dailyhabits.IconHabits
+import com.example.wetterbericht.data.local.entities.dailyhabits.ColorHabits
+import com.example.wetterbericht.data.local.entities.dailyhabits.DailyHabits
+import com.example.wetterbericht.data.local.entities.dailyhabits.IconHabits
 import com.example.wetterbericht.helpers.sortfilter.HabitSortType
 
 interface HabitsLocalUseCase {

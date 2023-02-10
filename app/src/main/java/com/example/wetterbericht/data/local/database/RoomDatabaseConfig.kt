@@ -5,10 +5,9 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.example.wetterbericht.R
 import com.example.wetterbericht.data.local.ChipAlarm
-import com.example.wetterbericht.data.local.entity.dailytask.TodoLocal
-import com.example.wetterbericht.data.local.entity.dailytask.TodoSubTask
+import com.example.wetterbericht.data.local.entities.dailytask.TodoLocal
+import com.example.wetterbericht.data.local.entities.dailytask.TodoSubTask
 import com.example.wetterbericht.data.local.dao.dailyhabits.DailyHabitsDao
 import com.example.wetterbericht.data.local.dao.dailytask.DailyTaskDao
 import com.example.wetterbericht.data.local.dao.weather.WeatherDao
@@ -17,18 +16,11 @@ import com.example.wetterbericht.data.local.database.LoadDataFromJson.loadColoHa
 import com.example.wetterbericht.data.local.database.LoadDataFromJson.loadHabitsJson
 import com.example.wetterbericht.data.local.database.LoadDataFromJson.loadIconHabits
 import com.example.wetterbericht.data.local.database.LoadDataFromJson.loadSubTaskJson
-import com.example.wetterbericht.data.local.database.LoadDataFromJson.loadTodoJson
-import com.example.wetterbericht.data.local.entity.dailyhabits.ColorHabits
-import com.example.wetterbericht.data.local.entity.dailyhabits.DailyHabits
-import com.example.wetterbericht.data.local.entity.dailyhabits.IconHabits
-import com.example.wetterbericht.data.local.entity.weather.WeatherLocal
-import org.json.JSONArray
+import com.example.wetterbericht.data.local.entities.dailyhabits.ColorHabits
+import com.example.wetterbericht.data.local.entities.dailyhabits.DailyHabits
+import com.example.wetterbericht.data.local.entities.dailyhabits.IconHabits
+import com.example.wetterbericht.data.local.entities.weather.WeatherLocal
 import org.json.JSONException
-import org.json.JSONObject
-import java.io.BufferedReader
-import java.io.IOException
-import java.io.InputStreamReader
-import java.time.LocalDateTime
 import java.util.concurrent.Executors
 
 @Database(entities = [
@@ -43,7 +35,7 @@ import java.util.concurrent.Executors
     ,version = 1
     ,exportSchema = false
 )
-abstract class LocalDatabase: RoomDatabase() {
+abstract class RoomDatabaseConfig: RoomDatabase() {
    abstract fun todoDao() : DailyTaskDao
    abstract fun weatherDao(): WeatherDao
    abstract fun habitsDao(): DailyHabitsDao
@@ -51,13 +43,13 @@ abstract class LocalDatabase: RoomDatabase() {
 
    companion object{
        @Volatile
-       private var mInstance : LocalDatabase? = null
+       private var mInstance : RoomDatabaseConfig? = null
 
-       fun setInstance(context: Context): LocalDatabase {
+       fun setInstance(context: Context): RoomDatabaseConfig {
             return mInstance ?: synchronized(this){
                 val dbInstance = Room.databaseBuilder(
                         context.applicationContext,
-                        LocalDatabase::class.java,
+                        RoomDatabaseConfig::class.java,
                         "planDB"
                     ).addCallback(object : Callback(){
                         override fun onCreate(db: SupportSQLiteDatabase) {
@@ -78,7 +70,7 @@ abstract class LocalDatabase: RoomDatabase() {
            }
 
        /*
-            populate task database for testing purpose
+            populate task database
         */
        private fun fillWithStartingData(
            context: Context,
@@ -86,14 +78,11 @@ abstract class LocalDatabase: RoomDatabase() {
            dailyTaskDao: DailyTaskDao,
        ){
            val habitsJsonArray = loadHabitsJson(context)
-           val todoJsonArray = loadTodoJson(context)
            val subtaskJsonArray = loadSubTaskJson(context)
            val iconHabitsArray = loadIconHabits(context)
            val chipAlarmArray = loadAlarmChip(context)
            val colorHabitsArray = loadColoHabitsJson(context)
-           val currentDate = LocalDateTime.now().dayOfMonth
 
-           //pre popualte data
            try {
                if (habitsJsonArray != null){
                    for (i in 0 until habitsJsonArray.length()){
@@ -106,27 +95,6 @@ abstract class LocalDatabase: RoomDatabase() {
                             "",
                            -1
                        ))
-                   }
-               }
-
-               if (todoJsonArray != null){
-                   for (i in 0 until todoJsonArray.length()){
-                       val item = todoJsonArray.getJSONObject(i)
-                       //dummy data
-//                       dailyTaskDao.insertTodoList(TodoLocal(
-//                           taskID = item.getInt("id"),
-//                           title = item.getString("title"),
-//                           description = item.getString("description"),
-//                           levelColor = item.getInt("levelColor") ,
-//                           dateStart = item.getString("dateStart"),
-//                           dateDay = currentDate,
-//                           dateDueMillis = item.getLong("dueDate") ,
-//                           notificationInterval = item.getInt("notificationInterval"),
-//                           startTime = item.getString("startTime"),
-//                           endTime = item.getString("endTime") ,
-//                           isComplete = item.getBoolean("completed"),
-//                           subTaskId = "a"
-//                       ))
                    }
                }
 
