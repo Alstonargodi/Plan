@@ -36,8 +36,8 @@ class StatisticFragment : Fragment() {
                 dateList.add(data.dateDueMillis)
             }
             val dateFormat = SimpleDateFormat("dd/MM/yyyy")
-            val dateMax = dateFormat.format(dateList.max())
-            val dateMin = dateFormat.format(dateList.min())
+            val dateMax = dateFormat.format(dateList.maxOf { it })
+            val dateMin = dateFormat.format(dateList.minOf { it })
             binding.tvStatDaterange.text = "from $dateMin until $dateMax"
 
         }

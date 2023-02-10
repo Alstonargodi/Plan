@@ -19,7 +19,8 @@ abstract class DailyTaskDao {
     abstract fun insertSubTask(sub : TodoSubTask)
 
     @RawQuery(observedEntities = [TodoLocal::class])
-    abstract fun readTodoTaskFilter(query: SupportSQLiteQuery): DataSource.Factory<Int,TodoLocal>
+    abstract fun readTodoTaskFilter(query: SupportSQLiteQuery)
+    : DataSource.Factory<Int,TodoLocal>
 
     @Query("select * from todotable where completed=0 order by dateDueMillis asc")
     abstract fun readNearestActiveTask(): TodoLocal

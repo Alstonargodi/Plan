@@ -24,7 +24,9 @@ import com.example.wetterbericht.data.local.entity.dailytask.TodoSubTask
 import com.example.wetterbericht.databinding.FragmentInsertTodoBinding
 import com.example.wetterbericht.helpers.ConstantTask.formatDate
 import com.example.wetterbericht.helpers.ConstantTask.formatDay
+import com.example.wetterbericht.helpers.ConstantTask.formatMonth
 import com.example.wetterbericht.helpers.ConstantTask.formatTime
+import com.example.wetterbericht.helpers.ConstantTask.formatYear
 import com.example.wetterbericht.helpers.ConstantTask.userId
 import com.example.wetterbericht.presentation.fragment.habits.insert.adapter.ColorRecyclerviewAdapter
 import com.example.wetterbericht.presentation.fragment.home.adapter.SubtaskRecyclerViewAdapter
@@ -43,7 +45,9 @@ class InsertTodoFragment : Fragment(){
         ViewModelFactory.getInstance(requireContext())
     }
 
-    private var numberDay = 0
+    private var dateDay = 0
+    private var dateMonth = 0
+    private var dateYear = 0
     private var millisDay : Long = 0
     private var timeStart = "start"
     private var timeEnd = "end"
@@ -169,10 +173,12 @@ class InsertTodoFragment : Fragment(){
             title = taskName,
             description = description,
             levelColor = typeColor,
-            dateStart = dateStart,
-            dateDay = numberDay,
             dateDueMillis = millisDay,
             notificationInterval = 20,
+            dateStart = dateStart,
+            dateYear = dateYear,
+            dateMonth = dateMonth,
+            dateDay = dateDay,
             startTime = timeStart,
             endTime = timeEnd,
             subTaskId = userId,
@@ -282,7 +288,10 @@ class InsertTodoFragment : Fragment(){
             calendar.set(Calendar.YEAR,year)
             val setDate = formatDate.format(calendar.time)
             binding.btnTodoDatestart.text = setDate.toString()
-            numberDay = formatDay.format(calendar.time).toInt()
+            dateDay = formatDay.format(calendar.time).toInt()
+            dateMonth = formatMonth.format(calendar.time).toInt()
+            dateYear = formatYear.format(calendar.time).toInt()
+
             millisDay = calendar.timeInMillis
         },
             calenderInstance.get(Calendar.YEAR),

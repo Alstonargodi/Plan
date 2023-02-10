@@ -50,7 +50,6 @@ class TodoLocalInteractor(
     }
 
     override fun getTodayTask(): LiveData<List<TodoLocal>> {
-        Log.d("todolocalinteractor",currentDate.toString())
         return repository.getTodayTask(currentDate)
     }
 

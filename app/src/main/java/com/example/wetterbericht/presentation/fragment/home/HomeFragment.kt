@@ -1,6 +1,7 @@
 package com.example.wetterbericht.presentation.fragment.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,6 +22,7 @@ import com.example.wetterbericht.presentation.fragment.home.detail.DetailTodoDia
 import com.example.wetterbericht.viewmodel.viewmodelfactory.ViewModelFactory
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
+import java.time.LocalDateTime
 import kotlin.math.round
 
 class HomeFragment : Fragment() {
@@ -44,6 +46,8 @@ class HomeFragment : Fragment() {
         binding.tabLayout.getTabAt(1)?.select()
 
         showTodayTaskList()
+        val testDate = LocalDateTime.now().toLocalDate().toString()
+        Log.d("todoInteractor",testDate)
 
         binding.FilterMenu.setNavigationItemSelectedListener {
             homeViewModel.taskFilter(
@@ -89,7 +93,9 @@ class HomeFragment : Fragment() {
 
     private fun showCurrentWeather(){
         homeViewModel.readWeatherLocal().observe(viewLifecycleOwner){
-            setCurrentWeather(it[0])
+            if (it.isNotEmpty()){
+                setCurrentWeather(it[0])
+            }
         }
     }
 

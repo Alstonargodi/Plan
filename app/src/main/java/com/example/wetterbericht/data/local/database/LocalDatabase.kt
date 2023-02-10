@@ -112,20 +112,21 @@ abstract class LocalDatabase: RoomDatabase() {
                if (todoJsonArray != null){
                    for (i in 0 until todoJsonArray.length()){
                        val item = todoJsonArray.getJSONObject(i)
-                       dailyTaskDao.insertTodoList(TodoLocal(
-                           taskID = item.getInt("id"),
-                           title = item.getString("title"),
-                           description = item.getString("description"),
-                           levelColor = item.getInt("levelColor") ,
-                           dateStart = item.getString("dateStart"),
-                           dateDay = currentDate,
-                           dateDueMillis = item.getLong("dueDate") ,
-                           notificationInterval = item.getInt("notificationInterval"),
-                           startTime = item.getString("startTime"),
-                           endTime = item.getString("endTime") ,
-                           isComplete = item.getBoolean("completed"),
-                           subTaskId = "a"
-                       ))
+                       //dummy data
+//                       dailyTaskDao.insertTodoList(TodoLocal(
+//                           taskID = item.getInt("id"),
+//                           title = item.getString("title"),
+//                           description = item.getString("description"),
+//                           levelColor = item.getInt("levelColor") ,
+//                           dateStart = item.getString("dateStart"),
+//                           dateDay = currentDate,
+//                           dateDueMillis = item.getLong("dueDate") ,
+//                           notificationInterval = item.getInt("notificationInterval"),
+//                           startTime = item.getString("startTime"),
+//                           endTime = item.getString("endTime") ,
+//                           isComplete = item.getBoolean("completed"),
+//                           subTaskId = "a"
+//                       ))
                    }
                }
 
