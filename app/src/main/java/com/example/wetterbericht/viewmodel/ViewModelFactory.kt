@@ -1,4 +1,4 @@
-package com.example.wetterbericht.viewmodel.viewmodelfactory
+package com.example.wetterbericht.viewmodel
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
@@ -14,8 +14,8 @@ import com.example.wetterbericht.injection.habits.InjectionHabits
 import com.example.wetterbericht.injection.todo.InjectionTodo
 import com.example.wetterbericht.presentation.activity.onboarding.OnBoardingViewModel
 import com.example.wetterbericht.presentation.fragment.habits.viewmodel.HabitsViewModel
-import com.example.wetterbericht.presentation.fragment.home.HomeViewModel
-import com.example.wetterbericht.presentation.fragment.insertnewtask.InsertTodoViewModel
+import com.example.wetterbericht.presentation.fragment.home.viewmodel.HomeViewModel
+import com.example.wetterbericht.presentation.fragment.insertnewtask.viewmodel.InsertTodoViewModel
 import com.example.wetterbericht.presentation.fragment.stats.StatisticFragmentViewModel
 import com.example.wetterbericht.presentation.fragment.weather.weatherviewmodel.WeatherViewModel
 

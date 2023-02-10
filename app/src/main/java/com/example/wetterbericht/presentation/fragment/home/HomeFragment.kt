@@ -19,7 +19,8 @@ import com.example.wetterbericht.databinding.FragmentHomeBinding
 import com.example.wetterbericht.helpers.sortfilter.TodoSortType
 import com.example.wetterbericht.presentation.fragment.home.adapter.TodoRecyclerViewAdapter
 import com.example.wetterbericht.presentation.fragment.home.detail.DetailTodoDialog
-import com.example.wetterbericht.viewmodel.viewmodelfactory.ViewModelFactory
+import com.example.wetterbericht.presentation.fragment.home.viewmodel.HomeViewModel
+import com.example.wetterbericht.viewmodel.ViewModelFactory
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
 import java.time.LocalDateTime

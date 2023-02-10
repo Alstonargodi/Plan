@@ -14,7 +14,7 @@ import com.example.wetterbericht.data.local.entities.dailyhabits.DailyHabits
 import com.example.wetterbericht.helpers.sortfilter.HabitSortType
 import com.example.wetterbericht.presentation.fragment.habits.habistlistfragment.adapter.HabitsRecyclerViewAdapter
 import com.example.wetterbericht.presentation.fragment.habits.viewmodel.HabitsViewModel
-import com.example.wetterbericht.viewmodel.viewmodelfactory.ViewModelFactory
+import com.example.wetterbericht.viewmodel.ViewModelFactory
 
 class HabitsListFragment : Fragment() {
     private lateinit var binding : FragmentHabitsListBinding

@@ -16,7 +16,7 @@ import com.example.wetterbericht.data.remote.openweather.forecast.ForecastRespon
 import com.example.wetterbericht.data.remote.openweather.weather.WeatherResponse
 import com.example.wetterbericht.databinding.FragmentWeatherBinding
 import com.example.wetterbericht.presentation.fragment.weather.adapter.ForecastRecyclerViewAdapter
-import com.example.wetterbericht.viewmodel.viewmodelfactory.ViewModelFactory
+import com.example.wetterbericht.viewmodel.ViewModelFactory
 import com.example.wetterbericht.presentation.fragment.weather.weatherviewmodel.WeatherViewModel
 import kotlin.math.round
 

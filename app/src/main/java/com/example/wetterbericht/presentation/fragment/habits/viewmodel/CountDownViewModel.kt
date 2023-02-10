@@ -1,4 +1,4 @@
-package com.example.wetterbericht.viewmodel.countdownviewmodel
+package com.example.wetterbericht.presentation.fragment.habits.viewmodel
 
 import android.os.CountDownTimer
 import android.text.format.DateUtils
@@ -7,9 +7,7 @@ import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 
 class CountDownViewModel{
-
     private var countDownTimer: CountDownTimer? = null
-
     private val initialTime = MutableLiveData<Long>()
     private val durationTime = MutableLiveData<Long>()
 

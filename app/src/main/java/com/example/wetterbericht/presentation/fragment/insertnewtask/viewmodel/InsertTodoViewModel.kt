@@ -1,4 +1,4 @@
-package com.example.wetterbericht.presentation.fragment.insertnewtask
+package com.example.wetterbericht.presentation.fragment.insertnewtask.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -17,7 +17,6 @@ class InsertTodoViewModel(
     private val todoUseCase: TodoLocalUseCase,
     private val colorUseCase : HabitsLocalUseCase
 ): ViewModel() {
-    val snackbarEvent = MutableLiveData<String>()
     private val todoFilter = MutableLiveData<TodoSortType>()
 
     init {

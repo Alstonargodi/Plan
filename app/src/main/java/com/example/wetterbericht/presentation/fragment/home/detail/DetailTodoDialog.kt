@@ -16,9 +16,9 @@ import com.example.wetterbericht.data.local.entities.dailytask.TodoSubTask
 import com.example.wetterbericht.databinding.FragmentDetailTodoListDialogBinding
 import com.example.wetterbericht.presentation.fragment.home.HomeFragment.Companion.homepage_key
 import com.example.wetterbericht.presentation.fragment.home.HomeFragmentDirections
-import com.example.wetterbericht.presentation.fragment.home.HomeViewModel
+import com.example.wetterbericht.presentation.fragment.home.viewmodel.HomeViewModel
 import com.example.wetterbericht.presentation.fragment.home.adapter.SubDetailRecyclerViewAdapter
-import com.example.wetterbericht.viewmodel.viewmodelfactory.ViewModelFactory
+import com.example.wetterbericht.viewmodel.ViewModelFactory
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment

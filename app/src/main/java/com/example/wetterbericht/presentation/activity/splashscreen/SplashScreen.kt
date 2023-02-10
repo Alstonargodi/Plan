@@ -10,7 +10,7 @@ import com.example.wetterbericht.presentation.activity.mainactivity.MainActivity
 import com.example.wetterbericht.R
 import com.example.wetterbericht.presentation.activity.onboarding.OnBoardingActivity
 import com.example.wetterbericht.presentation.activity.onboarding.OnBoardingViewModel
-import com.example.wetterbericht.viewmodel.viewmodelfactory.ViewModelFactory
+import com.example.wetterbericht.viewmodel.ViewModelFactory
 
 class SplashScreen : AppCompatActivity() {
 

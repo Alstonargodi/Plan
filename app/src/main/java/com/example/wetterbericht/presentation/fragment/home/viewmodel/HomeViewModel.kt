@@ -1,4 +1,4 @@
-package com.example.wetterbericht.presentation.fragment.home
+package com.example.wetterbericht.presentation.fragment.home.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.LiveData

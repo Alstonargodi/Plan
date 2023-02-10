@@ -9,8 +9,8 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import com.example.wetterbericht.databinding.FragmentInsertAlarmChipBinding
 import com.example.wetterbericht.data.local.ChipAlarm
-import com.example.wetterbericht.presentation.fragment.insertnewtask.InsertTodoViewModel
-import com.example.wetterbericht.viewmodel.viewmodelfactory.ViewModelFactory
+import com.example.wetterbericht.presentation.fragment.insertnewtask.viewmodel.InsertTodoViewModel
+import com.example.wetterbericht.viewmodel.ViewModelFactory
 import java.text.SimpleDateFormat
 import java.util.*
 

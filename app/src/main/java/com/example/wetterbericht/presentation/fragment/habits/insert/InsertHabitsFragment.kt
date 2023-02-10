@@ -19,7 +19,7 @@ import com.example.wetterbericht.helpers.ConstantTask
 import com.example.wetterbericht.presentation.fragment.habits.insert.adapter.ColorRecyclerviewAdapter
 import com.example.wetterbericht.presentation.fragment.habits.insert.adapter.IconHabitsRecylerViewAdapter
 import com.example.wetterbericht.presentation.fragment.habits.viewmodel.HabitsViewModel
-import com.example.wetterbericht.viewmodel.viewmodelfactory.ViewModelFactory
+import com.example.wetterbericht.viewmodel.ViewModelFactory
 import java.util.*
 
 class InsertHabitsFragment : Fragment() {

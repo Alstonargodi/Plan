@@ -7,9 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import com.example.wetterbericht.databinding.FragmentCountdownBinding
-import com.example.wetterbericht.viewmodel.countdownviewmodel.CountDownViewModel
+import com.example.wetterbericht.presentation.fragment.habits.viewmodel.CountDownViewModel
 
 class CountdownFragment : Fragment() {
     private lateinit var binding : FragmentCountdownBinding

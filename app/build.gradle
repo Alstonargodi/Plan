@@ -87,7 +87,7 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
     implementation 'com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2'
 
-    // Coroutine Lifecycle Scopes
+    //Coroutine Lifecycle Scopes
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1"
 
@@ -95,10 +95,10 @@ dependencies {
     kapt "com.android.databinding:compiler:3.2.0-alpha10"
 
     // Room components
-    implementation "androidx.room:room-runtime:2.4.3"
-    kapt "androidx.room:room-compiler:2.4.3"
-    implementation "androidx.room:room-ktx:2.4.3"
-    androidTestImplementation "androidx.room:room-testing:2.4.3"
+    implementation "androidx.room:room-runtime:2.5.0"
+    kapt "androidx.room:room-compiler:2.5.0"
+    implementation "androidx.room:room-ktx:2.5.0"
+    androidTestImplementation "androidx.room:room-testing:2.5.0"
 
     // Navigation Component
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
@@ -126,5 +126,4 @@ dependencies {
 
     //workermanager
     implementation "androidx.work:work-runtime-ktx:2.7.1"
-
 }

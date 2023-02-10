@@ -1,18 +1,13 @@
 package com.example.wetterbericht.presentation.fragment.stats
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.lifecycleScope
-import com.example.wetterbericht.R
 import com.example.wetterbericht.databinding.FragmentStatisticBinding
-import com.example.wetterbericht.viewmodel.viewmodelfactory.ViewModelFactory
-import kotlinx.coroutines.launch
+import com.example.wetterbericht.viewmodel.ViewModelFactory
 import java.text.SimpleDateFormat
 
 class StatisticFragment : Fragment() {

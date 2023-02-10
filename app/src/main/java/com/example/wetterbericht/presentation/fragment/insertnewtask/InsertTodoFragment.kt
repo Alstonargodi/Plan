@@ -32,7 +32,8 @@ import com.example.wetterbericht.presentation.fragment.habits.insert.adapter.Col
 import com.example.wetterbericht.presentation.fragment.home.adapter.SubtaskRecyclerViewAdapter
 import com.example.wetterbericht.presentation.fragment.insertnewtask.adapter.ChipAdapter
 import com.example.wetterbericht.presentation.fragment.insertnewtask.dialog.InsertAlarmChipFragment
-import com.example.wetterbericht.viewmodel.viewmodelfactory.ViewModelFactory
+import com.example.wetterbericht.presentation.fragment.insertnewtask.viewmodel.InsertTodoViewModel
+import com.example.wetterbericht.viewmodel.ViewModelFactory
 import kotlinx.coroutines.launch
 import java.util.*
 
