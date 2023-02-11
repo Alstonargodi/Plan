@@ -1,8 +1,8 @@
 package com.example.wetterbericht.helpers
 
-import java.time.LocalDate
-import java.time.LocalTime
-import java.time.format.DateTimeFormatter
+import org.threeten.bp.LocalDate
+import org.threeten.bp.LocalTime
+import org.threeten.bp.format.DateTimeFormatter
 
 object Converter {
 

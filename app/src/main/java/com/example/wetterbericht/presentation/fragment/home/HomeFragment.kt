@@ -23,7 +23,7 @@ import com.example.wetterbericht.presentation.fragment.home.viewmodel.HomeViewMo
 import com.example.wetterbericht.viewmodel.ViewModelFactory
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
-import java.time.LocalDateTime
+import org.threeten.bp.LocalDateTime
 import kotlin.math.round
 
 class HomeFragment : Fragment() {
@@ -95,7 +95,10 @@ class HomeFragment : Fragment() {
     private fun showCurrentWeather(){
         homeViewModel.readWeatherLocal().observe(viewLifecycleOwner){
             if (it.isNotEmpty()){
+                binding.tvHomewTemp2.visibility = View.VISIBLE
                 setCurrentWeather(it[0])
+            }else{
+                binding.tvHomewTemp2.visibility = View.GONE
             }
         }
     }
@@ -137,9 +140,9 @@ class HomeFragment : Fragment() {
         })
 
         if (data.isEmpty()){
-            binding.tvActivitesStatus.visibility = View.VISIBLE
+            binding.layoutEmpty.layoutEmptyView.visibility =  View.VISIBLE
         }else{
-            binding.tvActivitesStatus.visibility = View.GONE
+            binding.layoutEmpty.layoutEmptyView.visibility =  View.GONE
         }
     }
 

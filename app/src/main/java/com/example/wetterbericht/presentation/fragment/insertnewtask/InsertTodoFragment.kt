@@ -108,6 +108,7 @@ class InsertTodoFragment : Fragment(){
             }
 
             btnAddsubtask.setOnClickListener {
+                binding.pgbarInsertTodo.visibility = View.VISIBLE
                 insertNewSubtask()
             }
             btnTodoTimestart.setOnClickListener {
@@ -196,6 +197,7 @@ class InsertTodoFragment : Fragment(){
             viewModel.insertSubtask(insertSubtask)
         }
         viewModel.insertTodoLocal(insertTask)
+        binding.pgbarInsertTodo.visibility = View.GONE
         findNavController().navigate(
             InsertTodoFragmentDirections.actionInsertTodoFragmentToFragmentHome(),
             null,

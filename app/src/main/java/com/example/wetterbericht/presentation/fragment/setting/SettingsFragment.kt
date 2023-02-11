@@ -1,9 +1,8 @@
 package com.example.wetterbericht.presentation.fragment.setting
 
 import android.os.Bundle
-import androidx.preference.ListPreference
-import androidx.preference.PreferenceFragmentCompat
-import androidx.preference.SwitchPreference
+import androidx.navigation.fragment.findNavController
+import androidx.preference.*
 import androidx.work.Data
 import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkManager
@@ -21,6 +20,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
         val notificationPreference = findPreference<SwitchPreference>(getString(R.string.pref_key_notify))
         val intervalPreference = findPreference<ListPreference>(getString(R.string.pref_key_interval))
         val weatherPreference = findPreference<SwitchPreference>(getString(R.string.pref_update_weather))
+        val profile = findPreference<CheckBoxPreference>(getString(R.string.pref_account_profile))
 
         notificationPreference?.setOnPreferenceChangeListener { _, value ->
             if (value as Boolean) {
@@ -62,6 +62,13 @@ class SettingsFragment : PreferenceFragmentCompat() {
             }else{
                 WeatherUpdate().cancelUpdateWeather(requireContext())
             }
+            true
+        }
+
+        profile?.setOnPreferenceClickListener {
+            findNavController().navigate(
+                SettingsFragmentDirections.actionSettingsFragmentToLoginFragment()
+            )
             true
         }
     }

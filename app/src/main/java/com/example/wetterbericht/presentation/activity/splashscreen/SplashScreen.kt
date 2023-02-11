@@ -11,6 +11,7 @@ import com.example.wetterbericht.R
 import com.example.wetterbericht.presentation.activity.onboarding.OnBoardingActivity
 import com.example.wetterbericht.presentation.activity.onboarding.OnBoardingViewModel
 import com.example.wetterbericht.viewmodel.ViewModelFactory
+import com.jakewharton.threetenabp.AndroidThreeTen
 
 class SplashScreen : AppCompatActivity() {
 
@@ -20,6 +21,7 @@ class SplashScreen : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        AndroidThreeTen.init(this)
         setContentView(R.layout.activity_splashscreen)
         window.statusBarColor = getColor(R.color.spalshscreen)
 
@@ -27,11 +29,11 @@ class SplashScreen : AppCompatActivity() {
             if (status){
                 Handler(Looper.getMainLooper()).postDelayed({
                     startActivity(Intent(this, MainActivity::class.java))
-                },3000)
+                },100)
             }else{
                 Handler(Looper.getMainLooper()).postDelayed({
                     startActivity(Intent(this, OnBoardingActivity::class.java))
-                },3000)
+                },100)
             }
         }
 

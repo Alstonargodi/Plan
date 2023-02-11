@@ -3,9 +3,9 @@
 
     <PreferenceCategory android:title="Account">
 
-        <EditTextPreference
+        <CheckBoxPreference
             android:defaultValue="Default value"
-            android:key="edit_text_preference_1"
+            android:key="@string/pref_account_profile"
             android:selectAllOnFocus="true"
             android:singleLine="true"
             android:title="You Account" />

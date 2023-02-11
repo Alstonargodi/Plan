@@ -1,9 +1,10 @@
 package com.example.wetterbericht.helpers.sortfilter
 
-import android.util.Log
+
 import androidx.sqlite.db.SimpleSQLiteQuery
+import org.threeten.bp.LocalDateTime
 import java.lang.StringBuilder
-import java.time.LocalDateTime
+
 
 object SortUtils {
     //TODO 4 sort type

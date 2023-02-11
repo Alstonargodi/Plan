@@ -22,7 +22,7 @@ import com.example.wetterbericht.viewmodel.ViewModelFactory
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import java.time.LocalTime
+import org.threeten.bp.LocalTime
 import kotlin.math.abs
 
 class DetailTodoDialog : BottomSheetDialogFragment() {

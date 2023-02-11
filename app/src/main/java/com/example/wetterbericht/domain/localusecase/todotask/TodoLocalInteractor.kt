@@ -10,11 +10,12 @@ import com.example.wetterbericht.data.local.entities.dailytask.TodoandSubTask
 import com.example.wetterbericht.data.repository.local.todo.ITodoLocalRepository
 import com.example.wetterbericht.helpers.sortfilter.SortUtils
 import com.example.wetterbericht.helpers.sortfilter.TodoSortType
-import java.time.LocalDateTime
+import org.threeten.bp.LocalDateTime
 
 class TodoLocalInteractor(
     private val repository : ITodoLocalRepository
 ): TodoLocalUseCase {
+
     val date = LocalDateTime.now().dayOfMonth
     private val month = LocalDateTime.now().month.value
     private val year = LocalDateTime.now().year
