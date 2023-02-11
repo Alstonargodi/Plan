@@ -1,4 +1,4 @@
-package com.example.wetterbericht.data.remote.openweather.weather
+package com.example.wetterbericht.data.remote.weather.openweather.weather
 
 import com.google.gson.annotations.SerializedName
 

@@ -1,4 +1,4 @@
-package com.example.wetterbericht.data.remote.utils
+package com.example.wetterbericht.data.remote.weather.utils
 
 object ApiUtils {
     const val weatherBaseURL = "https://api.openweathermap.org/data/2.5/"

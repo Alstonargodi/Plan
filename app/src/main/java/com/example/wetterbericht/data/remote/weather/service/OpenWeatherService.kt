@@ -1,9 +1,9 @@
-package com.example.wetterbericht.data.remote.service
+package com.example.wetterbericht.data.remote.weather.service
 
-import com.example.wetterbericht.data.remote.openweather.forecast.ForecastResponse
-import com.example.wetterbericht.data.remote.openweather.weather.WeatherResponse
-import com.example.wetterbericht.data.remote.utils.ApiUtils.weatherApiKey
-import com.example.wetterbericht.data.remote.utils.ApiUtils.weatherUnit
+import com.example.wetterbericht.data.remote.weather.openweather.forecast.ForecastResponse
+import com.example.wetterbericht.data.remote.weather.openweather.weather.WeatherResponse
+import com.example.wetterbericht.data.remote.weather.utils.ApiUtils.weatherApiKey
+import com.example.wetterbericht.data.remote.weather.utils.ApiUtils.weatherUnit
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

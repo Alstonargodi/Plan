@@ -1,18 +1,21 @@
 package com.example.wetterbericht.viewmodel
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.wetterbericht.domain.localusecase.weather.IWeatherLocalUseCase
 import com.example.wetterbericht.domain.localusecase.boarding.BoardingLocalUseCase
 import com.example.wetterbericht.domain.localusecase.habits.HabitsLocalUseCase
 import com.example.wetterbericht.domain.localusecase.todotask.TodoLocalUseCase
-import com.example.wetterbericht.domain.remoteusecase.IOpenWeatherUseCase
+import com.example.wetterbericht.domain.remoteusecase.firebase.FirebaseAuthUseCase
+import com.example.wetterbericht.domain.remoteusecase.weather.IOpenWeatherUseCase
 import com.example.wetterbericht.injection.Injection
 import com.example.wetterbericht.injection.boarding.InjectionBoarding
 import com.example.wetterbericht.injection.habits.InjectionHabits
 import com.example.wetterbericht.injection.todo.InjectionTodo
 import com.example.wetterbericht.presentation.activity.onboarding.OnBoardingViewModel
+import com.example.wetterbericht.presentation.fragment.auth.LoginViewModel
 import com.example.wetterbericht.presentation.fragment.habits.viewmodel.HabitsViewModel
 import com.example.wetterbericht.presentation.fragment.home.viewmodel.HomeViewModel
 import com.example.wetterbericht.presentation.fragment.insertnewtask.viewmodel.InsertTodoViewModel
@@ -25,7 +28,8 @@ class ViewModelFactory private constructor(
     private val IOpenWeatherUseCase: IOpenWeatherUseCase,
     private val habitsLocalUseCase: HabitsLocalUseCase,
     private val todoUseCase: TodoLocalUseCase,
-    private val boardingLocalUseCase: BoardingLocalUseCase
+    private val boardingLocalUseCase: BoardingLocalUseCase,
+    private val firebaseAuth : FirebaseAuthUseCase
 ) : ViewModelProvider.NewInstanceFactory() {
     companion object{
         @Volatile
@@ -38,7 +42,8 @@ class ViewModelFactory private constructor(
                         Injection.provideWeatherUseCase(),
                         InjectionHabits.provideHabitsUseCase(context),
                         InjectionTodo.provideTodoUseCase(context),
-                        InjectionBoarding.provideBoardingUseCase(context)
+                        InjectionBoarding.provideBoardingUseCase(context),
+                        Injection.provideFirebaseAuthUseCase()
                     )
                 }
             }
@@ -70,6 +75,9 @@ class ViewModelFactory private constructor(
         }
         else if (modelClass.isAssignableFrom(StatisticFragmentViewModel::class.java)){
             return StatisticFragmentViewModel(todoUseCase) as T
+        }
+        else if(modelClass.isAssignableFrom(LoginViewModel::class.java)){
+            return LoginViewModel(firebaseAuth) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
     }

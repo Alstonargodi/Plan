@@ -11,9 +11,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.wetterbericht.R
 import com.example.wetterbericht.data.local.entities.weather.WeatherLocal
-import com.example.wetterbericht.data.remote.openweather.forecast.ForecastItem
-import com.example.wetterbericht.data.remote.openweather.forecast.ForecastResponse
-import com.example.wetterbericht.data.remote.openweather.weather.WeatherResponse
+import com.example.wetterbericht.data.remote.weather.openweather.forecast.ForecastItem
+import com.example.wetterbericht.data.remote.weather.openweather.forecast.ForecastResponse
+import com.example.wetterbericht.data.remote.weather.openweather.weather.WeatherResponse
 import com.example.wetterbericht.databinding.FragmentWeatherBinding
 import com.example.wetterbericht.presentation.fragment.weather.adapter.ForecastRecyclerViewAdapter
 import com.example.wetterbericht.viewmodel.ViewModelFactory

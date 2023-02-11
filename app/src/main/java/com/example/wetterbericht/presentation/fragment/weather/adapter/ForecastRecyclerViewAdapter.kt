@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.wetterbericht.data.remote.openweather.forecast.ForecastItem
+import com.example.wetterbericht.data.remote.weather.openweather.forecast.ForecastItem
 import com.example.wetterbericht.databinding.ItemcvForecastBinding
 import com.example.wetterbericht.helpers.Converter.dateParser
 import com.example.wetterbericht.helpers.Converter.imageUrlParser

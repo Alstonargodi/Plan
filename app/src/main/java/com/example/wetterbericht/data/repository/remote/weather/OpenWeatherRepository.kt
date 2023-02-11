@@ -1,8 +1,8 @@
-package com.example.wetterbericht.data.repository.remote
+package com.example.wetterbericht.data.repository.remote.weather
 
-import com.example.wetterbericht.data.remote.openweather.forecast.ForecastResponse
-import com.example.wetterbericht.data.remote.openweather.weather.WeatherResponse
-import com.example.wetterbericht.data.remote.source.OpenWeatherDataSource
+import com.example.wetterbericht.data.remote.weather.openweather.forecast.ForecastResponse
+import com.example.wetterbericht.data.remote.weather.openweather.weather.WeatherResponse
+import com.example.wetterbericht.data.remote.weather.source.OpenWeatherDataSource
 import retrofit2.Call
 
 class OpenWeatherRepository(

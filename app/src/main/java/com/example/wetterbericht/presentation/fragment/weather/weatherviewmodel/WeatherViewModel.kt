@@ -5,10 +5,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.wetterbericht.data.local.entities.weather.WeatherLocal
-import com.example.wetterbericht.data.remote.openweather.forecast.ForecastResponse
-import com.example.wetterbericht.data.remote.openweather.weather.WeatherResponse
+import com.example.wetterbericht.data.remote.weather.openweather.forecast.ForecastResponse
+import com.example.wetterbericht.data.remote.weather.openweather.weather.WeatherResponse
 import com.example.wetterbericht.domain.localusecase.weather.IWeatherLocalUseCase
-import com.example.wetterbericht.domain.remoteusecase.IOpenWeatherUseCase
+import com.example.wetterbericht.domain.remoteusecase.weather.IOpenWeatherUseCase
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

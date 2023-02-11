@@ -6,13 +6,16 @@ import com.example.wetterbericht.domain.localusecase.weather.IWeatherLocalLocalU
 import com.example.wetterbericht.domain.localusecase.weather.IWeatherLocalUseCase
 import com.example.wetterbericht.data.local.source.weather.IWeatherLocalDataSource
 import com.example.wetterbericht.data.local.source.weather.WeatherLocalDataSource
-import com.example.wetterbericht.data.remote.config.ApiConfig
-import com.example.wetterbericht.data.remote.source.OpenWeatherDataSource
+import com.example.wetterbericht.data.remote.firebase.FirebaseAuthService
+import com.example.wetterbericht.data.remote.weather.config.ApiConfig
+import com.example.wetterbericht.data.remote.weather.source.OpenWeatherDataSource
 import com.example.wetterbericht.data.repository.local.weather.WeatherLocalRepository
-import com.example.wetterbericht.data.repository.remote.IOpenWeatherRepository
-import com.example.wetterbericht.data.repository.remote.OpenWeatherRepository
-import com.example.wetterbericht.domain.remoteusecase.OpenWeatherUseCase
-import com.example.wetterbericht.domain.remoteusecase.IOpenWeatherUseCase
+import com.example.wetterbericht.data.repository.remote.firebase.FirebaseAuthRepository
+import com.example.wetterbericht.data.repository.remote.weather.IOpenWeatherRepository
+import com.example.wetterbericht.data.repository.remote.weather.OpenWeatherRepository
+import com.example.wetterbericht.domain.remoteusecase.firebase.FirebaseAuthUseCase
+import com.example.wetterbericht.domain.remoteusecase.weather.OpenWeatherUseCase
+import com.example.wetterbericht.domain.remoteusecase.weather.IOpenWeatherUseCase
 
 object Injection {
 
@@ -30,17 +33,24 @@ object Injection {
         return WeatherLocalDataSource(context)
     }
 
-
-    fun provideWeatherUseCase(): IOpenWeatherUseCase{
+    fun provideWeatherUseCase(): IOpenWeatherUseCase {
         return OpenWeatherUseCase(provideWeatherRepository())
     }
 
-    private fun provideWeatherRepository(): IOpenWeatherRepository{
+    private fun provideWeatherRepository(): IOpenWeatherRepository {
         return OpenWeatherRepository(provideWeatherDatasource())
     }
 
     private fun provideWeatherDatasource(): OpenWeatherDataSource{
         return OpenWeatherDataSource(ApiConfig.getApiService())
+    }
+
+    fun provideFirebaseAuthUseCase(): FirebaseAuthUseCase{
+        return FirebaseAuthUseCase(provideFirebaseAuthRepo())
+    }
+
+    fun provideFirebaseAuthRepo(): FirebaseAuthRepository{
+        return FirebaseAuthRepository(FirebaseAuthService())
     }
 
 }

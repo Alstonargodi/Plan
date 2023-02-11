@@ -1,8 +1,8 @@
-package com.example.wetterbericht.data.remote.config
+package com.example.wetterbericht.data.remote.weather.config
 
 import com.example.wetterbericht.BuildConfig
-import com.example.wetterbericht.data.remote.utils.ApiUtils.weatherBaseURL
-import com.example.wetterbericht.data.remote.service.OpenWeatherService
+import com.example.wetterbericht.data.remote.weather.utils.ApiUtils.weatherBaseURL
+import com.example.wetterbericht.data.remote.weather.service.OpenWeatherService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
