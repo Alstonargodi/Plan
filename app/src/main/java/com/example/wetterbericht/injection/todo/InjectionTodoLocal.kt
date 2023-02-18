@@ -8,7 +8,7 @@ import com.example.wetterbericht.data.repository.local.todo.TodoLocalRepository
 import com.example.wetterbericht.domain.localusecase.todotask.TodoLocalInteractor
 import com.example.wetterbericht.domain.localusecase.todotask.TodoLocalUseCase
 
-object InjectionTodo {
+object InjectionTodoLocal {
     fun provideTodoUseCase(context: Context): TodoLocalUseCase{
         return TodoLocalInteractor(provideTodoRespository(context))
     }

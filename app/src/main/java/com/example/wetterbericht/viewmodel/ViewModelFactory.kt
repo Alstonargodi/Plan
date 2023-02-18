@@ -9,12 +9,15 @@ import com.example.wetterbericht.domain.localusecase.datauser.ProfileUseCase
 import com.example.wetterbericht.domain.localusecase.habits.HabitsLocalUseCase
 import com.example.wetterbericht.domain.localusecase.todotask.TodoLocalUseCase
 import com.example.wetterbericht.domain.remoteusecase.firebase.FirebaseAuthUseCase
+import com.example.wetterbericht.domain.remoteusecase.firebase.realtimedb.TodoRemoteUseCase
 import com.example.wetterbericht.domain.remoteusecase.weather.IOpenWeatherUseCase
 import com.example.wetterbericht.injection.Injection
 import com.example.wetterbericht.injection.boarding.InjectionBoarding
 import com.example.wetterbericht.injection.datauser.InjectionUserProfile
+import com.example.wetterbericht.injection.firebase.InjectionTodoRemote
 import com.example.wetterbericht.injection.habits.InjectionHabits
-import com.example.wetterbericht.injection.todo.InjectionTodo
+import com.example.wetterbericht.injection.todo.InjectionFirebaseAuth
+import com.example.wetterbericht.injection.todo.InjectionTodoLocal
 import com.example.wetterbericht.presentation.activity.onboarding.OnBoardingViewModel
 import com.example.wetterbericht.presentation.fragment.auth.LoginViewModel
 import com.example.wetterbericht.presentation.fragment.habits.viewmodel.HabitsViewModel
@@ -31,7 +34,8 @@ class ViewModelFactory private constructor(
     private val todoUseCase: TodoLocalUseCase,
     private val boardingLocalUseCase: BoardingLocalUseCase,
     private val firebaseAuthUseCase : FirebaseAuthUseCase,
-    private val profileUseCase: ProfileUseCase
+    private val profileUseCase: ProfileUseCase,
+    private val todoRemoteUseCase: TodoRemoteUseCase
 ) : ViewModelProvider.NewInstanceFactory() {
     companion object{
         @Volatile
@@ -43,10 +47,11 @@ class ViewModelFactory private constructor(
                         Injection.providedUseCase(context),
                         Injection.provideWeatherUseCase(),
                         InjectionHabits.provideHabitsUseCase(context),
-                        InjectionTodo.provideTodoUseCase(context),
+                        InjectionTodoLocal.provideTodoUseCase(context),
                         InjectionBoarding.provideBoardingUseCase(context),
-                        Injection.provideFirebaseAuthUseCase(),
-                        InjectionUserProfile.provideProfileUseCase(context)
+                        InjectionFirebaseAuth.provideFirebaseAuthUseCase(),
+                        InjectionUserProfile.provideProfileUseCase(context),
+                        InjectionTodoRemote.provideTodoRemoteUseCase(context)
                     )
                 }
             }
@@ -76,7 +81,8 @@ class ViewModelFactory private constructor(
         else if (modelClass.isAssignableFrom(InsertTodoViewModel::class.java)){
             return InsertTodoViewModel(
                 todoUseCase,
-                habitsLocalUseCase
+                habitsLocalUseCase,
+                todoRemoteUseCase
             ) as T
         }
         else if (modelClass.isAssignableFrom(StatisticFragmentViewModel::class.java)){

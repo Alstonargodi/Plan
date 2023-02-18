@@ -2,6 +2,7 @@ package com.example.wetterbericht.data.remote.firebase.realtimedb
 
 import com.example.wetterbericht.data.local.entities.dailytask.TodoLocal
 import com.google.android.gms.tasks.Task
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
 class TodoRemoteService: ITodoRemoteService {
@@ -13,6 +14,12 @@ class TodoRemoteService: ITodoRemoteService {
             .child(data.dateStart)
             .child(data.subTaskId)
             .setValue(data)
+
+    override fun readTodolistRemote(userId: String): DatabaseReference =
+        FirebaseDatabase.getInstance()
+            .getReference(mainPath)
+            .child(userId)
+            .child(todoPath)
 
 
     companion object{

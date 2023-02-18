@@ -11,11 +11,14 @@ import com.example.wetterbericht.data.local.entities.dailytask.TodoLocal
 import com.example.wetterbericht.data.local.entities.dailytask.TodoSubTask
 import com.example.wetterbericht.domain.localusecase.habits.HabitsLocalUseCase
 import com.example.wetterbericht.domain.localusecase.todotask.TodoLocalUseCase
+import com.example.wetterbericht.domain.remoteusecase.firebase.realtimedb.TodoRemoteUseCase
 import com.example.wetterbericht.helpers.sortfilter.TodoSortType
+import com.google.firebase.database.DatabaseReference
 
 class InsertTodoViewModel(
-    private val todoUseCase: TodoLocalUseCase,
-    private val colorUseCase : HabitsLocalUseCase
+    private val todoLocal: TodoLocalUseCase,
+    private val colorUseCase : HabitsLocalUseCase,
+    private val todoRemote : TodoRemoteUseCase,
 ): ViewModel() {
     private val todoFilter = MutableLiveData<TodoSortType>()
 
@@ -25,25 +28,26 @@ class InsertTodoViewModel(
 
     fun readTodoTaskFilter(): LiveData<PagedList<TodoLocal>> =
         todoFilter.switchMap {
-            todoUseCase.readTodoTaskFilter(it)
+            todoLocal.readTodoTaskFilter(it)
         }
 
     fun readColorList(): LiveData<List<ColorHabits>> =
         colorUseCase.getHabitsColor()
 
     fun readAlarmChip(): LiveData<List<ChipAlarm>> =
-        todoUseCase.readChipTime()
+        todoLocal.readChipTime()
 
     fun insertTodoLocal(data : TodoLocal) =
-        todoUseCase.insertTodoList(data)
+        todoLocal.insertTodoList(data)
 
     fun insertAlarmChip(alarm : ChipAlarm) =
-        todoUseCase.insertChipTime(alarm)
+        todoLocal.insertChipTime(alarm)
 
     fun insertSubtask(data : TodoSubTask) =
-        todoUseCase.insertSubtask(data)
+        todoLocal.insertSubtask(data)
 
-
+    fun insertTodoRemote(data : TodoLocal,userId : String) =
+        todoRemote.insertTodolistRemote(data,userId)
 
 
 }

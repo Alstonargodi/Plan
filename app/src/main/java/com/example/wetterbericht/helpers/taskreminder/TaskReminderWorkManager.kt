@@ -12,15 +12,14 @@ import androidx.preference.PreferenceManager
 import androidx.work.Worker
 import androidx.work.WorkerParameters
 import com.example.wetterbericht.R
-import com.example.wetterbericht.injection.Injection
-import com.example.wetterbericht.injection.todo.InjectionTodo
+import com.example.wetterbericht.injection.todo.InjectionTodoLocal
 import com.example.wetterbericht.presentation.activity.mainactivity.MainActivity
 
 class TaskReminderWorkManager(
     val context : Context,
     params : WorkerParameters
 ) : Worker(context,params){
-    private val todoUse = InjectionTodo.provideTodoUseCase(context)
+    private val todoUse = InjectionTodoLocal.provideTodoUseCase(context)
     private val nearestTask = todoUse.getTodayTaskReminder()
 
     private val pendingIntent: PendingIntent = PendingIntent.getActivity(

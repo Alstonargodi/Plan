@@ -325,6 +325,10 @@ class InsertTodoFragment : Fragment(){
         }
     }
 
+    private fun insertRemoteTodo(data : TodoLocal,userId : String){
+
+    }
+
     private fun changeTextColor(){
         Handler(Looper.getMainLooper()).postDelayed({
             binding.etInsertName.setTextColor(typeColor)

@@ -44,13 +44,4 @@ object Injection {
     private fun provideWeatherDatasource(): OpenWeatherDataSource{
         return OpenWeatherDataSource(ApiConfig.getApiService())
     }
-
-    fun provideFirebaseAuthUseCase(): FirebaseAuthUseCase{
-        return FirebaseAuthUseCase(provideFirebaseAuthRepo())
-    }
-
-    fun provideFirebaseAuthRepo(): FirebaseAuthRepository{
-        return FirebaseAuthRepository(FirebaseAuthService())
-    }
-
 }
