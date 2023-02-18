@@ -8,21 +8,22 @@ import kotlinx.android.parcel.Parcelize
 @Entity(tableName = "TodoTable")
 data class TodoLocal(
     @PrimaryKey(autoGenerate = true)
-    val taskID : Int,
-    val title: String,
-    val description: String,
-    val levelColor : Int,
-    val dateDueMillis : Long,
-    val notificationInterval : Int,
-    val dateStart: String,
-    val dateYear : Int,
-    val dateMonth : Int,
-    val dateDay : Int,
-    val startTime : String,
-    val endTime : String,
-    val subTaskId: String,
+    val taskID : Int = 0,
+    val title: String = "",
+    val description: String = "",
+    val levelColor : Int = 0,
+    val dateDueMillis : Long = 0L,
+    val notificationInterval : Int = 0,
+    val dateStart: String = "",
+    val dateYear : Int = 0,
+    val dateMonth : Int = 0,
+    val dateDay : Int = 0,
+    val startTime : String = "",
+    val endTime : String = "",
+    val subTaskId: String = "",
     @ColumnInfo(name = "completed")
-    val isComplete: Boolean,
+    val isComplete: Boolean = false,
+    var isUploaded : Boolean = false
 ):Parcelable
 
 @Entity

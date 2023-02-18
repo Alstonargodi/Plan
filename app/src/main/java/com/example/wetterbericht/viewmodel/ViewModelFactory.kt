@@ -51,7 +51,7 @@ class ViewModelFactory private constructor(
                         InjectionBoarding.provideBoardingUseCase(context),
                         InjectionFirebaseAuth.provideFirebaseAuthUseCase(),
                         InjectionUserProfile.provideProfileUseCase(context),
-                        InjectionTodoRemote.provideTodoRemoteUseCase(context)
+                        InjectionTodoRemote.provideTodoRemoteUseCase()
                     )
                 }
             }
@@ -82,7 +82,8 @@ class ViewModelFactory private constructor(
             return InsertTodoViewModel(
                 todoUseCase,
                 habitsLocalUseCase,
-                todoRemoteUseCase
+                todoRemoteUseCase,
+                profileUseCase
             ) as T
         }
         else if (modelClass.isAssignableFrom(StatisticFragmentViewModel::class.java)){

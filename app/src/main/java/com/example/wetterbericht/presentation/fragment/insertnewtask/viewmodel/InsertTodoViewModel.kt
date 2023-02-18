@@ -1,14 +1,13 @@
 package com.example.wetterbericht.presentation.fragment.insertnewtask.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.switchMap
+import androidx.lifecycle.*
 import androidx.paging.PagedList
 import com.example.wetterbericht.data.local.ChipAlarm
 import com.example.wetterbericht.data.local.entities.dailyhabits.ColorHabits
 import com.example.wetterbericht.data.local.entities.dailytask.TodoLocal
 import com.example.wetterbericht.data.local.entities.dailytask.TodoSubTask
+import com.example.wetterbericht.data.local.preferences.UserProfile
+import com.example.wetterbericht.domain.localusecase.datauser.ProfileUseCase
 import com.example.wetterbericht.domain.localusecase.habits.HabitsLocalUseCase
 import com.example.wetterbericht.domain.localusecase.todotask.TodoLocalUseCase
 import com.example.wetterbericht.domain.remoteusecase.firebase.realtimedb.TodoRemoteUseCase
@@ -19,6 +18,7 @@ class InsertTodoViewModel(
     private val todoLocal: TodoLocalUseCase,
     private val colorUseCase : HabitsLocalUseCase,
     private val todoRemote : TodoRemoteUseCase,
+    private val profileUseCase: ProfileUseCase
 ): ViewModel() {
     private val todoFilter = MutableLiveData<TodoSortType>()
 
@@ -49,5 +49,6 @@ class InsertTodoViewModel(
     fun insertTodoRemote(data : TodoLocal,userId : String) =
         todoRemote.insertTodolistRemote(data,userId)
 
-
+    fun readUserFirebaseId(): LiveData<UserProfile> =
+        profileUseCase.getProfilePreferences().asLiveData()
 }

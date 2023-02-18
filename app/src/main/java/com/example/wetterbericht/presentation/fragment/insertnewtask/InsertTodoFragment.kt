@@ -8,6 +8,7 @@ import android.os.Handler
 import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.wetterbericht.data.local.entities.dailytask.TodoLocal
 import com.example.wetterbericht.data.local.entities.dailytask.TodoSubTask
 import com.example.wetterbericht.databinding.FragmentInsertTodoBinding
+import com.example.wetterbericht.helpers.ConstantTask
 import com.example.wetterbericht.helpers.ConstantTask.formatDate
 import com.example.wetterbericht.helpers.ConstantTask.formatDay
 import com.example.wetterbericht.helpers.ConstantTask.formatMonth
@@ -45,13 +47,15 @@ class InsertTodoFragment : Fragment(){
     private val viewModel : InsertTodoViewModel by viewModels{
         ViewModelFactory.getInstance(requireContext())
     }
-
     private var dateDay = 0
     private var dateMonth = 0
     private var dateYear = 0
     private var millisDay : Long = 0
     private var timeStart = "start"
     private var timeEnd = "end"
+    private var userFirebaseId = ""
+    private var isUploaded = false
+    private var isConnected = false
 
     private var subTaskList = mutableListOf<TodoSubTask>()
     private var typeColor = Color.parseColor("#383636")
@@ -61,10 +65,21 @@ class InsertTodoFragment : Fragment(){
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentInsertTodoBinding.inflate(layoutInflater)
-        timesSelection()
-        binding.etInsertName.setTextColor(typeColor)
+
         subTaskAdapter = SubtaskRecyclerViewAdapter(subTaskList)
+
+        isConnected = ConstantTask.internetChecker(requireContext())
+
+        viewModel.readUserFirebaseId().observe(viewLifecycleOwner){ data ->
+            userFirebaseId = data.userId
+        }
+
         ItemTouchHelper(CallBack()).attachToRecyclerView(binding.rvSubtask)
+
+        timesSelection()
+
+        binding.etInsertName.setTextColor(typeColor)
+
         binding.etInsertName.addTextChangedListener ( object : TextWatcher{
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun afterTextChanged(p0: Editable?) {}
@@ -97,6 +112,7 @@ class InsertTodoFragment : Fragment(){
                 }
             }
         })
+
         return binding.root
     }
 
@@ -125,7 +141,7 @@ class InsertTodoFragment : Fragment(){
             }
 
             btnaddtodo.setOnClickListener {
-                insertTodo()
+                saveTodolist()
             }
         }
     }
@@ -164,13 +180,12 @@ class InsertTodoFragment : Fragment(){
         subTaskRecyclerView.layoutManager = LinearLayoutManager(requireContext())
     }
 
-
-    private fun insertTodo(){
+    private fun saveTodolist(){
         val taskName = binding.etInsertName.text.toString()
         val description = binding.inserttodoDescription.text.toString()
         val dateStart = binding.btnTodoDatestart.text.toString()
 
-        val insertTask = TodoLocal(
+        val todoData = TodoLocal(
             taskID = 0,
             title = taskName,
             description = description,
@@ -184,8 +199,33 @@ class InsertTodoFragment : Fragment(){
             startTime = timeStart,
             endTime = timeEnd,
             subTaskId = userId,
-            isComplete = false
+            isComplete = false,
+            isUploaded = isUploaded
         )
+
+        if (!isConnected || userFirebaseId == "nouserid"){
+            isUploaded = false
+            insertTodoLocal(todoData)
+        }else{
+            insertRemoteTodo(todoData,userFirebaseId)
+        }
+    }
+    private fun insertRemoteTodo(todoData : TodoLocal,userId : String){
+        Log.d("insertTodo","uploading...")
+        viewModel.insertTodoRemote(todoData,userId)
+            .addOnSuccessListener {
+                isUploaded = true
+                Log.d("insertTodo","berhasil")
+                insertTodoLocal(todoData)
+            }
+            .addOnFailureListener {
+                Log.d("insertTodo","fail")
+                Log.d("insertTodo",it.message.toString())
+            }
+    }
+
+    private fun insertTodoLocal(todolist : TodoLocal){
+        todolist.isUploaded = isUploaded
 
         subTaskList.forEach {
             val insertSubtask = TodoSubTask(
@@ -196,7 +236,7 @@ class InsertTodoFragment : Fragment(){
             )
             viewModel.insertSubtask(insertSubtask)
         }
-        viewModel.insertTodoLocal(insertTask)
+        viewModel.insertTodoLocal(todolist)
         binding.pgbarInsertTodo.visibility = View.GONE
         findNavController().navigate(
             InsertTodoFragmentDirections.actionInsertTodoFragmentToFragmentHome(),
@@ -216,7 +256,6 @@ class InsertTodoFragment : Fragment(){
             }
         })
     }
-
 
     private fun insertNewSubtask(){
         val taskName = binding.etInserttodoSubtask.text.toString()
@@ -254,9 +293,7 @@ class InsertTodoFragment : Fragment(){
            val position = (viewHolder as SubtaskRecyclerViewAdapter.ViewHolder).adapterPosition
             subTaskAdapter.removeItem(position)
         }
-
     }
-
 
     private fun timePicker(tag : String){
         val calendar = Calendar.getInstance()
@@ -325,9 +362,6 @@ class InsertTodoFragment : Fragment(){
         }
     }
 
-    private fun insertRemoteTodo(data : TodoLocal,userId : String){
-
-    }
 
     private fun changeTextColor(){
         Handler(Looper.getMainLooper()).postDelayed({
