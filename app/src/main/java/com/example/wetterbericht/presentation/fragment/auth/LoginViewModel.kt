@@ -4,13 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import com.example.wetterbericht.data.local.preferences.UserProfile
-import com.example.wetterbericht.data.remote.firebase.IFirebaseAuthService
-import com.example.wetterbericht.domain.localusecase.datauser.IProfileUseCase
+import com.example.wetterbericht.data.remote.firebase.authentication.IFirebaseAuthService
 import com.example.wetterbericht.domain.localusecase.datauser.ProfileUseCase
 import com.example.wetterbericht.domain.remoteusecase.firebase.FirebaseAuthUseCase
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
-import kotlinx.coroutines.flow.Flow
 
 class LoginViewModel(
     private val firebase : FirebaseAuthUseCase,

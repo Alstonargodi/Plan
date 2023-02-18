@@ -6,7 +6,7 @@ import com.example.wetterbericht.domain.localusecase.weather.IWeatherLocalLocalU
 import com.example.wetterbericht.domain.localusecase.weather.IWeatherLocalUseCase
 import com.example.wetterbericht.data.local.source.weather.IWeatherLocalDataSource
 import com.example.wetterbericht.data.local.source.weather.WeatherLocalDataSource
-import com.example.wetterbericht.data.remote.firebase.FirebaseAuthService
+import com.example.wetterbericht.data.remote.firebase.authentication.FirebaseAuthService
 import com.example.wetterbericht.data.remote.weather.config.ApiConfig
 import com.example.wetterbericht.data.remote.weather.source.OpenWeatherDataSource
 import com.example.wetterbericht.data.repository.local.weather.WeatherLocalRepository

@@ -1,7 +1,6 @@
 package com.example.wetterbericht.domain.remoteusecase.firebase
 
-import com.example.wetterbericht.data.remote.firebase.FirebaseAuthService
-import com.example.wetterbericht.data.remote.firebase.IFirebaseAuthService
+import com.example.wetterbericht.data.remote.firebase.authentication.IFirebaseAuthService
 import com.example.wetterbericht.data.repository.remote.firebase.FirebaseAuthRepository
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult

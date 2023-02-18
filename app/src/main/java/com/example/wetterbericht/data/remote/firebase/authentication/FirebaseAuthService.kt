@@ -1,4 +1,4 @@
-package com.example.wetterbericht.data.remote.firebase
+package com.example.wetterbericht.data.remote.firebase.authentication
 
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
