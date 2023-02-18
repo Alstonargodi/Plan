@@ -8,6 +8,7 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import androidx.datastore.preferences.core.mutablePreferencesOf
 
 
 val Context.UserDatapreferenceStore : DataStore<Preferences> by preferencesDataStore(
@@ -17,16 +18,22 @@ class UserDataPreferences(
     private val dataStore : DataStore<Preferences>
 ) {
     private val userIdPreference = stringPreferencesKey("useId_key")
+    private val emailPreference = stringPreferencesKey("email_key")
 
-    fun getUserIdPreferences(): Flow<String> {
+
+    fun getProfilePreferences(): Flow<UserProfile>{
         return dataStore.data.map {
-            it[userIdPreference] ?: "nouserid"
+            UserProfile(
+                it[emailPreference] ?: "noemail",
+                it[userIdPreference] ?: "nouserid"
+            )
         }
     }
 
-    suspend fun saveUserIdPreferences(userId : String){
+    suspend fun saveProfilePreferences(profile : UserProfile){
         dataStore.edit {
-            it[userIdPreference] = userId
+            it[emailPreference] = profile.email
+            it[userIdPreference] = profile.userId
         }
     }
 

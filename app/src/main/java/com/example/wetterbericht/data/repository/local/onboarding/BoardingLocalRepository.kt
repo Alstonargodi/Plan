@@ -3,7 +3,7 @@ package com.example.wetterbericht.data.repository.local.onboarding
 import androidx.lifecycle.LiveData
 import com.example.wetterbericht.data.local.source.onboarding.IBoardingLocalSource
 
-class BoardingLocalRespository(
+class BoardingLocalRepository(
     private val dataSource: IBoardingLocalSource
 ): IBoardingLocalRepository{
     override fun getOnBoardingStatus(): LiveData<Boolean> {

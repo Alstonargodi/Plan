@@ -6,14 +6,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
-import com.example.wetterbericht.R
+import androidx.lifecycle.lifecycleScope
+import com.example.wetterbericht.data.local.preferences.UserProfile
 import com.example.wetterbericht.databinding.FragmentLoginBinding
 import com.example.wetterbericht.viewmodel.ViewModelFactory
-import org.w3c.dom.Text
+import kotlinx.coroutines.launch
 
 class LoginFragment : Fragment() {
+
     private val viewModel : LoginViewModel by viewModels{
         ViewModelFactory.getInstance(requireContext())
     }
@@ -29,6 +30,13 @@ class LoginFragment : Fragment() {
         binding.btnLogin.setOnClickListener {
             loginAccount()
         }
+
+        viewModel.getProfilePreferences().observe(viewLifecycleOwner){ data->
+            if (data.email != "nouserid"){
+                binding.tvLoginChecker.visibility = View.VISIBLE
+                binding.tvLoginChecker.text = data.email
+            }
+        }
         return binding.root
     }
 
@@ -37,11 +45,22 @@ class LoginFragment : Fragment() {
         val password = binding.tvPasswordBox.text.toString()
 
         viewModel.authLoginUser(email,password)
-            .addOnSuccessListener {
-                Log.d("login","sucess")
+            .addOnSuccessListener { data ->
+               saveUserId(
+                   data.user?.uid.toString(),
+                   email
+               )
             }
-            .addOnFailureListener {
-                Log.d("login","error")
+            .addOnFailureListener { e ->
+                Log.d("login",e.message.toString())
             }
+    }
+
+    private fun saveUserId(userId : String,email : String){
+        lifecycleScope.launch {
+            viewModel.saveProfilePreferences(
+                UserProfile(email,userId)
+            )
+        }
     }
 }
