@@ -35,7 +35,6 @@ class HomeFragment : Fragment() {
     private val homeViewModel : HomeViewModel by viewModels{
         ViewModelFactory.getInstance(requireContext())
     }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
