@@ -1,12 +1,14 @@
 package com.example.wetterbericht.presentation.fragment.menu
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.wetterbericht.databinding.FragmentMenuBinding
+import com.example.wetterbericht.presentation.activity.TestComposeActivity
 
 class MenuFragment : Fragment() {
     private lateinit var binding : FragmentMenuBinding
@@ -36,9 +38,10 @@ class MenuFragment : Fragment() {
             }
 
             btnMenuSetting.setOnClickListener {
-                findNavController().navigate(
-                    MenuFragmentDirections.actionMenuFragmentToSettingsFragment()
-                )
+//                findNavController().navigate(
+//                    MenuFragmentDirections.actionMenuFragmentToSettingsFragment()
+//                )
+                startActivity(Intent(activity, TestComposeActivity::class.java))
             }
 
             btnMenuHabits.setOnClickListener {

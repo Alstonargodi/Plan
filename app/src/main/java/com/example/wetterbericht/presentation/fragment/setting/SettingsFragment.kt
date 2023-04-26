@@ -1,8 +1,10 @@
 package com.example.wetterbericht.presentation.fragment.setting
 
 import android.os.Bundle
-import androidx.navigation.fragment.findNavController
-import androidx.preference.*
+import androidx.preference.CheckBoxPreference
+import androidx.preference.ListPreference
+import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.SwitchPreference
 import androidx.work.Data
 import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkManager
@@ -65,12 +67,6 @@ class SettingsFragment : PreferenceFragmentCompat() {
             true
         }
 
-        profile?.setOnPreferenceClickListener {
-            findNavController().navigate(
-                SettingsFragmentDirections.actionSettingsFragmentToLoginFragment()
-            )
-            true
-        }
     }
 
 

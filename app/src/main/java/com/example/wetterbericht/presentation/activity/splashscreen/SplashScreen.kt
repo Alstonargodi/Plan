@@ -1,13 +1,13 @@
 package com.example.wetterbericht.presentation.activity.splashscreen
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.activity.viewModels
-import com.example.wetterbericht.presentation.activity.mainactivity.MainActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.example.wetterbericht.R
+import com.example.wetterbericht.presentation.activity.mainactivity.MainActivity
 import com.example.wetterbericht.presentation.activity.onboarding.OnBoardingActivity
 import com.example.wetterbericht.presentation.activity.onboarding.OnBoardingViewModel
 import com.example.wetterbericht.viewmodel.ViewModelFactory

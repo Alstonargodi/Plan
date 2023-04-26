@@ -1,7 +1,11 @@
 package com.example.wetterbericht.data.local.entities.dailytask
 
 import android.os.Parcelable
-import androidx.room.*
+import androidx.room.ColumnInfo
+import androidx.room.Embedded
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import androidx.room.Relation
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
@@ -34,6 +38,7 @@ data class TodoSubTask(
     val isComplete: Boolean,
     val todoId : String
 )
+
 //one to many
 data class TodoandSubTask(
     @Embedded

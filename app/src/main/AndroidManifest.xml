@@ -25,33 +25,39 @@
         android:roundIcon="@drawable/ic_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.Wetterbericht">
+        <activity
+            android:name=".presentation.activity.splashscreen.SplashScreen"
+            android:exported="false"
+            android:label="@string/title_activity_test_compose"
+            android:theme="@style/Theme.Wetterbericht" />
+        <activity
+            android:name=".presentation.composeview.AboutComposeActivity"
+            android:exported="false"
+            android:label="@string/title_activity_about_compose"
+            android:theme="@style/Theme.Wetterbericht" />
 
         <receiver
-            android:name="com.example.wetterbericht.helpers.taskreminder.TaskReminderBroadcast"
+            android:name=".helpers.taskreminder.TaskReminderBroadcast"
             android:enabled="true"
-            android:exported="true">
-        </receiver>
-
+            android:exported="true" />
         <receiver
-            android:name="com.example.wetterbericht.helpers.weatherupdate.WeatherUpdate"
+            android:name=".helpers.weatherupdate.WeatherUpdate"
             android:enabled="true"
-            android:exported="true">
-        </receiver>
+            android:exported="true" />
 
         <activity
-            android:name="com.example.wetterbericht.presentation.activity.onboarding.OnBoardingActivity"
+            android:name=".presentation.activity.onboarding.OnBoardingActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-
         <activity
             android:name=".presentation.activity.mainactivity.MainActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:screenOrientation="portrait"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.example.wetterbericht.presentation.activity.splashscreen.SplashScreen"
+            android:name=".presentation.activity.TestComposeActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">

@@ -1,7 +1,11 @@
 package com.example.wetterbericht.presentation.fragment.weather
 
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -16,8 +20,8 @@ import com.example.wetterbericht.data.remote.weather.openweather.forecast.Foreca
 import com.example.wetterbericht.data.remote.weather.openweather.weather.WeatherResponse
 import com.example.wetterbericht.databinding.FragmentWeatherBinding
 import com.example.wetterbericht.presentation.fragment.weather.adapter.ForecastRecyclerViewAdapter
-import com.example.wetterbericht.viewmodel.ViewModelFactory
 import com.example.wetterbericht.presentation.fragment.weather.weatherviewmodel.WeatherViewModel
+import com.example.wetterbericht.viewmodel.ViewModelFactory
 import kotlin.math.round
 
 class WeatherFragment : Fragment(){
@@ -36,7 +40,6 @@ class WeatherFragment : Fragment(){
         return binding.root
     }
 
-
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.weather_toolbar,menu)
         val searchView = menu.findItem(R.id.search_weather).actionView as SearchView
@@ -44,7 +47,9 @@ class WeatherFragment : Fragment(){
             queryHint = "Enter Location"
             setOnQueryTextListener(object : SearchView.OnQueryTextListener{
                 override fun onQueryTextSubmit(query: String?): Boolean {
-                    searchCurrentWeather(query ?: "")
+                    if (query != null) {
+                        searchCurrentWeather(query)
+                    }
                     locationChecker(query ?: "")
                     binding.tvWeatherNodata.visibility = View.GONE
                     return true
